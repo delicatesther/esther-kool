@@ -1,0 +1,38 @@
+// -----------------------------------------------------------------------------
+// TYPOGRAPHY
+// Global typography
+// -----------------------------------------------------------------------------
+@use "../config" as *;
+
+:root {
+  font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
+  --basefont: "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --fallback-font: Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+// -----------------------------------------------------------------------------
+// Formatting Elements
+// -----------------------------------------------------------------------------
+.strong {
+  font-weight: var(--bold-weight);
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+// -----------------------------------------------------------------------------
+// Forms
+// -----------------------------------------------------------------------------
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}

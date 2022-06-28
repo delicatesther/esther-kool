@@ -1,0 +1,11 @@
+// -----------------------------------------------------------------------------
+// GLOBAL
+// Styling shared across the platform (e.g. resets, theme & typography)
+// If styling can go in a component, add it there, not here.
+// -----------------------------------------------------------------------------
+@forward "vendor";
+@forward "layout";
+@forward "theme";
+@forward "forms";
+@forward "typography";
+@forward "table";

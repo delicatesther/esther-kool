@@ -1,0 +1,62 @@
+// -----------------------------------------------------------------------------
+// LAYOUT
+// Global reset & layout styling
+// -----------------------------------------------------------------------------
+@use "../config" as *;
+
+// -----------------------------------------------------------------------------
+// Global Reset
+// -----------------------------------------------------------------------------
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  padding: 0;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+// Make sure footer is always at the bottom of the window,
+// even when content in the main section is shorter.
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+// Helper class for assistive technology elements
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Classes set on html & body elements by react-modal when popup is shown
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+}

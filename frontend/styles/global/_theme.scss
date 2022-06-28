@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// THEME
+// Global theming settings
+// -----------------------------------------------------------------------------
+@use "../config" as *;
+
+// -----------------------------------------------------------------------------
+// Colours
+// -----------------------------------------------------------------------------
+:root {
+  --transparent: rgb(0, 0, 0, 0);
+  --white: #{colour(white)};
+  --whiteRgb: #{colour(white, true)};
+  --black: #{colour(black)};
+  --blackRgb: #{colour(black, true)};
+  --siteBackground: var(--white);
+  --siteFontColor: var(--black);
+}
+
+body {
+  background: var(--siteBackground);
+  color: var(--siteFontColor);
+}

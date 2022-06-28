@@ -1,0 +1,37 @@
+// -----------------------------------------------------------------------------
+// FUNCTIONS
+// SCSS functions to retrieve/calculate values
+// -----------------------------------------------------------------------------
+@use "variables" as *;
+@use "sass:color";
+
+// -----------------------------------------------------------------------------
+// Get Z-index
+// -----------------------------------------------------------------------------
+@function z($name) {
+  @if map-has-key($z-index, $name) {
+    @return map-get($z-index, $name);
+  }
+
+  @warn "The key #{$name} is not in the map ’$z-index";
+  @return null;
+}
+
+// -----------------------------------------------------------------------------
+// Get Colour
+// Mind: British spelling. US spelling is reserved for SASS native mixin.
+// Basically: use CSS vars whenever possible.
+// -----------------------------------------------------------------------------
+@function colour($name, $rgb: false) {
+  @if map-has-key($colours, $name) {
+    @if $rgb {
+      $hex: map-get($colours, $name);
+      @return red($hex), green($hex), blue($hex);
+    } @else {
+      @return map-get($colours, $name);
+    }
+  }
+
+  @warn "The key #{$name} is not in the map ’$colour";
+  @return null;
+}

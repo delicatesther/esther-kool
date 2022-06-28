@@ -1,0 +1,92 @@
+// -----------------------------------------------------------------------------
+// MIXINS
+// SCSS mixins to quickly calculate & add SCSS.
+// -----------------------------------------------------------------------------
+@use "functions" as *;
+@use "variables" as *;
+
+// -----------------------------------------------------------------------------
+// Media queries and breakpoints
+// -----------------------------------------------------------------------------
+// Breakpoint mixin
+@mixin breakpoint($bp, $type: min) {
+  @if map_has_key($breakpoints, $bp) {
+    $bp: map_get($breakpoints, $bp);
+    @if $type == max {
+      $bp: $bp - 1;
+    }
+    @media only screen and (#{$type}-width: #{$bp}px) {
+      @content;
+    }
+  }
+  // Informative error handling when invalid $width value is provided
+  @else {
+    @warn 'There is no item "#{$bp}" in this list; choose one of: #{map-keys($breakpoints)}';
+  }
+}
+
+// Hover, focus, active styling
+@mixin hoverFocusActiveStyling(
+  $property,
+  $value,
+  $hoverValue,
+  $focusValue,
+  $child: null
+) {
+  @if $child {
+    // pure hover
+    &:hover {
+      @media (any-hover: hover) {
+        #{$child} {
+          #{$property}: $hoverValue;
+        }
+      }
+    }
+    // pure focus for non-supporting browsers of :focus-visible (Safari)
+    &:focus:not(:hover) {
+      #{$child} {
+        #{$property}: $focusValue;
+      }
+    }
+    // overwrite of focus to initial values for browsers that support :focus-visible
+    &:focus:not(:focus-visible):not(:hover) {
+      #{$child} {
+        #{$property}: $value;
+      }
+    }
+    // show focus styles on keyboard focus
+    &:focus-visible:not(:hover) {
+      #{$child} {
+        #{$property}: $focusValue;
+      }
+    }
+    // active state
+    &:active {
+      #{$child} {
+        #{$property}: $hoverValue;
+      }
+    }
+  } @else {
+    &:hover {
+      @media (any-hover: hover) {
+        #{$property}: $hoverValue;
+      }
+    }
+    // pure focus for non-supporting browsers of :focus-visible (Safari)
+    &:focus:not(:hover) {
+      #{$property}: $focusValue;
+    }
+    // overwrite of focus to initial values for browsers that support :focus-visible
+    &:focus:not(:focus-visible):not(:hover) {
+      #{$property}: $value;
+    }
+    // show focus styles on keyboard focus
+    &:focus-visible:not(:hover) {
+      #{$property}: $focusValue;
+    }
+    // active state
+    &:active {
+      #{$property}: $hoverValue;
+    }
+  }
+}
