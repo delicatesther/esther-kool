@@ -26,13 +26,7 @@
 }
 
 // Hover, focus, active styling
-@mixin hoverFocusActiveStyling(
-  $property,
-  $value,
-  $hoverValue,
-  $focusValue,
-  $child: null
-) {
+@mixin hoverFocusActiveStyling($property, $value, $hoverValue, $focusValue, $child: null) {
   @if $child {
     // pure hover
     &:hover {
@@ -87,6 +81,37 @@
     // active state
     &:active {
       #{$property}: $hoverValue;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Theme
+// -----------------------------------------------------------------------------
+@mixin theme($name: null, $module: true) {
+  @if $module {
+    @if $name == "dark" {
+      :global(.dark-mode) & {
+        @content;
+      }
+    } @else if $name == "light" {
+      :global(.light-mode) & {
+        @content;
+      }
+    } @else {
+      @warn 'There is no item "#{$name}" in this list; choose "light" or "dark"';
+    }
+  } @else {
+    @if $name == "dark" {
+      .dark-mode & {
+        @content;
+      }
+    } @else if $name == "light" {
+      .light-mode & {
+        @content;
+      }
+    } @else {
+      @warn 'There is no item "#{$name}" in this list; choose "light" or "dark"';
     }
   }
 }

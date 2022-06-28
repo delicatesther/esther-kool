@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { WindowSizeAttributes } from "@enk/types";
+import useTheme from "react-use-system-theme";
 
 export const useWindowSize = (): WindowSizeAttributes => {
   const [windowSize, setWindowSize] = useState<WindowSizeAttributes>({
@@ -69,4 +70,9 @@ export const checkFontLoaded = () => {
   }
 
   interval = setInterval(fontLoadListener, 500);
+};
+
+export const useSystemTheme = () => {
+  const theme = useTheme();
+  return theme;
 };

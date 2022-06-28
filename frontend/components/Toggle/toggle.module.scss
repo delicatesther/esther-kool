@@ -1,0 +1,197 @@
+@use "../../styles/config" as *;
+
+%toggleIcon {
+  position: absolute;
+  width: var(--tooltipIconSize);
+  height: var(--tooltipIconSize);
+  pointer-events: none;
+  z-index: z(z1);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.default {
+  position: relative;
+  margin: 4px;
+  --tooltipBottom: -32px;
+  --tooltipRightPos: 28px;
+  --tooltipWidth: 64px;
+  --tooltipHeight: 32px;
+  &.disabled {
+    label {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+  input {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    @include hoverFocusActiveStyling(
+      outline,
+      $value: none,
+      $hoverValue: none,
+      $focusValue: 3px dotted var(--siteFontColor),
+      $child: "+ label"
+    );
+    @include hoverFocusActiveStyling(
+      transform,
+      $value: none,
+      $hoverValue: none,
+      $focusValue: scale(1.1) translateY(-50%),
+      $child: "+ label svg"
+    );
+    &[aria-checked="true"] {
+      + label {
+        &:after {
+          left: 50%;
+        }
+        &:hover {
+          span {
+            &:first-of-type {
+              display: none;
+            }
+            &:nth-of-type(2) {
+              opacity: 1;
+              &:before {
+                opacity: 1;
+                right: var(--tooltipRightPos);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  label {
+    outline: 0;
+    width: var(--tooltipWidth);
+    height: var(--tooltipHeight);
+    position: relative;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    border: 2px solid var(--siteFontColor);
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    color: var(--siteFontColor);
+    &:after,
+    &:before {
+      position: relative;
+      display: block;
+      content: "";
+      width: 50%;
+      height: 100%;
+    }
+    &:after {
+      background: var(--siteFontColor);
+      left: 0;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    &:before {
+      display: none;
+    }
+    &:hover {
+      .tooltip {
+        &:first-of-type {
+          opacity: 1;
+        }
+        &:before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &.large {
+    --tooltipBottom: -56px;
+    --tooltipWidth: 76px;
+    --tooltipHeight: 40px;
+    --tooltipRight: 24px;
+  }
+}
+
+.tooltip {
+  pointer-events: none;
+  font-size: 1.4rem;
+  opacity: 0;
+  padding: 4px;
+  text-transform: none;
+  min-width: 100px;
+  height: max-content;
+  text-align: center;
+  border: 2px solid var(--siteFontColor);
+  position: absolute;
+  background: transparent;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: z(z2);
+  top: auto;
+  bottom: var(--tooltipBottom);
+  &:before {
+    content: "";
+    opacity: 0;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--siteFontColor);
+    display: block;
+    position: absolute;
+    top: -8px;
+  }
+}
+
+.listToggle {
+  margin: 0;
+}
+
+.icons {
+  --tooltipIconSize: 20px;
+  &.large {
+    --tooltipIconSize: 24px;
+  }
+  svg {
+    color: var(--siteBackground);
+    transition: all 0.2s ease-in-out;
+    &:first-of-type {
+      @extend %toggleIcon;
+      opacity: 1;
+      left: 6px;
+      + span {
+        display: block;
+        &:after {
+          left: 28px;
+        }
+        &:before {
+          left: 28px;
+        }
+      }
+    }
+    &:last-of-type {
+      @extend %toggleIcon;
+      opacity: 0.3;
+      right: 6px;
+      + span {
+        &:before {
+          right: 12px;
+        }
+      }
+    }
+  }
+  input {
+    &[aria-checked="true"] {
+      + label {
+        svg:first-of-type {
+          opacity: 0.3;
+        }
+        svg:last-of-type {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

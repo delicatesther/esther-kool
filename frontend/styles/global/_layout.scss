@@ -43,6 +43,13 @@ body {
   flex: 1;
 }
 
+.footer {
+  padding: 16px;
+  @include breakpoint(s) {
+    padding: 32px;
+  }
+}
+
 // Helper class for assistive technology elements
 .visuallyhidden {
   border: 0;

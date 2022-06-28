@@ -6,6 +6,7 @@
 
 // -----------------------------------------------------------------------------
 // Colours
+// Colour names by https://www.color-blindness.com/color-name-hue/ and https://chir.ag/projects/name-that-color
 // -----------------------------------------------------------------------------
 :root {
   --transparent: rgb(0, 0, 0, 0);
@@ -13,11 +14,19 @@
   --whiteRgb: #{colour(white, true)};
   --black: #{colour(black)};
   --blackRgb: #{colour(black, true)};
-  --siteBackground: var(--white);
+  --shamrock: #{colour(shamrock)};
+  --shamrockRgb: #{colour(shamrock, true)};
+  --siteBackground: var(--shamrock);
   --siteFontColor: var(--black);
+  --supportColor: var(--white);
 }
 
 body {
   background: var(--siteBackground);
   color: var(--siteFontColor);
+  &.dark-mode {
+    --siteBackground: var(--black);
+    --siteFontColor: var(--white);
+    --supportColor: var(--shamrock);
+  }
 }

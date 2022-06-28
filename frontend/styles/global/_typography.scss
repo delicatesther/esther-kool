@@ -33,6 +33,15 @@ body {
 // -----------------------------------------------------------------------------
 // Formatting Elements
 // -----------------------------------------------------------------------------
+a {
+  border: 1px dotted transparent;
+  &:focus {
+    outline: none;
+  }
+  @include hoverFocusActiveStyling(transform, $value: none, $hoverValue: scale(1.05), $focusValue: scale(1.05));
+  @include hoverFocusActiveStyling(border-color, $value: transparent, $hoverValue: none, $focusValue: currentColor);
+}
+
 .strong {
   font-weight: var(--bold-weight);
 }

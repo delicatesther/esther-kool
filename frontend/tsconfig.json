@@ -30,7 +30,7 @@
         "lib/types/custom.d.ts"
       ],
       "@enk/utils": [
-        "lib/utils/index.tsx"
+        "lib/utils/index.ts"
       ],
       "@enk/icons/*": [
         "public/icons/*"
