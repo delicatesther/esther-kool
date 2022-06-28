@@ -23,8 +23,4 @@
 .large {
   --avatarSize: 200px;
   width: var(--avatarSize);
-  height: var(--avatarSize);
-  @include breakpoint(s, max) {
-    --avatarSize: 100px;
-  }
 }

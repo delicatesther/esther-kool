@@ -3,10 +3,7 @@
 .card {
   width: 100vw;
   padding: 8px 0;
-  margin: 32px 8px;
-  @include breakpoint(s) {
-    margin: 32px 16px;
-  }
+  margin: 32px;
   @include breakpoint(m) {
     margin: 80px;
     width: 666px;
@@ -14,34 +11,38 @@
   a {
     color: var(--linkColor);
   }
-  h2 {
-    @include breakpoint(s, max) {
-      margin-top: -24px;
-    }
-  }
 }
 
 .circle {
-  --circleSize: 100px;
-  clip-path: circle(50%);
-  float: left;
+  --circleSize: 200px;
   margin: 0 16px;
-  shape-margin: 8px;
-  shape-outside: circle(50%);
   height: var(--circleSize);
   width: var(--circleSize);
   @include breakpoint(m) {
-    --circleSize: 200px;
+    clip-path: circle(50%);
+    float: left;
+    shape-margin: 8px;
+    shape-outside: circle(50%);
   }
 }
 
 .list {
+  max-width: 100%;
   li {
     display: block;
+    @include breakpoint(s, max) {
+      position: relative;
+      padding-left: 16px;
+    }
     &:before {
       content: "•";
       display: inline-block;
       padding-right: 8px;
+      @include breakpoint(s, max) {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
     }
   }
 }
