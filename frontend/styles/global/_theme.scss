@@ -14,11 +14,16 @@
   --whiteRgb: #{colour(white, true)};
   --black: #{colour(black)};
   --blackRgb: #{colour(black, true)};
+  --blueStone: #{colour(blueStone)};
+  --blueStoneRgb: #{colour(blueStone, true)};
+  --scooter: #{colour(scooter)};
+  --scooterRgb: #{colour(scooter, true)};
   --shamrock: #{colour(shamrock)};
   --shamrockRgb: #{colour(shamrock, true)};
   --siteBackground: var(--shamrock);
   --siteFontColor: var(--black);
   --supportColor: var(--white);
+  --linkColor: var(--blueStone);
 }
 
 body {
@@ -28,5 +33,6 @@ body {
     --siteBackground: var(--black);
     --siteFontColor: var(--white);
     --supportColor: var(--shamrock);
+    --linkColor: var(--scooter);
   }
 }

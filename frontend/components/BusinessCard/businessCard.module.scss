@@ -1,0 +1,47 @@
+@use "../../styles/config" as *;
+
+.card {
+  width: 100vw;
+  padding: 8px 0;
+  margin: 32px 8px;
+  @include breakpoint(s) {
+    margin: 32px 16px;
+  }
+  @include breakpoint(m) {
+    margin: 80px;
+    width: 666px;
+  }
+  a {
+    color: var(--linkColor);
+  }
+  h2 {
+    @include breakpoint(s, max) {
+      margin-top: -24px;
+    }
+  }
+}
+
+.circle {
+  --circleSize: 100px;
+  clip-path: circle(50%);
+  float: left;
+  margin: 0 16px;
+  shape-margin: 8px;
+  shape-outside: circle(50%);
+  height: var(--circleSize);
+  width: var(--circleSize);
+  @include breakpoint(m) {
+    --circleSize: 200px;
+  }
+}
+
+.list {
+  li {
+    display: block;
+    &:before {
+      content: "•";
+      display: inline-block;
+      padding-right: 8px;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@use "../../styles/config/" as *;
+
+.avatar {
+  border: 2px solid var(--siteFontColor);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+  }
+}
+
+.small {
+  width: 80px;
+  height: 80px;
+}
+
+.medium {
+  width: 120px;
+  height: 120px;
+}
+
+.large {
+  --avatarSize: 200px;
+  width: var(--avatarSize);
+  height: var(--avatarSize);
+  @include breakpoint(s, max) {
+    --avatarSize: 100px;
+  }
+}

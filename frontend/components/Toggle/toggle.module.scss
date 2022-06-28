@@ -38,8 +38,8 @@
     );
     @include hoverFocusActiveStyling(
       transform,
-      $value: none,
-      $hoverValue: none,
+      $value: translateY(-50%),
+      $hoverValue: translateY(-50%),
       $focusValue: scale(1.1) translateY(-50%),
       $child: "+ label svg"
     );
