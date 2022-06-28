@@ -3,13 +3,31 @@
 // Global typography
 // -----------------------------------------------------------------------------
 @use "../config" as *;
+@import "@fontsource/open-sans/400.css"; // Weight 400
+@import "@fontsource/open-sans/400-italic.css"; // Italic 400
+@import "@fontsource/open-sans/700.css"; // Bold 700
+@import "@fontsource/open-sans/800.css"; // Extra-bold 800
 
 :root {
   font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
-  --basefont: "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --fallback-font: Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --basefont: "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Helvetica Neue", sans-serif;
+  --fallback-font: Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Helvetica Neue", sans-serif;
+}
+
+body {
+  font-family: var(--basefont);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  body.fallback-font & {
+    letter-spacing: 0.45px;
+    word-spacing: -0.5px;
+    @include breakpoint(s) {
+      letter-spacing: 0.5px;
+      word-spacing: -0.45px;
+    }
+  }
 }
 
 // -----------------------------------------------------------------------------

@@ -14,16 +14,40 @@
     "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@enk/components/*": [
+        "components/*"
+      ],
+      "@enk/lib": [
+        "lib/index.ts"
+      ],
+      "@enk/types": [
+        "lib/types/custom.d.ts"
+      ],
+      "@enk/utils": [
+        "lib/utils/index.tsx"
+      ],
+      "@enk/icons/*": [
+        "public/icons/*"
+      ]
+    },
   },
+  "typeRoots": [
+    "node_modules/@types",
+    "lib/types"
+  ],
   "include": [
     "next-env.d.ts",
+    "lib/types/custom.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }
