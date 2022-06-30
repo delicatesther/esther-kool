@@ -6,7 +6,7 @@ export const BusinessCard = ({ src, size }) => {
   return (
     <article className={style.card}>
       <Avatar className={style.circle} src={src} size={size} alt="" />
-      <h2>I'm...</h2>
+      <h2>I&apos;m...</h2>
       <ul className={style.list}>
         <li>Esther Kool (She/Her)</li>
         <li>
