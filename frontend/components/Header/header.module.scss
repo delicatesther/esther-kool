@@ -22,7 +22,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: var(--siteFontColor);
+  color: var(--siteFontColour);
   @include breakpoint(s, max) {
     margin-bottom: 16px;
   }
@@ -33,7 +33,7 @@
     border-color,
     $value: transparent,
     $hoverValue: none,
-    $focusValue: var(--siteFontColor)
+    $focusValue: var(--siteFontColour)
   );
   @include hoverFocusActiveStyling(transform, $value: none, $hoverValue: scale(1.05), $focusValue: scale(1.05));
   @include hoverFocusActiveStyling(

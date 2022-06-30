@@ -1,0 +1,10 @@
+@use "../../styles/config" as *;
+
+.login {
+  margin: 80px 0;
+  form {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+}

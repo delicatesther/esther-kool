@@ -21,17 +21,17 @@
   --shamrock: #{colour(shamrock)};
   --shamrockRgb: #{colour(shamrock, true)};
   --siteBackground: var(--shamrock);
-  --siteFontColor: var(--black);
+  --siteFontColour: var(--black);
   --supportColor: var(--white);
   --linkColor: var(--blueStone);
 }
 
 body {
   background: var(--siteBackground);
-  color: var(--siteFontColor);
+  color: var(--siteFontColour);
   &.dark-mode {
     --siteBackground: var(--black);
-    --siteFontColor: var(--white);
+    --siteFontColour: var(--white);
     --supportColor: var(--shamrock);
     --linkColor: var(--scooter);
   }

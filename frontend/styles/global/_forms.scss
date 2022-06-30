@@ -3,3 +3,66 @@
 // Global forms settings
 // -----------------------------------------------------------------------------
 @use "../config" as *;
+
+button {
+  background: var(--siteBackground);
+  color: var(--siteFontColour);
+  border: 2px solid var(--siteFontColour);
+  font-family: var(--baseFont);
+  font-size: 2rem;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  transform-origin: center;
+  &[disabled] {
+    opacity: 0.5;
+  }
+  &:hover {
+    font-weight: bold;
+    box-shadow: 2px 2px 2px black;
+  }
+  &:focus,
+  &:focus-visible {
+    font-weight: bold;
+    box-shadow: 2px 2px 2px black;
+    outline: 2px dotted var(--siteFontColour);
+  }
+}
+
+.button-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  &:after {
+    content: attr(data-text);
+    content: attr(data-text) / "";
+    font-weight: bold;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
+    @media speech {
+      display: none;
+    }
+  }
+}
+
+input[type="text"] {
+  background: var(--siteBackground);
+  border: 2px solid var(--siteFontColour);
+  padding: 8px 20px;
+  font-family: var(--baseFont);
+  font-size: 1.6rem;
+  color: var(--siteFontColour);
+  &::placeholder {
+    font-family: var(--baseFont);
+    font-size: 1.6rem;
+  }
+  &:focus,
+  &:focus-visible {
+    background-color: var(--supportColor);
+    outline: 2px dotted var(--siteFontColour);
+  }
+}

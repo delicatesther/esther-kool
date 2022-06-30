@@ -67,3 +67,49 @@ body {
 .ReactModal__Html--open {
   overflow: hidden;
 }
+
+// -----------------------------------------------------------------------------
+// Global layout variables
+// -----------------------------------------------------------------------------
+:root {
+  --grid-margin-sides: 16px;
+  --grid-columns: repeat(4, 1fr);
+  @include breakpoint(s) {
+    --grid-margin-sides: 32px;
+    --grid-columns: repeat(8, 1fr);
+  }
+  @include breakpoint(m) {
+    --grid-columns: repeat(12, 1fr);
+  }
+  @include breakpoint(xl) {
+    --grid-margin-sides: 80px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Grid
+// -----------------------------------------------------------------------------
+.grid-wrapper {
+  margin-left: var(--grid-margin-sides);
+  margin-right: var(--grid-margin-sides);
+  position: relative;
+  max-width: calc(100vw - (var(--grid-margin-sides) * 2));
+  display: grid;
+  @include breakpoint(s) {
+    max-width: none;
+    grid-template-columns: 1fr minmax(auto, 1600px) 1fr;
+  }
+  > .row,
+  > .row-spacing-bottom {
+    @include breakpoint(s) {
+      grid-column: 2 / 3;
+    }
+  }
+  > .grid-breaker {
+    margin-left: calc(-1 * var(--grid-margin-sides));
+    margin-right: calc(-1 * var(--grid-margin-sides));
+    @include breakpoint(s) {
+      grid-column: 1 / -1;
+    }
+  }
+}

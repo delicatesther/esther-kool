@@ -33,7 +33,7 @@
       outline,
       $value: none,
       $hoverValue: none,
-      $focusValue: 3px dotted var(--siteFontColor),
+      $focusValue: 3px dotted var(--siteFontColour),
       $child: "+ label"
     );
     @include hoverFocusActiveStyling(
@@ -74,10 +74,10 @@
     position: relative;
     cursor: pointer;
     user-select: none;
-    border: 2px solid var(--siteFontColor);
+    border: 2px solid var(--siteFontColour);
     border-radius: 20px;
     transition: all 0.2s ease-in-out;
-    color: var(--siteFontColor);
+    color: var(--siteFontColour);
     &:after,
     &:before {
       position: relative;
@@ -87,7 +87,7 @@
       height: 100%;
     }
     &:after {
-      background: var(--siteFontColor);
+      background: var(--siteFontColour);
       left: 0;
       border-radius: 50%;
       transition: all 0.2s ease;
@@ -123,7 +123,7 @@
   min-width: 100px;
   height: max-content;
   text-align: center;
-  border: 2px solid var(--siteFontColor);
+  border: 2px solid var(--siteFontColour);
   position: absolute;
   background: transparent;
   left: 50%;
@@ -138,7 +138,7 @@
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--siteFontColor);
+    border-bottom: 8px solid var(--siteFontColour);
     display: block;
     position: absolute;
     top: -8px;
