@@ -23,6 +23,7 @@
   --siteBackground: var(--shamrock);
   --siteFontColour: var(--black);
   --supportColor: var(--white);
+  --supportColorRgb: var(--whiteRgb);
   --linkColor: var(--blueStone);
 }
 
@@ -33,6 +34,7 @@ body {
     --siteBackground: var(--black);
     --siteFontColour: var(--white);
     --supportColor: var(--shamrock);
+    --supportColorRgb: var(--shamrockRgb);
     --linkColor: var(--scooter);
   }
 }

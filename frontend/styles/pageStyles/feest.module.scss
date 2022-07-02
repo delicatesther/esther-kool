@@ -1,0 +1,48 @@
+@use "../config" as *;
+
+.feest {
+  header {
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+    p {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+.intro {
+  grid-column: 1 / -1;
+  p {
+    margin-bottom: 1em;
+  }
+}
+
+.trouwFoto {
+  grid-column: 1 / -1;
+  position: relative;
+  aspect-ratio: 4 / 6;
+  margin: 16px 0;
+  @include breakpoint(s) {
+    grid-column: 1 / 4;
+    margin: 16px;
+  }
+  @include breakpoint(m) {
+    grid-column: 1 / 5;
+  }
+}
+
+.lijst {
+  grid-column: 1 / -1;
+  align-self: center;
+  border: 1px solid var(--siteFontColour);
+  padding: 16px;
+  margin: 32px 0;
+  background: rgba(var(--supportColorRgb), 0.6);
+  @include breakpoint(s) {
+    grid-column: 4 / 8;
+    margin: 32px;
+  }
+  @include breakpoint(m) {
+    grid-column: 5 / 13;
+  }
+}

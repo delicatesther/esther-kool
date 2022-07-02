@@ -2,11 +2,13 @@
 
 .header {
   padding: 16px;
+  margin-bottom: 40px;
   @include breakpoint(s) {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 32px;
+    margin-bottom: 80px;
   }
   svg {
     width: 300px;

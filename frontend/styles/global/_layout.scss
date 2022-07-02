@@ -113,3 +113,9 @@ body {
     }
   }
 }
+
+.row,
+.row-spacing-bottom {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+}

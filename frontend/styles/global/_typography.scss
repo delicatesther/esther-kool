@@ -68,8 +68,32 @@ select {
 // Text styles
 // -----------------------------------------------------------------------------
 
-h2 {
+h1,
+.h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+h2,
+.h2 {
   font-size: 2.4rem;
   font-weight: 700;
   margin-bottom: 8px;
+}
+
+h3,
+.h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+dl {
+  dt {
+    font-weight: 700;
+  }
+  dd {
+    margin-bottom: 8px;
+  }
 }

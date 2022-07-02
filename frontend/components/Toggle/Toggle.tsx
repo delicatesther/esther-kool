@@ -41,12 +41,11 @@ export const Toggle = ({
     <div className={classNames}>
       <input
         type="checkbox"
-        aria-checked={checked ? checked : defaultChecked}
+        aria-checked={checked}
         name={name}
         id={id}
         value={value}
         checked={checked}
-        defaultChecked={defaultChecked}
         onChange={setOnChange}
         {...input}
         disabled={disabled}
