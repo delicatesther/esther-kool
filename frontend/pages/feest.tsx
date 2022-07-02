@@ -9,7 +9,7 @@ import Confetti from "react-confetti";
 import { Layout } from "@enk/components/Layout";
 
 const cx = classNames.bind(style);
-export default function feestPage({ hasReadPermission }) {
+export const FeestPage = ({ hasReadPermission }) => {
   const isMounted = useRef<Boolean>(false);
   const router = useRouter();
   let { width, height } = useWindowSize();
@@ -62,7 +62,7 @@ export default function feestPage({ hasReadPermission }) {
                 Als je ons wat cadeau wil doen, waarderen we een bijdrage voor de kinderkamer. Voor eten en drinken
                 wordt gezorgd!
               </dd>
-              <dt>Is m'n baby welkom?</dt>
+              <dt>Is m&apos;n baby welkom?</dt>
               <dd>Hangt van de baby af. Meestal wel.</dd>
             </dl>
           </div>
@@ -70,4 +70,6 @@ export default function feestPage({ hasReadPermission }) {
       </Layout>
     </>
   );
-}
+};
+
+export default FeestPage;
