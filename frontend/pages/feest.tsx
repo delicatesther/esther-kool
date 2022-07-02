@@ -1,28 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Login } from "@enk/components/Login";
 import classNames from "classnames/bind";
 import style from "../styles/pageStyles/feest.module.scss";
 import Image from "next/image";
-import useWindowSize from "react-use/lib/useWindowSize";
+import { useWindowSize } from "@enk/utils";
 import Confetti from "react-confetti";
 import { Layout } from "@enk/components/Layout";
 
 const cx = classNames.bind(style);
 export const FeestPage = ({ hasReadPermission }) => {
-  const isMounted = useRef<Boolean>(false);
   const router = useRouter();
-  let { width, height } = useWindowSize();
-
-  useEffect(() => {
-    if (isMounted.current) {
-      console.log(width, height);
-    }
-
-    return () => {
-      isMounted.current = true;
-    };
-  }, []);
+  let { windowWidth: width, windowWidth: height } = useWindowSize();
 
   if (!hasReadPermission) {
     return (
@@ -52,7 +41,7 @@ export const FeestPage = ({ hasReadPermission }) => {
             </p>
           </div>
           <div className={style.trouwFoto}>
-            <Image src="/images/trouwFoto.jpeg" layout="fill" />
+            <Image src="/images/trouwFoto.jpeg" layout="fill" priority />
           </div>
           <div className={style.lijst}>
             <h2>TL;DR</h2>
