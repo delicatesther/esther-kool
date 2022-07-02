@@ -25,7 +25,11 @@ export const FeestPage = ({ hasReadPermission }) => {
   }, []);
 
   if (!hasReadPermission) {
-    return <Login redirectPath={router.asPath} />;
+    return (
+      <Layout>
+        <Login redirectPath={router.asPath} />
+      </Layout>
+    );
   }
   return (
     <>
