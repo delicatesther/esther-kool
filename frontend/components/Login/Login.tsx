@@ -29,7 +29,7 @@ export const Login = ({ redirectPath }) => {
             type="text"
             placeholder="Enter password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}></input>
+            onChange={(e) => setPassword(e.target.value.toLowerCase())}></input>
           <Button type="submit">Login</Button>
         </form>
       </div>

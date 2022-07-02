@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { Login } from "@enk/components/Login";
 import classNames from "classnames/bind";
@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useWindowSize } from "@enk/utils";
 import Confetti from "react-confetti";
 import { Layout } from "@enk/components/Layout";
+import Head from "next/head";
 
 const cx = classNames.bind(style);
 export const FeestPage = ({ hasReadPermission }) => {
@@ -22,6 +23,7 @@ export const FeestPage = ({ hasReadPermission }) => {
   }
   return (
     <>
+      <Head>Inhaalfeest Steenkool</Head>
       <Confetti width={width} height={height} />
       <Layout>
         <article className={cx("row", ["feest"])}>
@@ -30,7 +32,7 @@ export const FeestPage = ({ hasReadPermission }) => {
             <p>Op 16 juli 2022 zijn wij 19 maanden getrouwd. Dat vier je maar één keer!</p>
           </header>
           <div className={style.trouwFoto}>
-            <Image src="/images/trouwFoto.jpeg" layout="fill" priority />
+            <Image src="/images/trouwfoto.jpeg" layout="fill" priority />
           </div>
           <div className={style.lijst}>
             <h2>TL;DR</h2>
