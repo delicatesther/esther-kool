@@ -3,6 +3,7 @@ import Cookies from "universal-cookie";
 import { Login } from "@enk/components/Login";
 import { consts } from "@enk/lib";
 import { Button } from "@enk/components/Button";
+import { Layout } from "@enk/components/Layout";
 
 export default function LoginPage({ hasReadPermission }) {
   if (hasReadPermission) {
@@ -11,7 +12,7 @@ export default function LoginPage({ hasReadPermission }) {
         <Head>
           <title>Logout</title>
         </Head>
-        <div>
+        <Layout>
           <Button
             onClick={(e) => {
               e.preventDefault();
@@ -21,7 +22,7 @@ export default function LoginPage({ hasReadPermission }) {
             }}>
             Logout
           </Button>
-        </div>
+        </Layout>
       </>
     );
   }
@@ -31,7 +32,9 @@ export default function LoginPage({ hasReadPermission }) {
       <Head>
         <title>Login</title>
       </Head>
-      <Login redirectPath="/" />
+      <Layout>
+        <Login redirectPath="/" />
+      </Layout>
     </>
   );
 }
