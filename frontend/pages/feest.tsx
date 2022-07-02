@@ -29,17 +29,6 @@ export const FeestPage = ({ hasReadPermission }) => {
             <h1>Inhaalfeest Steenkool</h1>
             <p>Op 16 juli 2022 zijn wij 19 maanden getrouwd. Dat vier je maar één keer!</p>
           </header>
-          <div className={style.intro}>
-            <p>
-              Op 16 december 2020 trouwden wij, een dag nadat premier Rutte een lockdown aankondigde. Hierdoor kon ons
-              geplande etentje met vrienden en familie niet doorgaan. Graag nodigen we jullie alsnog uit om een hapje te
-              komen eten en ons huwelijk met ons te vieren.
-            </p>
-            <p>
-              Oh ja! In de tussentijd hebben we ook een huis gekocht en ben ik (Esther) met kind geschopt, dus wellicht
-              kunnen we dat ook meteen even vieren.
-            </p>
-          </div>
           <div className={style.trouwFoto}>
             <Image src="/images/trouwFoto.jpeg" layout="fill" priority />
           </div>
@@ -58,6 +47,17 @@ export const FeestPage = ({ hasReadPermission }) => {
               <dt>Is m&apos;n baby welkom?</dt>
               <dd>Hangt van de baby af. Meestal wel.</dd>
             </dl>
+          </div>
+          <div className={style.intro}>
+            <p>
+              Op 16 december 2020 trouwden wij, een dag nadat premier Rutte een lockdown aankondigde. Hierdoor kon ons
+              geplande etentje met vrienden en familie niet doorgaan. Graag nodigen we jullie alsnog uit om een hapje te
+              komen eten en ons huwelijk met ons te vieren.
+            </p>
+            <p>
+              Oh ja! In de tussentijd hebben we ook een huis gekocht en ben ik (Esther) met kind geschopt, dus wellicht
+              kunnen we dat ook meteen even vieren.
+            </p>
           </div>
         </article>
       </Layout>
