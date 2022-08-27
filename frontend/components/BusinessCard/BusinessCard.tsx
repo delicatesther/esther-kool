@@ -10,7 +10,9 @@ export const BusinessCard = ({ src, size }) => {
       <ul className={style.list}>
         <li>Esther Kool (She/Her)</li>
         <li>
-          <a href="https://www.twitter.com/delicatesther">@delicatesther</a>
+          <a href="https://www.twitter.com/delicatesther" target="_blank" rel="noreferrer noopener">
+            @delicatesther
+          </a>
         </li>
         <li>a front-end developer from NL 🇳🇱</li>
         <li>a D&D nerd who prints and paints her own minis</li>
