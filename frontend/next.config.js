@@ -3,6 +3,10 @@ const baseConfig = require("./webpack.common.js");
 
 const nextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false,
+  publicRuntimeConfig: {
+    GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
+  },
   webpack(config, options) {
     baseConfig,
       config.module.rules.push({

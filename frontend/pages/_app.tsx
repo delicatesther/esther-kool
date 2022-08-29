@@ -1,35 +1,23 @@
 import Head from "next/head";
-import App from "next/app";
-import Cookies from "universal-cookie";
-import { consts } from "@enk/lib";
+import { AppProps } from "next/app";
+import { ApolloProvider } from "@apollo/client";
 import { checkFontLoaded, useSystemTheme } from "@enk/utils";
+import { useApollo } from "@enk/lib";
 import "../styles/global/index.scss";
-import { Layout } from "@enk/components/Layout";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
+  const apolloClient = useApollo(pageProps);
   checkFontLoaded();
   const theme = useSystemTheme() || "light";
 
   return (
-    <>
+    <ApolloProvider client={apolloClient}>
       <Head>
         <link rel="icon" href={`/favicon-${theme}.ico`} />
       </Head>
       <Component {...pageProps} />
-    </>
+    </ApolloProvider>
   );
 }
-
-MyApp.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext);
-
-  const cookies = new Cookies(appContext.ctx.req.headers.cookie);
-  const password = cookies.get(consts.SiteReadCookie) ?? "";
-
-  if (password === "hodor") {
-    appProps.pageProps.hasReadPermission = true;
-  }
-  return { ...appProps };
-};
 
 export default MyApp;
