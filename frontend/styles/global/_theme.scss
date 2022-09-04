@@ -20,8 +20,11 @@
   --scooterRgb: #{colour(scooter, true)};
   --shamrock: #{colour(shamrock)};
   --shamrockRgb: #{colour(shamrock, true)};
-  --siteBackground: var(--shamrock);
-  --siteFontColour: var(--black);
+  --springGreen: #{colour(springGreen)};
+  --springGreenRgb: #{colour(springGreen, true)};
+  --siteBackground: var(--springGreen);
+  --siteFontColor: var(--black);
+  --siteFontColorRgb: var(--blackRgb);
   --supportColor: var(--white);
   --supportColorRgb: var(--whiteRgb);
   --linkColor: var(--blueStone);
@@ -29,10 +32,11 @@
 
 body {
   background: var(--siteBackground);
-  color: var(--siteFontColour);
+  color: var(--siteFontColor);
   &.dark-mode {
     --siteBackground: var(--black);
-    --siteFontColour: var(--white);
+    --siteFontColor: var(--white);
+    --siteFontColorRgb: var(--whiteRgb);
     --supportColor: var(--shamrock);
     --supportColorRgb: var(--shamrockRgb);
     --linkColor: var(--scooter);

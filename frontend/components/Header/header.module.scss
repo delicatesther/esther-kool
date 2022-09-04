@@ -4,12 +4,17 @@
   padding: 16px;
   margin-bottom: 40px;
   @include breakpoint(s) {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 300px 1fr;
     align-items: center;
+    justify-items: end;
     padding: 32px;
     margin-bottom: 80px;
   }
+}
+
+.logo {
+  justify-self: start;
   svg {
     width: 300px;
     height: 68px;
@@ -24,7 +29,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: var(--siteFontColour);
+  color: var(--siteFontColor);
   @include breakpoint(s, max) {
     margin-bottom: 16px;
   }
@@ -35,7 +40,7 @@
     border-color,
     $value: transparent,
     $hoverValue: none,
-    $focusValue: var(--siteFontColour)
+    $focusValue: var(--siteFontColor)
   );
   @include hoverFocusActiveStyling(transform, $value: none, $hoverValue: scale(1.05), $focusValue: scale(1.05));
   @include hoverFocusActiveStyling(
@@ -45,4 +50,10 @@
     $focusValue: scale(1.05),
     $child: "svg"
   );
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 8px 16px;
 }

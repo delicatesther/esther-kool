@@ -1,0 +1,33 @@
+@use "../../styles/config" as *;
+
+.signIn {
+  h2 {
+    margin-bottom: 16px;
+    @include breakpoint(m) {
+      margin-bottom: 24px;
+    }
+  }
+  form {
+    grid-column: 1 / -1;
+    background: rgba(var(--supportColorRgb), 0.8);
+    padding: 16px 12px;
+    margin-bottom: 32px;
+    @include breakpoint(m) {
+      padding: 24px 16px;
+      margin-bottom: 40px;
+    }
+  }
+  fieldset {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+    input {
+      margin-bottom: 8px;
+    }
+    button {
+      margin-bottom: 16px;
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+  }
+}

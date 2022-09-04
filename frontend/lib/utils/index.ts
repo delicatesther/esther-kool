@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { WindowSizeAttributes } from "@enk/types";
 import useTheme from "react-use-system-theme";
+import { useQuery } from "@apollo/client";
+import { CURRENT_USER_QUERY } from "@enk/lib";
 
 export const useWindowSize = (): WindowSizeAttributes => {
   const [windowSize, setWindowSize] = useState<WindowSizeAttributes>({
@@ -76,3 +78,8 @@ export const useSystemTheme = () => {
   const theme = useTheme();
   return theme;
 };
+
+export function useUser() {
+  const { data } = useQuery(CURRENT_USER_QUERY);
+  return data?.authenticatedItem;
+}

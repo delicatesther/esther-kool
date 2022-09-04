@@ -42,6 +42,11 @@ a {
   @include hoverFocusActiveStyling(border-color, $value: transparent, $hoverValue: none, $focusValue: currentColor);
 }
 
+.anchor {
+  @extend a;
+  color: var(--linkColor);
+}
+
 .strong {
   font-weight: var(--bold-weight);
 }

@@ -4,16 +4,18 @@
 // -----------------------------------------------------------------------------
 @use "../config" as *;
 
-button {
+button,
+.button {
   background: var(--siteBackground);
-  color: var(--siteFontColour);
-  border: 2px solid var(--siteFontColour);
+  color: var(--siteFontColor);
+  border: 2px solid var(--siteFontColor);
   font-family: var(--baseFont);
   font-size: 2rem;
   padding: 8px 20px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
   transform-origin: center;
+  text-decoration: none;
   &[disabled] {
     opacity: 0.5;
   }
@@ -25,7 +27,7 @@ button {
   &:focus-visible {
     font-weight: bold;
     box-shadow: 2px 2px 2px black;
-    outline: 2px dotted var(--siteFontColour);
+    outline: 2px dotted var(--siteFontColor);
   }
 }
 
@@ -49,20 +51,23 @@ button {
   }
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   background: var(--siteBackground);
-  border: 2px solid var(--siteFontColour);
+  border: 2px solid var(--siteFontColor);
   padding: 8px 20px;
   font-family: var(--baseFont);
   font-size: 1.6rem;
-  color: var(--siteFontColour);
+  color: var(--siteFontColor);
   &::placeholder {
     font-family: var(--baseFont);
     font-size: 1.6rem;
+    color: rgba(var(--siteFontColorRgb), 0.6);
   }
   &:focus,
   &:focus-visible {
     background-color: var(--supportColor);
-    outline: 2px dotted var(--siteFontColour);
+    outline: 2px dotted var(--siteFontColor);
   }
 }

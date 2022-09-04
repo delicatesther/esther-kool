@@ -32,7 +32,7 @@ if (!sessionSecret) {
 const { withAuth } = createAuth({
   listKey: 'User',
   identityField: 'email',
-  sessionData: 'name',
+  sessionData: 'name id email',
   secretField: 'password',
   initFirstItem: {
     // If there are no items in the database, keystone will ask you to create
@@ -49,6 +49,7 @@ let sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
 const session = statelessSessions({
   maxAge: sessionMaxAge,
   secret: sessionSecret!,
+  secure: false
 });
 
 export { withAuth, session };
