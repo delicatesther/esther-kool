@@ -110,7 +110,10 @@ h3,
 
 h1 {
   &.bruksanvisnung {
-    font-size: 5rem;
+    font-size: 4rem;
+    @include breakpoint(s) {
+      font-size: 5rem;
+    }
   }
 }
 
