@@ -61,6 +61,10 @@ export default function AlexPage(props) {
             Dat JBPM kan wat klonteren als het niet goed gemengd is, maar teveel schudden en roeren zorgt weer voor
             teveel lucht in de fles, dus poog voor de gulden middenweg.
           </p>
+          <p>
+            Het spul helpt voorkomen dat Alex spuugt. Ze geeft nog wel eens een mondje terug (dus hou spuugdoekjes
+            paraat), maar we hebben al een tijd geen bed meer hoeven verschonen omdat er zoveel omhoog kwam.
+          </p>
           <h2 className="bruksanvisnung">Moe!</h2>
           <p>Als Alex begint te staren, gapen en haar oogjes half dichtvallen weet je het zeker: ze is moe.</p>
           <p>

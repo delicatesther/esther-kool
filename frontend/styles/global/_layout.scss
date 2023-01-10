@@ -141,6 +141,9 @@ body {
     break-inside: avoid;
     break-after: avoid;
   }
+  p {
+    break-inside: avoid;
+  }
   .illustrationContainer {
     float: right;
   }
