@@ -53,9 +53,9 @@ export default function AlexPage(props) {
           <p>
             Eerst doen we een half schepje johannesbroodpitmeel* in de fles. (* 37 punten in Scrabble zonder bonussen).
             Vervolgens zetten we de fles onder de Babybrezza en drukken we op het play knopje. Daarna nog even roeren
-            (doen wij met zo'n Aziatisch eetstokje) om het JBPM van de bodem van de fles te krijgen en met de melk te
-            mengen. Als laatst de groene plastic flieber er in en de speen er op en de fles één of twee keer op z'n kop
-            draaien.
+            (doen wij met zo&#39;n Aziatisch eetstokje) om het JBPM van de bodem van de fles te krijgen en met de melk
+            te mengen. Als laatst de groene plastic flieber er in en de speen er op en de fles één of twee keer op
+            zo&#39;n kop draaien.
           </p>
           <p>
             Dat JBPM kan wat klonteren als het niet goed gemengd is, maar teveel schudden en roeren zorgt weer voor
