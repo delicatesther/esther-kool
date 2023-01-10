@@ -42,3 +42,18 @@ body {
     --linkColor: var(--scooter);
   }
 }
+
+.illustrationContainer {
+  grid-column: span 2;
+  margin: 12px;
+  background-color: var(--siteBackground);
+}
+
+.illustration {
+  mix-blend-mode: hard-light;
+  filter: brightness(50%);
+  .dark-mode & {
+    filter: invert(100%) brightness(1.5);
+    mix-blend-mode: lighten;
+  }
+}

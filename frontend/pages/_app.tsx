@@ -14,6 +14,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={apolloClient}>
       <Head>
         <link rel="icon" href={`/favicon-${theme}.ico`} />
+        {/* @ts-ignore */}
+        <link href="print.css" rel="stylesheet" media="print" onload="this.media='all'" />
       </Head>
       <Component {...pageProps} />
     </ApolloProvider>

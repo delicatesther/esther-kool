@@ -8,6 +8,14 @@
 @import "@fontsource/open-sans/700.css"; // Bold 700
 @import "@fontsource/open-sans/800.css"; // Extra-bold 800
 
+@font-face {
+  font-family: "P22 Folk Art Stitch";
+  src: url("/fonts/P22FolkArtStitch.woff2") format("woff2"), url("/fonts/P22FolkArtStitch.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
   --basefont: "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
@@ -92,6 +100,34 @@ h3,
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 8px;
+}
+
+.bruksanvisnung {
+  font-family: "P22 Folk Art Stitch";
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+
+h1 {
+  &.bruksanvisnung {
+    font-size: 5rem;
+  }
+}
+
+h2 {
+  &.bruksanvisnung {
+    text-transform: uppercase;
+    text-decoration: underline dashed;
+    text-underline-offset: 12px;
+    margin: 0 0 24px;
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+  }
+}
+
+p {
+  margin-bottom: 1em;
 }
 
 dl {

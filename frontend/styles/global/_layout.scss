@@ -119,3 +119,29 @@ body {
   display: grid;
   grid-template-columns: var(--grid-columns);
 }
+
+.col-half {
+  --grid-span: span 4;
+  grid-column: var(--grid-span);
+  @include breakpoint(s) {
+    --grid-span: span 4;
+  }
+  @include breakpoint(m) {
+    --grid-span: span 6;
+  }
+}
+
+.two-cols {
+  grid-column: 1 / -1;
+  @include breakpoint(s) {
+    column-count: 2;
+    gap: 24px;
+  }
+  h2 {
+    break-inside: avoid;
+    break-after: avoid;
+  }
+  .illustrationContainer {
+    float: right;
+  }
+}

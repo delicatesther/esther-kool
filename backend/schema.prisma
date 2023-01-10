@@ -12,12 +12,11 @@ generator client {
   output   = "node_modules/.prisma/client"
 }
 
-model User {
-  id       String @id @default(uuid()) @postgresql.Uuid
-  name     String @default("")
-  email    String @unique @default("")
-  password String
-  posts    Post[] @relation("Post_author")
+model Height {
+  id               String    @id @default(uuid()) @postgresql.Uuid
+  cm               Int?
+  createdAt        DateTime? @default(now())
+  from_User_height User[]    @relation("User_height")
 }
 
 model Post {
@@ -37,4 +36,22 @@ model Tag {
   id    String @id @default(uuid()) @postgresql.Uuid
   name  String @default("")
   posts Post[] @relation("Post_tags")
+}
+
+model User {
+  id        String    @id @default(uuid()) @postgresql.Uuid
+  name      String    @default("")
+  email     String    @unique @default("")
+  password  String
+  posts     Post[]    @relation("Post_author")
+  birthdate DateTime? @postgresql.Date
+  height    Height[]  @relation("User_height")
+  weight    Weight[]  @relation("User_weight")
+}
+
+model Weight {
+  id               String    @id @default(uuid()) @postgresql.Uuid
+  g                Int?
+  createdAt        DateTime? @default(now())
+  from_User_weight User[]    @relation("User_weight")
 }
