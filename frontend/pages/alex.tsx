@@ -41,9 +41,9 @@ export default function AlexPage(props) {
             afleidingen zijn, dus radio/TV uit en niet teveel activiteit om haar heen.
           </p>
           <p>
-            We maken nu een flesje van 180ml klaar (die niet op komt). Het komt nog een enkele keer voor dat ze om d'r
-            oude hoeveelheid vraagt en dan maken we gewoon wat meer klaar, maar schrik niet als ze totaal niet wil
-            drinken. Gewoon later nog eens proberen.
+            We maken nu een flesje van 180ml klaar (die niet op komt). Het komt nog een enkele keer voor dat ze om
+            d&#39;r oude hoeveelheid vraagt en dan maken we gewoon wat meer klaar, maar schrik niet als ze totaal niet
+            wil drinken. Gewoon later nog eens proberen.
           </p>
           <p>
             Ze geeft meestal duidelijk aan wanneer ze klaar is met drinken (dan duwt ze de fles weg of vertikt ze het
@@ -128,8 +128,8 @@ export default function AlexPage(props) {
           </p>
           <p>
             We hijsen haar dan in een slaapzakje en leggen haar op bed met een knuffeltje en/of een speen. Overdag in
-            het ledikant op haar kamer, 's nachts in de co-sleeper op onze slaapkamer. Met de babymonitor houden we haar
-            dan in de gaten.
+            het ledikant op haar kamer, &#39;s nachts in de co-sleeper op onze slaapkamer. Met de babymonitor houden we
+            haar dan in de gaten.
           </p>
           <p>
             Slapen is stoooom, dus meestal is er protest. Als ze een beetje verontwaardigd schreeuwt kan je het nog
@@ -147,7 +147,7 @@ export default function AlexPage(props) {
           <p>
             Als Alex de ruimte heeft (en dit heeft ze bijvoorbeeld al in de co-sleeper) dan is de kans groot dat ze op
             haar buik rolt. Grofweg 10-30 seconden later begint ze te protesteren. Rol haar toch maar weer terug, het is
-            zo lullig als ze te moe wordt om haar hoofd te blijven optillen en stikt in het boxkleed/d'r
+            zo lullig als ze te moe wordt om haar hoofd te blijven optillen en stikt in het boxkleed/d&#39;r
             matras/whatever.
           </p>
           <p>
