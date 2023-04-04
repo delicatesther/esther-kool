@@ -37,8 +37,8 @@ export default function AlexPage(props) {
             ze erg slecht.
           </p>
           <p>
-            Ze lijkt op papa en mama is is makkelijk afgeleid. De grootste kans op succes heb je als er weinig
-            afleidingen zijn, dus radio/TV uit en niet teveel activiteit om haar heen.
+            Ze lijkt op papa en mama is makkelijk afgeleid. De grootste kans op succes heb je als er weinig afleidingen
+            zijn, dus radio/TV uit en niet teveel activiteit om haar heen.
           </p>
           <p>
             We maken nu een flesje van 180ml klaar (die niet op komt). Het komt nog een enkele keer voor dat ze om
