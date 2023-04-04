@@ -83,7 +83,7 @@ export default function AlexPage(props) {
             willen.
           </p>
           <p>
-            Wanneer de bovenkant van het oranje zwieperonderdeel in het melkpoederreservoir zichtbaar worden, moet er
+            Wanneer de bovenkant van het oranje zwieperonderdeel in het melkpoederreservoir zichtbaar wordt, moet er
             nieuw melkpoeder in.
           </p>
           <p>
