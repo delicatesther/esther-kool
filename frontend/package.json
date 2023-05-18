@@ -7,7 +7,9 @@
     "build": "yarn json-to-scss && next build",
     "start": "next start",
     "json-to-scss": "json-to-scss 'styles/config/variables/json/*.*' 'styles/config/variables'",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
@@ -28,15 +30,24 @@
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.12",
+    "@storybook/addon-interactions": "^7.0.12",
+    "@storybook/addon-links": "^7.0.12",
+    "@storybook/blocks": "^7.0.12",
+    "@storybook/nextjs": "^7.0.12",
+    "@storybook/react": "^7.0.12",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@svgr/webpack": "^8.0.1",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "classnames": "^2.3.1",
     "eslint": "8.18.0",
     "eslint-config-next": "^13.4.2",
+    "eslint-plugin-storybook": "^0.6.12",
     "json-to-scss": "^1.6.2",
     "sass": "^1.53.0",
     "slugify": "^1.6.5",
+    "storybook": "^7.0.12",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.7.4",
     "webpack": "^5.82.1"

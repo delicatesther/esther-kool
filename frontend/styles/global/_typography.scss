@@ -16,12 +16,21 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "estherkoolregular";
+  src: url("/fonts/estherkool-regular-webfont.woff2") format("woff2"),
+    url("/fonts/estherkool-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
   --basefont: "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Helvetica Neue", sans-serif;
   --fallback-font: Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Helvetica Neue", sans-serif;
+  --headingfont: "estherkoolregular", "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -73,21 +82,24 @@ select {
 
 h1,
 .h1 {
-  font-size: 3rem;
+  font-family: var(--headingfont);
+  font-size: 8.4rem;
   font-weight: 700;
   margin-bottom: 16px;
 }
 
 h2,
 .h2 {
-  font-size: 2.4rem;
+  font-family: var(--headingfont);
+  font-size: 7.4rem;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 h3,
 .h3 {
-  font-size: 2rem;
+  font-family: var(--headingfont);
+  font-size: 6.4rem;
   font-weight: 700;
   margin-bottom: 8px;
 }

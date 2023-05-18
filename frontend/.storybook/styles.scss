@@ -1,0 +1,41 @@
+@use "../styles/config" as *;
+// Storybook docs need some extra pressure to adjust to a different theme.
+body {
+  .sbdocs-span {
+    font-size: inherit;
+    line-height: inherit;
+  }
+  // TODO HVAWEB-10210 - Do we still need all these styles in Storybook 7?
+  .sbdocs {
+    // .sb-nodocs,
+    // .docs-story {
+    //   background: var(--marine);
+    // }
+    // .docblock-icongallery {
+    //   color: var(--black);
+    // }
+    // .docblock-typeset {
+    //   color: var(--black);
+    // }
+    pre,
+    code {
+      font-family: monospace;
+      //   color: var(--freshGreen);
+    }
+    strong,
+    b {
+      font-weight: bold;
+    }
+    em,
+    i {
+      font-style: italic;
+    }
+    u {
+      text-decoration: underline;
+    }
+    i {
+      padding-left: 40px;
+      margin: 16px 0;
+    }
+  }
+}

@@ -3,10 +3,14 @@ import style from "./businessCard.module.scss";
 import { Avatar } from "@enk/components/Avatar";
 
 export const BusinessCard = ({ src, size }) => {
+  const SampleText =
+    "Once upon a time in a far away place, the dragon before dreams a Dumbo. The wand quite ate a couple big Ginger Bread Men. A few castles in a bewildered ogre terribly said a proud Dumbo. Dumbos of a forest never walk a couple proud dragons. Ginger Bread Men never run those fast Cinderellas. Both Snow Whites happily find a dazzling tower, and they lived happily ever after.";
+
   return (
     <article className={style.card}>
       <Avatar className={style.circle} src={src} size={size} alt="" />
-      <h2>I&apos;m...</h2>
+      <h2>Hello, I&apos;m...</h2>
+      {/* <p className="h1">{SampleText}</p> */}
       <ul className={style.list}>
         <li>Esther Kool (She/Her)</li>
         <li>
