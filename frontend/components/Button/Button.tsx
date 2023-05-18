@@ -1,32 +1,19 @@
-import Link from "next/link";
 import React from "react";
+import { ButtonProps } from "@enk/types";
+import classNames from "classnames/bind";
+import style from "./button.module.scss";
 
-export const Button = ({ anchor = false, external = false, children, ...props }) => {
-  if (anchor && external) {
-    return (
-      <a href={props.href} rel="noreferrer noopener" className="button">
-        <span className="button-text" data-text={children}>
-          {children}
-        </span>
-      </a>
-    );
-  }
-  if (anchor) {
-    return (
-      <Link href={props.href}>
-        <a className="button">
-          <span className="button-text" data-text={children}>
-            {children}
-          </span>
-        </a>
-      </Link>
-    );
-  }
+const cx = classNames.bind(style);
+
+export const Button = ({ children, text, className, onClick, ...props }: ButtonProps) => {
   return (
-    <button {...props}>
-      <span className="button-text" data-text={children}>
-        {children}
-      </span>
+    <button {...props} className={cx(["button"], [className])} onClick={onClick}>
+      {text && (
+        <span className={cx(["text"])} data-text={text}>
+          {text}
+        </span>
+      )}
+      {children}
     </button>
   );
 };

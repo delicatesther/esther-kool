@@ -12,6 +12,17 @@
   --transparent: rgb(0, 0, 0, 0);
   --white: #{colour(white)};
   --whiteRgb: #{colour(white, true)};
+
+  --mineshaft: #{colour(mineshaft)};
+  --mineshaftRgb: #{colour(mineshaft, true)};
+
+  --mercury: #{colour(mercury)};
+  --mercuryRgb: #{colour(mercury, true)};
+
+  --blauw: #{colour(blauw)};
+
+  --lichtblauw: #{colour(lichtblauw)};
+
   --black: #{colour(black)};
   --blackRgb: #{colour(black, true)};
   --blueStone: #{colour(blueStone)};
@@ -22,24 +33,24 @@
   --shamrockRgb: #{colour(shamrock, true)};
   --springGreen: #{colour(springGreen)};
   --springGreenRgb: #{colour(springGreen, true)};
-  --siteBackground: var(--springGreen);
+  --siteBackground: var(--white);
   --siteFontColor: var(--black);
   --siteFontColorRgb: var(--blackRgb);
-  --supportColor: var(--white);
-  --supportColorRgb: var(--whiteRgb);
-  --linkColor: var(--blueStone);
+  --supportColor: var(--mercury);
+  --supportColorRgb: var(--mercuryRgb);
+  --linkColor: var(--blauw);
 }
 
 body {
   background: var(--siteBackground);
   color: var(--siteFontColor);
-  &.dark-mode {
+  [data-theme="dark"] & {
     --siteBackground: var(--black);
     --siteFontColor: var(--white);
     --siteFontColorRgb: var(--whiteRgb);
-    --supportColor: var(--shamrock);
-    --supportColorRgb: var(--shamrockRgb);
-    --linkColor: var(--scooter);
+    --supportColor: var(--mineshaft);
+    --supportColorRgb: var(--mineshaftRgb);
+    --linkColor: var(--lichtblauw);
   }
 }
 
@@ -52,7 +63,7 @@ body {
 .illustration {
   mix-blend-mode: hard-light;
   filter: brightness(50%);
-  .dark-mode & {
+  [data-theme="dark"] & {
     filter: invert(100%) brightness(1.5);
     mix-blend-mode: lighten;
   }

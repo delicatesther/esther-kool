@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import { ApolloProvider } from "@apollo/client";
 import { checkFontLoaded, useSystemTheme } from "@enk/utils";
 import { useApollo } from "@enk/lib";
+import { ThemeProvider } from "next-themes";
 import "../styles/global/index.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -17,7 +18,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         {/* @ts-ignore */}
         {/* <link href="print.css" rel="stylesheet" media="print" onload="this.media='all'" /> */}
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </ApolloProvider>
   );
 }

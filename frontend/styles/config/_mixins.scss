@@ -103,7 +103,7 @@
     }
   } @else {
     @if $name == "dark" {
-      .dark-mode & {
+      [data-theme="dark"] & {
         @content;
       }
     } @else if $name == "light" {

@@ -5,6 +5,7 @@ import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { CURRENT_USER_QUERY, SIGNIN_MUTATION, useForm } from "@enk/lib";
 import classNames from "classnames/bind";
 import style from "./user.module.scss";
+import { Button } from "@enk/components/Button";
 
 const cx = classNames.bind(style);
 
@@ -56,7 +57,7 @@ export const SignIn = () => {
             value={inputs.password}
             onChange={handleChange}
           />
-          <button type="submit">Sign in</button>
+          <Button type="submit" text="Sign in" />
         </fieldset>
       </form>
     </div>
