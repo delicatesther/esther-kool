@@ -1,0 +1,17 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
+import colors from "@enk/style/_colours.json";
+
+<Meta title="1. Base/Colours" />
+
+# Colours
+
+<ColorPalette>
+  <ColorItem
+    title="Light Theme"
+    colors={{ Background: colors.white, Support: colors.mercury, Text: colors.black, Links: colors.blauw }}
+  />
+  <ColorItem
+    title="Dark Theme"
+    colors={{ Background: colors.black, Support: colors.mineshaft, Text: colors.white, Links: colors.lichtblauw }}
+  />
+</ColorPalette>

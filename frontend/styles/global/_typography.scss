@@ -23,6 +23,15 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "estherkoolregular";
+  src: url("/fonts/estherkoolbold-bold-webfont.woff2") format("woff2"),
+    url("/fonts/estherkoolbold-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
 :root {
   font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
   --basefont: "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
@@ -83,8 +92,8 @@ select {
 h1,
 .h1 {
   font-family: var(--headingfont);
-  font-size: 8.4rem;
-  font-weight: 700;
+  font-size: 10.2rem;
+  font-weight: normal;
   margin-bottom: 16px;
   letter-spacing: -0.05em;
 }
@@ -92,8 +101,8 @@ h1,
 h2,
 .h2 {
   font-family: var(--headingfont);
-  font-size: 7.4rem;
-  font-weight: 700;
+  font-size: 8.8rem;
+  font-weight: normal;
   margin-bottom: 8px;
   letter-spacing: -0.05em;
 }
@@ -102,7 +111,7 @@ h3,
 .h3 {
   font-family: var(--headingfont);
   font-size: 6.4rem;
-  font-weight: 700;
+  font-weight: normal;
   margin-bottom: 8px;
   letter-spacing: -0.05em;
 }
@@ -144,5 +153,14 @@ dl {
   }
   dd {
     margin-bottom: 8px;
+  }
+}
+
+.text-intro {
+  font-family: var(--headingfont);
+  font-weight: normal;
+  font-size: 32px;
+  @include breakpoint(m) {
+    font-size: 40px;
   }
 }

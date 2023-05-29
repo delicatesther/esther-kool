@@ -1,8 +1,6 @@
 @use "../../styles/config/" as *;
 
 .avatar {
-  border: 2px solid var(--siteFontColor);
-  border-radius: 50%;
   position: relative;
   overflow: hidden;
   img {

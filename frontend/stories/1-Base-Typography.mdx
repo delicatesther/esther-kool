@@ -1,7 +1,6 @@
 import { Meta, Typeset } from "@storybook/blocks";
-import style from "./assets/style.module.scss";
 
-<Meta title="Typography" />
+<Meta title="1. Base/Typography" />
 
 export const SampleText =
   "Once upon a time in a far away place, the dragon before dreams a Dumbo. The wand quite ate a couple big Ginger Bread Men. A few castles in a bewildered ogre terribly said a proud Dumbo. Dumbos of a forest never walk a couple proud dragons. Ginger Bread Men never run those fast Cinderellas. Both Snow Whites happily find a dazzling tower, and they lived happily ever after.";
@@ -15,7 +14,6 @@ export const typography = {
   weight: {
     normal: "400",
     bold: "700",
-    extrabold: "800",
   },
   size: {
     s1: 14,
@@ -48,13 +46,20 @@ Most browsers have the option to adjust your preferred font size. This feature o
 
 **Weight:** 400 (normal)
 
-**CSS Classes:** `.h1`, `.h2`, `.h3`, `.h4`, `.h5`, `.h6`
+**CSS Classes:** `.h1`, `.h2`, `.h3`
 
 export const headingExtremeSizes = [Number(typography.size.l1), Number(typography.size.l2), Number(typography.size.l3)];
 
 <Typeset
   fontSizes={headingExtremeSizes}
-  fontWeight={typography.weight.extrabold}
+  fontWeight={typography.weight.normal}
+  sampleText={SampleText}
+  fontFamily={typography.type.heading}
+  letterSpacing={typography.letterSpacing.heading}
+/>
+<Typeset
+  fontSizes={headingExtremeSizes}
+  fontWeight={typography.weight.bold}
   sampleText={SampleText}
   fontFamily={typography.type.heading}
   letterSpacing={typography.letterSpacing.heading}

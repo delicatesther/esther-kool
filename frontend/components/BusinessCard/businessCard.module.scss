@@ -6,7 +6,7 @@
   margin: 32px;
   @include breakpoint(m) {
     margin: 80px;
-    width: 666px;
+    width: 766px;
   }
 }
 
@@ -15,12 +15,6 @@
   margin: 0 16px;
   height: var(--circleSize);
   width: var(--circleSize);
-  @include breakpoint(m) {
-    clip-path: circle(50%);
-    float: left;
-    shape-margin: 8px;
-    shape-outside: circle(50%);
-  }
 }
 
 .list {
