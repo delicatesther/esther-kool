@@ -39,3 +39,9 @@ body {
     }
   }
 }
+
+.docblock-typeset {
+  [style*="estherkoolregular"] {
+    letter-spacing: -0.05em;
+  }
+}

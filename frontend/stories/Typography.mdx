@@ -1,4 +1,5 @@
 import { Meta, Typeset } from "@storybook/blocks";
+import style from "./assets/style.module.scss";
 
 <Meta title="Typography" />
 
@@ -19,17 +20,16 @@ export const typography = {
   size: {
     s1: 14,
     s2: 16,
-    s3: 18,
-    s4: 20,
-    s5: 24,
-    m1: 28,
+    s3: 20,
+    m1: 24,
     m2: 32,
     m3: 40,
-    m4: 48,
-    l1: 56,
-    l2: 64,
-    l3: 72,
-    l4: 88,
+    l1: 64,
+    l2: 88,
+    l3: 102,
+  },
+  letterSpacing: {
+    heading: "-0.4",
   },
 };
 
@@ -50,15 +50,14 @@ Most browsers have the option to adjust your preferred font size. This feature o
 
 **CSS Classes:** `.h1`, `.h2`, `.h3`, `.h4`, `.h5`, `.h6`
 
-export const headingExtremeSizes = [Number(typography.size.m4), Number(typography.size.l2), Number(typography.size.l4)];
-
-{" "}
+export const headingExtremeSizes = [Number(typography.size.l1), Number(typography.size.l2), Number(typography.size.l3)];
 
 <Typeset
   fontSizes={headingExtremeSizes}
   fontWeight={typography.weight.extrabold}
   sampleText={SampleText}
-  fontFamily={typography.type.base}
+  fontFamily={typography.type.heading}
+  letterSpacing={typography.letterSpacing.heading}
 />
 
 ## Body Text
@@ -73,58 +72,37 @@ export const headingExtremeSizes = [Number(typography.size.m4), Number(typograph
 
 **CSS Class:** `.text-intro`
 
-export const textIntroSizes = [Number(typography.size.s3), Number(typography.size.s3), Number(typography.size.s5)];
+export const textIntroSizes = [Number(typography.size.m1), Number(typography.size.m2), Number(typography.size.m3)];
 
 <Typeset
-  fontSizes={[textIntroSizes[1], textIntroSizes[2]]}
+  fontSizes={textIntroSizes}
+  fontWeight={typography.weight.normal}
+  sampleText={SampleText}
+  fontFamily={typography.type.heading}
+/>
+
+### Text Large
+
+**CSS Class:** `.text-large`
+
+export const textLargeSizes = [Number(typography.size.m1), Number(typography.size.m2), Number(typography.size.m3)];
+
+<Typeset
+  fontSizes={textLargeSizes}
   fontWeight={typography.weight.normal}
   sampleText={SampleText}
   fontFamily={typography.type.base}
 />
-
-<br />
-
-### Text Big
-
-**CSS Class:** `.text-big`
-
-export const textBigSizes = [Number(typography.size.s1), Number(typography.size.s2), Number(typography.size.s4)];
-
-<Typeset
-  fontSizes={textBigSizes}
-  fontWeight={typography.weight.normal}
-  sampleText={SampleText}
-  fontFamily={typography.type.base}
-/>
-
-<br />
 
 ### Text Normal
 
 **CSS Class:** `.text-normal`
 
-export const textNormalSizes = [Number(typography.size.s1), Number(typography.size.s2), Number(typography.size.s2)];
+export const textNormalSizes = [Number(typography.size.s1), Number(typography.size.s2), Number(typography.size.s3)];
 
 <Typeset
-  fontSizes={[textNormalSizes[0], textNormalSizes[1]]}
+  fontSizes={textNormalSizes}
   fontWeight={typography.weight.normal}
   sampleText={SampleText}
   fontFamily={typography.type.base}
 />
-
-<br />
-
-### Text Tiny
-
-**CSS Class:** `.text-tiny`
-
-export const textTinySizes = [Number(typography.size.s1), Number(typography.size.s1), Number(typography.size.s1)];
-
-<Typeset
-  fontSizes={[textTinySizes[0]]}
-  fontWeight={typography.weight.normal}
-  sampleText={SampleText}
-  fontFamily={typography.type.base}
-/>
-
-<br />
