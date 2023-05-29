@@ -137,6 +137,10 @@ h2 {
     text-decoration: underline dashed;
     text-underline-offset: 12px;
     margin: 0 0 24px;
+    font-size: 3.2rem;
+    @include breakpoint(s) {
+      font-size: 4rem;
+    }
     &:not(:first-child) {
       margin-top: 24px;
     }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Layout } from "@enk/components/Layout";
-import pigPic from "../public/images/varken.jpeg";
-import babyPic from "../public/images/baby.jpeg";
+import pigPic from "../public/images/varken.jpg";
+import babyPic from "../public/images/baby.jpg";
 
 export default function AlexPage(props) {
   return (
