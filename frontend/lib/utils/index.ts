@@ -83,3 +83,5 @@ export function useUser() {
   const { data } = useQuery(CURRENT_USER_QUERY);
   return data?.authenticatedItem;
 }
+
+export * from './ThemeChanger';

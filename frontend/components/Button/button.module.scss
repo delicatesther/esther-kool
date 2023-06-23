@@ -2,22 +2,30 @@
 
 .button {
   cursor: pointer;
+  font-family: var(--headingfont);
+  font-size: 3.2rem;
   min-height: 40px;
   display: grid;
   justify-content: center;
   align-items: center;
-  border-width: 2px;
+  border: 2px solid var(--supportColor);
   border-radius: 6px;
+  background: var(--supportDarkColor);
+  box-shadow: var(--shadow-elevation-medium);
+  color: var(--white);
+  transition: 0.2s ease-in-out;
+  box-sizing: border-box;
   &:hover {
-    svg {
-      transform: scale(1.2);
-    }
+    box-shadow: var(--shadow-elevation-high);
     span {
-      font-weight: bold;
+      text-shadow: -0.2px 0 currentColor, 0 0.2px currentColor, 0.2px 0 currentColor, 0 -0.2px currentColor;
     }
   }
   svg {
     transition: transform 0.2s ease-in-out;
+  }
+  span {
+    transition: 0.2s ease-in-out;
   }
 }
 

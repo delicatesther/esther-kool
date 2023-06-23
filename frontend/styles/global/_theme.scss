@@ -4,53 +4,109 @@
 // -----------------------------------------------------------------------------
 @use "../config" as *;
 
-// -----------------------------------------------------------------------------
-// Colours
-// Colour names by https://www.color-blindness.com/color-name-hue/ and https://chir.ag/projects/name-that-color
-// -----------------------------------------------------------------------------
 :root {
+  // -----------------------------------------------------------------------------
+  // Colours
+  // Colour names by https://www.color-blindness.com/color-name-hue/ and https://chir.ag/projects/name-that-color
+  // -----------------------------------------------------------------------------
   --transparent: rgb(0, 0, 0, 0);
   --white: #{colour(white)};
   --whiteRgb: #{colour(white, true)};
-
+  --sapling: #{colour(sapling)};
+  --saplingRgb: #{colour(sapling, true)};
   --mineshaft: #{colour(mineshaft)};
   --mineshaftRgb: #{colour(mineshaft, true)};
-
   --mercury: #{colour(mercury)};
   --mercuryRgb: #{colour(mercury, true)};
-
   --blauw: #{colour(blauw)};
-
-  --lichtblauw: #{colour(lichtblauw)};
-
+  --blauw: #00246b;
+  --deepSky: #{colour(deepSky)};
+  --deepSkyRgb: #{colour(deepSky, true)};
   --black: #{colour(black)};
   --blackRgb: #{colour(black, true)};
+  --ship: #{colour(ship)};
+  --shipRgb: #{colour(ship)};
   --blueStone: #{colour(blueStone)};
   --blueStoneRgb: #{colour(blueStone, true)};
+  --midnight: #{colour(midnight)};
+  --midnightRgb: #{colour(midnight, true)};
+  --denim: #{colour(denim)};
+  --denimRgb: #{colour(denim, true)};
+  --cobalt: #{colour(cobalt)};
+  --cobaltRgb: #{colour(cobalt, true)};
+  --governorBay: #{colour(governorBay)};
+  --governorBayRgb: #{colour(governorBay, true)};
+  --corduroy: #{colour(corduroy)};
+  --corduroyRgb: #{colour(corduroy, true)};
   --scooter: #{colour(scooter)};
   --scooterRgb: #{colour(scooter, true)};
   --shamrock: #{colour(shamrock)};
   --shamrockRgb: #{colour(shamrock, true)};
+  --sweetCorn: #{colour(sweetCorn)};
+  --sweetCornRgb: #{colour(sweetCorn, true)};
   --springGreen: #{colour(springGreen)};
   --springGreenRgb: #{colour(springGreen, true)};
+  --pastelGreen: #{colour(pastelGreen)};
+  --pastelGreenRgb: #{colour(pastelGreen, true)};
+  --forestGreen: #{colour(forestGreen)};
+  --forestGreenRgb: #{colour(forestGreen, true)};
+  --watermelon: #{colour(watermelon)};
+  --watermelonRgb: #{colour(watermelon, true)};
+  --stiletto: #{colour(stiletto)};
+  --stilettoRgb: #{colour(stiletto, true)};
+
+  // -----------------------------------------------------------------------------
+  // Shadows
+  // Generated via Josh Comeau's shadow tool: https://www.joshwcomeau.com/shadow-palette/
+  // -----------------------------------------------------------------------------
+  --shadow-elevation-low: 0.3px 0.5px 0.7px hsl(var(--shadowColor) / 0.34),
+    0.4px 0.8px 1px -1.2px hsl(var(--shadowColor) / 0.34), 1px 2px 2.5px -2.5px hsl(var(--shadowColor) / 0.34);
+  --shadow-elevation-medium: 0.3px 0.5px 0.7px hsl(var(--shadowColor) / 0.36),
+    0.8px 1.6px 2px -0.8px hsl(var(--shadowColor) / 0.36), 2.1px 4.1px 5.2px -1.7px hsl(var(--shadowColor) / 0.36),
+    5px 10px 12.6px -2.5px hsl(var(--shadowColor) / 0.36);
+  --shadow-elevation-high: 0.3px 0.5px 0.7px hsl(var(--shadowColor) / 0.34),
+    1.5px 2.9px 3.7px -0.4px hsl(var(--shadowColor) / 0.34), 2.7px 5.4px 6.8px -0.7px hsl(var(--shadowColor) / 0.34),
+    4.5px 8.9px 11.2px -1.1px hsl(var(--shadowColor) / 0.34), 7.1px 14.3px 18px -1.4px hsl(var(--shadowColor) / 0.34),
+    11.2px 22.3px 28.1px -1.8px hsl(var(--shadowColor) / 0.34), 17px 33.9px 42.7px -2.1px hsl(var(--shadowColor) / 0.34),
+    25px 50px 62.9px -2.5px hsl(var(--shadowColor) / 0.34);
+
+  // -----------------------------------------------------------------------------
+  //  Light Theme
+  // -----------------------------------------------------------------------------
   --siteBackground: var(--white);
-  --siteFontColor: var(--black);
-  --siteFontColorRgb: var(--blackRgb);
-  --supportColor: var(--mercury);
-  --supportColorRgb: var(--mercuryRgb);
-  --linkColor: var(--blauw);
+  --siteBackground: var(--sweetCorn);
+  --siteFontColor: var(--ship);
+  --siteFontColorRgb: var(--shipRgb);
+  --siteHeadingColor: var(--stiletto);
+  --siteHeadingColorRgb: var(--stilettoRgb);
+  --supportColor: var(--sapling);
+  --supportColorRgb: var(--saplingRgb);
+  --supportDarkColor: var(--watermelon);
+  --supportDarkColorRgb: var(--watermelonRgb);
+  --linkColor: var(--cobalt);
+  --shadowColor: 54deg 59% 45%;
 }
 
 body {
   background: var(--siteBackground);
   color: var(--siteFontColor);
+
+  // -----------------------------------------------------------------------------
+  // Dark Theme
+  // -----------------------------------------------------------------------------
   [data-theme="dark"] & {
     --siteBackground: var(--black);
-    --siteFontColor: var(--white);
-    --siteFontColorRgb: var(--whiteRgb);
-    --supportColor: var(--mineshaft);
-    --supportColorRgb: var(--mineshaftRgb);
-    --linkColor: var(--lichtblauw);
+    --siteBackground: var(--corduroy);
+    --siteFontColor: var(--sapling);
+    --siteFontColorRgb: var(--saplingRgb);
+    --siteHeadingColor: var(--sweetCorn);
+    --siteHeadingColorRgb: var(--sweetCornRgb);
+    --supportColor: var(--ship);
+    --supportColorRgb: var(--shipRgb);
+    --supportDarkColor: var(--black);
+    --supportDarkColorRgb: var(--blackRgb);
+    --linkColor: var(--deepSky);
+    --shadowColor: 139deg 16% 14%;
   }
 }
 
