@@ -1,0 +1,6 @@
+{
+    "className": {
+        "description": "Optional className to add extra CSS styling in a parent component.",
+        "control": false
+    }
+}
