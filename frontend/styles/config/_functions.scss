@@ -35,3 +35,12 @@
   @warn "The key #{$name} is not in the map ’$colour";
   @return null;
 }
+
+// -----------------------------------------------------------------------------
+// Get Type Offset
+// Via: https://css-tricks.com/how-to-tame-line-height-in-css/
+// -----------------------------------------------------------------------------
+@function calculateTypeOffset($lh, $fontSize, $descenderHeightScale) {
+  $lineHeightScale: $lh / $fontSize;
+  @return ($lineHeightScale - 1) / 2 + $descenderHeightScale;
+}
