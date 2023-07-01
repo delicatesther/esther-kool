@@ -1,46 +1,44 @@
 @use "../../styles/config" as *;
 
 .button {
+  appearance: none;
   cursor: pointer;
-  font-family: var(--headingfont);
-  font-size: 3.2rem;
-  min-height: 40px;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid var(--supportColor);
-  border-radius: 6px;
   background: var(--supportDarkColor);
   box-shadow: var(--shadow-elevation-medium);
+  font-family: var(--headingfont);
+  font-size: 3.6rem;
+  // @include EstherFont(2, 10);
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 6px;
   color: var(--white);
   transition: 0.2s ease-in-out;
-  box-sizing: border-box;
+  padding: 4px 16px;
+  --textShadowWidth: 0.25px;
   &:hover {
     box-shadow: var(--shadow-elevation-high);
     span {
-      text-shadow: -0.2px 0 currentColor, 0 0.2px currentColor, 0.2px 0 currentColor, 0 -0.2px currentColor;
+      text-shadow: calc(var(--textShadowWidth) * -1) 0 currentColor, 0 var(--textShadowWidth) currentColor,
+        var(--textShadowWidth) 0 currentColor, 0 calc(var(--textShadowWidth) * -1) currentColor;
+    }
+    svg {
+      filter: drop-shadow(var(--textShadowWidth) var(--textShadowWidth) currentColor);
     }
   }
   svg {
-    transition: transform 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
   }
   span {
     transition: 0.2s ease-in-out;
   }
-}
-
-.text {
-  display: inline-block;
-  padding: 8px;
-
-  &:after {
-    display: block;
-    // so the anchor needs a title for this to work
-    content: attr(data-text);
-    height: 0;
-    line-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    font-weight: bold;
+  svg {
+    color: currentColor;
+    width: 1em;
+    height: 1em;
+    pointer-events: none;
   }
 }

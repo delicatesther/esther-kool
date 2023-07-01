@@ -16,6 +16,7 @@ export const Header = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const user = useUser();
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -39,9 +40,7 @@ export const Header = () => {
           </>
         )}
         {!user && <Link href="/signin">Sign in</Link>}
-        <Button
-          className={style.themeToggle}
-          onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}>
+        <Button onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}>
           {(!theme || theme === "light") && <Moon />}
           {theme === "dark" && <Sun />}
         </Button>

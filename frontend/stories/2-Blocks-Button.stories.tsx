@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@enk/components/Button";
+import Sun from "@enk/icons/sun.svg";
 import commonArgTypes from "./commonArgTypes.json";
 /**
  *
@@ -36,4 +37,17 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Basic: Story = {};
+export const Default: Story = {};
+
+export const DefaultWithIcon: Story = {
+  args: {
+    children: <Sun />,
+    text: undefined,
+  },
+};
+
+export const DefaultWithTextAndIcon: Story = {
+  args: {
+    children: <Sun />,
+  },
+};

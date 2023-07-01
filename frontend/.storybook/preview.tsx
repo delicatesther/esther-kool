@@ -3,7 +3,6 @@ import type { Preview } from "@storybook/react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import "../styles/global/index.scss";
 import "!style-loader!css-loader!postcss-loader!sass-loader!./styles.scss";
-import { themes } from "@storybook/theming";
 import { ThemeProvider } from "next-themes";
 import { ThemeChanger } from "@enk/utils";
 import colours from "@enk/style/_colours.json";
@@ -47,13 +46,6 @@ const preview: Preview = {
     },
     options: {
       storySort: (a, b) => (a.title === b.title ? 0 : a.id.localeCompare(b.id, undefined, { numeric: true })),
-    },
-    darkMode: {
-      stylePreview: true,
-      // Override the default dark theme
-      dark: { ...themes.dark, appBg: "black" },
-      // Override the default light theme
-      light: { ...themes.normal, appBg: "red" },
     },
   },
 };
