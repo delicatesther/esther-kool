@@ -7,7 +7,7 @@
   box-shadow: var(--shadow-elevation-medium);
   font-family: var(--headingfont);
   font-size: 3.6rem;
-  // @include EstherFont(2, 10);
+  line-height: 1em;
   min-height: 40px;
   display: flex;
   justify-content: center;
@@ -17,25 +17,20 @@
   border-radius: 6px;
   color: var(--white);
   transition: 0.2s ease-in-out;
-  padding: 4px 16px;
+  padding: 8px 16px;
   --textShadowWidth: 0.25px;
+  &.small {
+    padding: 4px 8px;
+    font-size: 3rem;
+  }
   &:hover {
     box-shadow: var(--shadow-elevation-high);
-    span {
-      text-shadow: calc(var(--textShadowWidth) * -1) 0 currentColor, 0 var(--textShadowWidth) currentColor,
-        var(--textShadowWidth) 0 currentColor, 0 calc(var(--textShadowWidth) * -1) currentColor;
-    }
-    svg {
-      filter: drop-shadow(var(--textShadowWidth) var(--textShadowWidth) currentColor);
-    }
-  }
-  svg {
-    transition: 0.2s ease-in-out;
   }
   span {
     transition: 0.2s ease-in-out;
   }
   svg {
+    transition: 0.2s ease-in-out;
     color: currentColor;
     width: 1em;
     height: 1em;
