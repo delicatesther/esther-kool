@@ -51,3 +51,10 @@ export const DefaultWithTextAndIcon: Story = {
     children: <Sun />,
   },
 };
+
+export const Small: Story = {
+  args: {
+    size: "small",
+    children: <Sun />,
+  },
+};

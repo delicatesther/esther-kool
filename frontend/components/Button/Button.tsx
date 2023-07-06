@@ -5,9 +5,9 @@ import style from "./button.module.scss";
 
 const cx = classNames.bind(style);
 
-export const Button = ({ children, text, className, onClick, ...props }: ButtonProps) => {
+export const Button = ({ children, text, className, onClick, size = "large", ...props }: ButtonProps) => {
   return (
-    <button {...props} className={cx(["button"], [className])} onClick={onClick}>
+    <button {...props} className={cx(["button"], [size], [className])} onClick={onClick}>
       {text && (
         <span className={cx(["text"])} data-text={text}>
           {text}

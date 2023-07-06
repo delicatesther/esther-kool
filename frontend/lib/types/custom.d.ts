@@ -1,5 +1,6 @@
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     children: React.Node,
+    size?: "large" | "small",
     text?: string | number,
     className?: string,
     onClick?: MouseEventHandler<HTMLButtonElement>
