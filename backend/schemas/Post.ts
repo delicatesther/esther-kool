@@ -1,4 +1,5 @@
 import { list, ListConfig } from '@keystone-6/core';
+import { allowAll } from '@keystone-6/core/access';
 import { Lists } from ".keystone/types";
 import {
     text,
@@ -9,6 +10,7 @@ import {
 import { document } from '@keystone-6/fields-document';
 
 export const Post: ListConfig<Lists.Post.TypeInfo, any> | undefined = list({
+    access: allowAll,
     fields: {
         title: text(),
         // Having the status here will make it easy for us to choose whether to display
