@@ -1,8 +1,10 @@
 import { Lists } from ".keystone/types";
 import { list, ListConfig } from '@keystone-6/core';
+import { allowAll } from '@keystone-6/core/access';
 import { calendarDay, integer, password, relationship, text, timestamp } from '@keystone-6/core/fields';
 
 export const Height = list({
+    access: allowAll,
     fields: {
         cm: integer({ label: "Height (in cm)" }),
         createdAt: timestamp({ defaultValue: { kind: 'now' } }),
@@ -10,6 +12,7 @@ export const Height = list({
 });
 
 export const Weight = list({
+    access: allowAll,
     fields: {
         g: integer({ label: "Weight (in g)" }),
         createdAt: timestamp({ defaultValue: { kind: 'now' } }),
@@ -17,6 +20,7 @@ export const Weight = list({
 });
 
 export const User: ListConfig<Lists.User.TypeInfo, any> = list({
+    access: allowAll,
     fields: {
         name: text({ validation: { isRequired: true } }),
         email: text({

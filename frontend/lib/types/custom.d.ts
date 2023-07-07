@@ -8,8 +8,9 @@ import React, {
     Dispatch,
     MouseEventHandler,
 } from "react";
+
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-    children: React.Node,
+    children?: ReactNode,
     size?: "large" | "small",
     text?: string | number,
     className?: string,

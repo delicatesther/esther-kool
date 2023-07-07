@@ -28,9 +28,11 @@ var import_core4 = require("@keystone-6/core");
 
 // schemas/Post.ts
 var import_core = require("@keystone-6/core");
+var import_access = require("@keystone-6/core/access");
 var import_fields = require("@keystone-6/core/fields");
 var import_fields_document = require("@keystone-6/fields-document");
 var Post = (0, import_core.list)({
+  access: import_access.allowAll,
   fields: {
     title: (0, import_fields.text)(),
     // Having the status here will make it easy for us to choose whether to display
@@ -93,8 +95,10 @@ var Post = (0, import_core.list)({
 
 // schemas/Tag.ts
 var import_core2 = require("@keystone-6/core");
+var import_access2 = require("@keystone-6/core/access");
 var import_fields2 = require("@keystone-6/core/fields");
 var Tag = (0, import_core2.list)({
+  access: import_access2.allowAll,
   ui: {
     isHidden: true
   },
@@ -106,20 +110,24 @@ var Tag = (0, import_core2.list)({
 
 // schemas/User.ts
 var import_core3 = require("@keystone-6/core");
+var import_access3 = require("@keystone-6/core/access");
 var import_fields3 = require("@keystone-6/core/fields");
 var Height = (0, import_core3.list)({
+  access: import_access3.allowAll,
   fields: {
     cm: (0, import_fields3.integer)({ label: "Height (in cm)" }),
     createdAt: (0, import_fields3.timestamp)({ defaultValue: { kind: "now" } })
   }
 });
 var Weight = (0, import_core3.list)({
+  access: import_access3.allowAll,
   fields: {
     g: (0, import_fields3.integer)({ label: "Weight (in g)" }),
     createdAt: (0, import_fields3.timestamp)({ defaultValue: { kind: "now" } })
   }
 });
 var User = (0, import_core3.list)({
+  access: import_access3.allowAll,
   fields: {
     name: (0, import_fields3.text)({ validation: { isRequired: true } }),
     email: (0, import_fields3.text)({
