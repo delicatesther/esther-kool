@@ -39,11 +39,11 @@
         "styles/config/variables/json/*",
       ]
     },
+    "typeRoots": [
+      "node_modules/@types",
+      "lib/types"
+    ],
   },
-  "typeRoots": [
-    "node_modules/@types",
-    "lib/types"
-  ],
   "include": [
     "next-env.d.ts",
     "lib/types/custom.d.ts",
