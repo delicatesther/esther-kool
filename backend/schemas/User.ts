@@ -30,6 +30,7 @@ export const User: ListConfig<Lists.User.TypeInfo, any> = list({
         }),
         password: password({ validation: { isRequired: true } }),
         posts: relationship({ ref: 'Post.author', many: true }),
+        experiences: relationship({ ref: 'Post.author', many: true }),
         birthdate: calendarDay(),
         height: relationship({
             ref: "Height",

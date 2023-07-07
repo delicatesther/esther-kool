@@ -1,4 +1,5 @@
 import {
+  Experience,
   Height,
   Post,
   Tag,
@@ -7,6 +8,7 @@ import {
 } from "./schemas";
 
 export const lists = {
+  Experience,
   Height,
   Post,
   Tag,
