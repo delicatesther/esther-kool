@@ -1,3 +1,13 @@
+import React, {
+    AnchorHTMLAttributes,
+    ButtonHTMLAttributes,
+    DetailedHTMLProps,
+    ReactHTMLElement,
+    ReactNode,
+    SetStateAction,
+    Dispatch,
+    MouseEventHandler,
+} from "react";
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     children: React.Node,
     size?: "large" | "small",
