@@ -1,6 +1,7 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 import { CURRENT_USER_QUERY, SIGNOUT_MUTATION } from "@enk/lib";
+import { Button } from "@enk/components/Button";
 
 export const SignOut = () => {
   const [endSession, { data, loading, error }] = useMutation(SIGNOUT_MUTATION, {
@@ -13,9 +14,9 @@ export const SignOut = () => {
   }
 
   return (
-    <button type="button" onClick={handleSignOut}>
+    <Button type="button" onClick={handleSignOut}>
       Sign Out
-    </button>
+    </Button>
   );
 };
 

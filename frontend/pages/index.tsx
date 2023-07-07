@@ -18,12 +18,12 @@ export default function Home() {
       </Head>
       <Layout>
         <BusinessCard src="/images/me.jpg" size="large" />
-        <Image
+        {/* <Image
           src={isLight ? "/me-light.png" : "/dark-mode-esther.png"}
           alt="Esther"
           width={600}
           height={isLight ? 484 : 443}
-        />
+        /> */}
       </Layout>
     </div>
   );
