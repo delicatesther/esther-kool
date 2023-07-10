@@ -19,7 +19,7 @@ export const Weight = list({
     }
 });
 
-export const User: ListConfig<Lists.User.TypeInfo, any> = list({
+export const User = list({
     access: allowAll,
     fields: {
         name: text({ validation: { isRequired: true } }),
@@ -30,7 +30,7 @@ export const User: ListConfig<Lists.User.TypeInfo, any> = list({
         }),
         password: password({ validation: { isRequired: true } }),
         posts: relationship({ ref: 'Post.author', many: true }),
-        experiences: relationship({ ref: 'Post.author', many: true }),
+        experiences: relationship({ ref: 'Experience.author', many: true }),
         birthdate: calendarDay(),
         height: relationship({
             ref: "Height",

@@ -11,6 +11,21 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Experience {
+  id          String    @id @default(uuid()) @postgresql.Uuid
+  title       String    @default("")
+  status      String?   @default("draft")
+  content     Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  publishDate DateTime?
+  from        DateTime  @postgresql.Date
+  to          DateTime? @postgresql.Date
+  author      User?     @relation("Experience_author", fields: [authorId], references: [id])
+  authorId    String?   @map("author") @postgresql.Uuid
+  tags        Tag[]     @relation("Experience_tags")
+
+  @@index([authorId])
+}
+
 model Height {
   id               String    @id @default(uuid()) @postgresql.Uuid
   cm               Int?
@@ -32,20 +47,22 @@ model Post {
 }
 
 model Tag {
-  id    String @id @default(uuid()) @postgresql.Uuid
-  name  String @default("")
-  posts Post[] @relation("Post_tags")
+  id          String       @id @default(uuid()) @postgresql.Uuid
+  name        String       @default("")
+  posts       Post[]       @relation("Post_tags")
+  experiences Experience[] @relation("Experience_tags")
 }
 
 model User {
-  id        String    @id @default(uuid()) @postgresql.Uuid
-  name      String    @default("")
-  email     String    @unique @default("")
-  password  String
-  posts     Post[]    @relation("Post_author")
-  birthdate DateTime? @postgresql.Date
-  height    Height[]  @relation("User_height")
-  weight    Weight[]  @relation("User_weight")
+  id          String       @id @default(uuid()) @postgresql.Uuid
+  name        String       @default("")
+  email       String       @unique @default("")
+  password    String
+  posts       Post[]       @relation("Post_author")
+  experiences Experience[] @relation("Experience_author")
+  birthdate   DateTime?    @postgresql.Date
+  height      Height[]     @relation("User_height")
+  weight      Weight[]     @relation("User_weight")
 }
 
 model Weight {
