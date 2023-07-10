@@ -207,7 +207,7 @@ var User = (0, import_core4.list)({
     }),
     password: (0, import_fields4.password)({ validation: { isRequired: true } }),
     posts: (0, import_fields4.relationship)({ ref: "Post.author", many: true }),
-    experiences: (0, import_fields4.relationship)({ ref: "Post.author", many: true }),
+    experiences: (0, import_fields4.relationship)({ ref: "Experience.author", many: true }),
     birthdate: (0, import_fields4.calendarDay)(),
     height: (0, import_fields4.relationship)({
       ref: "Height",
