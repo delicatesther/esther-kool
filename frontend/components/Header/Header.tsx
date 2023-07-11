@@ -40,7 +40,7 @@ export const Header = () => {
           </>
         )}
         {!user && <Link href="/signin">Sign in</Link>}
-        <Button onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}>
+        <Button onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))} size="small">
           {(!theme || theme === "light") && <Moon />}
           {theme === "dark" && <Sun />}
         </Button>
