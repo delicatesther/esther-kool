@@ -91,11 +91,11 @@
 @mixin theme($name: null, $module: true) {
   @if $module {
     @if $name == "dark" {
-      :global(.dark-mode) & {
+      :global([data-theme="dark"]) & {
         @content;
       }
     } @else if $name == "light" {
-      :global(.light-mode) & {
+      :global([data-theme="light"]) & {
         @content;
       }
     } @else {
@@ -107,7 +107,7 @@
         @content;
       }
     } @else if $name == "light" {
-      .light-mode & {
+      [data-theme="light"] & {
         @content;
       }
     } @else {
@@ -117,7 +117,8 @@
 }
 
 @mixin applyShadow($theme: "light") {
-  --shadowColorRgb: 182, 169, 47;
+  // --shadowColorRgb: 182, 169, 47;
+  --shadowColorRgb: 161, 161, 161;
   @if $theme == "dark" {
     --shadowColorRgb: 30, 41, 34;
   }

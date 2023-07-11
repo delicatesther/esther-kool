@@ -8,143 +8,207 @@
 // Global Reset
 // -----------------------------------------------------------------------------
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 * {
-  box-sizing: inherit;
-  &:before,
-  &:after {
-    box-sizing: inherit;
-  }
+	box-sizing: inherit;
+	&:before,
+	&:after {
+		box-sizing: inherit;
+	}
 }
 
 html,
 body {
-  margin: 0;
-  height: 100%;
-  padding: 0;
+	margin: 0;
+	height: 100%;
+	padding: 0;
 }
 
 #root,
 #__next {
-  isolation: isolate;
+	isolation: isolate;
 }
 
 // Make sure footer is always at the bottom of the window,
 // even when content in the main section is shorter.
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+  overscroll-behavior: none;
 }
 
 .main {
-  flex: 1;
+	flex: 1;
 }
 
-.footer {
-  padding: 16px;
-  @include breakpoint(s) {
-    padding: 32px;
+.triangle {
+	z-index: z(z0);
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	pointer-events: none;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(
+      45deg,
+      rgba(var(--blackRgb), 0.05) 0%,
+      rgba(var(--blackRgb), 0) 100%
+    );
   }
+}
+
+.triangleBg {
+	position: absolute;
+  --background-position: -40%;
+  --background-shadow-position: 0%;
+  --background-size: 52%;
+	height: calc(100% + 20px);
+	top: -20px;
+	left: var(--background-position);
+	@include breakpoint(s) {
+		--background-position: -15%;
+    --background-shadow-position: 40%;
+  }
+	&:before {
+		content: "";
+		padding-top: calc(595 / 842);
+	}
+	&:after {
+		content: "";
+		left: 0;
+		width: var(--background-size);
+		height: 100%;
+		position: absolute;
+		padding-top: calc(595 / 842);
+		background: linear-gradient(
+				to right,
+				rgba(var(--blackRgb), 0) 0%,
+				rgba(var(--blackRgb), 0) var(--background-shadow-position),
+				rgba(var(--blackRgb), 0.03) 100%
+			),
+			linear-gradient(
+				45deg,
+				rgba(var(--blackRgb), 0.2) 0%,
+				rgba(var(--blackRgb), 0) 40%,
+				rgba(var(--blackRgb), 0) 100%
+			);
+	}
+	svg {
+		height: 100%;
+		width: 100%;
+		object-fit: contain;
+	}
+}
+.footer {
+	padding: 16px;
+	@include breakpoint(s) {
+		padding: 32px;
+	}
 }
 
 // Helper class for assistive technology elements
 .visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 // Classes set on html & body elements by react-modal when popup is shown
 .ReactModal__Body--open,
 .ReactModal__Html--open {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 // -----------------------------------------------------------------------------
 // Global layout variables
 // -----------------------------------------------------------------------------
 :root {
-  --grid-margin-sides: 16px;
-  --grid-columns: repeat(4, 1fr);
-  @include breakpoint(s) {
-    --grid-margin-sides: 32px;
-    --grid-columns: repeat(8, 1fr);
-  }
-  @include breakpoint(m) {
-    --grid-columns: repeat(12, 1fr);
-  }
-  @include breakpoint(xl) {
-    --grid-margin-sides: 80px;
-  }
+	--grid-margin-sides: 16px;
+	--grid-columns: repeat(4, 1fr);
+	@include breakpoint(s) {
+		--grid-margin-sides: 32px;
+		--grid-columns: repeat(8, 1fr);
+	}
+	@include breakpoint(m) {
+		--grid-columns: repeat(12, 1fr);
+	}
+	@include breakpoint(xl) {
+		--grid-margin-sides: 80px;
+	}
 }
 
 // -----------------------------------------------------------------------------
 // Grid
 // -----------------------------------------------------------------------------
 .grid-wrapper {
-  margin-left: var(--grid-margin-sides);
-  margin-right: var(--grid-margin-sides);
-  position: relative;
-  max-width: calc(100vw - (var(--grid-margin-sides) * 2));
-  display: grid;
-  @include breakpoint(s) {
-    max-width: none;
-    grid-template-columns: 1fr minmax(auto, 1600px) 1fr;
-  }
-  > .row,
-  > .row-spacing-bottom {
-    @include breakpoint(s) {
-      grid-column: 2 / 3;
-    }
-  }
-  > .grid-breaker {
-    margin-left: calc(-1 * var(--grid-margin-sides));
-    margin-right: calc(-1 * var(--grid-margin-sides));
-    @include breakpoint(s) {
-      grid-column: 1 / -1;
-    }
-  }
+	margin-left: var(--grid-margin-sides);
+	margin-right: var(--grid-margin-sides);
+	position: relative;
+	max-width: calc(100vw - (var(--grid-margin-sides) * 2));
+	display: grid;
+	@include breakpoint(s) {
+		max-width: none;
+		grid-template-columns: 1fr minmax(auto, 1600px) 1fr;
+	}
+	> .row,
+	> .row-spacing-bottom {
+		@include breakpoint(s) {
+			grid-column: 2 / 3;
+		}
+	}
+	> .grid-breaker {
+		margin-left: calc(-1 * var(--grid-margin-sides));
+		margin-right: calc(-1 * var(--grid-margin-sides));
+		@include breakpoint(s) {
+			grid-column: 1 / -1;
+		}
+	}
 }
 
 .row,
 .row-spacing-bottom {
-  display: grid;
-  grid-template-columns: var(--grid-columns);
+	display: grid;
+	grid-template-columns: var(--grid-columns);
 }
 
 .col-half {
-  --grid-span: span 4;
-  grid-column: var(--grid-span);
-  @include breakpoint(s) {
-    --grid-span: span 4;
-  }
-  @include breakpoint(m) {
-    --grid-span: span 6;
-  }
+	--grid-span: span 4;
+	grid-column: var(--grid-span);
+	@include breakpoint(s) {
+		--grid-span: span 4;
+	}
+	@include breakpoint(m) {
+		--grid-span: span 6;
+	}
 }
 
 .two-cols {
-  grid-column: 1 / -1;
-  @include breakpoint(s) {
-    column-count: 2;
-    gap: 24px;
-  }
-  h2 {
-    break-inside: avoid;
-    break-after: avoid;
-  }
-  p {
-    break-inside: avoid;
-  }
-  .illustrationContainer {
-    float: right;
-  }
+	grid-column: 1 / -1;
+	@include breakpoint(s) {
+		column-count: 2;
+		gap: 24px;
+	}
+	h2 {
+		break-inside: avoid;
+		break-after: avoid;
+	}
+	p {
+		break-inside: avoid;
+	}
+	.illustrationContainer {
+		float: right;
+	}
 }

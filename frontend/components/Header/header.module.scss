@@ -1,14 +1,21 @@
 @use "../../styles/config" as *;
 
 .header {
-  padding: 16px;
+  position: sticky;
+  padding: 8px 16px;
   margin-bottom: 40px;
+  z-index: z(header);
+  background: linear-gradient(135deg, var(--mercury) 0%,var(--white) 100%);
+  box-shadow: var(--shadow-elevation-medium);
+  @include theme(dark) {
+    background: var(--mineshaft);
+  }
   @include breakpoint(s) {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 200px 1fr;
     align-items: center;
     justify-items: end;
-    padding: 32px;
+    padding: 16px 72px 16px;
     margin-bottom: 80px;
   }
 }
@@ -16,8 +23,8 @@
 .logo {
   justify-self: start;
   svg {
-    width: 300px;
-    height: 68px;
+    width: 200px;
+    height: 45.33px;
     transition: 0.2s ease-in-out;
   }
 }
@@ -25,7 +32,6 @@
 .link {
   transition: 0.2s ease-in-out;
   border: 2px dotted transparent;
-  padding: 4px;
   display: inline-flex;
   justify-content: center;
   align-items: center;

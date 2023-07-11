@@ -54,12 +54,14 @@
   --watermelonRgb: #{colour(watermelon, true)};
   --stiletto: #{colour(stiletto)};
   --stilettoRgb: #{colour(stiletto, true)};
+  --woodsmoke: #{colour(woodsmoke)};
+  --woodsmokeRgb: #{colour(woodsmoke, true)};
 
   // -----------------------------------------------------------------------------
   //  Light Theme
   // -----------------------------------------------------------------------------
   --siteBackground: var(--white);
-  --siteBackground: var(--sweetCorn);
+  // --siteBackground: var(--sweetCorn);
   --siteFontColor: var(--ship);
   --siteFontColorRgb: var(--shipRgb);
   --siteHeadingColor: var(--stiletto);
@@ -76,7 +78,7 @@ body {
   color: var(--siteFontColor);
   // Unfortunately shadow vars have to be declared twice or the colour won't be overwritten
   [data-theme="light"] & {
-    --shadowColor: 54deg 59% 45%;
+    --shadowColor: 0deg 0% 63%;
     @include applyShadow();
   }
   // -----------------------------------------------------------------------------
@@ -84,7 +86,7 @@ body {
   // -----------------------------------------------------------------------------
   [data-theme="dark"] & {
     --siteBackground: var(--black);
-    --siteBackground: var(--corduroy);
+    --siteBackground: var(--woodsmoke);
     --siteFontColor: var(--sapling);
     --siteFontColorRgb: var(--saplingRgb);
     --siteHeadingColor: var(--sweetCorn);
@@ -97,6 +99,14 @@ body {
     @include applyShadow($theme: "dark");
   }
 }
+
+.triangle {
+  color: var(--sweetCorn);
+  [data-theme="dark"] & {
+    color: var(--corduroy);
+  }
+}
+
 
 .illustrationContainer {
   grid-column: span 2;
