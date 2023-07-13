@@ -5,7 +5,7 @@ import style from "./button.module.scss";
 
 const cx = classNames.bind(style);
 
-export const Button = ({ children, text, className, onClick, size = "large", ...props }: ButtonProps) => {
+export const Button = ({ text, className, onClick, size = "large", icon, ...props }: ButtonProps) => {
   return (
     <button {...props} className={cx(["button"], [size], [className])} onClick={onClick}>
       {text && (
@@ -13,7 +13,7 @@ export const Button = ({ children, text, className, onClick, size = "large", ...
           {text}
         </span>
       )}
-      {children}
+      {icon && icon}
     </button>
   );
 };

@@ -10,7 +10,7 @@ import React, {
 } from "react";
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-    children?: ReactNode,
+    icon?: ReactNode,
     size?: "large" | "small",
     text?: string | number,
     className?: string,

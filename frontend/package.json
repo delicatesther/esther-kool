@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-use": "^17.4.0",
     "react-use-system-theme": "^1.1.1",
+    "storybook-addon-apollo-client": "^5.0.0",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
