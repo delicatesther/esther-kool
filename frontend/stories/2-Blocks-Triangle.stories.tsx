@@ -16,6 +16,7 @@ const meta: Meta<typeof Triangle> = {
   component: Triangle,
   tags: ["autodocs"],
   parameters: {
+    layout: "fullscreen",
     docs: {
         story: {
             inline: false,

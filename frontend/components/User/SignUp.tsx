@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { SIGNUP_MUTATION, useForm } from "@enk/lib";
 import style from "./user.module.scss";
+import { Button } from "@enk/components/Button";
 
 export const SignUp = () => {
   const { inputs, handleChange, resetForm, clearForm } = useForm({
@@ -57,7 +58,7 @@ export const SignUp = () => {
           value={inputs.password}
           onChange={handleChange}
         />
-        <button type="submit">Sign up</button>
+        <Button type="submit" text="Sign up"/>
       </fieldset>
     </form>
   );

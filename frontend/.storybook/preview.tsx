@@ -1,6 +1,7 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
+import { MockedProvider } from '@apollo/client/testing';
 import "../styles/global/index.scss";
 import "!style-loader!css-loader!postcss-loader!sass-loader!./styles.scss";
 import { ThemeProvider } from "next-themes";
@@ -31,6 +32,10 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
+    apolloClient: {
+      MockedProvider,
+      // any props you want to pass to MockedProvider on every story
+    },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {

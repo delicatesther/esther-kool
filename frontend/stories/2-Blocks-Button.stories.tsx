@@ -31,6 +31,10 @@ const meta: Meta<typeof Button> = {
     onClick: {
       control: false,
     },
+    // TODO: add icon select for funzies
+    // icon: {
+    //   control:
+    // }
     // @ts-ignore: Ignore this "fake" argType, it is there for documentation purposes,
     //  but typescript does not know it (of course).
     "...props": {
@@ -45,20 +49,20 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    children: <Sun />,
+    icon: <Sun />,
   },
 };
 
 export const Small: Story = {
   args: {
     size: "small",
-    children: <Sun />,
+    icon: <Sun />,
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    children: <Sun />,
+    icon: <Sun />,
     text: undefined,
   },
 };
