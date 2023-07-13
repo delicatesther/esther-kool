@@ -1,15 +1,12 @@
 import React from "react";
 import { Header } from "@enk/components/Header";
-import Triangle from "/public/images/triangle-bg.svg";
+import {Triangle} from "@enk/components/Triangle";
+
 export const Layout = ({ children }) => {
   return (
     <>
     <div className="wrapper">
-      <div className="triangle">
-        <div className="triangleBg">
-          <Triangle role="presentation" />
-        </div>
-      </div>
+      <Triangle />
       <Header />
       <main className="main">
         <div className="grid-wrapper">{children}</div>

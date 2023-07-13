@@ -87,8 +87,8 @@ body {
     --siteBackground: var(--woodsmoke);
     --siteFontColor: var(--sapling);
     --siteFontColorRgb: var(--saplingRgb);
-    --siteHeadingColor: var(--sweetCorn);
-    --siteHeadingColorRgb: var(--sweetCornRgb);
+    --siteHeadingColor: var(--sapling);
+    --siteHeadingColorRgb: var(--saplingRgb);
     --supportColor: var(--ship);
     --supportColorRgb: var(--shipRgb);
     --supportDarkColor: var(--black);
@@ -97,14 +97,6 @@ body {
     @include applyShadow($theme: "dark");
   }
 }
-
-.triangle {
-  color: var(--sweetCorn);
-  [data-theme="dark"] & {
-    color: var(--corduroy);
-  }
-}
-
 
 .illustrationContainer {
   grid-column: span 2;

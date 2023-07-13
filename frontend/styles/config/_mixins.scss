@@ -121,6 +121,7 @@
   --shadowColorRgb: 161, 161, 161;
   @if $theme == "dark" {
     --shadowColorRgb: 30, 41, 34;
+    --shadowColorRgb: 4, 5, 6;
   }
   --shadow-elevation-low: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.34),
     0.4px 0.8px 1px -1.2px rgba(var(--shadowColorRgb), 0.34), 1px 2px 2.5px -2.5px rgba(var(--shadowColorRgb), 0.34);
