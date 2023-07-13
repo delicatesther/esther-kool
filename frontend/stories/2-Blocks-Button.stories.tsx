@@ -7,8 +7,9 @@ import commonArgTypes from "./commonArgTypes.json";
 The button is a button.
 
 ### Key features:
-
-
+- Implements standard HTML button conventions in terms of functionality and properties.
+- Adheres to a11y conventions.
+- Can have either text, an icon, or both.
  */
 
 const meta: Meta<typeof Button> = {
@@ -30,6 +31,11 @@ const meta: Meta<typeof Button> = {
     onClick: {
       control: false,
     },
+    // @ts-ignore: Ignore this "fake" argType, it is there for documentation purposes,
+    //  but typescript does not know it (of course).
+    "...props": {
+      description: "All default HTML button attributes apply."
+    }
   },
 };
 
@@ -37,16 +43,7 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = {};
-
-export const DefaultWithIcon: Story = {
-  args: {
-    children: <Sun />,
-    text: undefined,
-  },
-};
-
-export const DefaultWithTextAndIcon: Story = {
+export const Default: Story = {
   args: {
     children: <Sun />,
   },
@@ -58,3 +55,11 @@ export const Small: Story = {
     children: <Sun />,
   },
 };
+
+export const WithIcon: Story = {
+  args: {
+    children: <Sun />,
+    text: undefined,
+  },
+};
+

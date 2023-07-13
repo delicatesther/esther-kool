@@ -5,18 +5,7 @@ body {
     font-size: inherit;
     line-height: inherit;
   }
-  // TODO HVAWEB-10210 - Do we still need all these styles in Storybook 7?
   .sbdocs {
-    // .sb-nodocs,
-    // .docs-story {
-    //   background: var(--marine);
-    // }
-    // .docblock-icongallery {
-    //   color: var(--black);
-    // }
-    // .docblock-typeset {
-    //   color: var(--black);
-    // }
     pre,
     code {
       font-family: monospace;

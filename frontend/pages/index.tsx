@@ -7,9 +7,9 @@ import Head from "next/head";
 import Image from "next/image";
 
 export default function Home() {
-  const theme: UseThemeProps = useTheme();
-  console.log(theme.theme);
-  const isLight = theme.theme === "light";
+  // const theme: UseThemeProps = useTheme();
+  // console.log(theme.theme);
+  // const isLight = theme.theme === "light";
   return (
     <div>
       <Head>
