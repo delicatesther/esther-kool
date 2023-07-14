@@ -22,14 +22,14 @@ export default function AlexPage(props) {
           <div className="illustrationContainer" style={{maxWidth: "200px"}}>
             <Image src={babyPic} alt="baby" width={200} height={179} className="illustration" />
           </div>
-          <p>Alex begint een heus groot meisje te worden en gaat steeds meer richting echte maaltijden. Ze krijgt nog drie flessen à 200 ml opvolgmelk per dag en verder krijgt ze "echt" eten. Grofweg* als volgt:</p>
-          <p>Wanneer we opstaan gaat Alex even in de box rommelen terwijl ik (Esther) een flesje voor haar (en een kopje koffie voor mezelf) tap. Vervolgens zet ik het journaal klaar terwijl ik probeer niet op de NPO app te godveren en dan komt Alex bij mij zitten en krijgt ze d'r eerste flesje terwijl we samen naar het journaal kijken.
+          <p>Alex begint een heus groot meisje te worden en gaat steeds meer richting echte maaltijden. Ze krijgt nog drie flessen à 200 ml opvolgmelk per dag en verder krijgt ze &quot;echt&quot; eten. Grofweg* als volgt:</p>
+          <p>Wanneer we opstaan gaat Alex even in de box rommelen terwijl ik (Esther) een flesje voor haar (en een kopje koffie voor mezelf) tap. Vervolgens zet ik het journaal klaar terwijl ik probeer niet op de NPO app te godveren en dan komt Alex bij mij zitten en krijgt ze d&apos;r eerste flesje terwijl we samen naar het journaal kijken.
           </p>
           <p>
            Afhankelijk van hoe vroeg ze al wakker was krijgt ze in de loop van de ochtend net voor- of na haar eerste dutje van de dag een hapje. Soms is dit wat fruit, soms een bakje volle yoghurt met fruit, soms een bakje pap.
           </p>
           <p>
-           's Middags rond de lunchtijd (ik probeer tussen 12:00 en 13:00 aan te houden) krijgt ze een boterham (zonder korstjes, in stukjes). Daar smeren we meestal een fruit/groente prutje of wat pindakaas op. Die mag ze helemaal zelf opeten, dat kan ze prima. (Hoewel je de pindakaas daarna wel uit haar oren moet vegen en dat vindt ze stom, maar ach).
+          &apos;s Middags rond de lunchtijd (ik probeer tussen 12:00 en 13:00 aan te houden) krijgt ze een boterham (zonder korstjes, in stukjes). Daar smeren we meestal een fruit/groente prutje of wat pindakaas op. Die mag ze helemaal zelf opeten, dat kan ze prima. (Hoewel je de pindakaas daarna wel uit haar oren moet vegen en dat vindt ze stom, maar ach).
           </p>
           <p>
            Tegen 15:00 à 16:00 is het tijd voor flesje nummer twee.
@@ -100,12 +100,12 @@ export default function AlexPage(props) {
             Slapen is nog steeds stoooom, dus meestal is er protest. Gelukkig duurt dit meestal niet lang meer en kan ze zich ook vaak prima vermaken door met haar speen op het ledikant te timmeren.
           </p>
           <p>Ze is nog steeds een beetje onvoorspelbaar in haar dutjes overdag. Soms slaapt ze 40 minuten, soms gaan we haar na twee uur coma zelf maar wakker maken.</p>
-          <p>'s Nachts gaat het nu meestal gewoon goed vanaf een uur of 19:00/20:00 tot ze wakker wordt ergens tussen 05:00 en 07:00. Ze heeft naar ons idee soms wel nachtmerries en wordt dan huilend wakker. Dit gebeurd echter maar zelden en meestal slaapt ze wel weer verder als ze even getroost is.</p>
+          <p>&apos;s Nachts gaat het nu meestal gewoon goed vanaf een uur of 19:00/20:00 tot ze wakker wordt ergens tussen 05:00 en 07:00. Ze heeft naar ons idee soms wel nachtmerries en wordt dan huilend wakker. Dit gebeurd echter maar zelden en meestal slaapt ze wel weer verder als ze even getroost is.</p>
           <h2 className="bruksanvisnung">Rennen, springen, vliegen, duiken, vallen, opstaan en weer doorgaan</h2>
           <p>
             Alex begint haar lijf te snappen. En nu wil ze dat dat lijf ALLES kan. Ze kruip-tijgert de hele woonkamer door en probeert overal op/onder/doorheen te klimmen.<br/>
             Als ze ergens tegenaan kan leunen probeert ze ook af en toe al te gaan staan.</p>
-            <p>De hoeveelheid "bonk"-geluiden in huis zijn vertienvoudigd. Ze moet dus ook echt wat beter in de gaten gehouden worden, nu.</p>
+            <p>De hoeveelheid &quot;bonk&quot;-geluiden in huis zijn vertienvoudigd. Ze moet dus ook echt wat beter in de gaten gehouden worden, nu.</p>
             <p>Soms is ze na een flinke tijd keten ook opeens een beetje chaggo; dan is ze soms gewoon even toe aan wat rust. Even zitten in haar wipstoeltje thuis doet dan vaak al wonderen.
           </p>
         </div>
