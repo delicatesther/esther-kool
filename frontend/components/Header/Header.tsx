@@ -36,7 +36,7 @@ export const Header = () => {
             <Link href="/gezondheid" className="anchor">
               Gezondheid
             </Link>
-            <SignOut />
+            <SignOut size="small" />
           </>
         )}
         {!user && <Link href="/signin">Sign in</Link>}

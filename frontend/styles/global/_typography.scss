@@ -172,3 +172,18 @@ dl {
     font-size: 40px;
   }
 }
+
+.cms {
+  ul {
+    margin-left: 0.5em;
+    padding-left: 1em;
+    li {
+      margin-bottom: 4px;
+      &:before {
+        content: '•';
+        color: var(--supportColorDark);
+        padding-right: 8px;
+      }
+    }
+  }
+}
