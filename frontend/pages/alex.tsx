@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { Layout } from "@enk/components/Layout";
-import pigPic from "../public/images/varken.jpg";
-import babyPic from "../public/images/baby.jpg";
+import pigPic from "../public/images/varken.png";
+import babyPic from "../public/images/baby.png";
 
 export default function AlexPage(props) {
   return (
     <Layout>
       <div className="row-spacing-bottom">
         <div className="illustrationContainer" style={{ gridColumnEnd: "span 3" }}>
-          <Image src={pigPic} alt="varkentje" width={332} height={184} className="illustration" />
+          <Image src={pigPic} alt="varkentje" width={500} height={279} className="illustration" />
         </div>
         <h1 className="bruksanvisnung" style={{ gridColumn: "span 3" }}>
           bruksanvisnung alex
@@ -16,51 +16,38 @@ export default function AlexPage(props) {
           &nbsp;&nbsp;&nbsp;&nbsp;kool
         </h1>
       </div>
-      <div className="row-spacing-bottom">
+      <div className="row-spacing-bottom cms">
         <div className="two-cols">
-          <h2 className="bruksanvisnung">Luiers</h2>
-          <p>
-            We verschonen Alex voor ieder flesje en/of wanneer dat duidelijk nodig is (gebruik van de neus geadviseerd,
-            maar voorzichtigheid is geboden).
-          </p>
-          <p>
-            Meestal heeft ze maar één (indrukwekkende) poepluier per dag, maar mocht dat wat afwijken is het niet
-            zorgwekkend.
-          </p>
           <h2 className="bruksanvisnung">honger!</h2>
-          <div className="illustrationContainer">
-            <Image src={babyPic} alt="baby" width={201} height={180} className="illustration" />
+          <div className="illustrationContainer" style={{maxWidth: "200px"}}>
+            <Image src={babyPic} alt="baby" width={200} height={179} className="illustration" />
           </div>
-          <p>Alex wordt gevoed op verzoek. Overdag komt dat neer op grofweg om de vier uur (give or take).</p>
-          <p>
-            Voorheen maakte we een flesje van 210ml klaar (incl melkpoeder wordt dat 240ml), maar de laatste tijd drinkt
-            ze erg slecht.
+          <p>Alex begint een heus groot meisje te worden en gaat steeds meer richting echte maaltijden. Ze krijgt nog drie flessen à 200 ml opvolgmelk per dag en verder krijgt ze "echt" eten. Grofweg* als volgt:</p>
+          <p>Wanneer we opstaan gaat Alex even in de box rommelen terwijl ik (Esther) een flesje voor haar (en een kopje koffie voor mezelf) tap. Vervolgens zet ik het journaal klaar terwijl ik probeer niet op de NPO app te godveren en dan komt Alex bij mij zitten en krijgt ze d'r eerste flesje terwijl we samen naar het journaal kijken.
           </p>
           <p>
-            Ze lijkt op papa en mama is makkelijk afgeleid. De grootste kans op succes heb je als er weinig afleidingen
-            zijn, dus radio/TV uit en niet teveel activiteit om haar heen.
+           Afhankelijk van hoe vroeg ze al wakker was krijgt ze in de loop van de ochtend net voor- of na haar eerste dutje van de dag een hapje. Soms is dit wat fruit, soms een bakje volle yoghurt met fruit, soms een bakje pap.
           </p>
           <p>
-            We maken nu een flesje van 180ml klaar (die niet op komt). Het komt nog een enkele keer voor dat ze om
-            d&#39;r oude hoeveelheid vraagt en dan maken we gewoon wat meer klaar, maar schrik niet als ze totaal niet
-            wil drinken. Gewoon later nog eens proberen.
+           's Middags rond de lunchtijd (ik probeer tussen 12:00 en 13:00 aan te houden) krijgt ze een boterham (zonder korstjes, in stukjes). Daar smeren we meestal een fruit/groente prutje of wat pindakaas op. Die mag ze helemaal zelf opeten, dat kan ze prima. (Hoewel je de pindakaas daarna wel uit haar oren moet vegen en dat vindt ze stom, maar ach).
           </p>
           <p>
-            Ze geeft meestal duidelijk aan wanneer ze klaar is met drinken (dan duwt ze de fles weg of vertikt ze het
-            haar mond open te doen als je de fles weer aanbiedt). Overblijfsel gooien we weg.
+           Tegen 15:00 à 16:00 is het tijd voor flesje nummer twee.
           </p>
-          <h2 className="bruksanvisnung">Flesje klaarmaken</h2>
-          <p>
-            Qua melkpoeder: we geven nu Albert Heijn fase 1 Bio, simpelweg omdat de reguliere variant momenteel niet te
-            krijgen is. Ze drinkt echter op het KDV Nutrilon en ook bij de switch van &quot;normale&quot; AH melkpoeder
-            naar Bio merkten we geen verschil. Zolang het maar melkpoeder voor babies is, vindt ze het best.
-          </p>
-          <p>
-            Op de verpakking van het melkpoeder kan je lezen wat de verhouding schepjes tot water is. Als je bij ons
-            thuis oppast kan je gebruik maken van de Brezza, die doet dat voor je. Zie onderstaand kopje
-            &quot;Brezza&quot;.
-          </p>
-          <p>Johannesbroodpitmeel kan je vergeten, dat geven we niet meer.</p>
+          <p>Terwijl wij avondeten krijgt zij óf hetzelfde als wat wij eten, maar dan (licht) bewerkt met een staafmixer, óf een babymaaltijd uit een potje of pakje. We laten haar zo veel mogelijk met ons mee eten, maar we houden af en toe van voedsel wat voor haar nog niet zo goed is. (Eten met bijvoorbeeld zout, honing, kaas, etc).</p>
+          <p>Voordat ze slapen gaat krijgt ze haar laatste flesje. Soms is dat niet zo gek lang na het avondeten, maar dat is niet zo erg. Ze drinkt niet meer dan ze op wil.</p>
+          <p>Om deze maaltijden heen geven we haar ook twee kleine glaasjes water, thee of dun aangemaakt diksap. Ook krijgt ze soms nog een knabbel tussendoor (denk aan van die maïsknabbels, of nog een klein stukje banaan ofzo).</p>
+          <br/>
+          <p>* <em>Meestal</em> gaat dit goed. Soms begint ze te brullen en blijkt ze toch op een ander moment flesbehoeftig. Een beetje improviseren mag altijd.</p>
+         <h3>Samenvattend:</h3>
+         <ul>
+          <li>Drie flesjes à 200ml opvolgmelk rond 07:00, 15:00/16:00, en 19:00/20:00.</li>
+          <li>Een bakje fruit (soms met yoghurt) of pap in de loop van de ochtend.</li>
+          <li>Een boterhammetje zonder korstjes voor de lunch.</li>
+          <li>Een klein bordje avondeten.</li>
+          <li>Twee glaasjes water/thee gedurende de dag.</li>
+          <li>Een licht knabbeltje tussendoor.</li>
+         </ul>
           <h3>Brezza</h3>
           <p>
             De Baby Brezza is de &quot;Senseo&quot; voor melkflesjes. Hier zet je simpelweg een flesje onder, je drukt
@@ -101,58 +88,25 @@ export default function AlexPage(props) {
             </a>{" "}
             de instellingen vinden.
           </p>
-          <h2 className="bruksanvisnung">Oefenhapjes</h2>
-          <p>
-            Twee keer per dag geven we Alex oefenhapjes om te wennen aan echt eten. (Voor zover je gemagnetreerde
-            wortelprut met roerei uit de blender als echt eten kan beschouwen...)
-          </p>
-          <p>
-            Oefenhapjes krijgt ze alleen als ze geen honger heeft. Ze zijn er echt voor bedoeld om te wennen, de fles
-            blijft haar echte bron van voedingstoffen. Na haar flesje in de ochtend en na haar flesje rond het avondeten
-            mag ze happen.
-          </p>
-          <p>
-            Omdat ze momenteel wat slecht drinkt, krijgt ze per sessie max drie hapjes. Prut uit potjes is prima, zolang
-            er maar duidelijk opstaat dat het voor 4+ maanden is en het niet te warm is. Ook kan je wat banaan prakken
-            of pompoen stomen en prakken (als je je erg gemotiveerd voelt).
-          </p>
-          <p>
-            Om voedselallergie te voorkomen moet ze wekelijks ook pindakaas en ei krijgen. Dit doen we standaard op
-            zondag, dus de rest van de week hoef je daar niet over na te denken. Mocht je op zondag oppassen, vraag dan
-            ff naar details.
-          </p>
           <h2 className="bruksanvisnung">Moe!</h2>
           <p>
             Als Alex begint te staren, gapen en haar oogjes half dichtvallen weet je het zeker: ze is moe. (Meestal na
-            een uur of twee wakker zijn).
+            een uur of drie à vier wakker zijn).
           </p>
           <p>
-            We hijsen haar dan in een slaapzakje en leggen haar op bed met een knuffeltje en/of een speen. Overdag in
-            het ledikant op haar kamer, &#39;s nachts in de co-sleeper op onze slaapkamer. Met de babymonitor houden we
-            haar dan in de gaten.
+            We hijsen haar dan in een slaapzakje (afhankelijk van de temperatuur) en leggen haar op bed met een knuffeltje en/of een speen.
           </p>
           <p>
-            Slapen is stoooom, dus meestal is er protest. Als ze een beetje verontwaardigd schreeuwt kan je het nog
-            negeren, maar als ze echt huilt moet ze getroost worden.
+            Slapen is nog steeds stoooom, dus meestal is er protest. Gelukkig duurt dit meestal niet lang meer en kan ze zich ook vaak prima vermaken door met haar speen op het ledikant te timmeren.
           </p>
+          <p>Ze is nog steeds een beetje onvoorspelbaar in haar dutjes overdag. Soms slaapt ze 40 minuten, soms gaan we haar na twee uur coma zelf maar wakker maken.</p>
+          <p>'s Nachts gaat het nu meestal gewoon goed vanaf een uur of 19:00/20:00 tot ze wakker wordt ergens tussen 05:00 en 07:00. Ze heeft naar ons idee soms wel nachtmerries en wordt dan huilend wakker. Dit gebeurd echter maar zelden en meestal slaapt ze wel weer verder als ze even getroost is.</p>
+          <h2 className="bruksanvisnung">Rennen, springen, vliegen, duiken, vallen, opstaan en weer doorgaan</h2>
           <p>
-            Het liefst kijken we eerst even of dit lukt terwijl ze in bed ligt. Vaak is het bij huilen echter al zo dat
-            er wat rondgewandeld met haar moet worden. Soms gaat het echt niet en komt ze weer mee naar beneden.
-          </p>
-          <h2 className="bruksanvisnung">Rollen</h2>
-          <p>
-            Alex heeft nu door hoe ze van haar rug naar haar buik rolt en dit doet ze dan ook CONSTANT. Het probleem is
-            alleen: terugrollen heeft ze nog niet zo goed door.
-          </p>
-          <p>
-            Als Alex de ruimte heeft (en dit heeft ze bijvoorbeeld al in de co-sleeper) dan is de kans groot dat ze op
-            haar buik rolt. Grofweg 10-30 seconden later begint ze te protesteren. Rol haar toch maar weer terug, het is
-            zo lullig als ze te moe wordt om haar hoofd te blijven optillen en stikt in het boxkleed/d&#39;r
-            matras/whatever.
-          </p>
-          <p>
-            Let dus ook echt even goed op als ze in haar bed ligt. Als ze wakker wordt heb je kans dat je haar even moet
-            redden.
+            Alex begint haar lijf te snappen. En nu wil ze dat dat lijf ALLES kan. Ze kruip-tijgert de hele woonkamer door en probeert overal op/onder/doorheen te klimmen.<br/>
+            Als ze ergens tegenaan kan leunen probeert ze ook af en toe al te gaan staan.</p>
+            <p>De hoeveelheid "bonk"-geluiden in huis zijn vertienvoudigd. Ze moet dus ook echt wat beter in de gaten gehouden worden, nu.</p>
+            <p>Soms is ze na een flinke tijd keten ook opeens een beetje chaggo; dan is ze soms gewoon even toe aan wat rust. Even zitten in haar wipstoeltje thuis doet dan vaak al wonderen.
           </p>
         </div>
       </div>
