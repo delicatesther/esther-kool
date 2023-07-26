@@ -14,8 +14,12 @@ generator client {
 model Experience {
   id          String    @id @default(uuid()) @postgresql.Uuid
   title       String    @default("")
+  titleNL     String    @default("")
   status      String?   @default("draft")
+  summary     String    @default("")
+  summaryNL   String    @default("")
   content     Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  contentNL   Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
   publishDate DateTime?
   from        DateTime  @postgresql.Date
   to          DateTime? @postgresql.Date
@@ -49,6 +53,7 @@ model Post {
 model Tag {
   id          String       @id @default(uuid()) @postgresql.Uuid
   name        String       @default("")
+  nameNL      String       @default("")
   posts       Post[]       @relation("Post_tags")
   experiences Experience[] @relation("Experience_tags")
 }

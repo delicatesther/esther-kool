@@ -44,3 +44,15 @@
   $lineHeightScale: $lh / $fontSize;
   @return ($lineHeightScale - 1) / 2 + $descenderHeightScale;
 }
+
+// -----------------------------------------------------------------------------
+// Get Font
+// -----------------------------------------------------------------------------
+@function selectFont($name) {
+
+  @if map-has-key($fontFamilies, $name) {
+      @return map-get($fontFamilies, $name);
+  }
+  @warn "The key #{$name} is not in the map $fonts";
+  @return null;
+}

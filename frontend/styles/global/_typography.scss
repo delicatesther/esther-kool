@@ -17,7 +17,7 @@
 }
 
 @font-face {
-  font-family: "estherkoolregular";
+  font-family: estherkoolregular;
   src: url("/fonts/estherkool-regular-webfont.woff2") format("woff2"),
     url("/fonts/estherkool-regular-webfont.woff") format("woff");
   font-weight: normal;
@@ -25,25 +25,20 @@
 }
 
 @font-face {
-  font-family: "estherkoolregular";
+  font-family: estherkoolregular;
   src: url("/fonts/estherkoolbold-bold-webfont.woff2") format("woff2"),
     url("/fonts/estherkoolbold-bold-webfont.woff") format("woff");
   font-weight: bold;
   font-style: normal;
 }
 
+
 :root {
   font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
-  --basefont: "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-    "Helvetica Neue", sans-serif;
-  --fallback-font: Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-    "Helvetica Neue", sans-serif;
-  --headingfont: "estherkoolregular", "Open Sans", Arial, --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 body {
-  font-family: var(--basefont);
+  font-family: #{selectFont("baseFont")};
   font-size: 1.6rem;
   line-height: 1.5;
   body.fallback-font & {
@@ -91,7 +86,7 @@ select {
 
 h1,
 .h1 {
-  font-family: var(--headingfont);
+  font-family: #{selectFont("headingFont")};
   color: var(--siteHeadingColor);
   font-size: 10.2rem;
   font-weight: normal;
@@ -101,7 +96,7 @@ h1,
 
 h2,
 .h2 {
-  font-family: var(--headingfont);
+  font-family: #{selectFont("headingFont")};
   color: var(--siteHeadingColor);
   font-size: 8.8rem;
   font-weight: normal;
@@ -111,7 +106,7 @@ h2,
 
 h3,
 .h3 {
-  font-family: var(--headingfont);
+  font-family: #{selectFont("headingFont")};
   color: var(--siteHeadingColor);
   font-size: 6.4rem;
   font-weight: normal;
@@ -164,7 +159,7 @@ dl {
 }
 
 .text-intro {
-  font-family: var(--headingfont);
+  font-family: #{selectFont("headingFont")};
   color: var(--siteHeadingColor);
   font-weight: normal;
   font-size: 32px;

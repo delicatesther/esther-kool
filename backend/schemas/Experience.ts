@@ -14,6 +14,7 @@ export const Experience = list({
     access: allowAll,
     fields: {
         title: text(),
+        titleNL: text({label: "Titel (NL)"}),
         // Having the status here will make it easy for us to choose whether to display
         // posts on a live site.
         status: select({
@@ -28,10 +29,44 @@ export const Experience = list({
                 displayMode: 'segmented-control',
             },
         }),
+        summary: text({
+            ui: {
+                displayMode: 'textarea'
+            },
+            validation: {
+                length: {
+                    max: 160
+                }
+            }
+        }),
+        summaryNL: text({
+            label: "Samenvatting (NL)",
+            ui: {
+                displayMode: 'textarea'
+            },
+            validation: {
+                length: {
+                    max: 160
+                }
+            }
+        }),
         // The document field can be used for making highly editable content. Check out our
         // guide on the document field https://keystonejs.com/docs/guides/document-fields#how-to-use-document-fields
         // for more information
         content: document({
+            formatting: true,
+            layouts: [
+                [1, 1],
+                [1, 1, 1],
+                [2, 1],
+                [1, 2],
+                [1, 2, 1],
+            ],
+            links: true,
+            dividers: true,
+        }),
+        contentNL: document({
+            label: "Inhoud (NL)",
             formatting: true,
             layouts: [
                 [1, 1],

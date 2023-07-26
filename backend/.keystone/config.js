@@ -35,6 +35,7 @@ var Experience = (0, import_core.list)({
   access: import_access.allowAll,
   fields: {
     title: (0, import_fields.text)(),
+    titleNL: (0, import_fields.text)({ label: "Titel (NL)" }),
     // Having the status here will make it easy for us to choose whether to display
     // posts on a live site.
     status: (0, import_fields.select)({
@@ -49,10 +50,44 @@ var Experience = (0, import_core.list)({
         displayMode: "segmented-control"
       }
     }),
+    summary: (0, import_fields.text)({
+      ui: {
+        displayMode: "textarea"
+      },
+      validation: {
+        length: {
+          max: 160
+        }
+      }
+    }),
+    summaryNL: (0, import_fields.text)({
+      label: "Samenvatting (NL)",
+      ui: {
+        displayMode: "textarea"
+      },
+      validation: {
+        length: {
+          max: 160
+        }
+      }
+    }),
     // The document field can be used for making highly editable content. Check out our
     // guide on the document field https://keystonejs.com/docs/guides/document-fields#how-to-use-document-fields
     // for more information
     content: (0, import_fields_document.document)({
+      formatting: true,
+      layouts: [
+        [1, 1],
+        [1, 1, 1],
+        [2, 1],
+        [1, 2],
+        [1, 2, 1]
+      ],
+      links: true,
+      dividers: true
+    }),
+    contentNL: (0, import_fields_document.document)({
+      label: "Inhoud (NL)",
       formatting: true,
       layouts: [
         [1, 1],
@@ -173,6 +208,7 @@ var Tag = (0, import_core3.list)({
   },
   fields: {
     name: (0, import_fields3.text)(),
+    nameNL: (0, import_fields3.text)({ label: "Tag (NL)" }),
     posts: (0, import_fields3.relationship)({ ref: "Post.tags", many: true }),
     experiences: (0, import_fields3.relationship)({ ref: "Experience.tags", many: true })
   }

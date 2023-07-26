@@ -5,7 +5,7 @@
   cursor: pointer;
   background: var(--supportDarkColor);
   box-shadow: var(--shadow-elevation-medium);
-  font-family: var(--headingfont);
+  font-family: #{selectFont("headingFont")};
   font-size: 3.6rem;
   line-height: 1em;
   min-height: 40px;

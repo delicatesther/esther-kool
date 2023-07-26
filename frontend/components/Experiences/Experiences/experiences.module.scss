@@ -1,0 +1,74 @@
+@use "../../../styles/config" as *;
+
+.experiences {
+	grid-column: 1 / -1;
+}
+
+.lists {
+	display: grid;
+	grid-template-columns: 40px 1fr;
+	gap: 24px;
+	@include breakpoint(m) {
+		width: 70vw;
+		margin: 0 auto;
+	}
+}
+
+.yearList {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(auto-fill, 32px);
+}
+
+.year {
+	display: grid;
+	grid-template-columns: 40px;
+	position: relative;
+	padding: 4px;
+	position: relative;
+	border-left: 1px solid var(--siteHeadingColor);
+	&.span &:before {
+		content: "";
+		width: 4px;
+		height: 2px;
+		left: 0;
+		top: 2px;
+		position: absolute;
+		background-color: var(--siteHeadingColor);
+	}
+}
+
+.yearNumber {
+	grid-column: 1 / 2;
+	font-family: #{selectFont("headingFont")};
+}
+
+.experienceList {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(auto-fill, 32px);
+}
+
+.experienceListItem {
+    &:nth-child(even) {
+        background: var(--supportColor);
+
+    }
+	padding: 4px;
+	min-height: 32px;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(15vw, 120px));
+    @include breakpoint(m) {
+        grid-template-columns: repeat(auto-fit, minmax(15vw, 300px));
+    }
+}
+
+.spacer {
+	height: 0;
+	grid-column: span 1;
+}
+
+.experience {
+	grid-column: span 1;
+}
