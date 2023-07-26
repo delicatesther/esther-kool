@@ -4,8 +4,12 @@
 type Experience {
   id: ID!
   title: String
+  titleNL: String
   status: String
+  summary: String
+  summaryNL: String
   content: Experience_content_Document
+  contentNL: Experience_contentNL_Document
   publishDate: DateTime
   from: CalendarDay
   to: CalendarDay
@@ -15,6 +19,10 @@ type Experience {
 }
 
 type Experience_content_Document {
+  document(hydrateRelationships: Boolean! = false): JSON!
+}
+
+type Experience_contentNL_Document {
   document(hydrateRelationships: Boolean! = false): JSON!
 }
 
@@ -32,7 +40,10 @@ input ExperienceWhereInput {
   NOT: [ExperienceWhereInput!]
   id: IDFilter
   title: StringFilter
+  titleNL: StringFilter
   status: StringNullableFilter
+  summary: StringFilter
+  summaryNL: StringFilter
   publishDate: DateTimeNullableFilter
   from: CalendarDayFilter
   to: CalendarDayNullableFilter
@@ -142,7 +153,10 @@ input TagManyRelationFilter {
 input ExperienceOrderByInput {
   id: OrderDirection
   title: OrderDirection
+  titleNL: OrderDirection
   status: OrderDirection
+  summary: OrderDirection
+  summaryNL: OrderDirection
   publishDate: OrderDirection
   from: OrderDirection
   to: OrderDirection
@@ -155,8 +169,12 @@ enum OrderDirection {
 
 input ExperienceUpdateInput {
   title: String
+  titleNL: String
   status: String
+  summary: String
+  summaryNL: String
   content: JSON
+  contentNL: JSON
   publishDate: DateTime
   from: CalendarDay
   to: CalendarDay
@@ -184,8 +202,12 @@ input ExperienceUpdateArgs {
 
 input ExperienceCreateInput {
   title: String
+  titleNL: String
   status: String
+  summary: String
+  summaryNL: String
   content: JSON
+  contentNL: JSON
   publishDate: DateTime
   from: CalendarDay
   to: CalendarDay
@@ -318,6 +340,7 @@ input PostCreateInput {
 type Tag {
   id: ID!
   name: String
+  nameNL: String
   posts(where: PostWhereInput! = {}, orderBy: [PostOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PostWhereUniqueInput): [Post!]
   postsCount(where: PostWhereInput! = {}): Int
   experiences(where: ExperienceWhereInput! = {}, orderBy: [ExperienceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ExperienceWhereUniqueInput): [Experience!]
@@ -334,6 +357,7 @@ input TagWhereInput {
   NOT: [TagWhereInput!]
   id: IDFilter
   name: StringFilter
+  nameNL: StringFilter
   posts: PostManyRelationFilter
   experiences: ExperienceManyRelationFilter
 }
@@ -353,10 +377,12 @@ input ExperienceManyRelationFilter {
 input TagOrderByInput {
   id: OrderDirection
   name: OrderDirection
+  nameNL: OrderDirection
 }
 
 input TagUpdateInput {
   name: String
+  nameNL: String
   posts: PostRelateToManyForUpdateInput
   experiences: ExperienceRelateToManyForUpdateInput
 }
@@ -382,6 +408,7 @@ input TagUpdateArgs {
 
 input TagCreateInput {
   name: String
+  nameNL: String
   posts: PostRelateToManyForCreateInput
   experiences: ExperienceRelateToManyForCreateInput
 }

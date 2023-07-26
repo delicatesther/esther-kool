@@ -45,6 +45,7 @@ body {
 }
 
 .footer {
+	z-index: z(z0);
 	padding: 16px;
 	@include breakpoint(s) {
 		padding: 32px;

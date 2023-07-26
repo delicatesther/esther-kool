@@ -9,6 +9,7 @@ export const Tag = list({
     },
     fields: {
         name: text(),
+        nameNL: text({label: "Tag (NL)"}),
         posts: relationship({ ref: 'Post.tags', many: true }),
         experiences: relationship({ ref: 'Experience.tags', many: true }),
     },
