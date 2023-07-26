@@ -5,28 +5,44 @@
 }
 
 .lists {
-	display: grid;
-	grid-template-columns: 40px 1fr;
-	gap: 24px;
 	@include breakpoint(m) {
+		display: grid;
+		grid-template-columns: 40px 1fr;
+		--list-gap: 24px;
+		--row-alternating-color: rgba(var(--supportColorRgb), 0.1);
+		gap: var(--list-gap);
 		width: 70vw;
 		margin: 0 auto;
 	}
 }
 
 .yearList {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: repeat(auto-fill, 32px);
+	display: none;
+	@include breakpoint(m) {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(auto-fill, 64px);
+	}
 }
 
 .year {
 	display: grid;
-	grid-template-columns: 40px;
+	grid-template-columns: 36px;
 	position: relative;
 	padding: 4px;
 	position: relative;
-	border-left: 1px solid var(--siteHeadingColor);
+    &:nth-child(even) {
+        background: var(--row-alternating-color);
+        &:after {
+            content: '';
+            width: var(--list-gap);
+            height: 64px;
+            position: absolute;
+            right: calc(var(--list-gap) * -1);
+            background: var(--row-alternating-color);
+            top: 0;
+        }
+    }
 	&.span &:before {
 		content: "";
 		width: 4px;
@@ -44,29 +60,35 @@
 }
 
 .experienceList {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: repeat(auto-fill, 32px);
+	display: flex;
+	flex-direction: column;
 }
 
 .experienceListItem {
-    &:nth-child(even) {
-        background: var(--supportColor);
-
-    }
-	padding: 4px;
-	min-height: 32px;
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-template-columns: repeat(auto-fit, minmax(15vw, 120px));
+	min-height: 64px;
+    display: flex;
+	flex-direction: column;
+    gap: 20px;
     @include breakpoint(m) {
-        grid-template-columns: repeat(auto-fit, minmax(15vw, 300px));
+        display: grid;
+        gap: 0 12px;
+        grid-template-rows: 64px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, max-content));
     }
+	&:nth-child(even) {
+        background: var(--row-alternating-color);
+    }
+	&.hideMobile {
+		@include breakpoint(m, max) {
+			display: none;
+		}
+	}
 }
 
 .spacer {
 	height: 0;
 	grid-column: span 1;
+    width: 24px;
 }
 
 .experience {
