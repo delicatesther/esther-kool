@@ -43,8 +43,7 @@ export const Experiences = () => {
 	})
 
 	let years = [];
-	// for (let i = 1987; i <= new Date().getFullYear(); i++) {
-	for (let i = 2002; i <= 2010; i++) {
+	for (let i = 1987; i <= new Date().getFullYear(); i++) {
 		const year = {
 			year: i,
 			currentExperiences: [],
@@ -69,16 +68,16 @@ export const Experiences = () => {
 				currentExperiences.push({...experience});
 			}
 			// Experience continues beyond this year, and hasn't finished yet
-			if(occursThisYear && fromYear !== thisYear ) {
+			if(occursThisYear && fromYear !== thisYear && toYear !== thisYear ) {
 				runningExperiences.push(smallData)
 			}
 			// Experience is in the past, or ends this very year
-			if(toYear <= thisYear && occursThisYear) {
+			if(toYear === thisYear && occursThisYear) {
 				finishedExperiences.push(smallData);
 			}
 		});
 	});
-
+	console.log(years);
 	return (
 		<div className={style.experiences}>
 			<h2>What I've been up to</h2>
@@ -93,7 +92,7 @@ export const Experiences = () => {
 									{item.year}
 								</li>
 							);
-						})}
+						}).reverse()}
 				</ol>
 				<ol className={style.experienceList}>
 					{years
@@ -101,12 +100,13 @@ export const Experiences = () => {
 							return (
 								<li
 									key={item.year}
-									className={cx(["experienceListItem"])}
+									className={cx(["experienceListItem"], {["hideMobile"] : !item.currentExperiences.length})}
 								>
 									{!item.currentExperiences.length && (
 										<span className={"visuallyhidden"}>{item.year}</span>
 									)}
 									{item.runningExperiences.map((experience) => (
+										// <span className={cx(["spacer"])} key={experience.title}>{experience.title}</span>
 										<span className={cx(["spacer"])} key={experience.title}></span>
 									))}
                                     {item.currentExperiences.map(experience => (
@@ -118,7 +118,7 @@ export const Experiences = () => {
                                     ))}
 								</li>
 							);
-						})}
+						}).reverse()}
 				</ol>
 			</div>
 		</div>
