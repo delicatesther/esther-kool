@@ -52,11 +52,6 @@
 	margin-bottom: 0;
 	display: inline-block;
 	font-family: #{selectFont("baseFont")};
-	@include breakpoint(m, max) {
-		display: grid;
-		grid-template-columns: 80px 1fr;
-		gap: 8px;
-	}
 }
 
 .tag {
