@@ -9,11 +9,11 @@
 	box-shadow: var(--shadow-elevation-low);
 	font-family: #{selectFont(headingFont)};
 	font-size: 2rem;
-	grid-column: 1 / -1;
 	padding: 4px;
 	margin-bottom: 8px;
 	color: var(--siteBackground);
 	background-color: var(--supportDarkColor);
+	width: fit-content;
 	@include theme("dark") {
 		color: var(--siteFontColor);
 	}
@@ -21,11 +21,13 @@
 
 .experience {
 	padding: 8px;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	align-items: var(--align-experience);
+	@include breakpoint(m) {
+		height: 100%;
+		justify-content: flex-start;
+		align-items: var(--align-experience);
+	}
 }
 
 .container {
@@ -39,7 +41,9 @@
 	padding: 8px;
 	position: relative;
 	height: 100%;
-	width: fit-content;
+	@include breakpoint(m) {
+		width: fit-content;
+	}
 }
 
 .title {

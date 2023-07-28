@@ -40,7 +40,7 @@ export const Timeline = () => {
 
   return (
     <div className={style.wrapper}>
-        <h3>What I've been up to</h3>
+        <h3>What I&apos;ve been up to</h3>
         <div className={style.container}>
             <div aria-hidden className={style.timelineBar}>
             </div>
