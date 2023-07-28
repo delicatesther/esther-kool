@@ -18,6 +18,8 @@
     "node": "^18.16.0",
     "yarn": "3.6.1"
   },
-  "cacheDirectories": [".yarn/cache"],
+  "cacheDirectories": [
+    ".yarn/cache"
+  ],
   "packageManager": "yarn@3.6.1"
 }

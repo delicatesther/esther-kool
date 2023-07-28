@@ -4,8 +4,9 @@ keystone.db
 *.log
 
 .yarn/*
-!.yarn/cache
+!.yarn/patches
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
+.pnp.*
