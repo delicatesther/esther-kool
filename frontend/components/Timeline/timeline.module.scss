@@ -26,10 +26,15 @@
 }
 
 .list {
-	display: grid;
-	gap: 48px 24px;
+	display: flex;
+	flex-direction: column;
 	z-index: z(z1);
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
 	@include breakpoint(m) {
+		display: grid;
+		gap: 48px 24px;
 		grid-auto-flow: column;
 		grid-template-columns: 1fr 1fr;
 		grid-auto-rows: minmax(min-content, 136px);
@@ -53,10 +58,9 @@
 		}
 	}
 	&:nth-child(odd) {
-		--align-experience: flex-end;
-		transform: translateY(-20px);
-
 		@include breakpoint(m) {
+			transform: translateY(-20px);
+			--align-experience: flex-end;
 			text-align: right;
 			grid-column-start: 1;
 		}
@@ -65,9 +69,11 @@
 		}
 	}
 	&:nth-child(even) {
-		--align-experience: flex-start;
-		grid-column-start: 2;
-		transform: translateY(20px);
+		@include breakpoint(m) {
+			--align-experience: flex-start;
+			grid-column-start: 2;
+			transform: translateY(20px);
+		}
 		&:before {
 			left: -22px;
 		}

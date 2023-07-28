@@ -115,7 +115,7 @@ export const Experiences = () => {
 	console.log(years);
 	return (
 		<div className={style.experiences}>
-			<h2>What I've been up to</h2>
+			<h2>What I&apos;ve been up to</h2>
 			<div className={style.lists}>
 				<YearList years={years} />
 				<ol className={style.experienceList}>
