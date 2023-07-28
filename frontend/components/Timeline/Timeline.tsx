@@ -15,7 +15,7 @@ export const Timeline = () => {
 		},
 	});
 
-	if (error) return <p>Error!</p>;
+	if (error) return null;
 	if (loading) return <p>Loading...</p>;
 	const { experiences } = data || [];
 
