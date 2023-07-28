@@ -1,6 +1,7 @@
 import { BusinessCard } from "@enk/components/BusinessCard/BusinessCard";
 import { Experiences } from "@enk/components/Experiences";
 import { Layout } from "@enk/components/Layout";
+import { Timeline } from "@enk/components/Timeline";
 import Head from "next/head";
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
           <BusinessCard src="/images/me.jpg" size="large" />
         </div>
         <div className="row">
-          <Experiences />
+          <Timeline />
         </div>
       </Layout>
     </div>

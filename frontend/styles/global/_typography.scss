@@ -9,46 +9,46 @@
 @import "@fontsource/open-sans/800.css"; // Extra-bold 800
 
 @font-face {
-  font-family: "P22 Folk Art Stitch";
-  src: url("/fonts/P22FolkArtStitch.woff2") format("woff2"), url("/fonts/P22FolkArtStitch.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+	font-family: "P22 Folk Art Stitch";
+	src: url("/fonts/P22FolkArtStitch.woff2") format("woff2"),
+		url("/fonts/P22FolkArtStitch.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: estherkoolregular;
-  src: url("/fonts/estherkool-regular-webfont.woff2") format("woff2"),
-    url("/fonts/estherkool-regular-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+	font-family: estherkoolregular;
+	src: url("/fonts/estherkool-regular-webfont.woff2") format("woff2"),
+		url("/fonts/estherkool-regular-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: estherkoolregular;
-  src: url("/fonts/estherkoolbold-bold-webfont.woff2") format("woff2"),
-    url("/fonts/estherkoolbold-bold-webfont.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
+	font-family: estherkoolregular;
+	src: url("/fonts/estherkoolbold-bold-webfont.woff2") format("woff2"),
+		url("/fonts/estherkoolbold-bold-webfont.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
 }
-
 
 :root {
-  font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
+	font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
 }
 
 body {
-  font-family: #{selectFont("baseFont")};
-  font-size: 1.6rem;
-  line-height: 1.5;
-  body.fallback-font & {
-    letter-spacing: 0.45px;
-    word-spacing: -0.5px;
-    @include breakpoint(s) {
-      letter-spacing: 0.5px;
-      word-spacing: -0.45px;
-    }
-  }
+	font-family: #{selectFont("baseFont")};
+	font-size: 1.6rem;
+	line-height: 1.5;
+	body.fallback-font & {
+		letter-spacing: 0.45px;
+		word-spacing: -0.5px;
+		@include breakpoint(s) {
+			letter-spacing: 0.5px;
+			word-spacing: -0.45px;
+		}
+	}
 }
 
 // -----------------------------------------------------------------------------
@@ -56,18 +56,18 @@ body {
 // -----------------------------------------------------------------------------
 a,
 .anchor {
-  color: var(--linkColor);
+	color: var(--linkColor);
 }
 .strong {
-  font-weight: var(--bold-weight);
+	font-weight: var(--bold-weight);
 }
 
 .italic {
-  font-style: italic;
+	font-style: italic;
 }
 
 .underline {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 // -----------------------------------------------------------------------------
@@ -77,7 +77,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+	font: inherit;
 }
 
 // -----------------------------------------------------------------------------
@@ -86,99 +86,99 @@ select {
 
 h1,
 .h1 {
-  font-family: #{selectFont("headingFont")};
-  color: var(--siteHeadingColor);
-  font-size: 10.2rem;
-  font-weight: normal;
-  margin-bottom: 16px;
-  letter-spacing: -0.05em;
+	font-family: #{selectFont("headingFont")};
+	color: var(--siteHeadingColor);
+	font-size: 10.2rem;
+	font-weight: normal;
+	margin-bottom: 16px;
+	letter-spacing: -0.05em;
 }
 
 h2,
 .h2 {
-  font-family: #{selectFont("headingFont")};
-  color: var(--siteHeadingColor);
-  font-size: 8.8rem;
-  font-weight: normal;
-  margin-bottom: 8px;
-  letter-spacing: -0.05em;
+	font-family: #{selectFont("headingFont")};
+	color: var(--siteHeadingColor);
+	font-size: 8.8rem;
+	font-weight: normal;
+	margin-bottom: 8px;
+	letter-spacing: -0.05em;
 }
 
 h3,
 .h3 {
-  font-family: #{selectFont("headingFont")};
-  color: var(--siteHeadingColor);
-  font-size: 6.4rem;
-  font-weight: normal;
-  margin-bottom: 8px;
-  letter-spacing: -0.05em;
+	font-family: #{selectFont("headingFont")};
+	color: var(--siteHeadingColor);
+	font-size: 6.4rem;
+	font-weight: normal;
+	margin-bottom: 8px;
+	letter-spacing: -0.05em;
 }
 
 .bruksanvisnung {
-  font-family: "P22 Folk Art Stitch";
-  font-weight: normal;
-  margin-bottom: 1em;
+	font-family: "P22 Folk Art Stitch";
+	font-weight: normal;
+	margin-bottom: 1em;
 }
 
 h1 {
-  &.bruksanvisnung {
-    font-size: 4rem;
-    @include breakpoint(s) {
-      font-size: 5rem;
-    }
-  }
+	&.bruksanvisnung {
+		font-size: 4rem;
+		@include breakpoint(s) {
+			font-size: 5rem;
+		}
+	}
 }
 
 h2 {
-  &.bruksanvisnung {
-    text-transform: uppercase;
-    text-decoration: underline dashed;
-    text-underline-offset: 12px;
-    margin: 0 0 24px;
-    font-size: 3.2rem;
-    @include breakpoint(s) {
-      font-size: 4rem;
-    }
-    &:not(:first-child) {
-      margin-top: 24px;
-    }
-  }
+	&.bruksanvisnung {
+		text-transform: uppercase;
+		text-decoration: underline dashed;
+		text-underline-offset: 12px;
+		margin: 0 0 24px;
+		font-size: 3.2rem;
+		@include breakpoint(s) {
+			font-size: 4rem;
+		}
+		&:not(:first-child) {
+			margin-top: 24px;
+		}
+	}
 }
 
 p {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 dl {
-  dt {
-    font-weight: 700;
-  }
-  dd {
-    margin-bottom: 8px;
-  }
+	dt {
+		font-weight: 700;
+	}
+	dd {
+		margin-bottom: 8px;
+	}
 }
 
 .text-intro {
-  font-family: #{selectFont("headingFont")};
-  color: var(--siteHeadingColor);
-  font-weight: normal;
-  font-size: 32px;
-  @include breakpoint(m) {
-    font-size: 40px;
-  }
+	// font-family: #{selectFont("headingFont")};
+	color: var(--siteHeadingColor);
+	font-weight: normal;
+	font-size: 1.6rem;
+	@include breakpoint(m) {
+		font-size: 2rem;
+	}
 }
 
 .cms {
-  ul {
-    margin-left: 0.5em;
-    padding-left: 1em;
-    li {
-      margin-bottom: 4px;
-      &:before {
-        content: '•';
-        color: var(--supportColorDark);
-        padding-right: 8px;
-      }
-    }
-  }
+	ul {
+		margin-left: 0.5em;
+		padding-left: 1em;
+		li {
+			margin-bottom: 4px;
+			&:before {
+				content: "•";
+				color: var(--supportColorDark);
+				padding-right: 8px;
+			}
+		}
+	}
 }
