@@ -4,48 +4,42 @@
 	opacity: 0.5;
 }
 
-.experience {
-	--this-experience-height: calc(64px * var(--experience-height));
-	height: auto;
-    min-height: 64px;
+.years {
+	display: inline-block;
+	box-shadow: var(--shadow-elevation-low);
+	font-family: #{selectFont(headingFont)};
+	font-size: 2rem;
+	grid-column: 1 / -1;
 	padding: 4px;
-	margin-bottom: 2px;
-	display: grid;
-	grid-template-columns: 1fr auto;
-	border-bottom: 1px solid var(--supportColor);
-	grid-auto-rows: min-content;
-	gap: 0 20px;
-	align-content: start;
-	align-items: start;
-	justify-items: start;
-    position: relative;
-	@include breakpoint(m) {
-		width: 320px;
-        border-bottom: none;
-		height: var(--this-experience-height);
+	margin-bottom: 8px;
+	color: var(--siteBackground);
+	background-color: var(--supportDarkColor);
+	@include theme("dark") {
+		color: var(--siteFontColor);
 	}
-	&:hover {
-        .summary {
-            opacity: 1;
-		}
+}
+
+.experience {
+	padding: 8px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: var(--align-experience);
+}
+
+.container {
+	background: rgba(var(--mercuryRgb), 0.8);
+	box-shadow: var(--shadow-elevation-medium);
+	border-radius: 6px;
+	@include theme(dark) {
+		background: rgba(var(--supportDarkColorRgb), 0.8);
 	}
-    &.spanMultiple {
-        @include breakpoint(m) {
-            margin-top: calc(var(--this-experience-height) * -1 + 64px);
-        }
-    }
-    &:before {
-        @include breakpoint(m) {
-            content: '';
-            width: 1px;
-            height: calc(100% - 74px);
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 10px;
-            background: var(--supportColor);
-        }
-    }
+	border: 1px solid var(--fontColor);
+	padding: 8px;
+	position: relative;
+	height: 100%;
+	width: fit-content;
 }
 
 .title {
@@ -54,36 +48,21 @@
 	margin-bottom: 0;
 	display: inline-block;
 	font-family: #{selectFont("baseFont")};
-    @include breakpoint(m, max) {
-        display: grid;
-        grid-template-columns: 80px 1fr;
-        gap: 8px;
-    }
-}
-
-.years {
-    grid-column: 1 / 2;
-	@include breakpoint(m) {
-		display: none;
+	@include breakpoint(m, max) {
+		display: grid;
+		grid-template-columns: 80px 1fr;
+		gap: 8px;
 	}
 }
-
 
 .tag {
 	grid-column: 2 / 3;
 	border: 1px solid var(--supportColor);
 	padding: 2px;
 	font-size: 0.8rem;
+	margin: 0 4px;
 }
 
 .summary {
-	margin: 0;
 	font-size: 1.4rem;
-	display: none;
-	@include breakpoint(m) {
-		display: block;
-		opacity: 0;
-        grid-column: 1 / -1;
-	}
 }
-

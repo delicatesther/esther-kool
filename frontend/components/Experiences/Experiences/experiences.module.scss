@@ -2,6 +2,7 @@
 
 .experiences {
 	grid-column: 1 / -1;
+	--experienceWidth: 260px;
 }
 
 .lists {
@@ -11,7 +12,6 @@
 		--list-gap: 24px;
 		--row-alternating-color: rgba(var(--supportColorRgb), 0.1);
 		gap: var(--list-gap);
-		width: 70vw;
 		margin: 0 auto;
 	}
 }
@@ -21,36 +21,35 @@
 	@include breakpoint(m) {
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: repeat(auto-fill, 64px);
+		grid-template-rows: repeat(auto-fill, var(--experience-list-item-height));
 	}
 }
 
 .year {
 	display: grid;
 	grid-template-columns: 36px;
+	grid-template-rows: repeat(12, auto);
 	position: relative;
 	padding: 4px;
 	position: relative;
-    &:nth-child(even) {
-        background: var(--row-alternating-color);
-        &:after {
-            content: '';
-            width: var(--list-gap);
-            height: 64px;
-            position: absolute;
-            right: calc(var(--list-gap) * -1);
-            background: var(--row-alternating-color);
-            top: 0;
-        }
-    }
-	&.span &:before {
-		content: "";
-		width: 4px;
-		height: 2px;
-		left: 0;
-		top: 2px;
-		position: absolute;
-		background-color: var(--siteHeadingColor);
+	@include breakpoint(m) {
+		height: calc(var(--experience-list-item-height) * 64px);
+	}
+	&:nth-child(even) {
+		background: var(--row-alternating-color);
+		&:after {
+			content: "";
+			width: var(--list-gap);
+			height: 72px;
+			position: absolute;
+			right: calc(var(--list-gap) * -1);
+			background: var(--row-alternating-color);
+			top: 0;
+			grid-row: 1 / -1;
+		}
+	}
+	& span {
+		grid-row: 1 / -1;
 	}
 }
 
@@ -65,19 +64,23 @@
 }
 
 .experienceListItem {
-	min-height: 64px;
-    display: flex;
+	min-height: 72px;
+	display: flex;
 	flex-direction: column;
-    gap: 20px;
-    @include breakpoint(m) {
-        display: grid;
-        gap: 0 12px;
-        grid-template-rows: 64px;
-        grid-template-columns: repeat(auto-fit, minmax(320px, max-content));
-    }
+	gap: 8px;
+	@include breakpoint(m) {
+		height: calc(var(--experience-list-item-height) * 64px);
+		display: grid;
+		gap: 0 12px;
+		grid-template-rows: repeat(12, 6px);
+		grid-template-columns: repeat(
+			auto-fit,
+			minmax(var(--experienceWidth), max-content)
+		);
+	}
 	&:nth-child(even) {
-        background: var(--row-alternating-color);
-    }
+		background: var(--row-alternating-color);
+	}
 	&.hideMobile {
 		@include breakpoint(m, max) {
 			display: none;
@@ -88,7 +91,7 @@
 .spacer {
 	height: 0;
 	grid-column: span 1;
-    width: 24px;
+	width: 24px;
 }
 
 .experience {
