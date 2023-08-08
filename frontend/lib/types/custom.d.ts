@@ -11,6 +11,7 @@ import React, {
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     icon?: ReactNode,
+    iconLeft?: ReactNode,
     size?: "large" | "small",
     text?: string | number,
     className?: string,
