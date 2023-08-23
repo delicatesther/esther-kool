@@ -12,22 +12,25 @@ generator client {
 }
 
 model Experience {
-  id          String    @id @default(uuid()) @postgresql.Uuid
-  title       String    @default("")
-  titleNL     String    @default("")
-  status      String?   @default("draft")
-  summary     String    @default("")
-  summaryNL   String    @default("")
-  content     Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
-  contentNL   Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
-  publishDate DateTime?
-  from        DateTime  @postgresql.Date
-  to          DateTime? @postgresql.Date
-  author      User?     @relation("Experience_author", fields: [authorId], references: [id])
-  authorId    String?   @map("author") @postgresql.Uuid
-  tags        Tag[]     @relation("Experience_tags")
+  id             String        @id @default(uuid()) @postgresql.Uuid
+  title          String        @default("")
+  titleNL        String        @default("")
+  status         String?       @default("draft")
+  summary        String        @default("")
+  summaryNL      String        @default("")
+  content        Json          @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  contentNL      Json          @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  publishDate    DateTime?     @default(now())
+  from           DateTime      @postgresql.Date
+  to             DateTime?     @postgresql.Date
+  author         User?         @relation("Experience_author", fields: [authorId], references: [id])
+  authorId       String?       @map("author") @postgresql.Uuid
+  tags           Tag[]         @relation("Experience_tags")
+  organisation   Organisation? @relation("Experience_organisation", fields: [organisationId], references: [id])
+  organisationId String?       @map("organisation") @postgresql.Uuid
 
   @@index([authorId])
+  @@index([organisationId])
 }
 
 model Height {
@@ -35,6 +38,14 @@ model Height {
   cm               Int?
   createdAt        DateTime? @default(now())
   from_User_height User[]    @relation("User_height")
+}
+
+model Organisation {
+  id          String       @id @default(uuid()) @postgresql.Uuid
+  name        String       @default("")
+  nameNL      String       @default("")
+  experiences Experience[] @relation("Experience_organisation")
+  logo        String       @default("")
 }
 
 model Post {

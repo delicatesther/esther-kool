@@ -1,10 +1,10 @@
 import React from "react";
 import { useUser } from "@enk/utils";
 import classNames from "classnames/bind";
-import styling from "./experience.module.scss";
+import style from "./experience.module.scss";
 import Link from "next/link";
 
-const cx = classNames.bind(styling);
+const cx = classNames.bind(style);
 
 export const Experience = ({
 	id,
@@ -15,6 +15,7 @@ export const Experience = ({
 	from,
 	to,
 	className,
+	organisation,
 }) => {
 	const me = useUser();
 
@@ -26,23 +27,28 @@ export const Experience = ({
 
 	return (
 		<article className={cx(["experience"], [status], [className])}>
-			<time dateTime={`${fromYear}`} className={styling.years}>
+			<time dateTime={`${fromYear}`} className={style.years}>
 				{fromYear}
 				{toYear && toYear !== fromYear && ` - ${toYear}`}
 			</time>
-			<div className={styling.container}>
-				<Link href={`/experience/${id}`}>
-					<h3 className={styling.title}>
+			<div className={style.container}>
+				{organisation && (
+					<img src={`/logos/${organisation.logo}.svg`} className={style.logo} />
+				)}
+				<Link href={`/experience/${id}`} className={style.titleLink}>
+					<h3 className={style.title}>
 						{title}
 						{status === "draft" && " - Draft"}
 					</h3>
 				</Link>
-				{tags.map((tag) => (
-					<span key={tag.id} className={styling.tag}>
-						{tag.name}
-					</span>
-				))}
-				{summary && <p className={styling.summary}>{summary}</p>}
+				<div className={style.tags}>
+					{tags.map((tag) => (
+						<span key={tag.id} className={style.tag}>
+							{tag.name}
+						</span>
+					))}
+				</div>
+				{summary && <p className={style.summary}>{summary}</p>}
 			</div>
 		</article>
 	);

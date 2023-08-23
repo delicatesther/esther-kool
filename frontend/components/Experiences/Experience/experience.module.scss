@@ -23,10 +23,14 @@
 	padding: 8px;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
 	@include breakpoint(m) {
 		height: 100%;
 		justify-content: flex-start;
-		align-items: var(--align-experience);
+	}
+	:global(.even) & {
+		align-items: flex-end;
+		text-align: right;
 	}
 }
 
@@ -38,31 +42,116 @@
 		background: rgba(var(--supportDarkColorRgb), 0.8);
 	}
 	border: 1px solid var(--fontColor);
-	padding: 8px;
+	padding: 8px 8px 8px 16px;
 	position: relative;
 	height: 100%;
 	max-width: 25em;
-	@include breakpoint(m) {
-		width: fit-content;
+	display: grid;
+	align-items: start;
+	justify-content: start;
+	grid-template-columns: 1fr minmax(0, 56px);
+	grid-template-areas:
+		"title logo"
+		"summary summary"
+		"tags tags";
+	gap: 8px 12px;
+	:global(.even) & {
+		justify-content: end;
+		padding: 8px 16px 8px 8px;
+		grid-template-columns: minmax(0, 56px) 1fr;
+		grid-template-areas:
+			"logo title"
+			"summary summary"
+			"tags tags";
+	}
+}
+
+.titleLink {
+	grid-area: title;
+	--highlight-color: var(--deepSky);
+	text-decoration: none;
+	transition: 0.2s ease-in-out;
+	&:hover {
+		--highlight-color: var(--governorBay);
+		transform: scale(1.02);
+		color: var(--highlight-color);
+		@include theme(dark) {
+			--highlight-color: var(--white);
+			color: var(--white);
+		}
 	}
 }
 
 .title {
-	grid-column: 1 / 2;
-	font-size: 1.6rem;
+	font-size: 3.2rem;
+	line-height: 3.2rem;
 	margin-bottom: 0;
-	display: inline-block;
-	font-family: #{selectFont("baseFont")};
+	color: inherit;
+	position: relative;
+	display: inline;
+	background: -webkit-linear-gradient(var(--midnight), var(--highlight-color));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	:global(.even) & {
+		text-align: right;
+		text-underline-position: right;
+	}
+	@include theme(dark) {
+		background: -webkit-linear-gradient(var(--white), var(--highlight-color));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	&:after {
+		content: "";
+		border-bottom: 2px solid currentColor;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: inline;
+	}
+	:global(.even) & {
+		&:after {
+			content: none;
+		}
+		&:before {
+			content: "";
+			border-bottom: 2px solid currentColor;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			display: block;
+		}
+	}
+}
+
+.tags {
+	grid-area: tags;
+	align-self: end;
+	margin-top: auto;
 }
 
 .tag {
-	grid-column: 2 / 3;
 	border: 1px solid var(--supportColor);
 	padding: 2px;
 	font-size: 0.8rem;
-	margin: 0 4px;
+	margin-right: 4px;
 }
 
 .summary {
 	font-size: 1.4rem;
+	grid-area: summary;
+}
+
+.logo {
+	width: 56px;
+	height: 36px;
+	object-fit: contain;
+	margin-left: 12px;
+	grid-area: logo;
+	justify-self: end;
+	@include theme("dark") {
+		filter: invert(1);
+	}
 }

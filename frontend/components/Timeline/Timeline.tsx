@@ -1,8 +1,10 @@
-import React from 'react'
-import { useQuery } from '@apollo/client';
-import { ALL_EXPERIENCES_QUERY } from '@enk/lib';
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { ALL_EXPERIENCES_QUERY } from "@enk/lib";
 import { Experience } from "@enk/components/Experiences";
-import style from './timeline.module.scss';
+import style from "./timeline.module.scss";
+import classNames from "classnames/bind";
+const cx = classNames.bind(style);
 
 export const Timeline = () => {
 	const { data, loading, error } = useQuery(ALL_EXPERIENCES_QUERY, {
@@ -19,7 +21,7 @@ export const Timeline = () => {
 	if (loading) return <p>Loading...</p>;
 	const { experiences } = data || [];
 
-    function generateYearsBetween(startYear = 2000, endYear) {
+	function generateYearsBetween(startYear = 2000, endYear) {
 		const endDate = endYear || new Date().getFullYear();
 		let years = [];
 
@@ -30,36 +32,32 @@ export const Timeline = () => {
 		return years;
 	}
 
-    let arr = experiences.map(experience => {
-        const {from, to} = experience || "";
-        const fromYear = new Date(from).getFullYear();
+	let arr = experiences.map((experience) => {
+		const { from, to } = experience || "";
+		const fromYear = new Date(from).getFullYear();
 		const toYear = !!to ? new Date(to).getFullYear() : fromYear;
-        const years = generateYearsBetween(fromYear, toYear);
-        return {...experience, fromYear, toYear, years}
-    })
+		const years = generateYearsBetween(fromYear, toYear);
+		return { ...experience, fromYear, toYear, years };
+	});
 
-  return (
-    <div className={style.wrapper}>
-        <h3>What I&apos;ve been up to</h3>
-        <div className={style.container}>
-            <div aria-hidden className={style.timelineBar}>
-            </div>
-            <ol className={style.list}>
-                {
-                    arr.map(experience => {
-                        const noExperiences = Math.max(experience.years.length, 1);
-                        const cssVar = {
-                            "--list-item-years": noExperiences,
-                        } as React.CSSProperties;
-                        return (
-                        <li key={experience.id} className={style.listItem} style={{...cssVar}}>
-                            <Experience {...experience} />
-                        </li>
-                        )
-                    })
-                }
-            </ol>
-        </div>
-    </div>
-  )
-}
+	return (
+		<div className={style.wrapper}>
+			<h3>What I&apos;ve been up to</h3>
+			<div className={style.container}>
+				<div aria-hidden className={style.timelineBar}></div>
+				<ol className={style.list}>
+					{arr.map((experience, index) => {
+						return (
+							<li
+								key={experience.id}
+								className={cx(["listItem"], { even: index % 2 == 0 })}
+							>
+								<Experience {...experience} />
+							</li>
+						);
+					})}
+				</ol>
+			</div>
+		</div>
+	);
+};

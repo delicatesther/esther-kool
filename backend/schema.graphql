@@ -16,6 +16,7 @@ type Experience {
   author: User
   tags(where: TagWhereInput! = {}, orderBy: [TagOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TagWhereUniqueInput): [Tag!]
   tagsCount(where: TagWhereInput! = {}): Int
+  organisation: Organisation
 }
 
 type Experience_content_Document {
@@ -49,6 +50,7 @@ input ExperienceWhereInput {
   to: CalendarDayNullableFilter
   author: UserWhereInput
   tags: TagManyRelationFilter
+  organisation: OrganisationWhereInput
 }
 
 input IDFilter {
@@ -180,6 +182,7 @@ input ExperienceUpdateInput {
   to: CalendarDay
   author: UserRelateToOneForUpdateInput
   tags: TagRelateToManyForUpdateInput
+  organisation: OrganisationRelateToOneForUpdateInput
 }
 
 input UserRelateToOneForUpdateInput {
@@ -193,6 +196,12 @@ input TagRelateToManyForUpdateInput {
   set: [TagWhereUniqueInput!]
   create: [TagCreateInput!]
   connect: [TagWhereUniqueInput!]
+}
+
+input OrganisationRelateToOneForUpdateInput {
+  create: OrganisationCreateInput
+  connect: OrganisationWhereUniqueInput
+  disconnect: Boolean
 }
 
 input ExperienceUpdateArgs {
@@ -213,6 +222,7 @@ input ExperienceCreateInput {
   to: CalendarDay
   author: UserRelateToOneForCreateInput
   tags: TagRelateToManyForCreateInput
+  organisation: OrganisationRelateToOneForCreateInput
 }
 
 input UserRelateToOneForCreateInput {
@@ -223,6 +233,11 @@ input UserRelateToOneForCreateInput {
 input TagRelateToManyForCreateInput {
   create: [TagCreateInput!]
   connect: [TagWhereUniqueInput!]
+}
+
+input OrganisationRelateToOneForCreateInput {
+  create: OrganisationCreateInput
+  connect: OrganisationWhereUniqueInput
 }
 
 type Height {
@@ -274,6 +289,74 @@ input HeightUpdateArgs {
 input HeightCreateInput {
   cm: Int
   createdAt: DateTime
+}
+
+type Organisation {
+  id: ID!
+  name: String
+  nameNL: String
+  experiences(where: ExperienceWhereInput! = {}, orderBy: [ExperienceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ExperienceWhereUniqueInput): [Experience!]
+  experiencesCount(where: ExperienceWhereInput! = {}): Int
+  logo: String
+}
+
+input OrganisationWhereUniqueInput {
+  id: ID
+}
+
+input OrganisationWhereInput {
+  AND: [OrganisationWhereInput!]
+  OR: [OrganisationWhereInput!]
+  NOT: [OrganisationWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  nameNL: StringFilter
+  experiences: ExperienceManyRelationFilter
+  logo: StringFilter
+}
+
+input ExperienceManyRelationFilter {
+  every: ExperienceWhereInput
+  some: ExperienceWhereInput
+  none: ExperienceWhereInput
+}
+
+input OrganisationOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  nameNL: OrderDirection
+  logo: OrderDirection
+}
+
+input OrganisationUpdateInput {
+  name: String
+  nameNL: String
+  experiences: ExperienceRelateToManyForUpdateInput
+  logo: String
+}
+
+input ExperienceRelateToManyForUpdateInput {
+  disconnect: [ExperienceWhereUniqueInput!]
+  set: [ExperienceWhereUniqueInput!]
+  create: [ExperienceCreateInput!]
+  connect: [ExperienceWhereUniqueInput!]
+}
+
+input OrganisationUpdateArgs {
+  where: OrganisationWhereUniqueInput!
+  data: OrganisationUpdateInput!
+}
+
+input OrganisationCreateInput {
+  name: String
+  nameNL: String
+  experiences: ExperienceRelateToManyForCreateInput
+  logo: String
+}
+
+input ExperienceRelateToManyForCreateInput {
+  create: [ExperienceCreateInput!]
+  connect: [ExperienceWhereUniqueInput!]
 }
 
 type Post {
@@ -368,12 +451,6 @@ input PostManyRelationFilter {
   none: PostWhereInput
 }
 
-input ExperienceManyRelationFilter {
-  every: ExperienceWhereInput
-  some: ExperienceWhereInput
-  none: ExperienceWhereInput
-}
-
 input TagOrderByInput {
   id: OrderDirection
   name: OrderDirection
@@ -394,13 +471,6 @@ input PostRelateToManyForUpdateInput {
   connect: [PostWhereUniqueInput!]
 }
 
-input ExperienceRelateToManyForUpdateInput {
-  disconnect: [ExperienceWhereUniqueInput!]
-  set: [ExperienceWhereUniqueInput!]
-  create: [ExperienceCreateInput!]
-  connect: [ExperienceWhereUniqueInput!]
-}
-
 input TagUpdateArgs {
   where: TagWhereUniqueInput!
   data: TagUpdateInput!
@@ -416,11 +486,6 @@ input TagCreateInput {
 input PostRelateToManyForCreateInput {
   create: [PostCreateInput!]
   connect: [PostWhereUniqueInput!]
-}
-
-input ExperienceRelateToManyForCreateInput {
-  create: [ExperienceCreateInput!]
-  connect: [ExperienceWhereUniqueInput!]
 }
 
 type User {
@@ -590,6 +655,12 @@ type Mutation {
   updateHeights(data: [HeightUpdateArgs!]!): [Height]
   deleteHeight(where: HeightWhereUniqueInput!): Height
   deleteHeights(where: [HeightWhereUniqueInput!]!): [Height]
+  createOrganisation(data: OrganisationCreateInput!): Organisation
+  createOrganisations(data: [OrganisationCreateInput!]!): [Organisation]
+  updateOrganisation(where: OrganisationWhereUniqueInput!, data: OrganisationUpdateInput!): Organisation
+  updateOrganisations(data: [OrganisationUpdateArgs!]!): [Organisation]
+  deleteOrganisation(where: OrganisationWhereUniqueInput!): Organisation
+  deleteOrganisations(where: [OrganisationWhereUniqueInput!]!): [Organisation]
   createPost(data: PostCreateInput!): Post
   createPosts(data: [PostCreateInput!]!): [Post]
   updatePost(where: PostWhereUniqueInput!, data: PostUpdateInput!): Post
@@ -643,6 +714,9 @@ type Query {
   heights(where: HeightWhereInput! = {}, orderBy: [HeightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeightWhereUniqueInput): [Height!]
   height(where: HeightWhereUniqueInput!): Height
   heightsCount(where: HeightWhereInput! = {}): Int
+  organisations(where: OrganisationWhereInput! = {}, orderBy: [OrganisationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: OrganisationWhereUniqueInput): [Organisation!]
+  organisation(where: OrganisationWhereUniqueInput!): Organisation
+  organisationsCount(where: OrganisationWhereInput! = {}): Int
   posts(where: PostWhereInput! = {}, orderBy: [PostOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PostWhereUniqueInput): [Post!]
   post(where: PostWhereUniqueInput!): Post
   postsCount(where: PostWhereInput! = {}): Int

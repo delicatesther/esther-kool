@@ -24,7 +24,7 @@ __export(keystone_exports, {
 });
 module.exports = __toCommonJS(keystone_exports);
 var import_config = require("dotenv/config");
-var import_core5 = require("@keystone-6/core");
+var import_core6 = require("@keystone-6/core");
 
 // schemas/Experience.ts
 var import_core = require("@keystone-6/core");
@@ -99,7 +99,7 @@ var Experience = (0, import_core.list)({
       links: true,
       dividers: true
     }),
-    publishDate: (0, import_fields.timestamp)(),
+    publishDate: (0, import_fields.timestamp)({ defaultValue: { kind: "now" } }),
     from: (0, import_fields.calendarDay)({ validation: { isRequired: true } }),
     to: (0, import_fields.calendarDay)(),
     // Here is the link from post => author.
@@ -112,6 +112,16 @@ var Experience = (0, import_core.list)({
         inlineEdit: { fields: ["name", "email"] },
         linkToItem: true,
         inlineConnect: true
+      },
+      hooks: {
+        resolveInput({ resolvedData, operation, context }) {
+          if (operation === "create") {
+            return {
+              connect: { id: context.session.itemId }
+            };
+          }
+          return resolvedData.user;
+        }
       }
     }),
     // We also link posts to tags. This is a many <=> many linking.
@@ -119,29 +129,54 @@ var Experience = (0, import_core.list)({
       ref: "Tag.experiences",
       ui: {
         displayMode: "cards",
-        cardFields: ["name"],
-        inlineEdit: { fields: ["name"] },
+        cardFields: ["name", "nameNL"],
+        inlineEdit: { fields: ["name", "nameNL"] },
         linkToItem: true,
         inlineConnect: true,
-        inlineCreate: { fields: ["name"] }
+        inlineCreate: { fields: ["name", "nameNL"] }
       },
       many: true
+    }),
+    organisation: (0, import_fields.relationship)({
+      ref: "Organisation.experiences",
+      ui: {
+        displayMode: "cards",
+        cardFields: ["name", "nameNL", "logo"],
+        inlineEdit: { fields: ["name", "nameNL", "logo"] },
+        linkToItem: true,
+        inlineConnect: true,
+        inlineCreate: { fields: ["name", "nameNL", "logo"] }
+      }
     })
   }
 });
 
-// schemas/Post.ts
+// schemas/Organisation.ts
 var import_core2 = require("@keystone-6/core");
 var import_access2 = require("@keystone-6/core/access");
 var import_fields2 = require("@keystone-6/core/fields");
-var import_fields_document2 = require("@keystone-6/fields-document");
-var Post = (0, import_core2.list)({
+var Organisation = (0, import_core2.list)({
   access: import_access2.allowAll,
   fields: {
-    title: (0, import_fields2.text)(),
+    name: (0, import_fields2.text)(),
+    nameNL: (0, import_fields2.text)({ label: "Naam (NL)" }),
+    experiences: (0, import_fields2.relationship)({ ref: "Experience.organisation", many: true }),
+    logo: (0, import_fields2.text)()
+  }
+});
+
+// schemas/Post.ts
+var import_core3 = require("@keystone-6/core");
+var import_access3 = require("@keystone-6/core/access");
+var import_fields3 = require("@keystone-6/core/fields");
+var import_fields_document2 = require("@keystone-6/fields-document");
+var Post = (0, import_core3.list)({
+  access: import_access3.allowAll,
+  fields: {
+    title: (0, import_fields3.text)(),
     // Having the status here will make it easy for us to choose whether to display
     // posts on a live site.
-    status: (0, import_fields2.select)({
+    status: (0, import_fields3.select)({
       options: [
         { label: "Published", value: "published" },
         { label: "Draft", value: "draft" }
@@ -168,10 +203,10 @@ var Post = (0, import_core2.list)({
       links: true,
       dividers: true
     }),
-    publishDate: (0, import_fields2.timestamp)(),
+    publishDate: (0, import_fields3.timestamp)(),
     // Here is the link from post => author.
     // We've configured its UI display quite a lot to make the experience of editing posts better.
-    author: (0, import_fields2.relationship)({
+    author: (0, import_fields3.relationship)({
       ref: "User.posts",
       ui: {
         displayMode: "cards",
@@ -182,7 +217,7 @@ var Post = (0, import_core2.list)({
       }
     }),
     // We also link posts to tags. This is a many <=> many linking.
-    tags: (0, import_fields2.relationship)({
+    tags: (0, import_fields3.relationship)({
       ref: "Tag.posts",
       ui: {
         displayMode: "cards",
@@ -198,54 +233,54 @@ var Post = (0, import_core2.list)({
 });
 
 // schemas/Tag.ts
-var import_core3 = require("@keystone-6/core");
-var import_access3 = require("@keystone-6/core/access");
-var import_fields3 = require("@keystone-6/core/fields");
-var Tag = (0, import_core3.list)({
-  access: import_access3.allowAll,
+var import_core4 = require("@keystone-6/core");
+var import_access4 = require("@keystone-6/core/access");
+var import_fields4 = require("@keystone-6/core/fields");
+var Tag = (0, import_core4.list)({
+  access: import_access4.allowAll,
   ui: {
     isHidden: true
   },
   fields: {
-    name: (0, import_fields3.text)(),
-    nameNL: (0, import_fields3.text)({ label: "Tag (NL)" }),
-    posts: (0, import_fields3.relationship)({ ref: "Post.tags", many: true }),
-    experiences: (0, import_fields3.relationship)({ ref: "Experience.tags", many: true })
+    name: (0, import_fields4.text)(),
+    nameNL: (0, import_fields4.text)({ label: "Tag (NL)" }),
+    posts: (0, import_fields4.relationship)({ ref: "Post.tags", many: true }),
+    experiences: (0, import_fields4.relationship)({ ref: "Experience.tags", many: true })
   }
 });
 
 // schemas/User.ts
-var import_core4 = require("@keystone-6/core");
-var import_access4 = require("@keystone-6/core/access");
-var import_fields4 = require("@keystone-6/core/fields");
-var Height = (0, import_core4.list)({
-  access: import_access4.allowAll,
+var import_core5 = require("@keystone-6/core");
+var import_access5 = require("@keystone-6/core/access");
+var import_fields5 = require("@keystone-6/core/fields");
+var Height = (0, import_core5.list)({
+  access: import_access5.allowAll,
   fields: {
-    cm: (0, import_fields4.integer)({ label: "Height (in cm)" }),
-    createdAt: (0, import_fields4.timestamp)({ defaultValue: { kind: "now" } })
+    cm: (0, import_fields5.integer)({ label: "Height (in cm)" }),
+    createdAt: (0, import_fields5.timestamp)({ defaultValue: { kind: "now" } })
   }
 });
-var Weight = (0, import_core4.list)({
-  access: import_access4.allowAll,
+var Weight = (0, import_core5.list)({
+  access: import_access5.allowAll,
   fields: {
-    g: (0, import_fields4.integer)({ label: "Weight (in g)" }),
-    createdAt: (0, import_fields4.timestamp)({ defaultValue: { kind: "now" } })
+    g: (0, import_fields5.integer)({ label: "Weight (in g)" }),
+    createdAt: (0, import_fields5.timestamp)({ defaultValue: { kind: "now" } })
   }
 });
-var User = (0, import_core4.list)({
-  access: import_access4.allowAll,
+var User = (0, import_core5.list)({
+  access: import_access5.allowAll,
   fields: {
-    name: (0, import_fields4.text)({ validation: { isRequired: true } }),
-    email: (0, import_fields4.text)({
+    name: (0, import_fields5.text)({ validation: { isRequired: true } }),
+    email: (0, import_fields5.text)({
       validation: { isRequired: true },
       isIndexed: "unique",
       isFilterable: true
     }),
-    password: (0, import_fields4.password)({ validation: { isRequired: true } }),
-    posts: (0, import_fields4.relationship)({ ref: "Post.author", many: true }),
-    experiences: (0, import_fields4.relationship)({ ref: "Experience.author", many: true }),
-    birthdate: (0, import_fields4.calendarDay)(),
-    height: (0, import_fields4.relationship)({
+    password: (0, import_fields5.password)({ validation: { isRequired: true } }),
+    posts: (0, import_fields5.relationship)({ ref: "Post.author", many: true }),
+    experiences: (0, import_fields5.relationship)({ ref: "Experience.author", many: true }),
+    birthdate: (0, import_fields5.calendarDay)(),
+    height: (0, import_fields5.relationship)({
       ref: "Height",
       many: true,
       ui: {
@@ -256,7 +291,7 @@ var User = (0, import_core4.list)({
         inlineConnect: false
       }
     }),
-    weight: (0, import_fields4.relationship)({
+    weight: (0, import_fields5.relationship)({
       ref: "Weight",
       many: true,
       ui: {
@@ -279,6 +314,7 @@ var User = (0, import_core4.list)({
 var lists = {
   Experience,
   Height,
+  Organisation,
   Post,
   Tag,
   User,
@@ -321,7 +357,7 @@ var databaseURL = process.env.DATABASE_URL || "https://xoolgtbnrumkdxlowjad.supa
 var frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 var keystone_default = withAuth(
   // Using the config function helps typescript guide you to the available options.
-  (0, import_core5.config)({
+  (0, import_core6.config)({
     server: {
       cors: {
         origin: frontendUrl,

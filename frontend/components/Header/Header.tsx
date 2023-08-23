@@ -13,35 +13,41 @@ import style from "./header.module.scss";
 const cx = classNames.bind(style);
 
 export const Header = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const user = useUser();
+	const [mounted, setMounted] = useState(false);
+	const { theme, setTheme } = useTheme();
+	const user = useUser();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
-  if (!mounted) {
-    return null;
-  }
+	if (!mounted) {
+		return null;
+	}
 
-  return (
-    <header className={cx(["header"], "header")}>
-      <Link href="/" className={cx(["link"], ["logo"])}>
-        <EstherKool title="Go to homepage Esther Kool" />
-      </Link>
-      <div className={style.content}>
-        {user && (
-          <>
-            <Link href="/gezondheid" className="anchor">
+	return (
+		<header className={cx(["header"], "header")}>
+			<Link href="/" className={cx(["link"], ["logo"])}>
+				<EstherKool title="Go to homepage Esther Kool" />
+			</Link>
+			<div className={style.content}>
+				{user && (
+					<>
+						{/* <Link href="/gezondheid" className="anchor">
               Gezondheid
-            </Link>
-            <SignOut size="small" />
-          </>
-        )}
-        {!user && <Link href="/signin">Sign in</Link>}
-        <Button onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))} size="small" icon={!theme || theme === "light" ? <Moon/> : <Sun/>}/>
-      </div>
-    </header>
-  );
+            </Link> */}
+						<SignOut size="small" />
+					</>
+				)}
+				{!user && <Link href="/signin">Sign in</Link>}
+				<Button
+					onClick={() =>
+						theme === "light" ? setTheme("dark") : setTheme("light")
+					}
+					size="small"
+					icon={!theme || theme === "light" ? <Moon /> : <Sun />}
+				/>
+			</div>
+		</header>
+	);
 };
