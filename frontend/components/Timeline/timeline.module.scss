@@ -6,8 +6,9 @@
 
 .container {
 	position: relative;
-	margin-top: 88px;
-	margin-bottom: 88px;
+	@include breakpoint(m) {
+		margin: 88px 0;
+	}
 }
 
 .timelineBar {
@@ -45,6 +46,7 @@
 	grid-column: span 1;
 	position: relative;
 	grid-row: span var(--list-item-years);
+	--align-content: right;
 	&:before {
 		@include breakpoint(m) {
 			content: "";
@@ -61,7 +63,7 @@
 		@include breakpoint(m) {
 			transform: translateY(-20px);
 			--align-experience: flex-end;
-			text-align: right;
+			text-align: var(--align-content);
 			grid-column-start: 1;
 		}
 		&:before {
@@ -69,6 +71,7 @@
 		}
 	}
 	&:nth-child(even) {
+		align-content: left;
 		@include breakpoint(m) {
 			--align-experience: flex-start;
 			grid-column-start: 2;

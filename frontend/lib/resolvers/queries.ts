@@ -30,6 +30,11 @@ query ALL_EXPERIENCES_QUERY($orderBy: [ExperienceOrderByInput!]!) {
       name
       nameNL
     }
+    organisation {
+      name
+      nameNL
+      logo
+    }
   }
 }
 `;
@@ -51,6 +56,11 @@ query EXPERIENCES_QUERY($where: ExperienceWhereInput) {
     tags {
       id
       name
+    }
+    organisation {
+      name
+      nameNL
+      logo
     }
   }
 }
@@ -74,6 +84,11 @@ query Experience($where: ExperienceWhereUniqueInput!) {
       name
       nameNL
       id
+    }
+    organisation {
+      name
+      nameNL
+      logo
     }
   }
 }

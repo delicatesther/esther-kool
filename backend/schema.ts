@@ -1,6 +1,7 @@
 import {
   Experience,
   Height,
+  Organisation,
   Post,
   Tag,
   User,
@@ -10,6 +11,7 @@ import {
 export const lists = {
   Experience,
   Height,
+  Organisation,
   Post,
   Tag,
   User,

@@ -1,6 +1,5 @@
-import { list, ListConfig } from '@keystone-6/core';
+import { list } from '@keystone-6/core';
 import { allowAll } from '@keystone-6/core/access';
-import { Lists } from ".keystone/types";
 import {
     text,
     relationship,
@@ -78,7 +77,7 @@ export const Experience = list({
             links: true,
             dividers: true,
         }),
-        publishDate: timestamp(),
+        publishDate: timestamp({ defaultValue: { kind: 'now' } }),
         from: calendarDay({ validation: { isRequired: true } }),
         to: calendarDay(),
         // Here is the link from post => author.
@@ -92,19 +91,40 @@ export const Experience = list({
                 linkToItem: true,
                 inlineConnect: true,
             },
+            hooks: {
+                resolveInput({ resolvedData, operation, context }) {
+                  if (operation === 'create') {
+                    return {
+                      connect: { id: context.session.itemId },
+                    };
+                  }
+                  return resolvedData.user;
+                },
+              },
         }),
         // We also link posts to tags. This is a many <=> many linking.
         tags: relationship({
             ref: 'Tag.experiences',
             ui: {
                 displayMode: 'cards',
-                cardFields: ['name'],
-                inlineEdit: { fields: ['name'] },
+                cardFields: ['name', 'nameNL'],
+                inlineEdit: { fields: ['name', 'nameNL'] },
                 linkToItem: true,
                 inlineConnect: true,
-                inlineCreate: { fields: ['name'] },
+                inlineCreate: { fields: ['name', 'nameNL'] },
             },
             many: true
+        }),
+        organisation: relationship({
+            ref: 'Organisation.experiences',
+            ui: {
+                displayMode: 'cards',
+                cardFields: ['name', 'nameNL', 'logo'],
+                inlineEdit: { fields: ['name','nameNL', 'logo'] },
+                linkToItem: true,
+                inlineConnect: true,
+                inlineCreate: { fields: ['name', 'nameNL', 'logo'] },
+            },
         })
     }
 });

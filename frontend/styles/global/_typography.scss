@@ -159,7 +159,7 @@ dl {
 }
 
 .text-intro {
-	// font-family: #{selectFont("headingFont")};
+	font-family: #{selectFont("headingFont")};
 	color: var(--siteHeadingColor);
 	font-weight: normal;
 	font-size: 1.6rem;

@@ -1,56 +1,61 @@
 @use "../../styles/config" as *;
 
 .header {
-  position: sticky;
-  padding: 8px 16px;
-  margin-bottom: 40px;
-  z-index: z(header);
-  background: linear-gradient(135deg, var(--mercury) 0%,var(--white) 100%);
-  box-shadow: var(--shadow-elevation-low);
-  @include theme(dark) {
-    background: var(--mineshaft);
-  }
-  @include breakpoint(s) {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    align-items: center;
-    justify-items: end;
-    padding: 16px 72px 16px;
-    margin-bottom: 80px;
-  }
+	position: sticky;
+	padding: 8px 16px;
+	margin-bottom: 40px;
+	z-index: z(header);
+	background: linear-gradient(135deg, var(--mercury) 0%, var(--white) 100%);
+	box-shadow: var(--shadow-elevation-low);
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	align-items: center;
+	justify-items: end;
+	@include theme(dark) {
+		background: var(--mineshaft);
+	}
+	@include breakpoint(s) {
+		padding: 16px 72px 16px;
+		margin-bottom: 80px;
+	}
 }
 
 .logo {
-  justify-self: start;
-  svg {
-    width: 200px;
-    height: 45.33px;
-    transition: 0.2s ease-in-out;
-  }
+	justify-self: start;
+	svg {
+		width: 200px;
+		height: 45.33px;
+		transition: 0.2s ease-in-out;
+	}
 }
 
 .link {
-  transition: 0.2s ease-in-out;
-  border: 2px dotted transparent;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--siteFontColor);
-  @include breakpoint(s, max) {
-    margin-bottom: 16px;
-  }
-  @include hoverFocusActiveStyling(transform, $value: none, $hoverValue: scale(1.05), $focusValue: scale(1.05));
-  @include hoverFocusActiveStyling(
-    transform,
-    $value: none,
-    $hoverValue: scale(1.05),
-    $focusValue: scale(1.05),
-    $child: "svg"
-  );
+	transition: 0.2s ease-in-out;
+	border: 2px dotted transparent;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--siteFontColor);
+	@include breakpoint(s, max) {
+		margin-bottom: 16px;
+	}
+	@include hoverFocusActiveStyling(
+		transform,
+		$value: none,
+		$hoverValue: scale(1.05),
+		$focusValue: scale(1.05)
+	);
+	@include hoverFocusActiveStyling(
+		transform,
+		$value: none,
+		$hoverValue: scale(1.05),
+		$focusValue: scale(1.05),
+		$child: "svg"
+	);
 }
 
 .content {
-  display: flex;
-  align-items: center;
-  gap: 8px 16px;
+	display: flex;
+	align-items: center;
+	gap: 8px 16px;
 }
