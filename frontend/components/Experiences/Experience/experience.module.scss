@@ -89,12 +89,18 @@
 	color: inherit;
 	position: relative;
 	display: inline;
-	background: -webkit-linear-gradient(var(--midnight), var(--highlight-color));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+
 	:global(.even) & {
 		text-align: right;
 		text-underline-position: right;
+	}
+	&:not(.titleSingle) {
+		background: -webkit-linear-gradient(
+			var(--midnight),
+			var(--highlight-color)
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 	@include theme(dark) {
 		background: -webkit-linear-gradient(var(--white), var(--highlight-color));
@@ -122,6 +128,20 @@
 			bottom: 0;
 			right: 0;
 			display: block;
+		}
+	}
+}
+
+.titleSingle {
+	grid-area: title;
+	&:before,
+	&:after {
+		content: none;
+	}
+	:global(.even) & {
+		&:before,
+		&:after {
+			content: none;
 		}
 	}
 }
