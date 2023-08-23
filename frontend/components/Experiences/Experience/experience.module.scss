@@ -101,11 +101,11 @@
 		);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-	}
-	@include theme(dark) {
-		background: -webkit-linear-gradient(var(--white), var(--highlight-color));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+		@include theme(dark) {
+			background: -webkit-linear-gradient(var(--white), var(--highlight-color));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 	}
 	&:after {
 		content: "";
