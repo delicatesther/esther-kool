@@ -16,6 +16,7 @@ export const Experience = ({
 	to,
 	className,
 	organisation,
+	content,
 }) => {
 	const me = useUser();
 
@@ -35,12 +36,19 @@ export const Experience = ({
 				{organisation && (
 					<img src={`/logos/${organisation.logo}.svg`} className={style.logo} />
 				)}
-				<Link href={`/experience/${id}`} className={style.titleLink}>
-					<h3 className={style.title}>
+				{!!content?.document[0]?.children[0]?.text?.length ? (
+					<Link href={`/experience/${id}`} className={style.titleLink}>
+						<h3 className={style.title}>
+							{title}
+							{status === "draft" && " - Draft"}
+						</h3>
+					</Link>
+				) : (
+					<h3 className={cx(["titleSingle"], ["title"])}>
 						{title}
 						{status === "draft" && " - Draft"}
 					</h3>
-				</Link>
+				)}
 				<div className={style.tags}>
 					{tags.map((tag) => (
 						<span key={tag.id} className={style.tag}>
