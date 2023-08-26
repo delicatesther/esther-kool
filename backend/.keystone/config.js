@@ -393,9 +393,7 @@ var { withAuth } = (0, import_auth.createAuth)({
 });
 var sessionMaxAge = 60 * 60 * 24 * 30;
 var session = (0, import_session.statelessSessions)({
-  maxAge: sessionMaxAge,
-  secret: sessionSecret,
-  secure: false
+  secret: sessionSecret
 });
 
 // keystone.ts
