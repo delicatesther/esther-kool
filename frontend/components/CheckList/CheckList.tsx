@@ -5,10 +5,10 @@ import {
 	UPDATE_CHECKLIST_MUTATION,
 } from "lib/resolvers";
 import { useMutation, useQuery } from "@apollo/client";
-import { CheckListItem } from "./CheckListItem/CheckListItem";
 import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { CheckListItemCheckedData, CheckListProps } from "@enk/types";
+import { CheckListItem } from "./CheckListItem";
 
 export const CheckList = ({ title, categories, lang }: CheckListProps) => {
 	const [state, setState] = useState([]);
