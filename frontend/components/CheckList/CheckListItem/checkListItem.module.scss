@@ -11,6 +11,10 @@
 .name {
 	flex: 0 1 fit-content;
 	margin: 0;
+	.checked & {
+		text-decoration: line-through;
+		opacity: 0.3;
+	}
 	@include theme(dark) {
 		color: var(--white);
 	}
@@ -19,8 +23,24 @@
 .desc {
 	flex: 1 1 fit-content;
 	margin: 0;
+	.checked & {
+		text-decoration: line-through;
+		opacity: 0.3;
+	}
 }
 
 .button {
 	flex: 0 0 40px;
+}
+
+.tags {
+	.checked & {
+		opacity: 0.3;
+	}
+	span {
+		border: 1px solid var(--supportColor);
+		padding: 2px;
+		font-size: 1rem;
+		margin-right: 4px;
+	}
 }

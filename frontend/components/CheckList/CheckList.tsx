@@ -4,16 +4,23 @@ import {
 	ALL_CHECKLISTITEMS_QUERY,
 	UPDATE_CHECKLIST_MUTATION,
 } from "lib/resolvers";
-import { useMutation, useQuery } from "@apollo/client";
+import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { CheckListItemCheckedData, CheckListProps } from "@enk/types";
 import { CheckListItem } from "./CheckListItem";
 
-export const CheckList = ({ title, categories, lang }: CheckListProps) => {
+export const CheckList = ({
+	title,
+	categories,
+	filters,
+	lang,
+}: CheckListProps) => {
 	const [state, setState] = useState([]);
+	const [activeFilter, setActiveFilter] = useState("");
 	const [updatedData, setUpdatedData] = useState([]);
 	const [isDirty, setIsDirty] = useState(false);
+
 	const [
 		updateCheckListItems,
 		{ data: mutationData, loading: mutationLoading },
@@ -37,15 +44,26 @@ export const CheckList = ({ title, categories, lang }: CheckListProps) => {
 		],
 	});
 
-	function getCategories() {
-		const arr = categories.map((category) => {
-			return {
-				name: {
-					equals: category,
+	function getCategories(activeFilter = undefined) {
+		const key = lang === "nl" ? "nameNL" : "name";
+		if (activeFilter) {
+			return [
+				{
+					[key]: {
+						equals: activeFilter,
+					},
 				},
-			};
-		});
-		return arr;
+			];
+		} else {
+			const arr = categories.map((category) => {
+				return {
+					[key]: {
+						equals: category,
+					},
+				};
+			});
+			return arr;
+		}
 	}
 
 	function handleSave(item: CheckListItemCheckedData) {
@@ -151,9 +169,32 @@ export const CheckList = ({ title, categories, lang }: CheckListProps) => {
 			},
 		},
 	});
-	if (loading || mutationLoading) return <p>Loading...</p>;
+
+	const [loadCategory, { called, loading: lazyLoading, data: lazyData }] =
+		useLazyQuery(ALL_CHECKLISTITEMS_QUERY, {
+			variables: {
+				where: {
+					tags: {
+						some: {
+							OR: [...getCategories(activeFilter)],
+						},
+					},
+				},
+			},
+		});
+
+	if (loading || mutationLoading || lazyLoading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
-	const { checkListItems } = data || [];
+
+	const { checkListItems } = lazyData || data || [];
+
+	function checkList() {
+		checkListItems.map((item) => {
+			item.checked = false;
+			handleSave(item);
+		});
+	}
+
 	function compareTitle(a, b) {
 		const key = lang === "nl" ? "titleNL" : title;
 		if (a[key] < b[key]) {
@@ -177,9 +218,33 @@ export const CheckList = ({ title, categories, lang }: CheckListProps) => {
 	// }
 
 	const sortedList = checkListItems.sort(compareTitle);
+
+	function filterCategory(filter = undefined) {
+		setActiveFilter(filter);
+		loadCategory();
+	}
+
 	return (
 		<>
 			<h2 className={style.title}>{title}</h2>
+			{filters && (
+				<div className={style.filters}>
+					<h3>Filter:</h3>
+					{filters.map((filter) => (
+						<Button
+							size="small"
+							key={filter}
+							text={filter}
+							onClick={() => filterCategory(filter)}
+						/>
+					))}
+					<Button
+						size="small"
+						text="Reset Filter"
+						onClick={() => filterCategory(categories)}
+					/>
+				</div>
+			)}
 			<ul className={style.list}>
 				{sortedList.map((item) => {
 					const localItem = state
@@ -199,6 +264,7 @@ export const CheckList = ({ title, categories, lang }: CheckListProps) => {
 			</ul>
 			<div className={style.buttons}>
 				<Button text="Uncheck All" onClick={clearList} />
+				<Button text="Check All" onClick={checkList} />
 				<Button text="Reset" onClick={resetList} />
 				<Button text="Save" disabled={!isDirty} onClick={saveList} />
 			</div>

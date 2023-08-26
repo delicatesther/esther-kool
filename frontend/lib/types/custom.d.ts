@@ -37,11 +37,13 @@ export type CheckListCategories =
 	| "Always Needed"
 	| "Vacation"
 	| "Camping"
-	| "Crucial";
+	| "Crucial"
+	| "Alex";
 
 export type CheckListProps = {
 	title: string;
 	categories: Array[CheckListCategories];
+	filters: Array[CheckListCategories];
 	lang: "nl" | "en";
 };
 
