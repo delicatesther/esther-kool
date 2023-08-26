@@ -1,0 +1,29 @@
+@use "../../styles/config" as *;
+
+.title {
+	grid-column: 1 / -1;
+}
+
+.list {
+	background: rgba(var(--supportColorRgb), 0.7);
+	background: var(--siteBackground);
+	grid-column: 1 / -1;
+	@include breakpoint(m) {
+		grid-column: 1 / 8;
+	}
+	li {
+		&:nth-child(even) {
+			background-color: rgba(var(--supportColorRgb), 0.2);
+		}
+	}
+}
+
+.buttons {
+	margin: 24px 40px;
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: space-between;
+	@include breakpoint(m) {
+		grid-column: 1 /8;
+	}
+}

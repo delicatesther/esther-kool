@@ -5,106 +5,106 @@
 @use "../config" as *;
 
 :root {
-  // -----------------------------------------------------------------------------
-  // Colours
-  // Colour names by https://www.color-blindness.com/color-name-hue/ and https://chir.ag/projects/name-that-color
-  // -----------------------------------------------------------------------------
-  --transparent: rgb(0, 0, 0, 0);
-  --white: #{colour(white)};
-  --whiteRgb: #{colour(white, true)};
-  --sapling: #{colour(sapling)};
-  --saplingRgb: #{colour(sapling, true)};
-  --mineshaft: #{colour(mineshaft)};
-  --mineshaftRgb: #{colour(mineshaft, true)};
-  --mercury: #{colour(mercury)};
-  --mercuryRgb: #{colour(mercury, true)};
-  --deepSky: #{colour(deepSky)};
-  --deepSkyRgb: #{colour(deepSky, true)};
-  --black: #{colour(black)};
-  --blackRgb: #{colour(black, true)};
-  --ship: #{colour(ship)};
-  --shipRgb: #{colour(ship)};
-  --blueStone: #{colour(blueStone)};
-  --blueStoneRgb: #{colour(blueStone, true)};
-  --midnight: #{colour(midnight)};
-  --midnightRgb: #{colour(midnight, true)};
-  --cobalt: #{colour(cobalt)};
-  --cobaltRgb: #{colour(cobalt, true)};
-  --governorBay: #{colour(governorBay)};
-  --governorBayRgb: #{colour(governorBay, true)};
-  --corduroy: #{colour(corduroy)};
-  --corduroyRgb: #{colour(corduroy, true)};
-  --scooter: #{colour(scooter)};
-  --scooterRgb: #{colour(scooter, true)};
-  --sweetCorn: #{colour(sweetCorn)};
-  --sweetCornRgb: #{colour(sweetCorn, true)};
-  --pastelGreen: #{colour(pastelGreen)};
-  --pastelGreenRgb: #{colour(pastelGreen, true)};
-  --forestGreen: #{colour(forestGreen)};
-  --forestGreenRgb: #{colour(forestGreen, true)};
-  --watermelon: #{colour(watermelon)};
-  --watermelonRgb: #{colour(watermelon, true)};
-  --stiletto: #{colour(stiletto)};
-  --stilettoRgb: #{colour(stiletto, true)};
-  --woodsmoke: #{colour(woodsmoke)};
-  --woodsmokeRgb: #{colour(woodsmoke, true)};
+	// -----------------------------------------------------------------------------
+	// Colours
+	// Colour names by https://www.color-blindness.com/color-name-hue/ and https://chir.ag/projects/name-that-color
+	// -----------------------------------------------------------------------------
+	--transparent: rgb(0, 0, 0, 0);
+	--white: #{colour(white)};
+	--whiteRgb: #{colour(white, true)};
+	--sapling: #{colour(sapling)};
+	--saplingRgb: #{colour(sapling, true)};
+	--mineshaft: #{colour(mineshaft)};
+	--mineshaftRgb: #{colour(mineshaft, true)};
+	--mercury: #{colour(mercury)};
+	--mercuryRgb: #{colour(mercury, true)};
+	--deepSky: #{colour(deepSky)};
+	--deepSkyRgb: #{colour(deepSky, true)};
+	--black: #{colour(black)};
+	--blackRgb: #{colour(black, true)};
+	--ship: #{colour(ship)};
+	--shipRgb: #{colour(ship, true)};
+	--blueStone: #{colour(blueStone)};
+	--blueStoneRgb: #{colour(blueStone, true)};
+	--midnight: #{colour(midnight)};
+	--midnightRgb: #{colour(midnight, true)};
+	--cobalt: #{colour(cobalt)};
+	--cobaltRgb: #{colour(cobalt, true)};
+	--governorBay: #{colour(governorBay)};
+	--governorBayRgb: #{colour(governorBay, true)};
+	--corduroy: #{colour(corduroy)};
+	--corduroyRgb: #{colour(corduroy, true)};
+	--scooter: #{colour(scooter)};
+	--scooterRgb: #{colour(scooter, true)};
+	--sweetCorn: #{colour(sweetCorn)};
+	--sweetCornRgb: #{colour(sweetCorn, true)};
+	--pastelGreen: #{colour(pastelGreen)};
+	--pastelGreenRgb: #{colour(pastelGreen, true)};
+	--forestGreen: #{colour(forestGreen)};
+	--forestGreenRgb: #{colour(forestGreen, true)};
+	--watermelon: #{colour(watermelon)};
+	--watermelonRgb: #{colour(watermelon, true)};
+	--stiletto: #{colour(stiletto)};
+	--stilettoRgb: #{colour(stiletto, true)};
+	--woodsmoke: #{colour(woodsmoke)};
+	--woodsmokeRgb: #{colour(woodsmoke, true)};
 
-  // -----------------------------------------------------------------------------
-  //  Light Theme
-  // -----------------------------------------------------------------------------
-  --siteBackground: var(--white);
-  // --siteBackground: var(--sweetCorn);
-  --siteFontColor: var(--ship);
-  --siteFontColorRgb: var(--shipRgb);
-  --siteHeadingColor: var(--stiletto);
-  --siteHeadingColorRgb: var(--stilettoRgb);
-  --supportColor: var(--sapling);
-  --supportColorRgb: var(--saplingRgb);
-  --supportDarkColor: var(--watermelon);
-  --supportDarkColorRgb: var(--watermelonRgb);
-  --linkColor: var(--cobalt);
+	// -----------------------------------------------------------------------------
+	//  Light Theme
+	// -----------------------------------------------------------------------------
+	--siteBackground: var(--white);
+	// --siteBackground: var(--sweetCorn);
+	--siteFontColor: var(--ship);
+	--siteFontColorRgb: var(--shipRgb);
+	--siteHeadingColor: var(--stiletto);
+	--siteHeadingColorRgb: var(--stilettoRgb);
+	--supportColor: var(--sapling);
+	--supportColorRgb: var(--saplingRgb);
+	--supportDarkColor: var(--watermelon);
+	--supportDarkColorRgb: var(--watermelonRgb);
+	--linkColor: var(--cobalt);
 }
 
 body {
-  background: var(--siteBackground);
-  color: var(--siteFontColor);
-  // Unfortunately shadow vars have to be declared twice or the colour won't be overwritten
-  [data-theme="light"] & {
-    --shadowColor: 0deg 0% 63%;
-    @include applyShadow();
-  }
-  // -----------------------------------------------------------------------------
-  // Dark Theme
-  // -----------------------------------------------------------------------------
-  [data-theme="dark"] & {
-    --siteBackground: var(--black);
-    --siteBackground: var(--woodsmoke);
-    --siteFontColor: var(--sapling);
-    --siteFontColorRgb: var(--saplingRgb);
-    --siteHeadingColor: var(--sapling);
-    --siteHeadingColorRgb: var(--saplingRgb);
-    --supportColor: var(--ship);
-    --supportColorRgb: var(--shipRgb);
-    --supportDarkColor: var(--black);
-    --supportDarkColorRgb: var(--blackRgb);
-    --linkColor: var(--deepSky);
-    @include applyShadow($theme: "dark");
-  }
+	background: var(--siteBackground);
+	color: var(--siteFontColor);
+	// Unfortunately shadow vars have to be declared twice or the colour won't be overwritten
+	[data-theme="light"] & {
+		--shadowColor: 0deg 0% 63%;
+		@include applyShadow();
+	}
+	// -----------------------------------------------------------------------------
+	// Dark Theme
+	// -----------------------------------------------------------------------------
+	[data-theme="dark"] & {
+		--siteBackground: var(--black);
+		--siteBackground: var(--woodsmoke);
+		--siteFontColor: var(--sapling);
+		--siteFontColorRgb: var(--saplingRgb);
+		--siteHeadingColor: var(--sapling);
+		--siteHeadingColorRgb: var(--saplingRgb);
+		--supportColor: var(--ship);
+		--supportColorRgb: var(--shipRgb);
+		--supportDarkColor: var(--black);
+		--supportDarkColorRgb: var(--blackRgb);
+		--linkColor: var(--deepSky);
+		@include applyShadow($theme: "dark");
+	}
 }
 
 .illustrationContainer {
-  grid-column: span 3;
-  margin: 12px;
+	grid-column: span 3;
+	margin: 12px;
 }
 
 .illustration {
-  mix-blend-mode: darken;
-  opacity: 0.8;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  [data-theme="dark"] & {
-    filter: invert(100%) brightness(3);
-    mix-blend-mode: lighten;
-  }
+	mix-blend-mode: darken;
+	opacity: 0.8;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	[data-theme="dark"] & {
+		filter: invert(100%) brightness(3);
+		mix-blend-mode: lighten;
+	}
 }
