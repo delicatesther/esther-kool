@@ -154,12 +154,34 @@ export const CheckList = ({ title, categories, lang }: CheckListProps) => {
 	if (loading || mutationLoading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
 	const { checkListItems } = data || [];
+	function compareTitle(a, b) {
+		const key = lang === "nl" ? "titleNL" : title;
+		if (a[key] < b[key]) {
+			return -1;
+		}
+		if (a[key] > b[key]) {
+			return 1;
+		}
+		return 0;
+	}
+	// TODO: work this out
+	// function compareCategory(item) {
+	// 	item.tags.find(tag.name === "crucial");
+	// 	if (a[key] < b[key]) {
+	// 		return -1;
+	// 	}
+	// 	if (a[key] > b[key]) {
+	// 		return 1;
+	// 	}
+	// 	return 0;
+	// }
 
+	const sortedList = checkListItems.sort(compareTitle);
 	return (
 		<>
 			<h2 className={style.title}>{title}</h2>
 			<ul className={style.list}>
-				{checkListItems.map((item) => {
+				{sortedList.map((item) => {
 					const localItem = state
 						? state.find((obj) => obj.id === item.id)
 						: {};
