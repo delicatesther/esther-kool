@@ -11,6 +11,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model CheckListItem {
+  id            String    @id @default(uuid()) @postgresql.Uuid
+  title         String    @default("")
+  titleNL       String    @default("")
+  checked       Boolean   @default(false)
+  amount        Int?
+  description   String    @default("")
+  descriptionNL String    @default("")
+  publishDate   DateTime? @default(now())
+  tags          Tag[]     @relation("CheckListItem_tags")
+}
+
 model Experience {
   id             String        @id @default(uuid()) @postgresql.Uuid
   title          String        @default("")
@@ -62,11 +74,12 @@ model Post {
 }
 
 model Tag {
-  id          String       @id @default(uuid()) @postgresql.Uuid
-  name        String       @default("")
-  nameNL      String       @default("")
-  posts       Post[]       @relation("Post_tags")
-  experiences Experience[] @relation("Experience_tags")
+  id             String          @id @default(uuid()) @postgresql.Uuid
+  name           String          @default("")
+  nameNL         String          @default("")
+  posts          Post[]          @relation("Post_tags")
+  experiences    Experience[]    @relation("Experience_tags")
+  checkListItems CheckListItem[] @relation("CheckListItem_tags")
 }
 
 model User {

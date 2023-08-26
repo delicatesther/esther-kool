@@ -1,39 +1,75 @@
 @use "../../styles/config" as *;
 
 .button {
-  appearance: none;
-  cursor: pointer;
-  background: var(--supportDarkColor);
-  box-shadow: var(--shadow-elevation-medium);
-  font-family: #{selectFont("headingFont")};
-  font-size: 3.6rem;
-  line-height: 1em;
-  min-height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border: none;
-  border-radius: 6px;
-  color: var(--white);
-  transition: 0.2s ease-in-out;
-  padding: 8px 16px;
-  --textShadowWidth: 0.25px;
-  &.small {
-    padding: 4px 8px;
-    font-size: 3rem;
-  }
-  &:hover {
-    box-shadow: var(--shadow-elevation-high);
-  }
-  span {
-    transition: 0.2s ease-in-out;
-  }
-  svg {
-    transition: 0.2s ease-in-out;
-    color: currentColor;
-    width: 1em;
-    height: 1em;
-    pointer-events: none;
-  }
+	appearance: none;
+	cursor: pointer;
+	background: var(--supportDarkColor);
+	box-shadow: var(--shadow-elevation-medium);
+	font-family: #{selectFont("headingFont")};
+	font-size: 3.6rem;
+	line-height: 1em;
+	min-height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	border: none;
+	border-radius: 6px;
+	color: var(--white);
+	transition: 0.2s ease-in-out;
+	padding: 8px 16px;
+	--textShadowWidth: 0.25px;
+	&.disabled,
+	&[disabled] {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+	&.small {
+		padding: 4px 8px;
+		font-size: 3rem;
+	}
+	&:hover {
+		box-shadow: var(--shadow-elevation-high);
+	}
+	span {
+		transition: 0.2s ease-in-out;
+	}
+	svg {
+		transition: 0.2s ease-in-out;
+		color: currentColor;
+		width: 1em;
+		height: 1em;
+		pointer-events: none;
+	}
+}
+
+.checkbox {
+	width: 40px;
+	height: 40px;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	&:hover {
+		box-shadow: none;
+		.fakeButton {
+			box-shadow: var(--shadow-elevation-high);
+		}
+	}
+	svg {
+		color: var(--siteFontColor);
+		position: absolute;
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.fakeButton {
+	background: var(--siteBackground);
+	border: 2px solid var(--siteFontColor);
+	box-shadow: var(--shadow-elevation-medium);
+	width: 24px;
+	display: block;
+	height: 24px;
+	border-radius: 4px;
 }

@@ -1,0 +1,26 @@
+@use "../../../styles/config/" as *;
+
+.item {
+	display: flex;
+	min-height: 44px;
+	align-items: center;
+	gap: 12px;
+	padding: 2px 8px;
+}
+
+.name {
+	flex: 0 1 fit-content;
+	margin: 0;
+	@include theme(dark) {
+		color: var(--white);
+	}
+}
+
+.desc {
+	flex: 1 1 fit-content;
+	margin: 0;
+}
+
+.button {
+	flex: 0 0 40px;
+}
