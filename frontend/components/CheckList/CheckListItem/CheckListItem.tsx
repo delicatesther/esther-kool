@@ -19,7 +19,6 @@ export const CheckListItem = ({
 }) => {
 	const name = lang === "nl" ? titleNL : title;
 	const desc = lang === "nl" ? descriptionNL : description;
-
 	const item = {
 		id,
 		title,
@@ -27,9 +26,17 @@ export const CheckListItem = ({
 	};
 
 	return (
-		<div className={style.item}>
+		<div className={cx(["item"], { ["checked"]: checked })}>
 			<p className={style.name}>{name}</p>
 			<p className={cx(["desc"], "text-small")}>{desc}</p>
+			<div className={style.tags}>
+				{tags.map((tag) => {
+					const tagName = lang === "nl" ? tag.nameNL : tag.name;
+					if (tag.name !== "Packing" && tag.name !== "Vacation") {
+						return <span key={tag.id}>{tagName}</span>;
+					}
+				})}
+			</div>
 			<Button
 				className={style.checkbox}
 				onClick={() => handleSave(item)}
