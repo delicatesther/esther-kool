@@ -199,11 +199,9 @@ export const CheckList = ({
 	checkListItems = getLatestArr();
 	function getLatestArr() {
 		if (!!lazyData) {
-			console.log("lazyData", lazyData);
 			return lazyData?.checkListItems;
 		}
 		if (!!data) {
-			console.log("data", data);
 			return data?.checkListItems;
 		}
 		return null;
