@@ -28,8 +28,10 @@ function createApolloClient({ initialState }) {
 	const link = createUploadLink({
 		uri: publicRuntimeConfig.GRAPHQL_ENDPOINT,
 		fetchOptions: {
-			credentials: "include",
+			// credentials: "include",
+			mode: "cors",
 		},
+		credentials: "include",
 		introspection: process.env.NODE_ENV !== "production",
 	});
 
