@@ -5,83 +5,84 @@ import { useQuery } from "@apollo/client";
 import { CURRENT_USER_QUERY } from "@enk/lib";
 
 export const useWindowSize = (): WindowSizeAttributes => {
-  const [windowSize, setWindowSize] = useState<WindowSizeAttributes>({
-    windowWidth: 0,
-    windowHeight: 0,
-  });
+	const [windowSize, setWindowSize] = useState<WindowSizeAttributes>({
+		windowWidth: 0,
+		windowHeight: 0,
+	});
 
-  useEffect(() => {
-    function handleResizeWindow() {
-      setWindowSize({
-        windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight,
-      });
-    }
+	useEffect(() => {
+		function handleResizeWindow() {
+			setWindowSize({
+				windowWidth: window.innerWidth,
+				windowHeight: window.innerHeight,
+			});
+		}
 
-    handleResizeWindow();
-    window.addEventListener("resize", handleResizeWindow);
-    return () => window.removeEventListener("resize", handleResizeWindow);
-  }, []);
+		handleResizeWindow();
+		window.addEventListener("resize", handleResizeWindow);
+		return () => window.removeEventListener("resize", handleResizeWindow);
+	}, []);
 
-  return windowSize;
+	return windowSize;
 };
 
 export const useActiveElement = (): Element | null => {
-  const [active, setActive] = useState(null);
+	const [active, setActive] = useState(null);
 
-  const handleFocusIn = () => {
-    setActive(document.activeElement);
-  };
+	const handleFocusIn = () => {
+		setActive(document.activeElement);
+	};
 
-  useEffect(() => {
-    document.addEventListener("focusin", handleFocusIn);
-    return () => {
-      document.removeEventListener("focusin", handleFocusIn);
-    };
-  }, []);
+	useEffect(() => {
+		document.addEventListener("focusin", handleFocusIn);
+		return () => {
+			document.removeEventListener("focusin", handleFocusIn);
+		};
+	}, []);
 
-  return active;
+	return active;
 };
 
 export const checkFontLoaded = () => {
-  let interval = null;
+	let interval = null;
 
-  function fontLoadListener() {
-    let hasLoaded = false;
-    try {
-      if (typeof window !== "undefined") {
-        hasLoaded = document.fonts.check('14px "Open Sans"');
-      }
-    } catch (error) {
-      console.info("CSS font loading API error", error);
-      fontLoadedSuccess();
-      return;
-    }
+	function fontLoadListener() {
+		let hasLoaded = false;
+		try {
+			if (typeof window !== "undefined") {
+				hasLoaded = document.fonts.check('14px "Open Sans"');
+			}
+		} catch (error) {
+			console.info("CSS font loading API error", error);
+			fontLoadedSuccess();
+			return;
+		}
 
-    if (hasLoaded) {
-      fontLoadedSuccess();
-    }
-  }
+		if (hasLoaded) {
+			fontLoadedSuccess();
+		}
+	}
 
-  function fontLoadedSuccess() {
-    if (interval) {
-      clearInterval(interval);
-    }
+	function fontLoadedSuccess() {
+		if (interval) {
+			clearInterval(interval);
+		}
 
-    document.getElementsByTagName("body")[0].removeAttribute("class");
-  }
+		document.getElementsByTagName("body")[0].removeAttribute("class");
+	}
 
-  interval = setInterval(fontLoadListener, 500);
+	interval = setInterval(fontLoadListener, 500);
 };
 
 export const useSystemTheme = () => {
-  const theme = useTheme();
-  return theme;
+	const theme = useTheme();
+	return theme;
 };
 
 export function useUser() {
-  const { data } = useQuery(CURRENT_USER_QUERY);
-  return data?.authenticatedItem;
+	const { data } = useQuery(CURRENT_USER_QUERY);
+	console.log(data);
+	return data?.authenticatedItem;
 }
 
-export * from './ThemeChanger';
+export * from "./ThemeChanger";

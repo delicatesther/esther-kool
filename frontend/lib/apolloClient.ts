@@ -26,7 +26,10 @@ function createApolloClient({ initialState }) {
 			);
 	});
 	const link = createUploadLink({
-		uri: publicRuntimeConfig.GRAPHQL_ENDPOINT,
+		// Temp workaround that maybe fixes session issue Keystone,
+		// See: https://stackoverflow.com/questions/72297519/keystone-session-cookie-only-working-on-localhost
+		// uri: publicRuntimeConfig.GRAPHQL_ENDPOINT,
+		uri: "/api/graphql",
 		fetchOptions: {
 			credentials: "include",
 		},
