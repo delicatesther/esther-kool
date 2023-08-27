@@ -196,7 +196,7 @@ export const CheckList = ({
 	}
 
 	function compareTitle(a, b) {
-		const key = lang === "nl" ? "titleNL" : title;
+		const key = lang === "nl" ? "titleNL" : "title";
 		if (a[key] < b[key]) {
 			return -1;
 		}
