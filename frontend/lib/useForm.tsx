@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 export const useForm = (initial = {}): any => {
 	const [inputs, setInputs] = useState(initial);
 	// Hacky thing to avoid too many useHooks error
+	const initialValues = Object.values(initial).join("");
 
 	useEffect(() => {
 		// this func runs when we are watching change
 		setInputs(initial);
 		return () => {};
-	}, []);
+	}, [initialValues]);
 
 	function handleChange(e) {
 		let { name, value, type } = e.target;
