@@ -96,8 +96,11 @@ export const EXPERIENCE_QUERY = gql`
 `;
 
 export const ALL_CHECKLISTITEMS_QUERY = gql`
-	query ALL_CHECKLISTITEMS_QUERY($where: CheckListItemWhereInput!) {
-		checkListItems(where: $where) {
+	query ALL_CHECKLISTITEMS_QUERY(
+		$where: CheckListItemWhereInput!
+		$orderBy: [CheckListItemOrderByInput!]!
+	) {
+		checkListItems(where: $where, orderBy: $orderBy) {
 			id
 			titleNL
 			title

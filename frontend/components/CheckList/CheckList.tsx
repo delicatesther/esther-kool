@@ -20,7 +20,7 @@ export const CheckList = ({
 	const [activeFilter, setActiveFilter] = useState("");
 	const [updatedData, setUpdatedData] = useState([]);
 	const [isDirty, setIsDirty] = useState(false);
-
+	let checkListItems;
 	const [
 		updateCheckListItems,
 		{ data: mutationData, loading: mutationLoading },
@@ -158,6 +158,7 @@ export const CheckList = ({
 		}
 	}, [state, updatedData]);
 
+	const translatedTitle = lang === "nl" ? "titleNL" : "title";
 	const { data, loading, error } = useQuery(ALL_CHECKLISTITEMS_QUERY, {
 		variables: {
 			where: {
@@ -167,6 +168,11 @@ export const CheckList = ({
 					},
 				},
 			},
+			orderBy: [
+				{
+					[translatedTitle]: "asc",
+				},
+			],
 		},
 	});
 
@@ -180,44 +186,36 @@ export const CheckList = ({
 						},
 					},
 				},
+				orderBy: [
+					{
+						[translatedTitle]: "asc",
+					},
+				],
 			},
 		});
 
 	if (loading || mutationLoading || lazyLoading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
+	checkListItems = getLatestArr();
+	function getLatestArr() {
+		if (!!lazyData) {
+			console.log("lazyData", lazyData);
+			return lazyData?.checkListItems;
+		}
+		if (!!data) {
+			console.log("data", data);
+			return data?.checkListItems;
+		}
+		return null;
+	}
 
-	const { checkListItems } = lazyData || data || [];
-
-	function checkList() {
-		checkListItems.map((item) => {
+	function checkAllOnList() {
+		const arr = getLatestArr();
+		arr.map((item) => {
 			item.checked = false;
 			handleSave(item);
 		});
 	}
-
-	function compareTitle(a, b) {
-		const key = lang === "nl" ? "titleNL" : "title";
-		if (a[key] < b[key]) {
-			return -1;
-		}
-		if (a[key] > b[key]) {
-			return 1;
-		}
-		return 0;
-	}
-	// TODO: work this out
-	// function compareCategory(item) {
-	// 	item.tags.find(tag.name === "crucial");
-	// 	if (a[key] < b[key]) {
-	// 		return -1;
-	// 	}
-	// 	if (a[key] > b[key]) {
-	// 		return 1;
-	// 	}
-	// 	return 0;
-	// }
-
-	const sortedList = checkListItems.sort(compareTitle);
 
 	function filterCategory(filter = undefined) {
 		setActiveFilter(filter);
@@ -246,7 +244,7 @@ export const CheckList = ({
 				</div>
 			)}
 			<ul className={style.list}>
-				{sortedList.map((item) => {
+				{checkListItems.map((item) => {
 					const localItem = state
 						? state.find((obj) => obj.id === item.id)
 						: {};
@@ -264,7 +262,7 @@ export const CheckList = ({
 			</ul>
 			<div className={style.buttons}>
 				<Button text="Uncheck All" onClick={clearList} />
-				<Button text="Check All" onClick={checkList} />
+				<Button text="Check All" onClick={checkAllOnList} />
 				<Button text="Reset" onClick={resetList} />
 				<Button text="Save" disabled={!isDirty} onClick={saveList} />
 			</div>
