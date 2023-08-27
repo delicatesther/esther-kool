@@ -39,6 +39,13 @@ export const Header = () => {
 						{/* <Link href="/gezondheid" className="anchor">
               Gezondheid
             </Link> */}
+						<a
+							href="https://cms.estherkool.com"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							CMS
+						</a>
 						<SignOut size="small" />
 					</>
 				)}

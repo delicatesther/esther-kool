@@ -20,6 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // keystone.ts
 var keystone_exports = {};
 __export(keystone_exports, {
+  PORT: () => PORT,
   default: () => keystone_default
 });
 module.exports = __toCommonJS(keystone_exports);
@@ -370,7 +371,7 @@ var lists = {
 // auth.ts
 var import_auth = require("@keystone-6/auth");
 var import_session = require("@keystone-6/core/session");
-var sessionSecret = process.env.SESSION_SECRET;
+var sessionSecret = process.env.SESSION_SECRET || require("crypto").randomBytes(32).toString("base64").replace(/[^a-zA-Z0-9]+/g, "");
 if (!sessionSecret) {
   if (process.env.NODE_ENV === "production") {
     throw new Error(
@@ -393,16 +394,19 @@ var { withAuth } = (0, import_auth.createAuth)({
 });
 var sessionMaxAge = 60 * 60 * 24 * 30;
 var session = (0, import_session.statelessSessions)({
-  secret: sessionSecret
+  secret: sessionSecret,
+  maxAge: sessionMaxAge
 });
 
 // keystone.ts
 var databaseURL = process.env.DATABASE_URL || "https://xoolgtbnrumkdxlowjad.supabase.co";
 var frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+var PORT = parseInt(process.env.PORT) || 3010;
 var keystone_default = withAuth(
   // Using the config function helps typescript guide you to the available options.
   (0, import_core7.config)({
     server: {
+      port: PORT,
       cors: {
         origin: frontendUrl,
         // Passes along cookie
@@ -412,8 +416,7 @@ var keystone_default = withAuth(
     db: {
       provider: "postgresql",
       url: databaseURL,
-      onConnect: async (context) => {
-      },
+      // onConnect: async context => { /* ... */ },
       // Optional advanced configuration
       enableLogging: true,
       useMigrations: true,
@@ -428,3 +431,7 @@ var keystone_default = withAuth(
     session
   })
 );
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  PORT
+});
