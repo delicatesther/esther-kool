@@ -28,7 +28,7 @@ export default withAuth(
     server: {
       port: PORT,
       cors: {
-        origin: [frontendUrl],
+        origin: [frontendUrl, /\.estherkool\.com$/],
         // Passes along cookie
         credentials: true,
       },
