@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
+import classnames from "classnames/bind";
 import style from "./checkList.module.scss";
-import {
-	ALL_CHECKLISTITEMS_QUERY,
-	UPDATE_CHECKLIST_MUTATION,
-} from "lib/resolvers";
+import { ALL_CHECKLISTITEMS_QUERY, UPDATE_CHECKLIST_MUTATION } from "@enk/lib";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { CheckListItemCheckedData, CheckListProps } from "@enk/types";
 import { CheckListItem } from "./CheckListItem";
+
+const cx = classnames.bind(style);
 
 export const CheckList = ({
 	title,
@@ -225,18 +225,21 @@ export const CheckList = ({
 			<h2 className={style.title}>{title}</h2>
 			{filters && (
 				<div className={style.filters}>
-					<h3>Filter:</h3>
-					{filters.map((filter) => (
-						<Button
-							size="small"
-							key={filter}
-							text={filter}
-							onClick={() => filterCategory(filter)}
-						/>
-					))}
+					<h3>Show category:</h3>
+					<select
+						value={activeFilter}
+						onChange={(e) => filterCategory(e.target.value)}
+						placeholder="Select category..."
+					>
+						{filters.map((filter) => (
+							<option key={filter} value={filter}>
+								{filter}
+							</option>
+						))}
+					</select>
 					<Button
 						size="small"
-						text="Reset Filter"
+						text="Show All"
 						onClick={() => filterCategory(categories)}
 					/>
 				</div>
@@ -259,10 +262,15 @@ export const CheckList = ({
 				})}
 			</ul>
 			<div className={style.buttons}>
-				<Button text="Uncheck All" onClick={clearList} />
-				<Button text="Check All" onClick={checkAllOnList} />
-				<Button text="Reset" onClick={resetList} />
-				<Button text="Save" disabled={!isDirty} onClick={saveList} />
+				<Button size="small" text="Uncheck All" onClick={clearList} />
+				<Button size="small" text="Check All" onClick={checkAllOnList} />
+				<Button size="small" text="Reset" onClick={resetList} />
+				<Button
+					size="small"
+					text="Save"
+					disabled={!isDirty}
+					onClick={saveList}
+				/>
 			</div>
 		</>
 	);

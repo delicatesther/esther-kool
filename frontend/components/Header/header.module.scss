@@ -7,14 +7,16 @@
 	z-index: z(header);
 	background: linear-gradient(135deg, var(--mercury) 0%, var(--white) 100%);
 	box-shadow: var(--shadow-elevation-low);
-	display: grid;
-	grid-template-columns: 200px 1fr;
+	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-items: end;
 	@include theme(dark) {
 		background: var(--mineshaft);
 	}
 	@include breakpoint(s) {
+		display: grid;
+		grid-template-columns: 200px 1fr;
 		padding: 16px 72px 16px;
 		margin-bottom: 80px;
 	}
@@ -23,9 +25,13 @@
 .logo {
 	justify-self: start;
 	svg {
-		width: 200px;
-		height: 45.33px;
+		width: 150px;
+		height: 33.99px;
 		transition: 0.2s ease-in-out;
+		@include breakpoint(s) {
+			width: 200px;
+			height: 45.33px;
+		}
 	}
 }
 

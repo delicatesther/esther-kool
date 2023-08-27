@@ -98,10 +98,16 @@ h2,
 .h2 {
 	font-family: #{selectFont("headingFont")};
 	color: var(--siteHeadingColor);
-	font-size: 8.8rem;
 	font-weight: normal;
+	margin-top: 8px;
 	margin-bottom: 8px;
 	letter-spacing: -0.05em;
+	font-size: 6.4rem;
+	line-height: 7rem;
+	@include breakpoint(m) {
+		font-size: 8.8rem;
+		line-height: 10rem;
+	}
 }
 
 h3,
