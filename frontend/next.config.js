@@ -24,8 +24,6 @@ const nextConfig = {
 		// Important: return the modified config
 		return config;
 	},
-	// Temp workaround that maybe fixes session issue Keystone,
-	// See: https://stackoverflow.com/questions/72297519/keystone-session-cookie-only-working-on-localhost
 	rewrites: () => [
 		{
 			source: "/api/graphql",
