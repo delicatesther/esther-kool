@@ -411,7 +411,7 @@ var keystone_default = withAuth(
     server: {
       port: PORT,
       cors: {
-        origin: frontendUrl,
+        origin: [frontendUrl],
         // Passes along cookie
         credentials: true
       }
