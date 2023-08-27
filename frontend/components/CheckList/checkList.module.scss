@@ -2,6 +2,7 @@
 
 .title {
 	grid-column: 1 / -1;
+	line-height: 5.2rem;
 }
 
 .list {
@@ -31,11 +32,16 @@
 }
 
 .buttons {
-	margin: 24px 40px;
 	grid-column: 1 / -1;
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin: 24px 0;
+	gap: 8px;
 	@include breakpoint(m) {
-		grid-column: 1 /8;
+		margin: 24px 40px;
+		justify-content: space-between;
+		grid-column: 1 / 8;
 	}
 }

@@ -3,3 +3,21 @@
 // Global forms settings
 // -----------------------------------------------------------------------------
 @use "../config" as *;
+
+select {
+	height: 40px;
+	font-family: #{selectFont(headingFont)};
+	font-size: 2.8rem;
+	border: 2px solid var(--siteFontColor);
+	border-radius: 6px;
+	padding: 0 4px;
+	color: var(--siteFontColor);
+	background-color: var(--mercury);
+	@include theme(dark, false) {
+		background-color: var(--mineshaft);
+	}
+}
+
+optgroup {
+	font-size: 1.4rem;
+}

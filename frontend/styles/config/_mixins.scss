@@ -10,130 +10,138 @@
 // -----------------------------------------------------------------------------
 // Breakpoint mixin
 @mixin breakpoint($bp, $type: min) {
-  @if map_has_key($breakpoints, $bp) {
-    $bp: map_get($breakpoints, $bp);
-    @if $type == max {
-      $bp: $bp - 1;
-    }
-    @media only screen and (#{$type}-width: #{$bp}px) {
-      @content;
-    }
-  }
-  // Informative error handling when invalid $width value is provided
-  @else {
-    @warn 'There is no item "#{$bp}" in this list; choose one of: #{map-keys($breakpoints)}';
-  }
+	@if map_has_key($breakpoints, $bp) {
+		$bp: map_get($breakpoints, $bp);
+		@if $type == max {
+			$bp: $bp - 1;
+		}
+		@media only screen and (#{$type}-width: #{$bp}px) {
+			@content;
+		}
+	}
+	// Informative error handling when invalid $width value is provided
+	@else {
+		@warn 'There is no item "#{$bp}" in this list; choose one of: #{map-keys($breakpoints)}';
+	}
 }
 
 // Hover, focus, active styling
-@mixin hoverFocusActiveStyling($property, $value, $hoverValue, $focusValue, $child: null) {
-  @if $child {
-    // pure hover
-    &:hover {
-      @media (any-hover: hover) {
-        #{$child} {
-          #{$property}: $hoverValue;
-        }
-      }
-    }
-    // pure focus for non-supporting browsers of :focus-visible (Safari)
-    &:focus:not(:hover) {
-      #{$child} {
-        #{$property}: $focusValue;
-      }
-    }
-    // overwrite of focus to initial values for browsers that support :focus-visible
-    &:focus:not(:focus-visible):not(:hover) {
-      #{$child} {
-        #{$property}: $value;
-      }
-    }
-    // show focus styles on keyboard focus
-    &:focus-visible:not(:hover) {
-      #{$child} {
-        #{$property}: $focusValue;
-      }
-    }
-    // active state
-    &:active {
-      #{$child} {
-        #{$property}: $hoverValue;
-      }
-    }
-  } @else {
-    &:hover {
-      @media (any-hover: hover) {
-        #{$property}: $hoverValue;
-      }
-    }
-    // pure focus for non-supporting browsers of :focus-visible (Safari)
-    &:focus:not(:hover) {
-      #{$property}: $focusValue;
-    }
-    // overwrite of focus to initial values for browsers that support :focus-visible
-    &:focus:not(:focus-visible):not(:hover) {
-      #{$property}: $value;
-    }
-    // show focus styles on keyboard focus
-    &:focus-visible:not(:hover) {
-      #{$property}: $focusValue;
-    }
-    // active state
-    &:active {
-      #{$property}: $hoverValue;
-    }
-  }
+@mixin hoverFocusActiveStyling(
+	$property,
+	$value,
+	$hoverValue,
+	$focusValue,
+	$child: null
+) {
+	@if $child {
+		// pure hover
+		&:hover {
+			@media (any-hover: hover) {
+				#{$child} {
+					#{$property}: $hoverValue;
+				}
+			}
+		}
+		// pure focus for non-supporting browsers of :focus-visible (Safari)
+		&:focus:not(:hover) {
+			#{$child} {
+				#{$property}: $focusValue;
+			}
+		}
+		// overwrite of focus to initial values for browsers that support :focus-visible
+		&:focus:not(:focus-visible):not(:hover) {
+			#{$child} {
+				#{$property}: $value;
+			}
+		}
+		// show focus styles on keyboard focus
+		&:focus-visible:not(:hover) {
+			#{$child} {
+				#{$property}: $focusValue;
+			}
+		}
+		// active state
+		&:active {
+			#{$child} {
+				#{$property}: $hoverValue;
+			}
+		}
+	} @else {
+		&:hover {
+			@media (any-hover: hover) {
+				#{$property}: $hoverValue;
+			}
+		}
+		// pure focus for non-supporting browsers of :focus-visible (Safari)
+		&:focus:not(:hover) {
+			#{$property}: $focusValue;
+		}
+		// overwrite of focus to initial values for browsers that support :focus-visible
+		&:focus:not(:focus-visible):not(:hover) {
+			#{$property}: $value;
+		}
+		// show focus styles on keyboard focus
+		&:focus-visible:not(:hover) {
+			#{$property}: $focusValue;
+		}
+		// active state
+		&:active {
+			#{$property}: $hoverValue;
+		}
+	}
 }
 
 // -----------------------------------------------------------------------------
 // Theme
 // -----------------------------------------------------------------------------
 @mixin theme($name: null, $module: true) {
-  @if $module {
-    @if $name == "dark" {
-      :global([data-theme="dark"]) & {
-        @content;
-      }
-    } @else if $name == "light" {
-      :global([data-theme="light"]) & {
-        @content;
-      }
-    } @else {
-      @warn 'There is no item "#{$name}" in this list; choose "light" or "dark"';
-    }
-  } @else {
-    @if $name == "dark" {
-      [data-theme="dark"] & {
-        @content;
-      }
-    } @else if $name == "light" {
-      [data-theme="light"] & {
-        @content;
-      }
-    } @else {
-      @warn 'There is no item "#{$name}" in this list; choose "light" or "dark"';
-    }
-  }
+	@if $module {
+		@if $name == "dark" {
+			:global([data-theme="dark"]) & {
+				@content;
+			}
+		} @else if $name == "light" {
+			:global([data-theme="light"]) & {
+				@content;
+			}
+		} @else {
+			@warn 'There is no item "#{$name}" in this list; choose "light" or "dark"';
+		}
+	} @else {
+		@if $name == "dark" {
+			[data-theme="dark"] & {
+				@content;
+			}
+		} @else if $name == "light" {
+			[data-theme="light"] & {
+				@content;
+			}
+		} @else {
+			@warn 'There is no item "#{$name}" in this list; choose "light" or "dark"';
+		}
+	}
 }
 
 @mixin applyShadow($theme: "light") {
-  // --shadowColorRgb: 182, 169, 47;
-  --shadowColorRgb: 161, 161, 161;
-  @if $theme == "dark" {
-    --shadowColorRgb: 30, 41, 34;
-    --shadowColorRgb: 4, 5, 6;
-  }
-  --shadow-elevation-low: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.34),
-    0.4px 0.8px 1px -1.2px rgba(var(--shadowColorRgb), 0.34), 1px 2px 2.5px -2.5px rgba(var(--shadowColorRgb), 0.34);
-  --shadow-elevation-medium: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.36),
-    0.8px 1.6px 2px -0.8px rgba(var(--shadowColorRgb), 0.36), 2.1px 4.1px 5.2px -1.7px rgba(var(--shadowColorRgb), 0.36),
-    5px 10px 12.6px -2.5px rgba(var(--shadowColorRgb), 0.36);
-  --shadow-elevation-high: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.34),
-    1.5px 2.9px 3.7px -0.4px rgba(var(--shadowColorRgb), 0.34),
-    2.7px 5.4px 6.8px -0.7px rgba(var(--shadowColorRgb), 0.34),
-    4.5px 8.9px 11.2px -1.1px rgba(var(--shadowColorRgb), 0.34),
-    7.1px 14.3px 18px -1.4px rgba(var(--shadowColorRgb), 0.34),
-    11.2px 22.3px 28.1px -1.8px rgba(var(--shadowColorRgb), 0.34),
-    17px 33.9px 42.7px -2.1px rgba(var(--shadowColorRgb), 0.34),
-    25px 50px 62.9px -2.5px rgba(var(--shadowColorRgb), 0.34);
+	// --shadowColorRgb: 182, 169, 47;
+	--shadowColorRgb: 161, 161, 161;
+	@if $theme == "dark" {
+		--shadowColorRgb: 30, 41, 34;
+		--shadowColorRgb: 4, 5, 6;
+	}
+	--shadow-elevation-low: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.34),
+		0.4px 0.8px 1px -1.2px rgba(var(--shadowColorRgb), 0.34),
+		1px 2px 2.5px -2.5px rgba(var(--shadowColorRgb), 0.34);
+	--shadow-elevation-medium: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.36),
+		0.8px 1.6px 2px -0.8px rgba(var(--shadowColorRgb), 0.36),
+		2.1px 4.1px 5.2px -1.7px rgba(var(--shadowColorRgb), 0.36),
+		5px 10px 12.6px -2.5px rgba(var(--shadowColorRgb), 0.36);
+	--shadow-elevation-high: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.34),
+		1.5px 2.9px 3.7px -0.4px rgba(var(--shadowColorRgb), 0.34),
+		2.7px 5.4px 6.8px -0.7px rgba(var(--shadowColorRgb), 0.34),
+		4.5px 8.9px 11.2px -1.1px rgba(var(--shadowColorRgb), 0.34),
+		7.1px 14.3px 18px -1.4px rgba(var(--shadowColorRgb), 0.34),
+		11.2px 22.3px 28.1px -1.8px rgba(var(--shadowColorRgb), 0.34),
+		17px 33.9px 42.7px -2.1px rgba(var(--shadowColorRgb), 0.34),
+		25px 50px 62.9px -2.5px rgba(var(--shadowColorRgb), 0.34);
 }
