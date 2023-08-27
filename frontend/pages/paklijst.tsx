@@ -16,11 +16,12 @@ export default function PaklijstPage() {
 						lang="nl"
 						title="Inpaklijst"
 						filters={[
-							"Buitenland",
 							"Alex",
+							"Buitenland",
+							"Electronica",
+							"Kamperen",
 							"Kleding",
 							"Verzorging",
-							"Kamperen",
 							"Festival",
 						]}
 					/>
