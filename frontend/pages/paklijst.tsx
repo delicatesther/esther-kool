@@ -19,7 +19,7 @@ export default function PaklijstPage() {
 							"Buitenland",
 							"Alex",
 							"Kleding",
-							"Hygiëne",
+							"Verzorging",
 							"Kamperen",
 							"Festival",
 						]}

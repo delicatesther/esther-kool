@@ -36,6 +36,7 @@ export type CheckListCategories =
 	| "Multi-day trip"
 	| "Always Needed"
 	| "Vacation"
+	| "Self Care"
 	| "Camping"
 	| "Crucial"
 	| "Alex";
