@@ -12,7 +12,12 @@ import { createAuth } from "@keystone-6/auth";
 // See https://keystonejs.com/docs/apis/session#session-api for the session docs
 import { statelessSessions } from "@keystone-6/core/session";
 
-let sessionSecret = process.env.SESSION_SECRET;
+let sessionSecret =
+  process.env.SESSION_SECRET ||
+  require("crypto")
+    .randomBytes(32)
+    .toString("base64")
+    .replace(/[^a-zA-Z0-9]+/g, "");
 
 // Here is a best practice! It's fine to not have provided a session secret in dev,
 // however it should always be there in production.
@@ -53,6 +58,7 @@ let sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
 // });
 const session = statelessSessions({
   secret: sessionSecret!,
+  maxAge: sessionMaxAge,
 });
 
 export { withAuth, session };
