@@ -10,6 +10,11 @@ import {
 
 export const CheckListItem = list({
   access: allowAll,
+  ui: {
+    listView: {
+      initialColumns: ["titleNL", "tags", "checked"],
+    },
+  },
   fields: {
     title: text(),
     titleNL: text({ label: "Titel (NL)" }),

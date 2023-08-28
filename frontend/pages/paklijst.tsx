@@ -18,11 +18,14 @@ export default function PaklijstPage() {
 						filters={[
 							"Alex",
 							"Buitenland",
+							"Cruciaal",
 							"Electronica",
+							"Eten & Drinken",
+							"Festival",
 							"Kamperen",
 							"Kleding",
+							"Reizen",
 							"Verzorging",
-							"Festival",
 						]}
 					/>
 				</div>

@@ -33,6 +33,11 @@ var import_access = require("@keystone-6/core/access");
 var import_fields = require("@keystone-6/core/fields");
 var CheckListItem = (0, import_core.list)({
   access: import_access.allowAll,
+  ui: {
+    listView: {
+      initialColumns: ["titleNL", "tags", "checked"]
+    }
+  },
   fields: {
     title: (0, import_fields.text)(),
     titleNL: (0, import_fields.text)({ label: "Titel (NL)" }),
@@ -283,9 +288,6 @@ var import_access5 = require("@keystone-6/core/access");
 var import_fields5 = require("@keystone-6/core/fields");
 var Tag = (0, import_core5.list)({
   access: import_access5.allowAll,
-  ui: {
-    isHidden: true
-  },
   fields: {
     name: (0, import_fields5.text)(),
     nameNL: (0, import_fields5.text)({ label: "Tag (NL)" }),

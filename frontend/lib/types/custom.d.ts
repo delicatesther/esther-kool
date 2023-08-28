@@ -30,16 +30,17 @@ export type WindowSizeAttributes = {
 
 export type CheckListCategories =
 	| "Abroad"
-	| "Packing"
-	| "Festival"
-	| "Clothing"
-	| "Multi-day trip"
-	| "Always Needed"
-	| "Vacation"
-	| "Self Care"
+	| "Alex"
 	| "Camping"
+	| "Care"
+	| "Clothing"
+	| "Comfort"
 	| "Crucial"
-	| "Alex";
+	| "Electronics"
+	| "Festival"
+	| "Food & Drink"
+	| "Packing"
+	| "Travel";
 
 export type CheckListProps = {
 	title: string;

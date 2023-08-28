@@ -32,7 +32,7 @@ export const CheckListItem = ({
 			<div className={style.tags}>
 				{tags.map((tag) => {
 					const tagName = lang === "nl" ? tag.nameNL : tag.name;
-					if (tag.name !== "Packing" && tag.name !== "Vacation") {
+					if (tag.name !== "Packing") {
 						return <span key={tag.id}>{tagName}</span>;
 					}
 				})}

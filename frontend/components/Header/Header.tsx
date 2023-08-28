@@ -34,6 +34,9 @@ export const Header = () => {
 				{user && (
 					<>
 						<Link href="/paklijst" className="anchor">
+							Alex
+						</Link>
+						<Link href="/paklijst" className="anchor">
 							Paklijst
 						</Link>
 						{/* <Link href="/gezondheid" className="anchor">
