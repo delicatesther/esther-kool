@@ -7,6 +7,7 @@ import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { CheckListItemCheckedData, CheckListProps } from "@enk/types";
 import { CheckListItem } from "./CheckListItem";
+import Check from "@enk/icons/check.svg";
 
 const cx = classnames.bind(style);
 
@@ -20,6 +21,8 @@ export const CheckList = ({
 	const [activeFilter, setActiveFilter] = useState("");
 	const [updatedData, setUpdatedData] = useState([]);
 	const [isDirty, setIsDirty] = useState(false);
+	const [checkedHidden, setCheckedHidden] = useState(false);
+
 	let checkListItems;
 	const [
 		updateCheckListItems,
@@ -220,12 +223,16 @@ export const CheckList = ({
 		loadCategory();
 	}
 
+	function toggleHideChecked() {
+		setCheckedHidden(!checkedHidden);
+	}
+
 	return (
 		<>
 			<h2 className={style.title}>{title}</h2>
 			{filters && (
 				<div className={style.filters}>
-					<h3>Show category:</h3>
+					<h3>Category:</h3>
 					<select
 						value={activeFilter}
 						onChange={(e) => filterCategory(e.target.value)}
@@ -243,9 +250,17 @@ export const CheckList = ({
 					</select>
 					<Button
 						size="small"
-						text="Show All"
+						text="Show All Categories"
 						onClick={() => filterCategory(categories)}
 					/>
+					<div className={style.hideChecked}>
+						<h3>Hide checked:</h3>
+						<Button
+							checkbox={true}
+							icon={!!checkedHidden ? <Check /> : null}
+							onClick={toggleHideChecked}
+						/>
+					</div>
 				</div>
 			)}
 			<ul className={style.list}>
@@ -254,12 +269,18 @@ export const CheckList = ({
 						? state.find((obj) => obj.id === item.id)
 						: {};
 					return (
-						<li key={item.id}>
+						<li
+							key={item.id}
+							className={cx({
+								["hidden"]: !!localItem?.checked && checkedHidden,
+							})}
+						>
 							<CheckListItem
 								{...item}
 								handleSave={(item) => handleSave(item)}
 								checked={!!localItem?.checked}
 								lang={lang}
+								checkedHidden={!!localItem?.checked && checkedHidden}
 							/>
 						</li>
 					);

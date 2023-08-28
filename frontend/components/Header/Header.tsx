@@ -33,7 +33,7 @@ export const Header = () => {
 			<div className={style.content}>
 				{user && (
 					<>
-						<Link href="/paklijst" className="anchor">
+						<Link href="/alex" className="anchor">
 							Alex
 						</Link>
 						<Link href="/paklijst" className="anchor">

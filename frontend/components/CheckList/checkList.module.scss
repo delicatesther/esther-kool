@@ -16,13 +16,20 @@
 		&:nth-child(even) {
 			background-color: rgba(var(--supportColorRgb), 0.2);
 		}
+		&.hidden {
+			display: none;
+		}
 	}
+}
+
+.hideChecked {
+	display: flex;
 }
 
 .filters {
 	grid-column: 1 / -1;
 	display: flex;
-	gap: 12px;
+	gap: 20px;
 	margin: 12px;
 	flex-wrap: wrap;
 	align-items: center;
