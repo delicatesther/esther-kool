@@ -231,6 +231,10 @@ export const CheckList = ({
 						onChange={(e) => filterCategory(e.target.value)}
 						placeholder="Select category..."
 					>
+						<option disabled value="">
+							{" "}
+							--Select--{" "}
+						</option>
 						{filters.map((filter) => (
 							<option key={filter} value={filter}>
 								{filter}

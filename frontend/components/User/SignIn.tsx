@@ -27,9 +27,7 @@ export const SignIn = () => {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		console.log(inputs);
 		const res = await authenticateUserWithPassword();
-		console.log(res);
 		resetForm();
 	}
 

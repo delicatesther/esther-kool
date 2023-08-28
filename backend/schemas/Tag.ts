@@ -4,9 +4,6 @@ import { text, relationship } from "@keystone-6/core/fields";
 
 export const Tag = list({
   access: allowAll,
-  ui: {
-    isHidden: true,
-  },
   fields: {
     name: text(),
     nameNL: text({ label: "Tag (NL)" }),
