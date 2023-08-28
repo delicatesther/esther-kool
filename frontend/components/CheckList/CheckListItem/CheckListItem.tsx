@@ -14,6 +14,7 @@ export const CheckListItem = ({
 	description,
 	descriptionNL,
 	checked,
+	checkedHidden,
 	handleSave,
 	tags,
 }) => {
@@ -26,7 +27,13 @@ export const CheckListItem = ({
 	};
 
 	return (
-		<div className={cx(["item"], { ["checked"]: checked })}>
+		<div
+			className={cx(
+				["item"],
+				{ ["checked"]: checked },
+				{ ["hidden"]: checkedHidden },
+			)}
+		>
 			<p className={style.name}>{name}</p>
 			<p className={cx(["desc"], "text-small")}>{desc}</p>
 			<div className={style.tags}>
