@@ -40,6 +40,7 @@ export type CheckListCategories =
 	| "Festival"
 	| "Food & Drink"
 	| "Packing"
+	| "Todo"
 	| "Travel";
 
 export type CheckListProps = {

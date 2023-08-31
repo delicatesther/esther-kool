@@ -25,6 +25,7 @@ export default function PaklijstPage() {
 							"Kamperen",
 							"Kleding",
 							"Reizen",
+							"Todo",
 							"Verzorging",
 						]}
 					/>
