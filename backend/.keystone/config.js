@@ -20,7 +20,6 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // keystone.ts
 var keystone_exports = {};
 __export(keystone_exports, {
-  PORT: () => PORT,
   default: () => keystone_default
 });
 module.exports = __toCommonJS(keystone_exports);
@@ -406,12 +405,10 @@ var session = (0, import_session.statelessSessions)({
 // keystone.ts
 var databaseURL = process.env.DATABASE_URL || "https://xoolgtbnrumkdxlowjad.supabase.co";
 var frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
-var PORT = parseInt(process.env.PORT) || 3010;
 var keystone_default = withAuth(
   // Using the config function helps typescript guide you to the available options.
   (0, import_core7.config)({
     server: {
-      port: PORT,
       cors: {
         origin: [frontendUrl, /\.estherkool\.com$/],
         // Passes along cookie
@@ -436,7 +433,3 @@ var keystone_default = withAuth(
     session
   })
 );
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  PORT
-});
