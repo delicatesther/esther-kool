@@ -8,21 +8,20 @@ import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { CheckListItemCheckedData, CheckListProps } from "@enk/types";
 import { CheckListItem } from "./CheckListItem";
 import Check from "@enk/icons/check.svg";
+import translations from "@enk/translations";
+import { useRouter } from "next/router";
 
 const cx = classnames.bind(style);
 
-export const CheckList = ({
-	title,
-	categories,
-	filters,
-	lang,
-}: CheckListProps) => {
+export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 	const [state, setState] = useState([]);
 	const [activeFilter, setActiveFilter] = useState("");
 	const [updatedData, setUpdatedData] = useState([]);
 	const [isDirty, setIsDirty] = useState(false);
 	const [checkedHidden, setCheckedHidden] = useState(false);
-
+	const router = useRouter();
+	const { locale } = router;
+	const dictionary = translations[locale].checklist;
 	let checkListItems;
 	const [
 		updateCheckListItems,
@@ -48,7 +47,7 @@ export const CheckList = ({
 	});
 
 	function getCategories(activeFilter = undefined) {
-		const key = lang === "nl" ? "nameNL" : "name";
+		const key = locale === "nl" ? "nameNL" : "name";
 		if (activeFilter) {
 			return [
 				{
@@ -161,7 +160,7 @@ export const CheckList = ({
 		}
 	}, [state, updatedData]);
 
-	const translatedTitle = lang === "nl" ? "titleNL" : "title";
+	const translatedTitle = locale === "nl" ? "titleNL" : "title";
 	const { data, loading, error } = useQuery(ALL_CHECKLISTITEMS_QUERY, {
 		variables: {
 			where: {
@@ -232,15 +231,16 @@ export const CheckList = ({
 			<h2 className={style.title}>{title}</h2>
 			{filters && (
 				<div className={style.filters}>
-					<h3>Category:</h3>
+					<h3>{dictionary.category}</h3>
 					<select
 						value={activeFilter}
 						onChange={(e) => filterCategory(e.target.value)}
-						placeholder="Select category..."
+						placeholder={`${
+							dictionary.select
+						} ${dictionary.category.toLowerCase()}...`}
 					>
 						<option disabled value="">
-							{" "}
-							--Select--{" "}
+							--{dictionary.select}--
 						</option>
 						{filters.map((filter) => (
 							<option key={filter} value={filter}>
@@ -250,11 +250,11 @@ export const CheckList = ({
 					</select>
 					<Button
 						size="small"
-						text="Show All Categories"
+						text={`${dictionary.showAll}`}
 						onClick={() => filterCategory(categories)}
 					/>
 					<div className={style.hideChecked}>
-						<h3>Hide checked:</h3>
+						<h3>{dictionary.hideChecked}</h3>
 						<Button
 							checkbox={true}
 							icon={!!checkedHidden ? <Check /> : null}
@@ -279,7 +279,6 @@ export const CheckList = ({
 								{...item}
 								handleSave={(item) => handleSave(item)}
 								checked={!!localItem?.checked}
-								lang={lang}
 								checkedHidden={!!localItem?.checked && checkedHidden}
 							/>
 						</li>
@@ -287,12 +286,20 @@ export const CheckList = ({
 				})}
 			</ul>
 			<div className={style.buttons}>
-				<Button size="small" text="Uncheck All" onClick={clearList} />
-				<Button size="small" text="Check All" onClick={checkAllOnList} />
-				<Button size="small" text="Reset" onClick={resetList} />
 				<Button
 					size="small"
-					text="Save"
+					text={`${dictionary.uncheckAll}`}
+					onClick={clearList}
+				/>
+				<Button
+					size="small"
+					text={`${dictionary.checkAll}`}
+					onClick={checkAllOnList}
+				/>
+				<Button size="small" text={`${dictionary.reset}`} onClick={resetList} />
+				<Button
+					size="small"
+					text={`${dictionary.save}`}
 					disabled={!isDirty}
 					onClick={saveList}
 				/>

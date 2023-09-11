@@ -1,0 +1,32 @@
+{
+    "user": {
+        "signin": "Inloggen",
+        "signIntoAccount": "Log in bij je account",
+        "password": "Wachtwoord",
+        "signout": "Uitloggen"
+    },
+    "businessCard": {
+        "title": "Hallo, ik ben...",
+        "pronouns": "Zij/Haar",
+        "jobTitle": "een front-end ontwikkelaar uit NL 🇳🇱",
+        "hobby": "een D&D nerd die haar eigen mini's 3D-print en schildert",
+        "family": "moeder van 's werelds leukste koter",
+        "afficionado": "liefhebber van muziek, film, fotografie en kaas."
+    },
+    "experiences": {
+        "title": "Wat ik zoal heb meegemaakt"
+    },
+    "checklist": {
+        "category": "Categorie",
+        "select": "Selecteer",
+        "showAll": "Toon alle categoriën",
+        "hideChecked": "Verberg afgevinkt:",
+        "uncheckAll": "Alles uitvinken",
+        "checkAll": "Vink alles af",
+        "reset": "Reset",
+        "save": "Opslaan"
+    },
+    "packing": {
+        "title": "Paklijst"
+    }
+}

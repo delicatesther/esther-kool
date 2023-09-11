@@ -10,6 +10,28 @@ const cx = classNames.bind(style);
 
 export const ExperienceDetail = ({ experience }) => {
 	const router = useRouter();
+	const { locale } = router;
+	const { title, titleNL, summary, summaryNL, tags } = experience || "";
+	const { content, contentNL } = experience || undefined;
+
+	const experienceTags = tags.map((tag) => {
+		const { name: EnTagTitle, nameNL: NlTagTitle, ...tagsRest } = tag;
+		return { ...tagsRest, name: locale === "nl" ? NlTagTitle : EnTagTitle };
+	});
+
+	const translations = {
+		nl: {
+			title: titleNL,
+			summary: summaryNL,
+			content: contentNL,
+		},
+		en: {
+			title,
+			summary,
+			content,
+		},
+	};
+
 	return (
 		<>
 			<Button
@@ -20,11 +42,17 @@ export const ExperienceDetail = ({ experience }) => {
 				iconLeft={<ChevronLeft />}
 			/>
 			<article className={cx("row", ["article"])}>
-				<h2 className={cx(["title"])}>{experience.title}</h2>
-				<p className={cx(["summary"], "text-intro")}>{experience.summary}</p>
-				<div className={cx(["content"])}>
-					<DocumentRenderer document={experience.content.document} />
-				</div>
+				<h2 className={cx(["title"])}>{translations[locale].title}</h2>
+				<p className={cx(["summary"], "text-intro")}>
+					{translations[locale].summary}
+				</p>
+				{!!translations[locale].content && (
+					<div className={cx(["content"])}>
+						<DocumentRenderer
+							document={translations[locale].content?.document}
+						/>
+					</div>
+				)}
 			</article>
 		</>
 	);
