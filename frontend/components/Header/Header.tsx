@@ -9,14 +9,16 @@ import { useUser } from "@enk/utils";
 import { Button } from "@enk/components/Button";
 import { SignOut } from "@enk/components/User";
 import style from "./header.module.scss";
-
+import { useRouter } from "next/router";
+import translations from "@enk/translations";
 const cx = classNames.bind(style);
 
 export const Header = () => {
 	const [mounted, setMounted] = useState(false);
 	const { theme, setTheme } = useTheme();
 	const user = useUser();
-
+	const router = useRouter();
+	const { locale } = router;
 	useEffect(() => {
 		setMounted(true);
 	}, []);
@@ -37,7 +39,7 @@ export const Header = () => {
 							Alex
 						</Link>
 						<Link href="/paklijst" className="anchor">
-							Paklijst
+							{translations[locale].packing.title}
 						</Link>
 						{/* <Link href="/gezondheid" className="anchor">
               Gezondheid
@@ -52,7 +54,9 @@ export const Header = () => {
 						<SignOut size="small" />
 					</>
 				)}
-				{!user && <Link href="/signin">Sign in</Link>}
+				{!user && (
+					<Link href="/signin">{translations[locale].user.signin}</Link>
+				)}
 				<Button
 					onClick={() =>
 						theme === "light" ? setTheme("dark") : setTheme("light")

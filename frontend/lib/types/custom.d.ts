@@ -47,7 +47,6 @@ export type CheckListProps = {
 	title: string;
 	categories: Array[CheckListCategories];
 	filters: Array[CheckListCategories];
-	lang: "nl" | "en";
 };
 
 type CheckListItemCheckedData = {

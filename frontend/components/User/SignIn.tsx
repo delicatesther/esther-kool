@@ -6,10 +6,14 @@ import { CURRENT_USER_QUERY, SIGNIN_MUTATION, useForm } from "@enk/lib";
 import classNames from "classnames/bind";
 import style from "./user.module.scss";
 import { Button } from "@enk/components/Button";
-
+import translations from "@enk/translations";
+import { useRouter } from "next/router";
 const cx = classNames.bind(style);
 
 export const SignIn = () => {
+	const router = useRouter();
+	const { locale } = router;
+	const dictionary = translations[locale].user;
 	const { inputs, handleChange, resetForm, clearForm } = useForm({
 		email: "",
 		password: "",
@@ -39,7 +43,7 @@ export const SignIn = () => {
 	return (
 		<div className={cx(["signIn"], "row")}>
 			<form method="POST" onSubmit={handleSubmit}>
-				<h2 className={style.heading}>Sign into your account</h2>
+				<h2 className={style.heading}>{dictionary.signIntoAccount}</h2>
 				<ErrorMessage error={error} />
 				<fieldset>
 					<label htmlFor="signinemailinput">Email</label>
@@ -52,7 +56,7 @@ export const SignIn = () => {
 						value={inputs.email}
 						onChange={handleChange}
 					/>
-					<label htmlFor="signinpasswordinput">Password</label>
+					<label htmlFor="signinpasswordinput">{dictionary.password}</label>
 					<input
 						id="signinpasswordinput"
 						type="password"
@@ -61,7 +65,7 @@ export const SignIn = () => {
 						value={inputs.password}
 						onChange={handleChange}
 					/>
-					<Button type="submit" text="Sign in" />
+					<Button type="submit" text={dictionary.signin} />
 				</fieldset>
 			</form>
 		</div>

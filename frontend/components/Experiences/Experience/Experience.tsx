@@ -3,22 +3,48 @@ import { useUser } from "@enk/utils";
 import classNames from "classnames/bind";
 import style from "./experience.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const cx = classNames.bind(style);
 
 export const Experience = ({
 	id,
 	title,
+	titleNL,
 	status,
 	summary,
+	summaryNL,
 	tags,
 	from,
 	to,
 	className,
 	organisation,
 	content,
+	contentNL,
 }) => {
 	const me = useUser();
+	const router = useRouter();
+	const { locale } = router;
+
+	const experienceTags = tags.map((tag) => {
+		const { name: EnTagTitle, nameNL: NlTagTitle, ...tagsRest } = tag;
+		return { ...tagsRest, name: locale === "nl" ? NlTagTitle : EnTagTitle };
+	});
+
+	const translations = {
+		nl: {
+			title: titleNL,
+			summary: summaryNL,
+			content: contentNL,
+		},
+		en: {
+			title,
+			summary,
+			content,
+		},
+	};
+
+	const translated = translations[locale];
 
 	if (!me && status === "draft") {
 		return null;
@@ -45,18 +71,18 @@ export const Experience = ({
 					</Link>
 				) : (
 					<h3 className={cx(["titleSingle"], ["title"])}>
-						{title}
+						{translated.title}
 						{status === "draft" && " - Draft"}
 					</h3>
 				)}
 				<div className={style.tags}>
-					{tags.map((tag) => (
+					{experienceTags.map((tag) => (
 						<span key={tag.id} className={style.tag}>
 							{tag.name}
 						</span>
 					))}
 				</div>
-				{summary && <p className={style.summary}>{summary}</p>}
+				{summary && <p className={style.summary}>{translated.summary}</p>}
 			</div>
 		</article>
 	);
