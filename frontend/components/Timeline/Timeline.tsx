@@ -4,9 +4,15 @@ import { ALL_EXPERIENCES_QUERY } from "@enk/lib";
 import { Experience } from "@enk/components/Experiences";
 import style from "./timeline.module.scss";
 import classNames from "classnames/bind";
+import translations from "@enk/translations";
+import { useRouter } from "next/router";
+
 const cx = classNames.bind(style);
 
 export const Timeline = () => {
+	const router = useRouter();
+	const { locale } = router;
+	const dictionary = translations[locale].experiences;
 	const { data, loading, error } = useQuery(ALL_EXPERIENCES_QUERY, {
 		variables: {
 			orderBy: [
@@ -42,7 +48,7 @@ export const Timeline = () => {
 
 	return (
 		<div className={style.wrapper}>
-			<h3>What I&apos;ve been up to</h3>
+			<h3>{dictionary.title}</h3>
 			<div className={style.container}>
 				<div aria-hidden className={style.timelineBar}></div>
 				<ol className={style.list}>

@@ -3,11 +3,11 @@ import { Button } from "@enk/components/Button";
 import Check from "@enk/icons/check.svg";
 import classNames from "classnames/bind";
 import style from "./checkListItem.module.scss";
+import { useRouter } from "next/router";
 
 const cx = classNames.bind(style);
 
 export const CheckListItem = ({
-	lang,
 	id,
 	title,
 	titleNL,
@@ -18,8 +18,10 @@ export const CheckListItem = ({
 	handleSave,
 	tags,
 }) => {
-	const name = lang === "nl" ? titleNL : title;
-	const desc = lang === "nl" ? descriptionNL : description;
+	const router = useRouter();
+	const { locale } = router;
+	const name = locale === "nl" ? titleNL : title;
+	const desc = locale === "nl" ? descriptionNL : description;
 	const item = {
 		id,
 		title,
@@ -38,7 +40,7 @@ export const CheckListItem = ({
 			<p className={cx(["desc"], "text-small")}>{desc}</p>
 			<div className={style.tags}>
 				{tags.map((tag) => {
-					const tagName = lang === "nl" ? tag.nameNL : tag.name;
+					const tagName = locale === "nl" ? tag.nameNL : tag.name;
 					if (tag.name !== "Packing") {
 						return <span key={tag.id}>{tagName}</span>;
 					}

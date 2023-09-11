@@ -18,15 +18,10 @@ const databaseURL: string =
   process.env.DATABASE_URL || "https://xoolgtbnrumkdxlowjad.supabase.co";
 const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 
-// 3000 is standard for node apps
-// Once deployed, Heroku will supply this var to your app
-export const PORT: number = parseInt(process.env.PORT) || 3010;
-
 export default withAuth(
   // Using the config function helps typescript guide you to the available options.
   config({
     server: {
-      port: PORT,
       cors: {
         origin: [frontendUrl, /\.estherkool\.com$/],
         // Passes along cookie

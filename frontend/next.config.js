@@ -24,6 +24,10 @@ const nextConfig = {
 		// Important: return the modified config
 		return config;
 	},
+	i18n: {
+		locales: ["en", "nl"],
+		defaultLocale: "nl",
+	},
 	rewrites: () => [
 		{
 			source: "/api/graphql",
