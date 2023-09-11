@@ -39,16 +39,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		},
 	});
 
-	const experienceIds = experiences.map((experience) => {
+	const experienceIdsEn = experiences.map((experience) => {
 		return {
 			params: {
 				id: experience.id,
+				locale: "en",
+			},
+		};
+	});
+	const experienceIdsNl = experiences.map((experience) => {
+		return {
+			params: {
+				id: experience.id,
+				locale: "nl",
 			},
 		};
 	});
 
 	return {
-		paths: experienceIds,
+		paths: [...experienceIdsEn, ...experienceIdsNl],
 		fallback: "blocking",
 	};
 };

@@ -32,6 +32,9 @@
       "@enk/utils": [
         "lib/utils/index.ts"
       ],
+      "@enk/translations": [
+        "lib/translations/index.ts"
+      ],
       "@enk/icons/*": [
         "public/icons/*",
       ],

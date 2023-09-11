@@ -54,9 +54,13 @@ export const EXPERIENCES_QUERY = gql`
 			content {
 				document
 			}
+			contentNL {
+				document
+			}
 			tags {
 				id
 				name
+				nameNL
 			}
 			organisation {
 				name
@@ -74,19 +78,23 @@ export const EXPERIENCE_QUERY = gql`
 			status
 			from
 			to
-			content {
-				document
-			}
 			summary
 			summaryNL
 			title
 			titleNL
+			content {
+				document
+			}
+			contentNL {
+				document
+			}
 			tags {
+				id
 				name
 				nameNL
-				id
 			}
 			organisation {
+				id
 				name
 				nameNL
 				logo
