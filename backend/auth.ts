@@ -27,7 +27,7 @@ if (!sessionSecret) {
       "The SESSION_SECRET environment variable must be set in production"
     );
   } else {
-    sessionSecret = process.env.COOKIE_SECRET;
+    sessionSecret = process.env.SESSION_SECRET;
   }
 }
 
@@ -61,7 +61,7 @@ const session = statelessSessions({
   maxAge: sessionMaxAge,
   sameSite: "lax",
   secure: process.env.NODE_ENV === "production",
-  domain: process.env.DOMAIN,
+  // domain: process.env.DOMAIN,
 });
 
 export { withAuth, session };
