@@ -398,8 +398,7 @@ var session = (0, import_session.statelessSessions)({
   secret: sessionSecret,
   maxAge: sessionMaxAge,
   sameSite: "lax",
-  secure: process.env.NODE_ENV === "production",
-  domain: process.env.DOMAIN
+  secure: process.env.NODE_ENV === "production"
 });
 
 // keystone.ts

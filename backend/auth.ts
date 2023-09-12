@@ -61,7 +61,6 @@ const session = statelessSessions({
   maxAge: sessionMaxAge,
   sameSite: "lax",
   secure: process.env.NODE_ENV === "production",
-  domain: process.env.DOMAIN,
 });
 
 export { withAuth, session };
