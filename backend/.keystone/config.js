@@ -23,8 +23,8 @@ __export(keystone_exports, {
   default: () => keystone_default
 });
 module.exports = __toCommonJS(keystone_exports);
-var import_config = require("dotenv/config");
-var import_core7 = require("@keystone-6/core");
+var import_config2 = require("dotenv/config");
+var import_core8 = require("@keystone-6/core");
 
 // schemas/CheckListItem.ts
 var import_core = require("@keystone-6/core");
@@ -71,23 +71,57 @@ var CheckListItem = (0, import_core.list)({
         inlineCreate: { fields: ["name", "nameNL"] }
       },
       many: true
-    })
+    }),
+    users: (0, import_fields.relationship)({
+      ref: "User.checkListItems",
+      many: true
+    }),
+    image: (0, import_fields.relationship)({ ref: "CheckListItemImage.checkListItem" })
+  }
+});
+
+// schemas/CheckListItemImage.ts
+var import_config = require("dotenv/config");
+var import_fields2 = require("@keystone-6/core/fields");
+var import_core2 = require("@keystone-6/core");
+var import_access2 = require("@keystone-6/core/access");
+var import_cloudinary = require("@keystone-6/cloudinary");
+var cloudinary = {
+  cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+  apiKey: process.env.CLOUDINARY_KEY,
+  apiSecret: process.env.CLOUDINARY_SECRET,
+  folder: "estherkool.com"
+};
+var CheckListItemImage = (0, import_core2.list)({
+  access: import_access2.allowAll,
+  fields: {
+    image: (0, import_cloudinary.cloudinaryImage)({
+      cloudinary,
+      label: "Source"
+    }),
+    altText: (0, import_fields2.text)(),
+    checkListItem: (0, import_fields2.relationship)({ ref: "CheckListItem.image" })
+  },
+  ui: {
+    listView: {
+      initialColumns: ["image", "altText", "product"]
+    }
   }
 });
 
 // schemas/Experience.ts
-var import_core2 = require("@keystone-6/core");
-var import_access2 = require("@keystone-6/core/access");
-var import_fields2 = require("@keystone-6/core/fields");
+var import_core3 = require("@keystone-6/core");
+var import_access3 = require("@keystone-6/core/access");
+var import_fields3 = require("@keystone-6/core/fields");
 var import_fields_document = require("@keystone-6/fields-document");
-var Experience = (0, import_core2.list)({
-  access: import_access2.allowAll,
+var Experience = (0, import_core3.list)({
+  access: import_access3.allowAll,
   fields: {
-    title: (0, import_fields2.text)(),
-    titleNL: (0, import_fields2.text)({ label: "Titel (NL)" }),
+    title: (0, import_fields3.text)(),
+    titleNL: (0, import_fields3.text)({ label: "Titel (NL)" }),
     // Having the status here will make it easy for us to choose whether to display
     // posts on a live site.
-    status: (0, import_fields2.select)({
+    status: (0, import_fields3.select)({
       options: [
         { label: "Published", value: "published" },
         { label: "Draft", value: "draft" }
@@ -99,7 +133,7 @@ var Experience = (0, import_core2.list)({
         displayMode: "segmented-control"
       }
     }),
-    summary: (0, import_fields2.text)({
+    summary: (0, import_fields3.text)({
       ui: {
         displayMode: "textarea"
       },
@@ -109,7 +143,7 @@ var Experience = (0, import_core2.list)({
         }
       }
     }),
-    summaryNL: (0, import_fields2.text)({
+    summaryNL: (0, import_fields3.text)({
       label: "Samenvatting (NL)",
       ui: {
         displayMode: "textarea"
@@ -148,12 +182,12 @@ var Experience = (0, import_core2.list)({
       links: true,
       dividers: true
     }),
-    publishDate: (0, import_fields2.timestamp)({ defaultValue: { kind: "now" } }),
-    from: (0, import_fields2.calendarDay)({ validation: { isRequired: true } }),
-    to: (0, import_fields2.calendarDay)(),
+    publishDate: (0, import_fields3.timestamp)({ defaultValue: { kind: "now" } }),
+    from: (0, import_fields3.calendarDay)({ validation: { isRequired: true } }),
+    to: (0, import_fields3.calendarDay)(),
     // Here is the link from post => author.
     // We've configured its UI display quite a lot to make the experience of editing posts better.
-    author: (0, import_fields2.relationship)({
+    author: (0, import_fields3.relationship)({
       ref: "User.experiences",
       ui: {
         displayMode: "cards",
@@ -174,7 +208,7 @@ var Experience = (0, import_core2.list)({
       }
     }),
     // We also link posts to tags. This is a many <=> many linking.
-    tags: (0, import_fields2.relationship)({
+    tags: (0, import_fields3.relationship)({
       ref: "Tag.experiences",
       ui: {
         displayMode: "cards",
@@ -186,7 +220,7 @@ var Experience = (0, import_core2.list)({
       },
       many: true
     }),
-    organisation: (0, import_fields2.relationship)({
+    organisation: (0, import_fields3.relationship)({
       ref: "Organisation.experiences",
       ui: {
         displayMode: "cards",
@@ -201,31 +235,31 @@ var Experience = (0, import_core2.list)({
 });
 
 // schemas/Organisation.ts
-var import_core3 = require("@keystone-6/core");
-var import_access3 = require("@keystone-6/core/access");
-var import_fields3 = require("@keystone-6/core/fields");
-var Organisation = (0, import_core3.list)({
-  access: import_access3.allowAll,
+var import_core4 = require("@keystone-6/core");
+var import_access4 = require("@keystone-6/core/access");
+var import_fields4 = require("@keystone-6/core/fields");
+var Organisation = (0, import_core4.list)({
+  access: import_access4.allowAll,
   fields: {
-    name: (0, import_fields3.text)(),
-    nameNL: (0, import_fields3.text)({ label: "Naam (NL)" }),
-    experiences: (0, import_fields3.relationship)({ ref: "Experience.organisation", many: true }),
-    logo: (0, import_fields3.text)()
+    name: (0, import_fields4.text)(),
+    nameNL: (0, import_fields4.text)({ label: "Naam (NL)" }),
+    experiences: (0, import_fields4.relationship)({ ref: "Experience.organisation", many: true }),
+    logo: (0, import_fields4.text)()
   }
 });
 
 // schemas/Post.ts
-var import_core4 = require("@keystone-6/core");
-var import_access4 = require("@keystone-6/core/access");
-var import_fields4 = require("@keystone-6/core/fields");
+var import_core5 = require("@keystone-6/core");
+var import_access5 = require("@keystone-6/core/access");
+var import_fields5 = require("@keystone-6/core/fields");
 var import_fields_document2 = require("@keystone-6/fields-document");
-var Post = (0, import_core4.list)({
-  access: import_access4.allowAll,
+var Post = (0, import_core5.list)({
+  access: import_access5.allowAll,
   fields: {
-    title: (0, import_fields4.text)(),
+    title: (0, import_fields5.text)(),
     // Having the status here will make it easy for us to choose whether to display
     // posts on a live site.
-    status: (0, import_fields4.select)({
+    status: (0, import_fields5.select)({
       options: [
         { label: "Published", value: "published" },
         { label: "Draft", value: "draft" }
@@ -252,10 +286,10 @@ var Post = (0, import_core4.list)({
       links: true,
       dividers: true
     }),
-    publishDate: (0, import_fields4.timestamp)(),
+    publishDate: (0, import_fields5.timestamp)(),
     // Here is the link from post => author.
     // We've configured its UI display quite a lot to make the experience of editing posts better.
-    author: (0, import_fields4.relationship)({
+    author: (0, import_fields5.relationship)({
       ref: "User.posts",
       ui: {
         displayMode: "cards",
@@ -266,7 +300,7 @@ var Post = (0, import_core4.list)({
       }
     }),
     // We also link posts to tags. This is a many <=> many linking.
-    tags: (0, import_fields4.relationship)({
+    tags: (0, import_fields5.relationship)({
       ref: "Tag.posts",
       ui: {
         displayMode: "cards",
@@ -282,52 +316,53 @@ var Post = (0, import_core4.list)({
 });
 
 // schemas/Tag.ts
-var import_core5 = require("@keystone-6/core");
-var import_access5 = require("@keystone-6/core/access");
-var import_fields5 = require("@keystone-6/core/fields");
-var Tag = (0, import_core5.list)({
-  access: import_access5.allowAll,
+var import_core6 = require("@keystone-6/core");
+var import_access6 = require("@keystone-6/core/access");
+var import_fields6 = require("@keystone-6/core/fields");
+var Tag = (0, import_core6.list)({
+  access: import_access6.allowAll,
   fields: {
-    name: (0, import_fields5.text)(),
-    nameNL: (0, import_fields5.text)({ label: "Tag (NL)" }),
-    posts: (0, import_fields5.relationship)({ ref: "Post.tags", many: true }),
-    experiences: (0, import_fields5.relationship)({ ref: "Experience.tags", many: true }),
-    checkListItems: (0, import_fields5.relationship)({ ref: "CheckListItem.tags", many: true })
+    name: (0, import_fields6.text)(),
+    nameNL: (0, import_fields6.text)({ label: "Tag (NL)" }),
+    posts: (0, import_fields6.relationship)({ ref: "Post.tags", many: true }),
+    experiences: (0, import_fields6.relationship)({ ref: "Experience.tags", many: true }),
+    checkListItems: (0, import_fields6.relationship)({ ref: "CheckListItem.tags", many: true })
   }
 });
 
 // schemas/User.ts
-var import_core6 = require("@keystone-6/core");
-var import_access6 = require("@keystone-6/core/access");
-var import_fields6 = require("@keystone-6/core/fields");
-var Height = (0, import_core6.list)({
-  access: import_access6.allowAll,
+var import_core7 = require("@keystone-6/core");
+var import_access7 = require("@keystone-6/core/access");
+var import_fields7 = require("@keystone-6/core/fields");
+var Height = (0, import_core7.list)({
+  access: import_access7.allowAll,
   fields: {
-    cm: (0, import_fields6.integer)({ label: "Height (in cm)" }),
-    createdAt: (0, import_fields6.timestamp)({ defaultValue: { kind: "now" } })
+    cm: (0, import_fields7.integer)({ label: "Height (in cm)" }),
+    createdAt: (0, import_fields7.timestamp)({ defaultValue: { kind: "now" } })
   }
 });
-var Weight = (0, import_core6.list)({
-  access: import_access6.allowAll,
+var Weight = (0, import_core7.list)({
+  access: import_access7.allowAll,
   fields: {
-    g: (0, import_fields6.integer)({ label: "Weight (in g)" }),
-    createdAt: (0, import_fields6.timestamp)({ defaultValue: { kind: "now" } })
+    g: (0, import_fields7.integer)({ label: "Weight (in g)" }),
+    createdAt: (0, import_fields7.timestamp)({ defaultValue: { kind: "now" } })
   }
 });
-var User = (0, import_core6.list)({
-  access: import_access6.allowAll,
+var User = (0, import_core7.list)({
+  access: import_access7.allowAll,
   fields: {
-    name: (0, import_fields6.text)({ validation: { isRequired: true } }),
-    email: (0, import_fields6.text)({
+    name: (0, import_fields7.text)({ validation: { isRequired: true } }),
+    email: (0, import_fields7.text)({
       validation: { isRequired: true },
       isIndexed: "unique",
       isFilterable: true
     }),
-    password: (0, import_fields6.password)({ validation: { isRequired: true } }),
-    posts: (0, import_fields6.relationship)({ ref: "Post.author", many: true }),
-    experiences: (0, import_fields6.relationship)({ ref: "Experience.author", many: true }),
-    birthdate: (0, import_fields6.calendarDay)(),
-    height: (0, import_fields6.relationship)({
+    password: (0, import_fields7.password)({ validation: { isRequired: true } }),
+    posts: (0, import_fields7.relationship)({ ref: "Post.author", many: true }),
+    experiences: (0, import_fields7.relationship)({ ref: "Experience.author", many: true }),
+    checkListItems: (0, import_fields7.relationship)({ ref: "CheckListItem.users", many: true }),
+    birthdate: (0, import_fields7.calendarDay)(),
+    height: (0, import_fields7.relationship)({
       ref: "Height",
       many: true,
       ui: {
@@ -338,7 +373,7 @@ var User = (0, import_core6.list)({
         inlineConnect: false
       }
     }),
-    weight: (0, import_fields6.relationship)({
+    weight: (0, import_fields7.relationship)({
       ref: "Weight",
       many: true,
       ui: {
@@ -360,6 +395,7 @@ var User = (0, import_core6.list)({
 // schema.ts
 var lists = {
   CheckListItem,
+  CheckListItemImage,
   Experience,
   Height,
   Organisation,
@@ -379,7 +415,7 @@ if (!sessionSecret) {
       "The SESSION_SECRET environment variable must be set in production"
     );
   } else {
-    sessionSecret = process.env.COOKIE_SECRET;
+    sessionSecret = process.env.SESSION_SECRET;
   }
 }
 var { withAuth } = (0, import_auth.createAuth)({
@@ -406,7 +442,7 @@ var databaseURL = process.env.DATABASE_URL || "https://xoolgtbnrumkdxlowjad.supa
 var frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 var keystone_default = withAuth(
   // Using the config function helps typescript guide you to the available options.
-  (0, import_core7.config)({
+  (0, import_core8.config)({
     server: {
       cors: {
         origin: [frontendUrl, /\.estherkool\.com$/],
