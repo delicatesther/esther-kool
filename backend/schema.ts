@@ -1,5 +1,6 @@
 import {
   CheckListItem,
+  CheckListItemImage,
   Experience,
   Height,
   Organisation,
@@ -11,6 +12,7 @@ import {
 
 export const lists = {
   CheckListItem,
+  CheckListItemImage,
   Experience,
   Height,
   Organisation,

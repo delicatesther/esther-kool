@@ -12,15 +12,25 @@ generator client {
 }
 
 model CheckListItem {
-  id            String    @id @default(uuid()) @postgresql.Uuid
-  title         String    @default("")
-  titleNL       String    @default("")
-  checked       Boolean   @default(false)
+  id            String              @id @default(uuid()) @postgresql.Uuid
+  title         String              @default("")
+  titleNL       String              @default("")
+  checked       Boolean             @default(false)
   amount        Int?
-  description   String    @default("")
-  descriptionNL String    @default("")
-  publishDate   DateTime? @default(now())
-  tags          Tag[]     @relation("CheckListItem_tags")
+  description   String              @default("")
+  descriptionNL String              @default("")
+  publishDate   DateTime?           @default(now())
+  tags          Tag[]               @relation("CheckListItem_tags")
+  users         User[]              @relation("CheckListItem_users")
+  image         CheckListItemImage? @relation("CheckListItem_image", fields: [imageId], references: [id])
+  imageId       String?             @unique @map("image") @postgresql.Uuid
+}
+
+model CheckListItemImage {
+  id            String         @id @default(uuid()) @postgresql.Uuid
+  image         Json?
+  altText       String         @default("")
+  checkListItem CheckListItem? @relation("CheckListItem_image")
 }
 
 model Experience {
@@ -83,15 +93,16 @@ model Tag {
 }
 
 model User {
-  id          String       @id @default(uuid()) @postgresql.Uuid
-  name        String       @default("")
-  email       String       @unique @default("")
-  password    String
-  posts       Post[]       @relation("Post_author")
-  experiences Experience[] @relation("Experience_author")
-  birthdate   DateTime?    @postgresql.Date
-  height      Height[]     @relation("User_height")
-  weight      Weight[]     @relation("User_weight")
+  id             String          @id @default(uuid()) @postgresql.Uuid
+  name           String          @default("")
+  email          String          @unique @default("")
+  password       String
+  posts          Post[]          @relation("Post_author")
+  experiences    Experience[]    @relation("Experience_author")
+  checkListItems CheckListItem[] @relation("CheckListItem_users")
+  birthdate      DateTime?       @postgresql.Date
+  height         Height[]        @relation("User_height")
+  weight         Weight[]        @relation("User_weight")
 }
 
 model Weight {

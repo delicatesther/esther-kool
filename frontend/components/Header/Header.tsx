@@ -19,6 +19,7 @@ export const Header = () => {
 	const user = useUser();
 	const router = useRouter();
 	const { locale } = router;
+	const dictionary = translations[locale];
 	useEffect(() => {
 		setMounted(true);
 	}, []);
@@ -30,7 +31,7 @@ export const Header = () => {
 	return (
 		<header className={cx(["header"], "header")}>
 			<Link href="/" className={cx(["link"], ["logo"])}>
-				<EstherKool title="Go to homepage Esther Kool" />
+				<EstherKool title={`${dictionary.global.goHome} Esther Kool`} />
 			</Link>
 			<div className={style.content}>
 				{user && (
@@ -39,7 +40,7 @@ export const Header = () => {
 							Alex
 						</Link>
 						<Link href="/paklijst" className="anchor">
-							{translations[locale].packing.title}
+							{dictionary.packing.title}
 						</Link>
 						{/* <Link href="/gezondheid" className="anchor">
               Gezondheid
@@ -54,9 +55,7 @@ export const Header = () => {
 						<SignOut size="small" />
 					</>
 				)}
-				{!user && (
-					<Link href="/signin">{translations[locale].user.signin}</Link>
-				)}
+				{!user && <Link href="/signin">{dictionary.user.signin}</Link>}
 				<Button
 					onClick={() =>
 						theme === "light" ? setTheme("dark") : setTheme("light")

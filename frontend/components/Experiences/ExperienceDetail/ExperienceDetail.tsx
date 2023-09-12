@@ -5,6 +5,7 @@ import style from "./experienceDetail.module.scss";
 import { useRouter } from "next/router";
 import { Button } from "@enk/components/Button";
 import ChevronLeft from "@enk/icons/chevronLeft.svg";
+import translations from "@enk/translations";
 
 const cx = classNames.bind(style);
 
@@ -19,13 +20,15 @@ export const ExperienceDetail = ({ experience }) => {
 		return { ...tagsRest, name: locale === "nl" ? NlTagTitle : EnTagTitle };
 	});
 
-	const translations = {
+	const dictionary = {
 		nl: {
+			...translations["nl"].global,
 			title: titleNL,
 			summary: summaryNL,
 			content: contentNL,
 		},
 		en: {
+			...translations["en"].global,
 			title,
 			summary,
 			content,
@@ -37,20 +40,18 @@ export const ExperienceDetail = ({ experience }) => {
 			<Button
 				size="small"
 				onClick={() => router.back()}
-				text="Go Back"
+				text={dictionary[locale].goBack}
 				className={cx(["button"])}
 				iconLeft={<ChevronLeft />}
 			/>
 			<article className={cx("row", ["article"])}>
-				<h2 className={cx(["title"])}>{translations[locale].title}</h2>
+				<h2 className={cx(["title"])}>{dictionary[locale].title}</h2>
 				<p className={cx(["summary"], "text-intro")}>
-					{translations[locale].summary}
+					{dictionary[locale].summary}
 				</p>
-				{!!translations[locale].content && (
+				{!!dictionary[locale].content && (
 					<div className={cx(["content"])}>
-						<DocumentRenderer
-							document={translations[locale].content?.document}
-						/>
+						<DocumentRenderer document={dictionary[locale].content?.document} />
 					</div>
 				)}
 			</article>

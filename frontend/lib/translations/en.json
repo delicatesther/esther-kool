@@ -1,32 +1,37 @@
 {
-    "user": {
-        "signin": "Sign In",
-        "signout": "Sign Out",
-        "signIntoAccount": "Sign into your account",
-        "password": "Password"
-    },
-    "businessCard": {
-        "title": "Hi, I'm...",
-        "pronouns": "She/Her",
-        "jobTitle": "a front-end developer from NL 🇳🇱",
-        "hobby": "a D&D nerd who prints and paints her own miniatures",
-        "family": "mom to the world's greatest kid",
-        "afficionado": "a lover of music, film, photography & cheese"
-    },
-    "experiences": {
-        "title": "What I've been up to"
-    },
-    "packing": {
-        "title": "Packing List"
-    },
-    "checklist": {
-        "category": "Category",
-        "select": "Select",
-        "showAll": "Show All Categories",
-        "hideChecked": "Hide checked:",
-        "uncheckAll": "Uncheck All",
-        "checkAll": "Check All",
-        "reset": "Reset",
-        "save": "Save"
-    }
+	"global": {
+		"category": "Category",
+		"select": "Select",
+		"reset": "Reset",
+		"back": "Back",
+		"goBack": "Go back",
+		"save": "Save",
+		"goHome": "Go to homepage"
+	},
+	"user": {
+		"signin": "Sign In",
+		"signout": "Sign Out",
+		"signIntoAccount": "Sign into your account",
+		"password": "Password"
+	},
+	"businessCard": {
+		"title": "Hi, I'm...",
+		"pronouns": "She/Her",
+		"jobTitle": "a front-end developer from NL 🇳🇱",
+		"hobby": "a D&D nerd who prints and paints her own miniatures",
+		"family": "mom to the world's greatest kid",
+		"afficionado": "a lover of music, film, photography & cheese"
+	},
+	"experiences": {
+		"title": "What I've been up to"
+	},
+	"packing": {
+		"title": "Packing List"
+	},
+	"checklist": {
+		"showAll": "Show All Categories",
+		"hideChecked": "Hide checked:",
+		"uncheckAll": "Uncheck All",
+		"checkAll": "Check All"
+	}
 }

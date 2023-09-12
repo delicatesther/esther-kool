@@ -9,12 +9,16 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import React from "react";
 import { ExperienceDetail } from "@enk/components/Experiences";
+import { useRouter } from "next/router";
 
 export default function ExperiencePage({ experience }) {
+	const router = useRouter();
+	const { locale } = router;
+	const { title, titleNL } = experience;
 	return (
 		<div>
 			<Head>
-				<title>Esther Kool | {experience.title}</title>
+				<title>Esther Kool | {locale === "nl" ? titleNL : title}</title>
 			</Head>
 			<Layout>
 				<ExperienceDetail experience={experience} />

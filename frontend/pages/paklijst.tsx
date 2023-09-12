@@ -7,17 +7,18 @@ import translations from "@enk/translations";
 export default function PaklijstPage() {
 	const router = useRouter();
 	const { locale } = router;
+	const title = translations[locale].packing.title;
 	return (
 		<div>
 			<Head>
-				<title>Esther Kool.com | {translations[locale].packing.title}</title>
+				<title>Esther Kool.com | {title}</title>
 				<meta name="description" content="Personal website to Esther Kool" />
 			</Head>
 			<Layout>
 				<div className="row">
 					<CheckList
 						categories={["Inpakken"]}
-						title={`${translations[locale].packing.title}`}
+						title={`${title}`}
 						filters={[
 							"Alex",
 							"Buitenland",

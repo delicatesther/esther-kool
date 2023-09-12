@@ -65,7 +65,7 @@ export const Experience = ({
 				{!!content?.document[0]?.children[0]?.text?.length ? (
 					<Link href={`/experience/${id}`} className={style.titleLink}>
 						<h3 className={style.title}>
-							{title}
+							{translated.title}
 							{status === "draft" && " - Draft"}
 						</h3>
 					</Link>

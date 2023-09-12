@@ -27,7 +27,7 @@ if (!sessionSecret) {
       "The SESSION_SECRET environment variable must be set in production"
     );
   } else {
-    sessionSecret = process.env.COOKIE_SECRET;
+    sessionSecret = process.env.SESSION_SECRET;
   }
 }
 
