@@ -1,4 +1,5 @@
 export * from "./CheckListItem";
+export * from "./CheckListItemImage";
 export * from "./Experience";
 export * from "./Organisation";
 export * from "./Post";

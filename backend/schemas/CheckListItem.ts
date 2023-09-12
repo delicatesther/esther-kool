@@ -50,5 +50,10 @@ export const CheckListItem = list({
       },
       many: true,
     }),
+    users: relationship({
+      ref: "User.checkListItems",
+      many: true,
+    }),
+    image: relationship({ ref: "CheckListItemImage.checkListItem" }),
   },
 });
