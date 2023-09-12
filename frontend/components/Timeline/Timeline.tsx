@@ -12,7 +12,10 @@ const cx = classNames.bind(style);
 export const Timeline = () => {
 	const router = useRouter();
 	const { locale } = router;
-	const dictionary = translations[locale].experiences;
+	const dictionary = {
+		...translations[locale].experiences,
+		...translations[locale].global,
+	};
 	const { data, loading, error } = useQuery(ALL_EXPERIENCES_QUERY, {
 		variables: {
 			orderBy: [
