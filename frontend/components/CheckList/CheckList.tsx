@@ -21,7 +21,10 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 	const [checkedHidden, setCheckedHidden] = useState(false);
 	const router = useRouter();
 	const { locale } = router;
-	const dictionary = translations[locale].checklist;
+	const dictionary = {
+		...translations[locale].checklist,
+		...translations[locale].global,
+	};
 	let checkListItems;
 	const [
 		updateCheckListItems,
