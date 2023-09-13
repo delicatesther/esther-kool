@@ -124,3 +124,44 @@ export const ALL_CHECKLISTITEMS_QUERY = gql`
 		}
 	}
 `;
+
+export const ALL_COLLECTIONCARDS_QUERY = gql`
+	query ALL_COLLECTIONCARDS_QUERY(
+		$where: CheckListItemWhereInput!
+		$orderBy: [CheckListItemOrderByInput!]!
+		$where2: UserWhereInput!
+	) {
+		checkListItems(where: $where, orderBy: $orderBy) {
+			id
+			titleNL
+			title
+			checked
+			description
+			descriptionNL
+			amount
+			tags {
+				nameNL
+				name
+				id
+			}
+			image {
+				altText
+				id
+				image {
+					publicUrlTransformed
+				}
+			}
+		}
+		users(where: $where2) {
+			id
+			name
+			checkListItems {
+				id
+				count
+				checkListItem {
+					id
+				}
+			}
+		}
+	}
+`;

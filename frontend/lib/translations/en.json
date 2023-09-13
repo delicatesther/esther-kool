@@ -33,5 +33,10 @@
 		"hideChecked": "Hide checked:",
 		"uncheckAll": "Uncheck All",
 		"checkAll": "Check All"
+	},
+	"collectionCards": {
+		"title": "Collection Cards",
+		"showAll": "Show All Categories",
+		"card": "Card"
 	}
 }

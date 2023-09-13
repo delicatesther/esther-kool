@@ -39,6 +39,9 @@ export const Header = () => {
 						<Link href="/alex" className="anchor">
 							Alex
 						</Link>
+						<Link href="/spaarplaatjes" className="anchor">
+							{dictionary.collectionCards.title}
+						</Link>
 						<Link href="/paklijst" className="anchor">
 							{dictionary.packing.title}
 						</Link>

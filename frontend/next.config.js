@@ -28,6 +28,9 @@ const nextConfig = {
 		locales: ["en", "nl"],
 		defaultLocale: "nl",
 	},
+	images: {
+		domains: ["res.cloudinary.com"],
+	},
 	rewrites: () => [
 		{
 			source: "/api/graphql",

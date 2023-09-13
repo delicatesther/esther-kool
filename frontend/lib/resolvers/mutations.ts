@@ -69,3 +69,13 @@ export const UPDATE_CHECKLIST_MUTATION = gql`
 		}
 	}
 `;
+
+export const UPDATE_COLLECTIONCARD_MUTATION = gql`
+	mutation UPDATE_COLLECTIONCARD_MUTATION(
+		$data: [UserChecklistItemUpdateArgs!]!
+	) {
+		updateUserChecklistItems(data: $data) {
+			id
+		}
+	}
+`;

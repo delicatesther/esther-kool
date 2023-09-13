@@ -12,8 +12,6 @@ type CheckListItem {
   publishDate: DateTime
   tags(where: TagWhereInput! = {}, orderBy: [TagOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TagWhereUniqueInput): [Tag!]
   tagsCount(where: TagWhereInput! = {}): Int
-  users(where: UserWhereInput! = {}, orderBy: [UserOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserWhereUniqueInput): [User!]
-  usersCount(where: UserWhereInput! = {}): Int
   image: CheckListItemImage
 }
 
@@ -36,7 +34,6 @@ input CheckListItemWhereInput {
   descriptionNL: StringFilter
   publishDate: DateTimeNullableFilter
   tags: TagManyRelationFilter
-  users: UserManyRelationFilter
   image: CheckListItemImageWhereInput
 }
 
@@ -118,12 +115,6 @@ input TagManyRelationFilter {
   none: TagWhereInput
 }
 
-input UserManyRelationFilter {
-  every: UserWhereInput
-  some: UserWhereInput
-  none: UserWhereInput
-}
-
 input CheckListItemOrderByInput {
   id: OrderDirection
   title: OrderDirection
@@ -149,7 +140,6 @@ input CheckListItemUpdateInput {
   descriptionNL: String
   publishDate: DateTime
   tags: TagRelateToManyForUpdateInput
-  users: UserRelateToManyForUpdateInput
   image: CheckListItemImageRelateToOneForUpdateInput
 }
 
@@ -158,13 +148,6 @@ input TagRelateToManyForUpdateInput {
   set: [TagWhereUniqueInput!]
   create: [TagCreateInput!]
   connect: [TagWhereUniqueInput!]
-}
-
-input UserRelateToManyForUpdateInput {
-  disconnect: [UserWhereUniqueInput!]
-  set: [UserWhereUniqueInput!]
-  create: [UserCreateInput!]
-  connect: [UserWhereUniqueInput!]
 }
 
 input CheckListItemImageRelateToOneForUpdateInput {
@@ -187,18 +170,12 @@ input CheckListItemCreateInput {
   descriptionNL: String
   publishDate: DateTime
   tags: TagRelateToManyForCreateInput
-  users: UserRelateToManyForCreateInput
   image: CheckListItemImageRelateToOneForCreateInput
 }
 
 input TagRelateToManyForCreateInput {
   create: [TagCreateInput!]
   connect: [TagWhereUniqueInput!]
-}
-
-input UserRelateToManyForCreateInput {
-  create: [UserCreateInput!]
-  connect: [UserWhereUniqueInput!]
 }
 
 input CheckListItemImageRelateToOneForCreateInput {
@@ -737,8 +714,8 @@ type User {
   postsCount(where: PostWhereInput! = {}): Int
   experiences(where: ExperienceWhereInput! = {}, orderBy: [ExperienceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ExperienceWhereUniqueInput): [Experience!]
   experiencesCount(where: ExperienceWhereInput! = {}): Int
-  checkListItems(where: CheckListItemWhereInput! = {}, orderBy: [CheckListItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CheckListItemWhereUniqueInput): [CheckListItem!]
-  checkListItemsCount(where: CheckListItemWhereInput! = {}): Int
+  checkListItems(where: UserChecklistItemWhereInput! = {}, orderBy: [UserChecklistItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserChecklistItemWhereUniqueInput): [UserChecklistItem!]
+  checkListItemsCount(where: UserChecklistItemWhereInput! = {}): Int
   birthdate: CalendarDay
   height(where: HeightWhereInput! = {}, orderBy: [HeightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeightWhereUniqueInput): [Height!]
   heightCount(where: HeightWhereInput! = {}): Int
@@ -764,10 +741,16 @@ input UserWhereInput {
   email: StringFilter
   posts: PostManyRelationFilter
   experiences: ExperienceManyRelationFilter
-  checkListItems: CheckListItemManyRelationFilter
+  checkListItems: UserChecklistItemManyRelationFilter
   birthdate: CalendarDayNullableFilter
   height: HeightManyRelationFilter
   weight: WeightManyRelationFilter
+}
+
+input UserChecklistItemManyRelationFilter {
+  every: UserChecklistItemWhereInput
+  some: UserChecklistItemWhereInput
+  none: UserChecklistItemWhereInput
 }
 
 input HeightManyRelationFilter {
@@ -795,10 +778,17 @@ input UserUpdateInput {
   password: String
   posts: PostRelateToManyForUpdateInput
   experiences: ExperienceRelateToManyForUpdateInput
-  checkListItems: CheckListItemRelateToManyForUpdateInput
+  checkListItems: UserChecklistItemRelateToManyForUpdateInput
   birthdate: CalendarDay
   height: HeightRelateToManyForUpdateInput
   weight: WeightRelateToManyForUpdateInput
+}
+
+input UserChecklistItemRelateToManyForUpdateInput {
+  disconnect: [UserChecklistItemWhereUniqueInput!]
+  set: [UserChecklistItemWhereUniqueInput!]
+  create: [UserChecklistItemCreateInput!]
+  connect: [UserChecklistItemWhereUniqueInput!]
 }
 
 input HeightRelateToManyForUpdateInput {
@@ -826,10 +816,15 @@ input UserCreateInput {
   password: String
   posts: PostRelateToManyForCreateInput
   experiences: ExperienceRelateToManyForCreateInput
-  checkListItems: CheckListItemRelateToManyForCreateInput
+  checkListItems: UserChecklistItemRelateToManyForCreateInput
   birthdate: CalendarDay
   height: HeightRelateToManyForCreateInput
   weight: WeightRelateToManyForCreateInput
+}
+
+input UserChecklistItemRelateToManyForCreateInput {
+  create: [UserChecklistItemCreateInput!]
+  connect: [UserChecklistItemWhereUniqueInput!]
 }
 
 input HeightRelateToManyForCreateInput {
@@ -840,6 +835,54 @@ input HeightRelateToManyForCreateInput {
 input WeightRelateToManyForCreateInput {
   create: [WeightCreateInput!]
   connect: [WeightWhereUniqueInput!]
+}
+
+type UserChecklistItem {
+  id: ID!
+  checkListItem: CheckListItem
+  checked: Boolean
+  count: Int
+  user: User
+}
+
+input UserChecklistItemWhereUniqueInput {
+  id: ID
+}
+
+input UserChecklistItemWhereInput {
+  AND: [UserChecklistItemWhereInput!]
+  OR: [UserChecklistItemWhereInput!]
+  NOT: [UserChecklistItemWhereInput!]
+  id: IDFilter
+  checkListItem: CheckListItemWhereInput
+  checked: BooleanFilter
+  count: IntNullableFilter
+  user: UserWhereInput
+}
+
+input UserChecklistItemOrderByInput {
+  id: OrderDirection
+  checked: OrderDirection
+  count: OrderDirection
+}
+
+input UserChecklistItemUpdateInput {
+  checkListItem: CheckListItemRelateToOneForUpdateInput
+  checked: Boolean
+  count: Int
+  user: UserRelateToOneForUpdateInput
+}
+
+input UserChecklistItemUpdateArgs {
+  where: UserChecklistItemWhereUniqueInput!
+  data: UserChecklistItemUpdateInput!
+}
+
+input UserChecklistItemCreateInput {
+  checkListItem: CheckListItemRelateToOneForCreateInput
+  checked: Boolean
+  count: Int
+  user: UserRelateToOneForCreateInput
 }
 
 type Weight {
@@ -936,6 +979,12 @@ type Mutation {
   updateUsers(data: [UserUpdateArgs!]!): [User]
   deleteUser(where: UserWhereUniqueInput!): User
   deleteUsers(where: [UserWhereUniqueInput!]!): [User]
+  createUserChecklistItem(data: UserChecklistItemCreateInput!): UserChecklistItem
+  createUserChecklistItems(data: [UserChecklistItemCreateInput!]!): [UserChecklistItem]
+  updateUserChecklistItem(where: UserChecklistItemWhereUniqueInput!, data: UserChecklistItemUpdateInput!): UserChecklistItem
+  updateUserChecklistItems(data: [UserChecklistItemUpdateArgs!]!): [UserChecklistItem]
+  deleteUserChecklistItem(where: UserChecklistItemWhereUniqueInput!): UserChecklistItem
+  deleteUserChecklistItems(where: [UserChecklistItemWhereUniqueInput!]!): [UserChecklistItem]
   createWeight(data: WeightCreateInput!): Weight
   createWeights(data: [WeightCreateInput!]!): [Weight]
   updateWeight(where: WeightWhereUniqueInput!, data: WeightUpdateInput!): Weight
@@ -989,6 +1038,9 @@ type Query {
   users(where: UserWhereInput! = {}, orderBy: [UserOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserWhereUniqueInput): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
+  userChecklistItems(where: UserChecklistItemWhereInput! = {}, orderBy: [UserChecklistItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserChecklistItemWhereUniqueInput): [UserChecklistItem!]
+  userChecklistItem(where: UserChecklistItemWhereUniqueInput!): UserChecklistItem
+  userChecklistItemsCount(where: UserChecklistItemWhereInput! = {}): Int
   weights(where: WeightWhereInput! = {}, orderBy: [WeightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: WeightWhereUniqueInput): [Weight!]
   weight(where: WeightWhereUniqueInput!): Weight
   weightsCount(where: WeightWhereInput! = {}): Int

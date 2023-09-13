@@ -3,6 +3,7 @@ import { list, ListConfig } from "@keystone-6/core";
 import { allowAll } from "@keystone-6/core/access";
 import {
   calendarDay,
+  checkbox,
   integer,
   password,
   relationship,
@@ -26,6 +27,24 @@ export const Weight = list({
   },
 });
 
+export const UserChecklistItem = list({
+  access: allowAll,
+  fields: {
+    checkListItem: relationship({
+      ref: "CheckListItem",
+      many: false,
+      ui: {
+        displayMode: "cards",
+        cardFields: ["title", "titleNL"],
+        inlineConnect: true,
+      },
+    }),
+    checked: checkbox(),
+    count: integer(),
+    user: relationship({ ref: "User.checkListItems" }),
+  },
+});
+
 export const User = list({
   access: allowAll,
   fields: {
@@ -38,7 +57,17 @@ export const User = list({
     password: password({ validation: { isRequired: true } }),
     posts: relationship({ ref: "Post.author", many: true }),
     experiences: relationship({ ref: "Experience.author", many: true }),
-    checkListItems: relationship({ ref: "CheckListItem.users", many: true }),
+    checkListItems: relationship({
+      ref: "UserChecklistItem.user",
+      many: true,
+      ui: {
+        displayMode: "cards",
+        cardFields: ["checkListItem", "checked", "count"],
+        inlineCreate: { fields: ["checkListItem", "checked", "count"] },
+        inlineEdit: { fields: ["checkListItem", "checked", "count"] },
+        inlineConnect: true,
+      },
+    }),
     birthdate: calendarDay(),
     height: relationship({
       ref: "Height",

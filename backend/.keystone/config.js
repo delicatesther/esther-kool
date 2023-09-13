@@ -72,10 +72,10 @@ var CheckListItem = (0, import_core.list)({
       },
       many: true
     }),
-    users: (0, import_fields.relationship)({
-      ref: "User.checkListItems",
-      many: true
-    }),
+    // users: relationship({
+    //   ref: "User.checkListItems",
+    //   many: true,
+    // }),
     image: (0, import_fields.relationship)({ ref: "CheckListItemImage.checkListItem" })
   }
 });
@@ -348,6 +348,23 @@ var Weight = (0, import_core7.list)({
     createdAt: (0, import_fields7.timestamp)({ defaultValue: { kind: "now" } })
   }
 });
+var UserChecklistItem = (0, import_core7.list)({
+  access: import_access7.allowAll,
+  fields: {
+    checkListItem: (0, import_fields7.relationship)({
+      ref: "CheckListItem",
+      many: false,
+      ui: {
+        displayMode: "cards",
+        cardFields: ["title", "titleNL"],
+        inlineConnect: true
+      }
+    }),
+    checked: (0, import_fields7.checkbox)(),
+    count: (0, import_fields7.integer)(),
+    user: (0, import_fields7.relationship)({ ref: "User.checkListItems" })
+  }
+});
 var User = (0, import_core7.list)({
   access: import_access7.allowAll,
   fields: {
@@ -360,7 +377,17 @@ var User = (0, import_core7.list)({
     password: (0, import_fields7.password)({ validation: { isRequired: true } }),
     posts: (0, import_fields7.relationship)({ ref: "Post.author", many: true }),
     experiences: (0, import_fields7.relationship)({ ref: "Experience.author", many: true }),
-    checkListItems: (0, import_fields7.relationship)({ ref: "CheckListItem.users", many: true }),
+    checkListItems: (0, import_fields7.relationship)({
+      ref: "UserChecklistItem.user",
+      many: true,
+      ui: {
+        displayMode: "cards",
+        cardFields: ["checkListItem", "checked", "count"],
+        inlineCreate: { fields: ["checkListItem", "checked", "count"] },
+        inlineEdit: { fields: ["checkListItem", "checked", "count"] },
+        inlineConnect: true
+      }
+    }),
     birthdate: (0, import_fields7.calendarDay)(),
     height: (0, import_fields7.relationship)({
       ref: "Height",
@@ -402,6 +429,7 @@ var lists = {
   Post,
   Tag,
   User,
+  UserChecklistItem,
   Weight
 };
 
