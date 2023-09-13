@@ -12,18 +12,18 @@ generator client {
 }
 
 model CheckListItem {
-  id            String              @id @default(uuid()) @postgresql.Uuid
-  title         String              @default("")
-  titleNL       String              @default("")
-  checked       Boolean             @default(false)
-  amount        Int?
-  description   String              @default("")
-  descriptionNL String              @default("")
-  publishDate   DateTime?           @default(now())
-  tags          Tag[]               @relation("CheckListItem_tags")
-  users         User[]              @relation("CheckListItem_users")
-  image         CheckListItemImage? @relation("CheckListItem_image", fields: [imageId], references: [id])
-  imageId       String?             @unique @map("image") @postgresql.Uuid
+  id                                   String              @id @default(uuid()) @postgresql.Uuid
+  title                                String              @default("")
+  titleNL                              String              @default("")
+  checked                              Boolean             @default(false)
+  amount                               Int?
+  description                          String              @default("")
+  descriptionNL                        String              @default("")
+  publishDate                          DateTime?           @default(now())
+  tags                                 Tag[]               @relation("CheckListItem_tags")
+  image                                CheckListItemImage? @relation("CheckListItem_image", fields: [imageId], references: [id])
+  imageId                              String?             @unique @map("image") @postgresql.Uuid
+  from_UserChecklistItem_checkListItem UserChecklistItem[] @relation("UserChecklistItem_checkListItem")
 }
 
 model CheckListItemImage {
@@ -93,16 +93,29 @@ model Tag {
 }
 
 model User {
-  id             String          @id @default(uuid()) @postgresql.Uuid
-  name           String          @default("")
-  email          String          @unique @default("")
+  id             String              @id @default(uuid()) @postgresql.Uuid
+  name           String              @default("")
+  email          String              @unique @default("")
   password       String
-  posts          Post[]          @relation("Post_author")
-  experiences    Experience[]    @relation("Experience_author")
-  checkListItems CheckListItem[] @relation("CheckListItem_users")
-  birthdate      DateTime?       @postgresql.Date
-  height         Height[]        @relation("User_height")
-  weight         Weight[]        @relation("User_weight")
+  posts          Post[]              @relation("Post_author")
+  experiences    Experience[]        @relation("Experience_author")
+  checkListItems UserChecklistItem[] @relation("UserChecklistItem_user")
+  birthdate      DateTime?           @postgresql.Date
+  height         Height[]            @relation("User_height")
+  weight         Weight[]            @relation("User_weight")
+}
+
+model UserChecklistItem {
+  id              String         @id @default(uuid()) @postgresql.Uuid
+  checkListItem   CheckListItem? @relation("UserChecklistItem_checkListItem", fields: [checkListItemId], references: [id])
+  checkListItemId String?        @map("checkListItem") @postgresql.Uuid
+  checked         Boolean        @default(false)
+  count           Int?
+  user            User?          @relation("UserChecklistItem_user", fields: [userId], references: [id])
+  userId          String?        @map("user") @postgresql.Uuid
+
+  @@index([checkListItemId])
+  @@index([userId])
 }
 
 model Weight {

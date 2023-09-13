@@ -1,0 +1,79 @@
+@use "../../../styles/config/" as *;
+
+%backgroundStyle {
+	background: var(--siteBackground);
+	padding: 4px;
+	border-radius: 6px;
+}
+
+.item {
+	transform: rotate(var(--rotate));
+	img {
+		@extend %backgroundStyle;
+		box-shadow: var(--shadow-elevation-low);
+		display: block;
+	}
+}
+
+.cardNumber {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: var(--shadow-elevation-low);
+	padding: 4px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 24px;
+	height: 24px;
+	background: var(--siteFontColor);
+	color: var(--siteBackground);
+	border-radius: 50%;
+}
+
+.hidden {
+	display: none;
+}
+
+.name {
+	@extend %backgroundStyle;
+	padding-left: 20px;
+	margin-left: 8px;
+	@include theme(dark) {
+		color: var(--white);
+	}
+}
+
+.desc {
+	flex: 1 1 fit-content;
+	margin: 8px 0;
+	.checked & {
+		text-decoration: line-through;
+		opacity: 0.3;
+	}
+}
+
+.checkbox {
+	flex: 0 0 40px;
+	margin-left: auto;
+	justify-self: flex-end;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tags {
+	display: none;
+	@include breakpoint(s) {
+		display: block;
+	}
+	.checked & {
+		opacity: 0.3;
+	}
+	span {
+		border: 1px solid var(--supportColor);
+		padding: 2px;
+		font-size: 1rem;
+		margin-right: 4px;
+	}
+}

@@ -7,6 +7,7 @@ import {
   Post,
   Tag,
   User,
+  UserChecklistItem,
   Weight,
 } from "./schemas";
 
@@ -19,5 +20,6 @@ export const lists = {
   Post,
   Tag,
   User,
+  UserChecklistItem,
   Weight,
 };

@@ -4,6 +4,7 @@
 // -----------------------------------------------------------------------------
 @use "../config" as *;
 
+input[type="number"],
 select {
 	height: 40px;
 	font-family: #{selectFont(headingFont)};
@@ -15,6 +16,11 @@ select {
 	background-color: var(--mercury);
 	@include theme(dark, false) {
 		background-color: var(--mineshaft);
+	}
+	&[disabled],
+	&.disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
 	}
 }
 

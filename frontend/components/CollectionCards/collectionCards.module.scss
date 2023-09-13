@@ -1,0 +1,97 @@
+@use "../../styles/config" as *;
+
+.wrapper {
+	grid-column: 1 / -1;
+	input[type="number"]:not([value="0"]) {
+		border-color: rgba(var(--forestGreenRgb));
+	}
+}
+
+.title {
+	grid-column: 1 / -1;
+	line-height: 5.2rem;
+}
+
+.table {
+	width: max-content;
+	td,
+	th {
+		padding: 8px;
+		vertical-align: middle;
+		text-align: center;
+	}
+	tr {
+		&:nth-child(even) {
+			background-color: rgba(var(--supportColorRgb), 0.6);
+			--rotate: 2deg;
+			&.hasCard {
+				background-color: rgba(var(--forestGreenRgb), 0.3);
+			}
+		}
+		&:nth-child(odd) {
+			--rotate: -2deg;
+			&.hasCard {
+				background-color: rgba(var(--forestGreenRgb), 0.2);
+			}
+		}
+		&.hasCard {
+			background-color: rgba(var(--forestGreenRgb), 0.2);
+			input[type="number"][value="0"] {
+				border: 2px solid rgba(var(--stilettoRgb), 0.5);
+			}
+		}
+		&.hasMoreCopies {
+			background-color: rgba(var(--forestGreenRgb), 0.2);
+		}
+	}
+	thead {
+		th:first-child {
+			width: 120px;
+		}
+	}
+	tbody {
+		tr {
+			th {
+				width: 120px;
+				display: flex;
+				justify-content: center;
+			}
+		}
+	}
+}
+
+.hideChecked {
+	display: flex;
+}
+
+.filters {
+	grid-column: 1 / -1;
+	display: flex;
+	gap: 20px;
+	margin: 12px;
+	flex-wrap: wrap;
+	align-items: center;
+	h3 {
+		font-size: 2.4rem;
+	}
+}
+
+.buttons {
+	grid-column: 1 / -1;
+	display: flex;
+	align-items: center;
+	justify-content: stretch;
+	margin: 24px 0;
+	gap: 8px;
+	@include breakpoint(m) {
+		margin: 24px 40px;
+	}
+	button {
+		width: 100%;
+		max-width: 320px;
+	}
+}
+
+.numberInput {
+	width: 60px;
+}
