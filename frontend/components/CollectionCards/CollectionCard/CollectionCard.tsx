@@ -37,12 +37,15 @@ export const CollectionCard = ({
 			)}
 		>
 			{image !== null ? (
-				<Image
-					src={image.image.publicUrlTransformed}
-					alt={name}
-					width={56}
-					height={84}
-				/>
+				<div className={style.image}>
+					<Image
+						src={image.image.publicUrlTransformed}
+						alt={name}
+						// width={56}
+						// height={84}
+						fill={true}
+					/>
+				</div>
 			) : (
 				<p className={style.name}>{name.replace(/[0-9]/g, "")}</p>
 			)}

@@ -72,10 +72,6 @@ var CheckListItem = (0, import_core.list)({
       },
       many: true
     }),
-    // users: relationship({
-    //   ref: "User.checkListItems",
-    //   many: true,
-    // }),
     image: (0, import_fields.relationship)({ ref: "CheckListItemImage.checkListItem" })
   }
 });

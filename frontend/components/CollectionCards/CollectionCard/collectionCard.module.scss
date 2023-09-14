@@ -8,10 +8,15 @@
 
 .item {
 	transform: rotate(var(--rotate));
-	img {
-		@extend %backgroundStyle;
-		box-shadow: var(--shadow-elevation-low);
+	.image {
 		display: block;
+		width: 84px;
+		height: 126px;
+		img {
+			@extend %backgroundStyle;
+			box-shadow: var(--shadow-elevation-low);
+			object-fit: contain;
+		}
 	}
 }
 
