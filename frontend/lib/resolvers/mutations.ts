@@ -79,3 +79,11 @@ export const UPDATE_COLLECTIONCARD_MUTATION = gql`
 		}
 	}
 `;
+
+export const ADD_ALL_COLLECTIONCARDS_TO_USER = gql`
+	mutation Mutation($data: [UserChecklistItemCreateInput!]!) {
+		createUserChecklistItems(data: $data) {
+			id
+		}
+	}
+`;

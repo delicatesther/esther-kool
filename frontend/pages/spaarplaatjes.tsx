@@ -11,6 +11,7 @@ export default function SpaarplaatjesPage() {
 	const router = useRouter();
 	const { locale } = router;
 	const dictionary = translations[locale];
+
 	if (!me)
 		return (
 			<Layout>
