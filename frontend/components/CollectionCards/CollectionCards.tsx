@@ -155,11 +155,21 @@ export const CollectionCards = ({
 	if (error) return <ErrorMessage error={error} />;
 
 	function getLatestArr() {
+		function getCardIndex(item) {
+			return item.title.match(/\d+/)[0];
+		}
+
+		function sortByNumber(item) {
+			return item.sort(function (a, b) {
+				return Number(getCardIndex(a)) - Number(getCardIndex(b));
+			});
+		}
+
 		if (!!lazyData) {
-			return lazyData?.checkListItems;
+			return sortByNumber(lazyData?.checkListItems);
 		}
 		if (!!data) {
-			return data?.checkListItems;
+			return sortByNumber(data?.checkListItems);
 		}
 		return null;
 	}
