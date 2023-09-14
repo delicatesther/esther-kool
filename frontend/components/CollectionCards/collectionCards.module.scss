@@ -2,17 +2,25 @@
 
 .wrapper {
 	grid-column: 1 / -1;
+	display: grid;
+	grid-template-areas: "title" "filters" "list";
+	justify-content: center;
 	input[type="number"]:not([value="0"]) {
 		border-color: rgba(var(--forestGreenRgb));
 	}
 }
 
 .title {
-	grid-column: 1 / -1;
+	grid-area: title;
 	line-height: 5.2rem;
 }
 
+.filters {
+	grid-area: filters;
+}
+
 .table {
+	grid-area: list;
 	width: max-content;
 	td,
 	th {
