@@ -166,10 +166,10 @@ export const CollectionCards = ({
 		}
 
 		if (!!lazyData) {
-			return sortByNumber(lazyData?.checkListItems);
+			return sortByNumber([...lazyData?.checkListItems]);
 		}
 		if (!!data) {
-			return sortByNumber(data?.checkListItems);
+			return sortByNumber([...data?.checkListItems]);
 		}
 		return null;
 	}
