@@ -53,7 +53,7 @@ export default function SpaarplaatjesPage() {
 							"Lilo & Stitch",
 							"Elemental",
 							"Disneyland Paris",
-						]}
+						].sort()}
 					/>
 				</div>
 			</Layout>
