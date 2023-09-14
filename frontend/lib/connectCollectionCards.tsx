@@ -15,16 +15,16 @@ const connectChecklistArr = checklistDisney.data.checkListItems.map((item) => ({
 	},
 }));
 
-const [updateUserCards, { data, loading }] = useMutation(
-	ADD_ALL_COLLECTIONCARDS_TO_USER,
-	{
-		variables: {
-			data: connectChecklistArr,
-		},
-	},
-);
+// const [updateUserCards, { data, loading }] = useMutation(
+// 	ADD_ALL_COLLECTIONCARDS_TO_USER,
+// 	{
+// 		variables: {
+// 			data: connectChecklistArr,
+// 		},
+// 	},
+// );
 
 function createList() {
 	console.log(connectChecklistArr);
-	updateUserCards();
+	// updateUserCards();
 }
