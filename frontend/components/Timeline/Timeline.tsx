@@ -48,10 +48,9 @@ export const Timeline = () => {
 		const years = generateYearsBetween(fromYear, toYear);
 		return { ...experience, fromYear, toYear, years };
 	});
-
 	return (
 		<div className={style.wrapper}>
-			<h3>{dictionary.title}</h3>
+			<h2>{dictionary.title}</h2>
 			<div className={style.container}>
 				<div aria-hidden className={style.timelineBar}></div>
 				<ol className={style.list}>
@@ -59,7 +58,11 @@ export const Timeline = () => {
 						return (
 							<li
 								key={experience.id}
-								className={cx(["listItem"], { even: index % 2 == 0 })}
+								className={cx(
+									["listItem"],
+									{ even: index % 2 == 0 },
+									{ ["draft"]: experience.status === "draft" },
+								)}
 							>
 								<Experience {...experience} />
 							</li>

@@ -6,6 +6,7 @@ import {
     timestamp,
     select,
     calendarDay,
+    checkbox,
 } from '@keystone-6/core/fields';
 import { document } from '@keystone-6/fields-document';
 
@@ -13,7 +14,7 @@ export const Experience = list({
     access: allowAll,
     fields: {
         title: text(),
-        titleNL: text({label: "Titel (NL)"}),
+        titleNL: text({ label: "Titel (NL)" }),
         // Having the status here will make it easy for us to choose whether to display
         // posts on a live site.
         status: select({
@@ -80,6 +81,7 @@ export const Experience = list({
         publishDate: timestamp({ defaultValue: { kind: 'now' } }),
         from: calendarDay({ validation: { isRequired: true } }),
         to: calendarDay(),
+        ongoing: checkbox({ defaultValue: false }),
         // Here is the link from post => author.
         // We've configured its UI display quite a lot to make the experience of editing posts better.
         author: relationship({
@@ -93,14 +95,14 @@ export const Experience = list({
             },
             hooks: {
                 resolveInput({ resolvedData, operation, context }) {
-                  if (operation === 'create') {
-                    return {
-                      connect: { id: context.session.itemId },
-                    };
-                  }
-                  return resolvedData.user;
+                    if (operation === 'create') {
+                        return {
+                            connect: { id: context.session.itemId },
+                        };
+                    }
+                    return resolvedData.user;
                 },
-              },
+            },
         }),
         // We also link posts to tags. This is a many <=> many linking.
         tags: relationship({
@@ -120,7 +122,7 @@ export const Experience = list({
             ui: {
                 displayMode: 'cards',
                 cardFields: ['name', 'nameNL', 'logo'],
-                inlineEdit: { fields: ['name','nameNL', 'logo'] },
+                inlineEdit: { fields: ['name', 'nameNL', 'logo'] },
                 linkToItem: true,
                 inlineConnect: true,
                 inlineCreate: { fields: ['name', 'nameNL', 'logo'] },
