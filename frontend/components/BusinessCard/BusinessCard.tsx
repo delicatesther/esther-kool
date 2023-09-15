@@ -14,7 +14,7 @@ export const BusinessCard = ({ src, size }) => {
 	const dictionary = translations[locale].businessCard;
 	return (
 		<article className={style.card}>
-			<Avatar className={style.circle} src={src} size={size} alt="" />
+			<Avatar src={src} size={size} alt="" />
 			<h2>
 				{dictionary.title}
 				<span className="visuallyhidden">

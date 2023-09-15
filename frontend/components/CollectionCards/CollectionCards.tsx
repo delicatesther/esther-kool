@@ -13,7 +13,7 @@ import { CheckListProps } from "@enk/types";
 import { CollectionCard } from "./CollectionCard";
 import translations from "@enk/translations";
 import { useRouter } from "next/router";
-import { useUser } from "@enk/utils";
+import { sortByKey, useUser } from "@enk/utils";
 
 const cx = classnames.bind(style);
 
@@ -102,6 +102,11 @@ export const CollectionCards = ({
 				},
 			],
 			where2: filterByDisneyCollectionCards,
+			orderBy2: [
+				{
+					name: "asc",
+				},
+			],
 		},
 	});
 
@@ -196,7 +201,6 @@ export const CollectionCards = ({
 
 	checkListItems = getLatestArr();
 	const { users } = data;
-
 	function hasCard(cardId, userId) {
 		// Don't check all users, just the ones in here. Also, make
 		// sure we don't need to import all checkListItems on currentUser query.
