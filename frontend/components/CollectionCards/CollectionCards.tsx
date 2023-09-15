@@ -26,6 +26,7 @@ export const CollectionCards = ({
 	const [activeFilter, setActiveFilter] = useState("");
 	const [state, setState] = useState([]);
 	const [isDirty, setIsDirty] = useState(false);
+	const [showSaved, setShowSaved] = useState(false);
 	const router = useRouter();
 	const { locale } = router;
 	const dictionary = {
@@ -179,9 +180,18 @@ export const CollectionCards = ({
 		loadCategory();
 	}
 
+	function flashSaved() {
+		setShowSaved(true);
+		setTimeout(() => {
+			setShowSaved(false);
+		}, 700);
+	}
+
 	function saveChanges(e) {
 		e.preventDefault();
 		updateCards();
+		flashSaved();
+		setIsDirty(false);
 	}
 
 	checkListItems = getLatestArr();
@@ -305,6 +315,9 @@ export const CollectionCards = ({
 					/>
 				</div>
 			</form>
+			<p className={cx({ ["showSaved"]: showSaved }, ["savedMessage"])}>
+				Saved!
+			</p>
 		</div>
 	);
 };
