@@ -181,6 +181,7 @@ var Experience = (0, import_core3.list)({
     publishDate: (0, import_fields3.timestamp)({ defaultValue: { kind: "now" } }),
     from: (0, import_fields3.calendarDay)({ validation: { isRequired: true } }),
     to: (0, import_fields3.calendarDay)(),
+    ongoing: (0, import_fields3.checkbox)({ defaultValue: false }),
     // Here is the link from post => author.
     // We've configured its UI display quite a lot to make the experience of editing posts better.
     author: (0, import_fields3.relationship)({

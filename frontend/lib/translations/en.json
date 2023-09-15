@@ -23,7 +23,8 @@
 		"afficionado": "a lover of music, film, photography & cheese"
 	},
 	"experiences": {
-		"title": "What I've been up to"
+		"title": "What I've been up to",
+		"present": "present"
 	},
 	"packing": {
 		"title": "Packing List"

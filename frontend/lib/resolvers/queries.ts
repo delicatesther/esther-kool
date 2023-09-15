@@ -20,6 +20,7 @@ export const ALL_EXPERIENCES_QUERY = gql`
 			summaryNL
 			from
 			to
+			ongoing
 			title
 			titleNL
 			id
@@ -48,6 +49,7 @@ export const EXPERIENCES_QUERY = gql`
 			summaryNL
 			from
 			to
+			ongoing
 			title
 			titleNL
 			id
@@ -78,6 +80,7 @@ export const EXPERIENCE_QUERY = gql`
 			status
 			from
 			to
+			ongoing
 			summary
 			summaryNL
 			title

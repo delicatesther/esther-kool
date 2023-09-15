@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import style from "./experience.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import translations from "@enk/translations";
 const cx = classNames.bind(style);
 
 export const Experience = ({
@@ -17,6 +17,7 @@ export const Experience = ({
 	tags,
 	from,
 	to,
+	ongoing,
 	className,
 	organisation,
 	content,
@@ -25,38 +26,38 @@ export const Experience = ({
 	const me = useUser();
 	const router = useRouter();
 	const { locale } = router;
-
 	const experienceTags = tags.map((tag) => {
 		const { name: EnTagTitle, nameNL: NlTagTitle, ...tagsRest } = tag;
 		return { ...tagsRest, name: locale === "nl" ? NlTagTitle : EnTagTitle };
 	});
 
-	const translations = {
+	const dictionary = {
 		nl: {
+			...translations.nl,
 			title: titleNL,
 			summary: summaryNL,
 			content: contentNL,
 		},
 		en: {
+			...translations.en,
 			title,
 			summary,
 			content,
 		},
 	};
 
-	const translated = translations[locale];
-
+	const translated = dictionary[locale];
 	if (!me && status === "draft") {
 		return null;
 	}
 	const fromYear = new Date(from).getFullYear();
 	const toYear = to ? new Date(to).getFullYear() : "";
-
 	return (
 		<article className={cx(["experience"], [status], [className])}>
 			<time dateTime={`${fromYear}`} className={style.years}>
 				{fromYear}
 				{toYear && toYear !== fromYear && ` - ${toYear}`}
+				{ongoing && ` - ${translated.experiences.present}`}
 			</time>
 			<div className={style.container}>
 				{organisation && (

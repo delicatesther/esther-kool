@@ -299,6 +299,7 @@ type Experience {
   publishDate: DateTime
   from: CalendarDay
   to: CalendarDay
+  ongoing: Boolean
   author: User
   tags(where: TagWhereInput! = {}, orderBy: [TagOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TagWhereUniqueInput): [Tag!]
   tagsCount(where: TagWhereInput! = {}): Int
@@ -332,6 +333,7 @@ input ExperienceWhereInput {
   publishDate: DateTimeNullableFilter
   from: CalendarDayFilter
   to: CalendarDayNullableFilter
+  ongoing: BooleanFilter
   author: UserWhereInput
   tags: TagManyRelationFilter
   organisation: OrganisationWhereInput
@@ -384,6 +386,7 @@ input ExperienceOrderByInput {
   publishDate: OrderDirection
   from: OrderDirection
   to: OrderDirection
+  ongoing: OrderDirection
 }
 
 input ExperienceUpdateInput {
@@ -397,6 +400,7 @@ input ExperienceUpdateInput {
   publishDate: DateTime
   from: CalendarDay
   to: CalendarDay
+  ongoing: Boolean
   author: UserRelateToOneForUpdateInput
   tags: TagRelateToManyForUpdateInput
   organisation: OrganisationRelateToOneForUpdateInput
@@ -430,6 +434,7 @@ input ExperienceCreateInput {
   publishDate: DateTime
   from: CalendarDay
   to: CalendarDay
+  ongoing: Boolean
   author: UserRelateToOneForCreateInput
   tags: TagRelateToManyForCreateInput
   organisation: OrganisationRelateToOneForCreateInput
