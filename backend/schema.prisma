@@ -45,6 +45,7 @@ model Experience {
   publishDate    DateTime?     @default(now())
   from           DateTime      @postgresql.Date
   to             DateTime?     @postgresql.Date
+  ongoing        Boolean       @default(false)
   author         User?         @relation("Experience_author", fields: [authorId], references: [id])
   authorId       String?       @map("author") @postgresql.Uuid
   tags           Tag[]         @relation("Experience_tags")

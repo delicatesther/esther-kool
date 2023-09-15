@@ -23,7 +23,8 @@
 		"afficionado": "liefhebber van muziek, film, fotografie en kaas."
 	},
 	"experiences": {
-		"title": "Wat ik zoal heb meegemaakt"
+		"title": "Wat ik zoal heb meegemaakt",
+		"present": "heden"
 	},
 	"checklist": {
 		"showAll": "Toon alle categoriën",
