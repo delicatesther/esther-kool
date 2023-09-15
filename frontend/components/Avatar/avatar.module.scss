@@ -1,24 +1,55 @@
 @use "../../styles/config/" as *;
 
 .avatar {
-  position: relative;
-  overflow: hidden;
-  img {
-    object-fit: cover;
-  }
+	margin-bottom: 40px;
+	transform: rotate(2deg);
+}
+
+.frame {
+	height: calc(var(--avatarSize) + 96px);
+	width: calc(var(--avatarSize) + 96px);
+	border: 24px solid var(--mineshaft);
+	box-shadow: var(--shadow-elevation-medium);
+	position: relative;
+	&:after {
+		content: "";
+		// border: 12px solid var(--siteBackground);
+		background: var(--white);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		box-shadow: inset 3px 4px 2px 4px rgba(0, 0, 0, 0.4);
+		@include theme(dark) {
+			background: var(--corduroy);
+		}
+	}
+}
+
+.image {
+	z-index: z(z1);
+	width: var(--avatarSize);
+	height: var(--avatarSize);
+	top: 24px;
+	left: 24px;
+	position: relative;
+	box-shadow: inset 2px 7px 2px 5px rgba(0, 0, 0, 0.1);
+	border: 2px inset #c9c9c9;
+	img {
+		object-fit: cover;
+		display: block;
+	}
 }
 
 .small {
-  width: 80px;
-  height: 80px;
+	--avatarSize: 80px;
 }
 
 .medium {
-  width: 120px;
-  height: 120px;
+	--avatarSize: 120px;
 }
 
 .large {
-  --avatarSize: 200px;
-  width: var(--avatarSize);
+	--avatarSize: 200px;
 }

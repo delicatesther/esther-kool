@@ -1,40 +1,33 @@
 @use "../../styles/config" as *;
 
 .card {
-  grid-column: 1/-1;
-  padding: 8px 0;
-  margin: 32px;
-  @include breakpoint(m) {
-    margin: 80px;
-    width: 766px;
-    grid-column: 1 / 5;
-  }
-}
-
-.circle {
-  --circleSize: 200px;
-  margin: 0 16px;
-  height: var(--circleSize);
-  width: var(--circleSize);
+	grid-column: 1/-1;
+	padding: 8px 0;
+	margin: 32px;
+	@include breakpoint(m) {
+		margin: 80px;
+		width: 766px;
+		grid-column: 1 / 5;
+	}
 }
 
 .list {
-  max-width: 100%;
-  li {
-    display: block;
-    @include breakpoint(s, max) {
-      position: relative;
-      padding-left: 16px;
-    }
-    &:before {
-      content: "•";
-      display: inline-block;
-      padding-right: 8px;
-      @include breakpoint(s, max) {
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-    }
-  }
+	max-width: 100%;
+	li {
+		display: block;
+		@include breakpoint(s, max) {
+			position: relative;
+			padding-left: 16px;
+		}
+		&:before {
+			content: "•";
+			display: inline-block;
+			padding-right: 8px;
+			@include breakpoint(s, max) {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		}
+	}
 }

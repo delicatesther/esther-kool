@@ -133,6 +133,7 @@ export const ALL_COLLECTIONCARDS_QUERY = gql`
 		$where: CheckListItemWhereInput!
 		$orderBy: [CheckListItemOrderByInput!]!
 		$where2: UserWhereInput!
+		$orderBy2: [UserOrderByInput!]!
 	) {
 		checkListItems(where: $where, orderBy: $orderBy) {
 			id
@@ -155,7 +156,7 @@ export const ALL_COLLECTIONCARDS_QUERY = gql`
 				}
 			}
 		}
-		users(where: $where2) {
+		users(where: $where2, orderBy: $orderBy2) {
 			id
 			name
 			checkListItems {
