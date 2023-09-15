@@ -315,7 +315,10 @@ export const CollectionCards = ({
 					/>
 				</div>
 			</form>
-			<p className={cx({ ["showSaved"]: showSaved }, ["savedMessage"])}>
+			<p
+				aria-hidden={!showSaved}
+				className={cx({ ["showSaved"]: showSaved }, ["savedMessage"])}
+			>
 				Saved!
 			</p>
 		</div>

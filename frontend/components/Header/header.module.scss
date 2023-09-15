@@ -11,6 +11,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-items: end;
+	gap: 0px 16px;
 	@include theme(dark) {
 		background: var(--mineshaft);
 	}
@@ -19,6 +20,7 @@
 		grid-template-columns: 200px 1fr;
 		padding: 16px 72px 16px;
 		margin-bottom: 80px;
+		gap: 16px;
 	}
 }
 
@@ -61,8 +63,15 @@
 }
 
 .content {
+	nav {
+		display: flex;
+		align-items: center;
+		gap: 8px 16px;
+		flex-wrap: wrap;
+	}
+}
+
+.list {
 	display: flex;
-	align-items: center;
-	gap: 8px 16px;
-	flex-wrap: wrap;
+	gap: 8px;
 }
