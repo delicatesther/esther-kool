@@ -126,6 +126,11 @@ export const CollectionCards = ({
 						[translatedTitle]: "asc",
 					},
 				],
+				orderBy2: [
+					{
+						name: "asc",
+					},
+				],
 			},
 		});
 
