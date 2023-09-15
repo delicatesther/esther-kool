@@ -103,3 +103,24 @@
 .numberInput {
 	width: 60px;
 }
+
+.savedMessage {
+	pointer-events: none;
+	position: fixed;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+	background: var(--siteBackground);
+	padding: 16px;
+	width: 50vw;
+	height: 68px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: var(--shadow-elevation-high);
+	opacity: 0;
+	transition: 0.2s ease-in-out;
+	&.showSaved {
+		opacity: 1;
+	}
+}
