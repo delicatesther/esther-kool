@@ -34,38 +34,47 @@ export const Header = () => {
 				<EstherKool title={`${dictionary.global.goHome} Esther Kool`} />
 			</Link>
 			<div className={style.content}>
-				{user && (
-					<>
-						<Link href="/alex" className="anchor">
-							Alex
-						</Link>
-						<Link href="/spaarplaatjes" className="anchor">
-							{dictionary.collectionCards.title}
-						</Link>
-						<Link href="/paklijst" className="anchor">
-							{dictionary.packing.title}
-						</Link>
-						{/* <Link href="/gezondheid" className="anchor">
-              Gezondheid
-            </Link> */}
-						<a
-							href="https://cms.estherkool.com"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							CMS
-						</a>
-						<SignOut size="small" />
-					</>
-				)}
-				{!user && <Link href="/signin">{dictionary.user.signin}</Link>}
-				<Button
-					onClick={() =>
-						theme === "light" ? setTheme("dark") : setTheme("light")
-					}
-					size="small"
-					icon={!theme || theme === "light" ? <Moon /> : <Sun />}
-				/>
+				<nav>
+					{user && (
+						<>
+							<ul className={style.list}>
+								<li>
+									<Link href="/alex" className="anchor">
+										Alex
+									</Link>
+								</li>
+								<li>
+									<Link href="/spaarplaatjes" className="anchor">
+										{dictionary.collectionCards.title}
+									</Link>
+								</li>
+								<li>
+									<Link href="/paklijst" className="anchor">
+										{dictionary.packing.title}
+									</Link>
+								</li>
+								<li>
+									<a
+										href="https://cms.estherkool.com"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										CMS
+									</a>
+								</li>
+							</ul>
+							<SignOut size="small" />
+						</>
+					)}
+					{!user && <Link href="/signin">{dictionary.user.signin}</Link>}
+					<Button
+						onClick={() =>
+							theme === "light" ? setTheme("dark") : setTheme("light")
+						}
+						size="small"
+						icon={!theme || theme === "light" ? <Moon /> : <Sun />}
+					/>
+				</nav>
 			</div>
 		</header>
 	);
