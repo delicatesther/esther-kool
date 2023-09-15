@@ -36,6 +36,7 @@
 	position: relative;
 	box-shadow: inset 2px 7px 2px 5px rgba(0, 0, 0, 0.1);
 	border: 2px inset #c9c9c9;
+	overflow: hidden;
 	img {
 		object-fit: cover;
 		display: block;
