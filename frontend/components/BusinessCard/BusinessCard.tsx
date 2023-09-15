@@ -15,9 +15,14 @@ export const BusinessCard = ({ src, size }) => {
 	return (
 		<article className={style.card}>
 			<Avatar className={style.circle} src={src} size={size} alt="" />
-			<h2>{dictionary.title}</h2>
+			<h2>
+				{dictionary.title}
+				<span className="visuallyhidden">
+					Esther Kool ({dictionary.pronouns})
+				</span>
+			</h2>
 			<ul className={cx(["list"])}>
-				<li>Esther Kool ({dictionary.pronouns})</li>
+				<li aria-hidden={true}>Esther Kool ({dictionary.pronouns})</li>
 				<li>{dictionary.jobTitle}</li>
 				<li>{dictionary.hobby}</li>
 				<li>{dictionary.family}</li>
