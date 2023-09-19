@@ -1,6 +1,7 @@
 @use "../../styles/config" as *;
 
 .wrapper {
+	z-index: z(z1);
 	grid-column: 1 / -1;
 	h2 {
 		line-height: 5.2rem;
@@ -50,6 +51,7 @@
 	position: relative;
 	grid-row: span var(--list-item-years);
 	--align-content: right;
+	justify-self: var(--align-experience);
 	&:before {
 		@include breakpoint(m) {
 			content: "";
@@ -74,7 +76,7 @@
 		}
 	}
 	&:nth-child(even) {
-		align-content: left;
+		--align-content: left;
 		@include breakpoint(m) {
 			--align-experience: flex-start;
 			grid-column-start: 2;

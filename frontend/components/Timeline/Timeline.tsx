@@ -60,7 +60,8 @@ export const Timeline = () => {
 								key={experience.id}
 								className={cx(
 									["listItem"],
-									{ even: index % 2 == 0 },
+									{ even: index % 2 == 1 },
+									{ odd: index % 2 == 0 },
 									{ ["draft"]: experience.status === "draft" },
 								)}
 							>

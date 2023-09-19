@@ -50,7 +50,7 @@ export const ExperienceDetail = ({ experience }) => {
 					{dictionary[locale].summary}
 				</p>
 				{!!dictionary[locale].content && (
-					<div className={cx(["content"])}>
+					<div className={cx(["content"], "cms")}>
 						<DocumentRenderer document={dictionary[locale].content?.document} />
 					</div>
 				)}
