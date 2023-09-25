@@ -233,7 +233,7 @@ export const CollectionCards = ({
 			<h2 className={style.title}>{title}</h2>
 			{filters && (
 				<div className={style.filters}>
-					<h3>dictionary.showOnlyMy</h3>
+					<h3>{dictionary.showOnlyMy}</h3>
 					<select
 						value={showCards}
 						onChange={(e) => filterCards(e.target.value)}
