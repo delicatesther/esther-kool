@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames/bind";
 import style from "./collectionCards.module.scss";
+import Check from "@enk/icons/check.svg";
 import {
-	ALL_CHECKLISTITEMS_QUERY,
 	ALL_COLLECTIONCARDS_QUERY,
 	UPDATE_COLLECTIONCARD_MUTATION,
 } from "@enk/lib";
@@ -26,14 +26,20 @@ export const CollectionCards = ({
 	const [activeFilter, setActiveFilter] = useState("");
 	const [state, setState] = useState([]);
 	const [isDirty, setIsDirty] = useState(false);
+
+	const [showAll, setShowAll] = useState(true);
 	const [showSaved, setShowSaved] = useState(false);
+
 	const router = useRouter();
 	const { locale } = router;
 	const dictionary = {
 		...translations[locale].collectionCards,
 		...translations[locale].global,
 	};
+	const { all, collected, doubles, missing } = dictionary;
+	const [showCards, setShowCards] = useState(all);
 	let checkListItems;
+	const cardTypes = [collected, doubles, missing];
 	function getCategories(activeFilter = undefined) {
 		const key = locale === "nl" ? "nameNL" : "name";
 		if (activeFilter) {
@@ -187,7 +193,12 @@ export const CollectionCards = ({
 
 	function filterCategory(filter = undefined) {
 		setActiveFilter(filter);
+		setShowAll(false);
 		loadCategory();
+	}
+
+	function filterCards(cardType) {
+		setShowCards(cardType);
 	}
 
 	function flashSaved() {
@@ -222,32 +233,74 @@ export const CollectionCards = ({
 			<h2 className={style.title}>{title}</h2>
 			{filters && (
 				<div className={style.filters}>
-					<h3>{dictionary.category}</h3>
+					<h3>Toon alleen</h3>
 					<select
-						value={activeFilter}
-						onChange={(e) => filterCategory(e.target.value)}
+						value={showCards}
+						onChange={(e) => filterCards(e.target.value)}
 						placeholder={`${
 							dictionary.select
 						} ${dictionary.category.toLowerCase()}...`}
 					>
-						<option disabled value="">
+						<option disabled value={all}>
 							--{dictionary.select}--
 						</option>
-						{filters.map((filter) => (
-							<option key={filter} value={filter}>
-								{filter}
+						{cardTypes.map((cardType) => (
+							<option key={cardType} value={cardType}>
+								{cardType}
 							</option>
 						))}
 					</select>
 					<Button
 						size="small"
-						text={`${dictionary.showAll}`}
-						onClick={() => filterCategory(categories)}
+						className={cx(["showAll"], {
+							["hidden"]: showCards === all,
+						})}
+						disabled={showCards === all}
+						text={dictionary.showAllCards}
+						onClick={() => {
+							filterCards(all);
+						}}
+					/>
+					<div className={style.dropdown}>
+						<h3>{dictionary.category}</h3>
+						<select
+							value={activeFilter}
+							onChange={(e) => filterCategory(e.target.value)}
+							placeholder={`${
+								dictionary.select
+							} ${dictionary.category.toLowerCase()}...`}
+						>
+							<option disabled value="">
+								--{dictionary.select}--
+							</option>
+							{filters.map((filter) => (
+								<option key={filter} value={filter}>
+									{filter}
+								</option>
+							))}
+						</select>
+					</div>
+					<Button
+						size="small"
+						className={cx(["showAll"], { ["hidden"]: !!showAll })}
+						disabled={!!showAll}
+						text={dictionary.showAll}
+						onClick={() => {
+							filterCategory(categories);
+							setShowAll(true);
+						}}
 					/>
 				</div>
 			)}
 			<form onSubmit={(e) => saveChanges(e)} className={style.form}>
-				<table className={style.table}>
+				<table
+					className={cx(
+						["table"],
+						{ ["showOnlyDoubles"]: showCards === doubles },
+						{ ["showOnlyCollected"]: showCards === collected },
+						{ ["showOnlyMissing"]: showCards === missing },
+					)}
+				>
 					<thead>
 						<tr className={style.titleRow}>
 							<th>
@@ -282,7 +335,7 @@ export const CollectionCards = ({
 										);
 										const count = currentUserItem?.count || 0;
 										return (
-											<td key={user.id}>
+											<td title={user.name} key={user.id}>
 												<input
 													className={style.numberInput}
 													type="number"

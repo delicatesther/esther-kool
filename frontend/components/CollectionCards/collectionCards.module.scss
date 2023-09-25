@@ -16,17 +16,76 @@
 }
 
 .filters {
+	background: var(--siteBackground);
+	padding: 12px;
+	border-radius: 6px;
 	grid-area: filters;
+	box-shadow: var(--shadow-elevation-medium);
+	display: grid;
+	gap: 12px;
+	grid-column: 1 / -1;
+	margin: 12px;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 32px;
+	@include breakpoint(s, max) {
+		justify-content: center;
+	}
+	@include breakpoint(m) {
+		gap: 20px;
+	}
+	h3 {
+		font-size: 2.4rem;
+		line-height: 2.4rem;
+		margin-bottom: 0;
+	}
+	.dropdown {
+		grid-column: 1 / -1;
+	}
+	.showAll {
+		&.hidden {
+			display: none;
+		}
+	}
+	.checkbox {
+		grid-column: 1 / -1;
+	}
 }
 
 .table {
 	grid-area: list;
 	width: max-content;
+	@include breakpoint(s, max) {
+		min-width: 240px;
+		margin: 0 auto;
+	}
+	&.showOnlyCollected {
+		tbody {
+			tr:not(.hasCard) {
+				display: none;
+			}
+		}
+	}
+	&.showOnlyDoubles {
+		tbody {
+			tr:not(.hasMoreCopies) {
+				display: none;
+			}
+		}
+	}
+	&.showOnlyMissing {
+		.hasCard,
+		.hasMoreCopies {
+			display: none;
+		}
+	}
 	td,
 	th {
 		padding: 8px;
 		vertical-align: middle;
-		text-align: center;
+		@include breakpoint(s) {
+			text-align: center;
+		}
 	}
 	tr {
 		&:nth-child(even) {
@@ -53,40 +112,62 @@
 		}
 	}
 	thead {
+		@include breakpoint(s, max) {
+			display: none;
+		}
 		th:first-child {
-			width: 120px;
+			@include breakpoint(s) {
+				width: 120px;
+			}
 		}
 	}
 	tbody {
 		tr {
+			@include breakpoint(s, max) {
+				display: block;
+				border-bottom: 1px solid var(--siteFontColor);
+				margin: 8px 0;
+			}
+			&.hidden {
+				display: none;
+			}
 			th {
-				width: 120px;
 				display: flex;
 				justify-content: center;
+				@include breakpoint(s) {
+					width: 120px;
+				}
+			}
+			td {
+				@include breakpoint(s, max) {
+					display: flex;
+					width: 100%;
+				}
+				&:before {
+					@include breakpoint(s, max) {
+						content: attr(title);
+						flex: 1;
+						margin-right: 8px;
+					}
+				}
+				&:last-child {
+					@include breakpoint(s, max) {
+						margin-bottom: 8px;
+					}
+				}
 			}
 		}
 	}
 }
 
-.hideChecked {
+.checkbox {
 	display: flex;
-}
-
-.filters {
-	grid-column: 1 / -1;
-	display: flex;
-	margin: 12px;
-	flex-wrap: wrap;
 	align-items: center;
-	gap: 8px;
-	margin-bottom: 32px;
-	@include breakpoint(m) {
-		gap: 20px;
-	}
-	h3 {
-		font-size: 2.4rem;
-		line-height: 2.4rem;
-		margin-bottom: 0;
+	justify-content: space-between;
+	&.disabled {
+		span {
+			opacity: 0.5;
+		}
 	}
 }
 
@@ -97,6 +178,9 @@
 	justify-content: stretch;
 	margin: 24px 0;
 	gap: 8px;
+	@include breakpoint(s, max) {
+		justify-content: center;
+	}
 	@include breakpoint(m) {
 		margin: 24px 40px;
 	}
@@ -130,4 +214,10 @@
 	&.showSaved {
 		opacity: 1;
 	}
+}
+
+.hideCollected {
+	display: flex;
+	align-items: center;
+	margin: 8px;
 }

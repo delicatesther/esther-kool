@@ -38,6 +38,13 @@
 	"collectionCards": {
 		"title": "Collection Cards",
 		"showAll": "Show All Categories",
-		"card": "Card"
+		"card": "Card",
+		"all": "all",
+		"collected": "collected",
+		"doubles": "doubles",
+		"missing": "missing",
+		"showOnlyDoubles": "Show only doubles",
+		"showOnlyMissing": "Hide collected",
+		"showOnlyCollected": "Show only collected"
 	}
 }
