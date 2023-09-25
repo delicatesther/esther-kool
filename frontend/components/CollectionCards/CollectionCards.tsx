@@ -221,13 +221,12 @@ export const CollectionCards = ({
 		// Don't check all users, just the ones in here. Also, make
 		// sure we don't need to import all checkListItems on currentUser query.
 		const userWeNeed = users.find((user) => user.id === userId);
-		const itemWeNeed = userWeNeed.checkListItems.find((subItem) => {
+		const itemWeNeed = userWeNeed?.checkListItems?.find((subItem) => {
 			return subItem.checkListItem.id === cardId;
 		});
 		const hasAtLeastOne = itemWeNeed?.count && itemWeNeed.count > 0;
 		return hasAtLeastOne ? itemWeNeed.count : 0;
 	}
-
 	return (
 		<div className={style.wrapper}>
 			<h2 className={style.title}>{title}</h2>
