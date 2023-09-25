@@ -35,7 +35,15 @@
 	"collectionCards": {
 		"title": "Spaarplaatjes",
 		"showAll": "Toon alle categoriën",
-		"card": "Plaatje"
+		"showAllCards": "Toon alle plaatjes",
+		"card": "Plaatje",
+		"all": "alle",
+		"collected": "verzamelde",
+		"doubles": "dubbelaars",
+		"missing": "missende",
+		"showOnlyCollected": "Toon alleen verzamelde plaatjes",
+		"showOnlyDoubles": "Toon alleen dubbelaars",
+		"showOnlyMissing": "Toon alleen missende plaatjes"
 	},
 	"packing": {
 		"title": "Paklijst"
