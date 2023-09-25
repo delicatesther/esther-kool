@@ -38,6 +38,7 @@
 	"collectionCards": {
 		"title": "Collection Cards",
 		"showAll": "Show All Categories",
+		"showOnlyMy": "Show only my",
 		"card": "Card",
 		"all": "all",
 		"collected": "collected",
