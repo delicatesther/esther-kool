@@ -29,7 +29,13 @@ When using Node.js version >= 16.10, Yarn is included and available by running:
 corepack enable
 ```
 
-When these core-dependencies are installed, you can install the rest of the dependencies for this project by going to your project root and running:
+When these core-dependencies are installed, you can install the rest of the dependencies for this project by going to folder `/frontend` and running:
+
+```bash
+yarn
+```
+
+Repeat the same command in folder `/backend`:
 
 ```bash
 yarn
@@ -37,14 +43,14 @@ yarn
 
 ### process.ENV
 
-Our project depends on environment variables, saved in `.env` files in the root of the project. `.env.development` contains development variables, `.env.production` contains the production ones. NextJS picks up the correct file automatically, based on the publicRuntimeConfig (server + client) and serverRuntimeConfig (server side only) keys in the NextJS config file in the root of the project.
+This project depends on environment variables, saved in `.env` files in the root of the project. `.env.development` contains development variables, `.env.production` contains the production ones. NextJS picks up the correct file automatically, based on the publicRuntimeConfig (server + client) and serverRuntimeConfig (server side only) keys in the NextJS config file in the frontend root of the project. In the backend Keystone files, please refer the dotenv package to the correct ENV setting.
 
 ```bash
-# NextJS picks variables in .env.development:
+# NextJS or Keystone picks variables in .env.development:
 
 yarn dev
 
-# NextJS picks up variables from .env.production:
+# NextJS or Keystone picks up variables from .env.production:
 
 yarn start
 ```
@@ -63,9 +69,19 @@ Committing adjusted lock files is advised to keep the project as similar as poss
 
 ## Developing locally
 
-First, run the development server:
+First, run the backend from the root:
 
 ```bash
+cd /backend
+yarn dev
+```
+
+Open [http://localhost:3010](http://localhost:3000) with your browser to see the result.
+
+Then, run the frontend from the root:
+
+```bash
+cd /frontend
 yarn dev
 ```
 
@@ -73,9 +89,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Storybook
 
-To run a local Storybook instance, run:
+To run a local Storybook instance, from the root run:
 
 ```bash
+cd /frontend
 yarn storybook
 ```
 
@@ -91,9 +108,12 @@ To build a production version of the site service, run:
 yarn build
 ```
 
-To build an export of Storybook, run:
+### ! This needs to be done in both the front- and backend folders. !
+
+To build an export of Storybook, from the root run:
 
 ```bash
+cd /frontend
 yarn build-storybook
 ```
 
