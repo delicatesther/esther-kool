@@ -169,3 +169,14 @@ export const ALL_COLLECTIONCARDS_QUERY = gql`
 		}
 	}
 `;
+
+export const POST_QUERY = gql`
+	query POST_QUERY($where: PostWhereUniqueInput!) {
+		post(where: $where) {
+			title
+			content {
+				document
+			}
+		}
+	}
+`;

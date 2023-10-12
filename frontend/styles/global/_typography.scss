@@ -120,22 +120,19 @@ h3,
 }
 
 .bruksanvisnung {
-	font-family: "P22 Folk Art Stitch";
-	font-weight: normal;
-	margin-bottom: 1em;
-}
-
-h1 {
-	&.bruksanvisnung {
+	h1,
+	h2 {
+		font-family: "P22 Folk Art Stitch";
+		font-weight: normal;
+		margin-bottom: 1em;
+	}
+	h1 {
 		font-size: 4rem;
 		@include breakpoint(s) {
 			font-size: 5rem;
 		}
 	}
-}
-
-h2 {
-	&.bruksanvisnung {
+	h2 {
 		text-transform: uppercase;
 		text-decoration: underline dashed;
 		text-underline-offset: 12px;

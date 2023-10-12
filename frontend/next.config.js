@@ -6,6 +6,7 @@ const nextConfig = {
 	poweredByHeader: false,
 	publicRuntimeConfig: {
 		GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
+		ALEX_POST: process.env.ALEX_POST,
 	},
 	webpack(config, options) {
 		baseConfig,
