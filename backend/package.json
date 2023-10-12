@@ -3,9 +3,9 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "dev": "PORT=3010 keystone dev",
+    "dev": "PORT=3010 NODE_ENV=development keystone dev",
     "start": "keystone start",
-    "build": "keystone build",
+    "build": "NODE_ENV=production keystone build",
     "postinstall": "keystone postinstall"
   },
   "dependencies": {
