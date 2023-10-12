@@ -9,12 +9,12 @@
 // Get Z-index
 // -----------------------------------------------------------------------------
 @function z($name) {
-  @if map-has-key($z-index, $name) {
-    @return map-get($z-index, $name);
-  }
+	@if map-has-key($z-index, $name) {
+		@return map-get($z-index, $name);
+	}
 
-  @warn "The key #{$name} is not in the map ’$z-index";
-  @return null;
+	@warn "The key #{$name} is not in the map ’$z-index";
+	@return null;
 }
 
 // -----------------------------------------------------------------------------
@@ -23,36 +23,26 @@
 // Basically: use CSS vars whenever possible.
 // -----------------------------------------------------------------------------
 @function colour($name, $rgb: false) {
-  @if map-has-key($colours, $name) {
-    @if $rgb {
-      $hex: map-get($colours, $name);
-      @return red($hex), green($hex), blue($hex);
-    } @else {
-      @return map-get($colours, $name);
-    }
-  }
+	@if map-has-key($colours, $name) {
+		@if $rgb {
+			$hex: map-get($colours, $name);
+			@return red($hex), green($hex), blue($hex);
+		} @else {
+			@return map-get($colours, $name);
+		}
+	}
 
-  @warn "The key #{$name} is not in the map ’$colour";
-  @return null;
-}
-
-// -----------------------------------------------------------------------------
-// Get Type Offset
-// Via: https://css-tricks.com/how-to-tame-line-height-in-css/
-// -----------------------------------------------------------------------------
-@function calculateTypeOffset($lh, $fontSize, $descenderHeightScale) {
-  $lineHeightScale: $lh / $fontSize;
-  @return ($lineHeightScale - 1) / 2 + $descenderHeightScale;
+	@warn "The key #{$name} is not in the map ’$colour";
+	@return null;
 }
 
 // -----------------------------------------------------------------------------
 // Get Font
 // -----------------------------------------------------------------------------
 @function selectFont($name) {
-
-  @if map-has-key($fontFamilies, $name) {
-      @return map-get($fontFamilies, $name);
-  }
-  @warn "The key #{$name} is not in the map $fonts";
-  @return null;
+	@if map-has-key($fontFamilies, $name) {
+		@return map-get($fontFamilies, $name);
+	}
+	@warn "The key #{$name} is not in the map $fonts";
+	@return null;
 }
