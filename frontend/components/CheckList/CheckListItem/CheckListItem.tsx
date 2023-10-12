@@ -20,8 +20,20 @@ export const CheckListItem = ({
 }) => {
 	const router = useRouter();
 	const { locale } = router;
-	const name = locale === "nl" ? titleNL : title;
-	const desc = locale === "nl" ? descriptionNL : description;
+
+	const dictionary = {
+		nl: {
+			title: titleNL,
+			desc: descriptionNL,
+		},
+		en: {
+			title,
+			desc: description,
+		},
+	};
+
+	const translated = dictionary[locale];
+
 	const item = {
 		id,
 		title,
@@ -36,8 +48,8 @@ export const CheckListItem = ({
 				{ ["hidden"]: checkedHidden },
 			)}
 		>
-			<p className={style.name}>{name}</p>
-			<p className={cx(["desc"], "text-small")}>{desc}</p>
+			<p className={style.name}>{translated.title}</p>
+			<p className={cx(["desc"], "text-small")}>{translated.desc}</p>
 			<div className={style.tags}>
 				{tags.map((tag) => {
 					const tagName = locale === "nl" ? tag.nameNL : tag.name;

@@ -14,14 +14,14 @@
 }
 
 .name {
+	@include theme(dark) {
+		color: var(--white);
+	}
 	flex: 0 1 fit-content;
 	margin: 0;
 	.checked & {
 		text-decoration: line-through;
 		opacity: 0.3;
-	}
-	@include theme(dark) {
-		color: var(--white);
 	}
 }
 
