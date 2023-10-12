@@ -12,7 +12,7 @@ export default function PaklijstPage() {
 		<div>
 			<Head>
 				<title>Esther Kool.com | {title}</title>
-				<meta name="description" content="Personal website to Esther Kool" />
+				<meta name="description" content="Inpaklijst" />
 			</Head>
 			<Layout>
 				<div className="row">
