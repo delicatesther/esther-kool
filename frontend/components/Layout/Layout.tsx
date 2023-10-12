@@ -6,7 +6,7 @@ export const Layout = ({ children }) => {
 	return (
 		<>
 			<div className="wrapper">
-				<Triangle role="presentation" />
+				<Triangle />
 				<Header />
 				<main className="main">
 					<div className="grid-wrapper">{children}</div>
