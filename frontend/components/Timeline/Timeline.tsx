@@ -1,12 +1,11 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { ALL_EXPERIENCES_QUERY } from "@enk/lib";
-import { Experience } from "@enk/components/Experiences";
-import style from "./timeline.module.scss";
 import classNames from "classnames/bind";
-import translations from "@enk/translations";
 import { useRouter } from "next/router";
+import { useQuery } from "@apollo/client";
 import { useUser } from "@enk/utils";
+import { Experience } from "@enk/components/Experiences";
+import { ALL_EXPERIENCES_QUERY } from "@enk/lib";
+import translations from "@enk/translations";
+import style from "./timeline.module.scss";
 
 const cx = classNames.bind(style);
 

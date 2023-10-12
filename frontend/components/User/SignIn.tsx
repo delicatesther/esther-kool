@@ -1,20 +1,19 @@
-import React from "react";
-import Link from "next/link";
+import classNames from "classnames/bind";
 import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
+import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { CURRENT_USER_QUERY, SIGNIN_MUTATION, useForm } from "@enk/lib";
-import classNames from "classnames/bind";
-import style from "./user.module.scss";
-import { Button } from "@enk/components/Button";
 import translations from "@enk/translations";
-import { useRouter } from "next/router";
+import style from "./user.module.scss";
+
 const cx = classNames.bind(style);
 
 export const SignIn = () => {
 	const router = useRouter();
 	const { locale } = router;
 	const dictionary = translations[locale].user;
-	const { inputs, handleChange, resetForm, clearForm } = useForm({
+	const { inputs, handleChange, resetForm } = useForm({
 		email: "",
 		password: "",
 	});
@@ -40,6 +39,9 @@ export const SignIn = () => {
 		"UserAuthenticationWithPasswordFailure"
 			? data?.authenticateUserWithPassword
 			: undefined;
+
+	if (loading) return <p>Loading...</p>;
+
 	return (
 		<div className={cx(["signIn"], "row")}>
 			<form method="POST" onSubmit={handleSubmit}>

@@ -8,6 +8,7 @@ import translations from "@enk/translations";
 export const SignOut = ({ size }) => {
 	const router = useRouter();
 	const { locale } = router;
+
 	const [endSession, { data, loading, error }] = useMutation(SIGNOUT_MUTATION, {
 		refetchQueries: [{ query: CURRENT_USER_QUERY }],
 	});
@@ -16,6 +17,8 @@ export const SignOut = ({ size }) => {
 		e.preventDefault();
 		endSession();
 	}
+
+	if (loading) return <p>Loading...</p>;
 
 	return (
 		<Button
