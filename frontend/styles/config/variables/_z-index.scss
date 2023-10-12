@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// Z-index
+// Used to make z-indexes slightly more logical and avoid value 999999999
+// -----------------------------------------------------------------------------
+$z-index: (
+	negative: -10,
+	z0: 0,
+	z1: 10,
+	z2: 20,
+	z3: 30,
+	z4: 40,
+	header: 50,
+	subnavigation: 60,
+	overlay: 70,
+	modal: 80,
+	navigation: 90,
+);

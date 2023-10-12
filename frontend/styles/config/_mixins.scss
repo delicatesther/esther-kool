@@ -8,7 +8,6 @@
 // -----------------------------------------------------------------------------
 // Media queries and breakpoints
 // -----------------------------------------------------------------------------
-// Breakpoint mixin
 @mixin breakpoint($bp, $type: min) {
 	@if map_has_key($breakpoints, $bp) {
 		$bp: map_get($breakpoints, $bp);
@@ -25,7 +24,9 @@
 	}
 }
 
-// Hover, focus, active styling
+// -----------------------------------------------------------------------------
+// Hover, Focus & Active Styling
+// -----------------------------------------------------------------------------
 @mixin hoverFocusActiveStyling(
 	$property,
 	$value,
@@ -122,11 +123,14 @@
 	}
 }
 
+// -----------------------------------------------------------------------------
+// Shadows
+// Prettier shadows than standard box-shadow.
+// Via https://www.joshwcomeau.com/shadow-palette/.
+// -----------------------------------------------------------------------------
 @mixin applyShadow($theme: "light") {
-	// --shadowColorRgb: 182, 169, 47;
 	--shadowColorRgb: 161, 161, 161;
 	@if $theme == "dark" {
-		--shadowColorRgb: 30, 41, 34;
 		--shadowColorRgb: 4, 5, 6;
 	}
 	--shadow-elevation-low: 0.3px 0.5px 0.7px rgba(var(--shadowColorRgb), 0.34),

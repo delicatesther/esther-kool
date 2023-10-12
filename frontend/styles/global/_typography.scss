@@ -3,8 +3,8 @@
 // Global typography
 // -----------------------------------------------------------------------------
 @use "../config" as *;
-@import "@fontsource/open-sans/400.css"; // Weight 400
-@import "@fontsource/open-sans/400-italic.css"; // Italic 400
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/400-italic.css";
 @import "@fontsource/open-sans/700.css"; // Bold 700
 @import "@fontsource/open-sans/800.css"; // Extra-bold 800
 
@@ -83,7 +83,6 @@ select {
 // -----------------------------------------------------------------------------
 // Text styles
 // -----------------------------------------------------------------------------
-
 h1,
 .h1 {
 	font-family: #{selectFont("headingFont")};
