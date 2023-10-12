@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import classnames from "classnames/bind";
-import style from "./checkList.module.scss";
-import { ALL_CHECKLISTITEMS_QUERY, UPDATE_CHECKLIST_MUTATION } from "@enk/lib";
+import { useRouter } from "next/router";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
+import Check from "@enk/icons/check.svg";
+import { ALL_CHECKLISTITEMS_QUERY, UPDATE_CHECKLIST_MUTATION } from "@enk/lib";
+import translations from "@enk/translations";
 import { CheckListItemCheckedData, CheckListProps } from "@enk/types";
 import { CheckListItem } from "./CheckListItem";
-import Check from "@enk/icons/check.svg";
-import translations from "@enk/translations";
-import { useRouter } from "next/router";
+import style from "./checkList.module.scss";
 
 const cx = classnames.bind(style);
 
@@ -201,7 +201,9 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 
 	if (loading || mutationLoading || lazyLoading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
+
 	checkListItems = getLatestArr();
+
 	function getLatestArr() {
 		if (!!lazyData) {
 			return lazyData?.checkListItems;

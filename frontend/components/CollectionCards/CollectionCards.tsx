@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
-import classnames from "classnames/bind";
-import style from "./collectionCards.module.scss";
-import Check from "@enk/icons/check.svg";
+import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
+import { Button } from "@enk/components/Button";
+import { ErrorMessage } from "@enk/components/ErrorMessage";
 import {
 	ALL_COLLECTIONCARDS_QUERY,
 	UPDATE_COLLECTIONCARD_MUTATION,
 } from "@enk/lib";
-import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
-import { Button } from "@enk/components/Button";
-import { ErrorMessage } from "@enk/components/ErrorMessage";
-import { CheckListProps } from "@enk/types";
-import { CollectionCard } from "./CollectionCard";
 import translations from "@enk/translations";
+import { CheckListProps } from "@enk/types";
+import { useState } from "react";
+import classnames from "classnames/bind";
 import { useRouter } from "next/router";
-import { sortByKey, useUser } from "@enk/utils";
+import { useUser } from "@enk/utils";
+import { CollectionCard } from "./CollectionCard";
+import style from "./collectionCards.module.scss";
 
 const cx = classnames.bind(style);
 
@@ -40,6 +39,7 @@ export const CollectionCards = ({
 	const [showCards, setShowCards] = useState(all);
 	let checkListItems;
 	const cardTypes = [collected, doubles, missing];
+
 	function getCategories(activeFilter = undefined) {
 		const key = locale === "nl" ? "nameNL" : "name";
 		if (activeFilter) {
@@ -168,6 +168,7 @@ export const CollectionCards = ({
 				},
 			],
 		});
+
 	if (loading || lazyLoading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
 
@@ -217,6 +218,7 @@ export const CollectionCards = ({
 
 	checkListItems = getLatestArr();
 	const { users } = data;
+
 	function hasCard(cardId, userId) {
 		// Don't check all users, just the ones in here. Also, make
 		// sure we don't need to import all checkListItems on currentUser query.
@@ -227,6 +229,7 @@ export const CollectionCards = ({
 		const hasAtLeastOne = itemWeNeed?.count && itemWeNeed.count > 0;
 		return hasAtLeastOne ? itemWeNeed.count : 0;
 	}
+
 	return (
 		<div className={style.wrapper}>
 			<h2 className={style.title}>{title}</h2>
