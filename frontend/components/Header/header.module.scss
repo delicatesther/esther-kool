@@ -28,6 +28,7 @@
 .logo {
 	justify-self: start;
 	svg {
+		pointer-events: none;
 		width: 150px;
 		height: 33.99px;
 		transition: 0.2s ease-in-out;

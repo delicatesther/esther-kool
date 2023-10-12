@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-import { useTheme } from "next-themes";
 import Link from "next/link";
-import EstherKool from "@enk/icons/estherkool.svg";
-import Sun from "@enk/icons/sun.svg";
-import Moon from "@enk/icons/moon.svg";
-import { useUser } from "@enk/utils";
+import { useRouter } from "next/router";
+import { useTheme } from "next-themes";
 import { Button } from "@enk/components/Button";
 import { SignOut } from "@enk/components/User";
-import style from "./header.module.scss";
-import { useRouter } from "next/router";
+import EstherKool from "@enk/icons/estherkool.svg";
+import Moon from "@enk/icons/moon.svg";
+import Sun from "@enk/icons/sun.svg";
 import translations from "@enk/translations";
+import { useUser } from "@enk/utils";
+import style from "./header.module.scss";
+
 const cx = classNames.bind(style);
 
 export const Header = () => {

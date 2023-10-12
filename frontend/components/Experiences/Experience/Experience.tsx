@@ -1,10 +1,10 @@
-import React from "react";
-import { useUser } from "@enk/utils";
-import classNames from "classnames/bind";
-import style from "./experience.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import classNames from "classnames/bind";
 import translations from "@enk/translations";
+import { useUser } from "@enk/utils";
+import style from "./experience.module.scss";
+
 const cx = classNames.bind(style);
 
 export const Experience = ({
