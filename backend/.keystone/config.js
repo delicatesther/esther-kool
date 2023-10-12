@@ -1,7 +1,9 @@
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
@@ -15,6 +17,14 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // keystone.ts
@@ -23,7 +33,7 @@ __export(keystone_exports, {
   default: () => keystone_default
 });
 module.exports = __toCommonJS(keystone_exports);
-var import_config2 = require("dotenv/config");
+var import_dotenv2 = __toESM(require("dotenv"));
 var import_core8 = require("@keystone-6/core");
 
 // schemas/CheckListItem.ts
@@ -82,6 +92,8 @@ var import_fields2 = require("@keystone-6/core/fields");
 var import_core2 = require("@keystone-6/core");
 var import_access2 = require("@keystone-6/core/access");
 var import_cloudinary = require("@keystone-6/cloudinary");
+var import_dotenv = __toESM(require("dotenv"));
+import_dotenv.default.config({ path: `.env.${process.env.NODE_ENV}` });
 var cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
   apiKey: process.env.CLOUDINARY_KEY,
@@ -463,7 +475,8 @@ var session = (0, import_session.statelessSessions)({
 });
 
 // keystone.ts
-var databaseURL = process.env.DATABASE_URL || "https://xoolgtbnrumkdxlowjad.supabase.co";
+import_dotenv2.default.config({ path: `.env.${process.env.NODE_ENV}` });
+var databaseURL = process.env.DATABASE_URL || "";
 var frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 var keystone_default = withAuth(
   // Using the config function helps typescript guide you to the available options.

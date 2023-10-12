@@ -10,3 +10,6 @@ keystone.db
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+# local env files
+.env.*

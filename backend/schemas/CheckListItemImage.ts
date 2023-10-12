@@ -3,6 +3,8 @@ import { relationship, text } from "@keystone-6/core/fields";
 import { list } from "@keystone-6/core";
 import { allowAll } from "@keystone-6/core/access";
 import { cloudinaryImage } from "@keystone-6/cloudinary";
+import dotenv from "dotenv";
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
