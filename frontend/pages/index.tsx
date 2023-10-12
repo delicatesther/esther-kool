@@ -12,7 +12,7 @@ export default function Home() {
 			</Head>
 			<Layout>
 				<div className="row">
-					<BusinessCard src="/images/me.jpg" size="large" />
+					<BusinessCard />
 				</div>
 				<div className="row">
 					<Timeline />
