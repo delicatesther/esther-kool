@@ -1,0 +1,29 @@
+@use "../../../styles/config" as *;
+
+.wrapper {
+	// display: grid;
+	max-width: 600px;
+	margin: 0 auto;
+	// grid-template-columns: 1fr 1fr;
+	// grid-auto-rows: auto;
+	// grid-auto-flow: dense;
+	// gap: 8px;
+	column-count: 2;
+}
+
+.draggable {
+	// grid-column: 1 / 2;
+	width: 240px;
+}
+
+.droppable {
+	width: 240px;
+	// grid-column: 2 / 3;
+}
+
+.overlay {
+	// background: black;
+	border: 1px solid white;
+	border-radius: 6px;
+	transform: scale(4);
+}

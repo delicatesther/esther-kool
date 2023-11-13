@@ -1,0 +1,43 @@
+@use "../../../styles/config" as *;
+
+.droppable {
+	text-align: center;
+	padding: 8px;
+	border: 1px dotted white;
+	border-radius: 6px;
+	margin: 8px;
+	width: 240px;
+
+	position: relative;
+	&.correct {
+		border-color: var(--forestGreen);
+	}
+	p {
+		font-size: 1.6rem;
+	}
+}
+
+.title {
+	font-family: #{selectFont("headingFont")};
+	font-size: 3.6rem;
+	line-height: 0.8;
+}
+
+.check {
+	color: white;
+	background: var(--forestGreen);
+	position: absolute;
+	display: block;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	left: -16px;
+	top: -4px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	svg {
+		width: 24px;
+		height: 24px;
+	}
+}

@@ -1,0 +1,16 @@
+@use "../../../styles/config" as *;
+
+.draggable {
+	cursor: grab;
+	padding: 8px;
+	border: none;
+	border-radius: 6px;
+	margin: 8px;
+	width: 240px;
+	background: transparent;
+	z-index: z(z1);
+}
+
+// .image {
+// 	object-fit: contain;
+// }
