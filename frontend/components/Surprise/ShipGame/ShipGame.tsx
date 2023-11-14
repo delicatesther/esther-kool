@@ -91,7 +91,9 @@ export const ShipGame = () => {
 				)}
 			>
 				<h1 className={style.title}>
-					{completed ? "Yay! You fixed it!" : "Fix me please!"}
+					{completed
+						? "Yay! You fixed it!"
+						: "Fly the ships to their correct type please!"}
 				</h1>
 				<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
 					{notDraggedYet.map((obj) => {

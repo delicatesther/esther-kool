@@ -17,7 +17,7 @@
 
 .wrapper {
 	--width: clamp(100px, 120px, 160px);
-	--gap: 16px 8px;
+	--gap: 32px 8px;
 	display: grid;
 	margin: 80px auto 40px;
 	gap: var(--gap);
