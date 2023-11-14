@@ -2,10 +2,11 @@
 
 .title {
 	grid-column: 1 / -1;
+	grid-row: 1 / 2;
 	font-family: tradegothic;
 	line-height: 0.8;
 	color: var(--sweetCorn);
-	margin: 80px 40px;
+	margin: 80px 40px 40px;
 	--title-size: 3.2rem;
 	font-size: var(--title-size);
 	transform: skew(15deg, -2deg) scaleY(1.4) rotate(3deg);
@@ -18,15 +19,18 @@
 	--width: clamp(100px, 120px, 160px);
 	--gap: 16px 8px;
 	display: grid;
-	max-width: 1150px;
-	margin: 40px auto;
-	grid-auto-flow: dense;
+	margin: 80px auto 40px;
 	gap: var(--gap);
 	grid-template-columns: 1fr 2fr;
+	grid-auto-flow: dense;
+	max-width: 1150px;
 	@include breakpoint(m) {
-		grid-template-columns: 1fr 2fr 1fr 2fr;
 		--width: clamp(100px, 160px, 240px);
 		--gap: 40px 8px;
+	}
+	&.completed {
+		grid-template-columns: 1fr;
+		max-width: 80vw;
 	}
 }
 
@@ -79,32 +83,48 @@
 	animation: zoom 10s alternate infinite;
 }
 
-.hideBtn {
+.btns {
 	position: fixed;
 	z-index: z(z2);
-	cursor: pointer;
 	top: 40px;
-	left: 40px;
+	right: 40px;
+	display: flex;
+	gap: 8px;
+	button {
+		--btnColor: white;
+		cursor: pointer;
+		padding: 8px 16px;
+		border: 2px solid var(--btnColor);
+		color: var(--btnColor);
+		background: black;
+		border-radius: 6px;
+		font-family: tradegothic;
+		font-size: 2rem;
+		&:hover {
+			--btnColor: var(--sweetCorn);
+		}
+		@include breakpoint(m) {
+			font-size: 2.4rem;
+		}
+	}
 }
 
 .draggable {
 	width: var(--width);
 	align-self: center;
 	grid-column: 1 / 2;
-	&:nth-child(even) {
-		@include breakpoint(m) {
-			grid-column: 3 / 4;
-		}
-	}
 }
 
 .droppable {
 	align-self: center;
 	grid-column: 2 / 3;
-	&:nth-child(even) {
-		@include breakpoint(m) {
-			grid-column: 4 / 5;
-		}
+	.completed & {
+		grid-column: 1 / 2;
+	}
+	&.correct {
+		grid-column: 1 / -1;
+		max-width: 80vw;
+		margin: 0 auto;
 	}
 	&.hide {
 		display: none;

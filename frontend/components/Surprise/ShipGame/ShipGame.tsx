@@ -17,6 +17,7 @@ export const ShipGame = () => {
 	const [correctlyDragged, setCorrectlyDragged] = useState([]);
 	const [randomShips, setRandomShips] = useState(starWarsShips);
 	const [notDraggedYet, setNotDraggedYet] = useState(starWarsShips);
+	const [completed, setCompleted] = useState(false);
 
 	const activeShipProps = starWarsShips.find((ship) => ship.id === activeId);
 
@@ -25,8 +26,15 @@ export const ShipGame = () => {
 		let arr2 = shuffle([...starWarsShips]);
 		setNotDraggedYet(arr);
 		setRandomShips(arr2);
+
 		return () => {};
 	}, [setNotDraggedYet, setRandomShips]);
+
+	useEffect(() => {
+		if (!notDraggedYet.length) {
+			setCompleted(true);
+		}
+	}, [notDraggedYet]);
 
 	function handleDragStart(event) {
 		setActiveId(event.active.id);
@@ -53,51 +61,75 @@ export const ShipGame = () => {
 		}
 	}
 
+	function resetGame() {
+		setCompleted(false);
+		setCorrectlyDragged([]);
+		setNotDraggedYet(shuffle([...starWarsShips]));
+	}
+
 	return (
-		<div className={cx(["wrapper"], { ["hideCompleted"]: hideCompleted })}>
-			<button
-				className={style.hideBtn}
-				onClick={() => setHideCompleted(!hideCompleted)}
-			>
-				{hideCompleted ? "Show" : "Hide"} Completed
-			</button>
-			<h1 className={style.title}>Fix me please!</h1>
+		<>
 			<div className={style.galaxy}></div>
-			<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-				{notDraggedYet.map((obj) => {
-					return (
-						<Draggable id={obj.id} className={style.draggable} key={obj.ship}>
-							<Ship {...obj} />
-						</Draggable>
-					);
-				})}
-				{randomShips.map((obj) => {
-					const correct = correctlyDragged.indexOf(obj.id) >= 0;
-					return (
-						<Droppable
-							id={slugify(obj.ship, {
-								remove: /[*+~.()'"!:@]/g,
-								lower: true,
-							})}
-							correct={correct}
-							key={obj.ship}
-							className={cx(["droppable"], {
-								["hide"]: hideCompleted && correct,
-							})}
-							{...obj}
-						/>
-					);
-				})}
-				<DragOverlay
-					className={style.overlay}
-					dropAnimation={{
-						duration: 500,
-						easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
-					}}
+			<div className={style.btns}>
+				{completed && (
+					<button className={style.hideBtn} onClick={resetGame}>
+						Play again
+					</button>
+				)}
+				<button
+					className={style.hideBtn}
+					onClick={() => setHideCompleted(!hideCompleted)}
 				>
-					{activeId ? <Ship {...activeShipProps} /> : null}
-				</DragOverlay>
-			</DndContext>
-		</div>
+					{hideCompleted ? "Show" : "Hide"} Completed
+				</button>
+			</div>
+			<div
+				className={cx(
+					["wrapper"],
+					{ ["hideCompleted"]: hideCompleted },
+					{ ["completed"]: completed },
+				)}
+			>
+				<h1 className={style.title}>
+					{completed ? "Yay! You fixed it!" : "Fix me please!"}
+				</h1>
+				<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+					{notDraggedYet.map((obj) => {
+						return (
+							<Draggable id={obj.id} className={style.draggable} key={obj.ship}>
+								<Ship {...obj} />
+							</Draggable>
+						);
+					})}
+					{randomShips.map((obj) => {
+						const correct = correctlyDragged.indexOf(obj.id) >= 0;
+						return (
+							<Droppable
+								id={slugify(obj.ship, {
+									remove: /[*+~.()'"!:@]/g,
+									lower: true,
+								})}
+								correct={correct}
+								key={obj.ship}
+								className={cx(["droppable"], {
+									["hide"]: hideCompleted && correct,
+									["correct"]: correct,
+								})}
+								{...obj}
+							/>
+						);
+					})}
+					<DragOverlay
+						className={style.overlay}
+						dropAnimation={{
+							duration: 500,
+							easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
+						}}
+					>
+						{activeId ? <Ship {...activeShipProps} /> : null}
+					</DragOverlay>
+				</DndContext>
+			</div>
+		</>
 	);
 };
