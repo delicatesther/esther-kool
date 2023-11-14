@@ -1,8 +1,7 @@
 @use "../../../styles/config" as *;
 
-.ship {
-}
-
 .image {
+	width: var(--width);
+	height: auto;
 	object-fit: contain;
 }

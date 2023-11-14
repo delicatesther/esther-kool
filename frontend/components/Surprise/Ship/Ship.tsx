@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
-import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
-import { starWarsShips, starWarsImages } from "@enk/lib";
+import { starWarsImages } from "@enk/lib";
 import style from "./ship.module.scss";
 import classNames from "classnames/bind";
 

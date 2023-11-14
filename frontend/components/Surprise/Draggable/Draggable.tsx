@@ -18,6 +18,9 @@ export const Draggable = ({ id, className, children }: DraggableProps) => {
 		data: {
 			type: `${id}`,
 		},
+		attributes: {
+			roleDescription: `star-wars-ship-${id}`,
+		},
 	});
 
 	const draggableStyle = transform

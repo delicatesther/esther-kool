@@ -52,5 +52,11 @@
 		"ship": "CR90 Corellian corvette",
 		"desc": "The Tantive IV, identified in source material as a CR90 Corellian corvette, first appears in the opening scene of the original Star Wars: Episode IV - A New Hope, commanded by Princess Leia as she tries to escape from Darth Vader aboard his Imperial Star Destroyer.",
 		"img": "CR90"
+	},
+	{
+		"id": "classcode-03-k64",
+		"ship": "Classcode 03-K64",
+		"desc": "Serenity is described as a Firefly-class transport ship by an Alliance starship crew, while Shepherd Book identifies her as an \"aught three\" model, with both parties implying that the class is an old design.River identifies the ship as a \"Midbulk transport, standard radion-accelerator core, classcode 03-K64, Firefly\".",
+		"img": "Firefly"
 	}
 ]

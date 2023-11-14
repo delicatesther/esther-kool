@@ -7,6 +7,7 @@ import EF76NebulonB from "../../public/suprise/EF76NebulonB.png";
 import GR75 from "../../public/suprise/GR75.png";
 import Firespray31 from "../../public/suprise/Firespray31.png";
 import CR90 from "../../public/suprise/CR90.png";
+import Firefly from "../../public/suprise/Firefly.png";
 
 export { default as starWarsShips } from "./ships.json";
 const starWarsImages = [
@@ -19,5 +20,6 @@ const starWarsImages = [
 	GR75,
 	Firespray31,
 	CR90,
+	Firefly,
 ];
 export { starWarsImages };

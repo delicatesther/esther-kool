@@ -33,6 +33,15 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: tradegothic;
+	src: url("/fonts/trade_gothic_lt_std_bold_no._2-webfont.woff2")
+			format("woff2"),
+		url("/fonts/trade_gothic_lt_std_bold_no._2-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
 :root {
 	font-size: 62.5%; // (62.5/100) * 16px = 10px --> 1rem= 10px
 }

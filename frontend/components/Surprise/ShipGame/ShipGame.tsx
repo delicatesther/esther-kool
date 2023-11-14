@@ -6,19 +6,23 @@ import { starWarsShips } from "@enk/lib";
 import slugify from "slugify";
 import style from "./shipGame.module.scss";
 import { Ship } from "../Ship/Ship";
+import { shuffle } from "@enk/utils";
 
 export const ShipGame = () => {
 	const [activeId, setActiveId] = useState(undefined);
 	const [correctlyDragged, setCorrectlyDragged] = useState([]);
+	const [randomShips, setRandomShips] = useState(starWarsShips);
 	const [notDraggedYet, setNotDraggedYet] = useState(starWarsShips);
 
 	const activeShipProps = starWarsShips.find((ship) => ship.id === activeId);
 
 	useEffect(() => {
-		const shipsInRandomOrder = starWarsShips.sort(() => Math.random() - 0.5);
-		setNotDraggedYet(shipsInRandomOrder);
+		const arr = shuffle(starWarsShips);
+		let arr2 = shuffle([...starWarsShips]);
+		setNotDraggedYet(arr);
+		setRandomShips(arr2);
 		return () => {};
-	}, [setNotDraggedYet]);
+	}, [setNotDraggedYet, setRandomShips]);
 
 	function handleDragStart(event) {
 		setActiveId(event.active.id);
@@ -47,6 +51,8 @@ export const ShipGame = () => {
 
 	return (
 		<div className={style.wrapper}>
+			<h1 className={style.title}>Fix me please!</h1>
+			<div className={style.galaxy}></div>
 			<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
 				{notDraggedYet.map((obj) => {
 					return (
@@ -55,7 +61,7 @@ export const ShipGame = () => {
 						</Draggable>
 					);
 				})}
-				{starWarsShips.map((obj) => {
+				{randomShips.map((obj) => {
 					const correct = correctlyDragged.indexOf(obj.id) >= 0;
 					return (
 						<Droppable

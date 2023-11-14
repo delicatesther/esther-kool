@@ -6,11 +6,7 @@
 	border: none;
 	border-radius: 6px;
 	margin: 8px;
-	width: 240px;
+	width: var(--width);
 	background: transparent;
 	z-index: z(z1);
 }
-
-// .image {
-// 	object-fit: contain;
-// }

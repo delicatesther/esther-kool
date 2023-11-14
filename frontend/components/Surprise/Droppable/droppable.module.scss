@@ -3,24 +3,32 @@
 .droppable {
 	text-align: center;
 	padding: 8px;
-	border: 1px dotted white;
 	border-radius: 6px;
 	margin: 8px;
-	width: 240px;
-
 	position: relative;
 	&.correct {
-		border-color: var(--forestGreen);
+		border: 1px dotted var(--forestGreen);
 	}
 	p {
-		font-size: 1.6rem;
+		--font-size: 1.4rem;
+		font-size: var(--font-size);
+		color: var(--sweetCorn);
+		@include breakpoint(m) {
+			--font-size: 1.6rem;
+		}
 	}
 }
 
 .title {
-	font-family: #{selectFont("headingFont")};
-	font-size: 3.6rem;
+	--heading-size: 3.2rem;
+	font-family: tradegothic;
+	font-size: var(--heading-size);
 	line-height: 0.8;
+	color: var(--sweetCorn);
+	transform: skew(35deg, -2deg) scaleY(1.4) rotate(4deg) translateY(-24px);
+	@include breakpoint(m) {
+		--heading-size: 3.6rem;
+	}
 }
 
 .check {
