@@ -56,7 +56,7 @@
 	{
 		"id": "classcode-03-k64",
 		"ship": "Classcode 03-K64",
-		"desc": "Serenity is described as a Firefly-class transport ship by an Alliance starship crew, while Shepherd Book identifies her as an \"aught three\" model, with both parties implying that the class is an old design.River identifies the ship as a \"Midbulk transport, standard radion-accelerator core, classcode 03-K64, Firefly\".",
+		"desc": "Serenity is described as a Firefly-class transport ship, and Shepherd Book identifies her as an \"aught three\" model. River identifies the ship as a \"Midbulk transport, standard radion-accelerator core, classcode 03-K64, Firefly\". She has made a cameo appearance in the Star Wars: Evasive Action webcomic.",
 		"img": "Firefly"
 	},
 	{
@@ -82,5 +82,35 @@
 		"ship": "TIE/IN interceptor",
 		"desc": "TIE/IN interceptor – faster TIE fighters with dagger-shaped wings in the forward profile of those of the TIE Advanced and four laser cannons – appear at various points in Return of the Jedi.",
 		"img": "TIEINinterceptor"
+	},
+	{
+		"id": "tieln-starfighter",
+		"ship": "TIE/LN Starfighter",
+		"desc": "The TIE fighter or Twin Ion Engine fighter is a series of fictional starfighters featured in the Star Wars universe. TIE fighters are depicted as fast, agile, yet fragile starfighters.",
+		"img": "TIELNStarfighter"
+	},
+	{
+		"id": "t-65b-x-wing",
+		"ship": "T-65B X-wing",
+		"desc": "Named for the distinctive shape made when its s-foils (wings) are in attack position, the X-wing was a class of starfighter used by the Rebel Alliance in their conflict with the Galactic Empire.",
+		"img": "T65BXwing"
+	},
+	{
+		"id": "kuat-rz-1-a-wing-interceptor",
+		"ship": "Kuat RZ-1 A-wing Interceptor",
+		"desc": "Fast but fragile interceptors of the Rebel Alliance, conceived for high-speed surgical strikes, deep reconnaissance and escort fighter duty. A-wings first appear in Return of the Jedi (1983).",
+		"img": "AwingInterceptor"
+	},
+	{
+		"id": "btl-a4-y-wing-assault-starfighterbomber",
+		"ship": "BTL-A4 Y-wing assault starfighter/bomber",
+		"desc": "The star fighters of the Galactic Republic, Rebel Alliance, New Republic, and the Resistance; being ideally suited for anti-shipping, close air support, air interdiction, force protection and ground attack missions. Y-wing made their theatrical appearance in Star Wars Episode IV: A New Hope.",
+		"img": "Ywing"
+	},
+	{
+		"id": "asf-01-b-wing-starfighter",
+		"ship": "A/SF-01 B-wing starfighter",
+		"desc": "The A/SF-01 B-wing starfighter, also designated as the A/SF-01 B-wing assault starfighter, more commonly referred to as the B-wing, was a heavily armed Rebel Alliance single-pilot starfighter and bomber. They first appear in Return of the Jedi (1983).",
+		"img": "Bwing"
 	}
 ]

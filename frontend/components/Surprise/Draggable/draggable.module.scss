@@ -10,4 +10,9 @@
 	width: var(--width);
 	background: transparent;
 	z-index: z(z1);
+	&:global(.dreadnought) {
+		img {
+			width: 500px;
+		}
+	}
 }

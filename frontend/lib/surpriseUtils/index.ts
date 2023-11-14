@@ -12,8 +12,14 @@ import TieBomberSA from "../../public/suprise/TieBomberSA.png";
 import TIEshshuttle from "../../public/suprise/TIEshshuttle.png";
 import TIEadvanced from "../../public/suprise/TIEadvanced.png";
 import TIEINinterceptor from "../../public/suprise/TIEINinterceptor.png";
+import TIELNStarfighter from "../../public/suprise/TIELNStarfighter.png";
+import T65BXwing from "../../public/suprise/T65BXwing.png";
+import AwingInterceptor from "../../public/suprise/AwingInterceptor.png";
+import Ywing from "../../public/suprise/Ywing.png";
+import Bwing from "../../public/suprise/Bwing.png";
 
 export { default as starWarsShips } from "./ships.json";
+export { default as testStarWarsShips } from "./testShips.json";
 const starWarsImages = [
 	MC80A,
 	SentinalClassLandingCraft,
@@ -29,5 +35,10 @@ const starWarsImages = [
 	TIEshshuttle,
 	TIEadvanced,
 	TIEINinterceptor,
+	TIELNStarfighter,
+	T65BXwing,
+	AwingInterceptor,
+	Ywing,
+	Bwing,
 ];
 export { starWarsImages };
