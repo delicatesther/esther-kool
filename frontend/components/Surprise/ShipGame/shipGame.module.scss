@@ -6,25 +6,26 @@
 	line-height: 0.8;
 	color: var(--sweetCorn);
 	margin: 80px 40px;
-	--heading-size: 3.2rem;
+	--title-size: 3.2rem;
+	font-size: var(--title-size);
 	transform: skew(15deg, -2deg) scaleY(1.4) rotate(3deg);
 	@include breakpoint(m) {
-		--heading-size: 3.6rem;
+		--title-size: 3.6rem;
 	}
 }
 
 .wrapper {
-	--width: 160px;
+	--width: clamp(100px, 120px, 160px);
 	--gap: 16px 8px;
 	display: grid;
 	max-width: 1150px;
 	margin: 40px auto;
-	grid-template-columns: 1fr 3fr;
-	grid-auto-rows: auto;
 	grid-auto-flow: dense;
 	gap: var(--gap);
+	grid-template-columns: 1fr 2fr;
 	@include breakpoint(m) {
-		--width: 240px;
+		grid-template-columns: 1fr 2fr 1fr 2fr;
+		--width: clamp(100px, 160px, 240px);
 		--gap: 40px 8px;
 	}
 }
@@ -78,15 +79,36 @@
 	animation: zoom 10s alternate infinite;
 }
 
+.hideBtn {
+	position: fixed;
+	z-index: z(z2);
+	cursor: pointer;
+	top: 40px;
+	left: 40px;
+}
+
 .draggable {
-	grid-column: 1 / 2;
 	width: var(--width);
 	align-self: center;
+	grid-column: 1 / 2;
+	&:nth-child(even) {
+		@include breakpoint(m) {
+			grid-column: 3 / 4;
+		}
+	}
 }
 
 .droppable {
-	grid-column: 2 / 3;
 	align-self: center;
+	grid-column: 2 / 3;
+	&:nth-child(even) {
+		@include breakpoint(m) {
+			grid-column: 4 / 5;
+		}
+	}
+	&.hide {
+		display: none;
+	}
 }
 
 .overlay {

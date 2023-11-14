@@ -58,5 +58,29 @@
 		"ship": "Classcode 03-K64",
 		"desc": "Serenity is described as a Firefly-class transport ship by an Alliance starship crew, while Shepherd Book identifies her as an \"aught three\" model, with both parties implying that the class is an old design.River identifies the ship as a \"Midbulk transport, standard radion-accelerator core, classcode 03-K64, Firefly\".",
 		"img": "Firefly"
+	},
+	{
+		"id": "tiesa-bomber",
+		"ship": "TIE/sa bomber",
+		"desc": " Introduced in The Empire Strikes Back, TIE/sa bombers are seen bombing asteroids in the hunt for the Millennium Falcon. The design stems from an unused \"TIE boarding craft\" concept originally developed for A New Hope.",
+		"img": "TieBomberSA"
+	},
+	{
+		"id": "tiesh-shuttle",
+		"ship": "TIE/sh shuttle",
+		"desc": "Featured in The Empire Strikes Back, a TIE/sh shuttle is seen ferrying Captain Needa (Michael Culver) to Darth Vader's Super Star Destroyer. Like the TIE/sa bomber, this shuttle design stems from an unused \"TIE boarding craft\" concept developed for A New Hope.",
+		"img": "TIEshshuttle"
+	},
+	{
+		"id": "tie-advanced-x1",
+		"ship": "TIE Advanced x1",
+		"desc": "Darth Vader flies a TIE Advanced x1 (or just \"TIE/x1\") in many media, most notably in the original Star Wars during the climatic Death Star battle. According to background material, the limited-run TIE Advanced x1 was designed to Vader's personal specifications and was only flown by himself and select Imperial pilots.",
+		"img": "TIEadvanced"
+	},
+	{
+		"id": "tiein-interceptor",
+		"ship": "TIE/IN interceptor",
+		"desc": "TIE/IN interceptor – faster TIE fighters with dagger-shaped wings in the forward profile of those of the TIE Advanced and four laser cannons – appear at various points in Return of the Jedi.",
+		"img": "TIEINinterceptor"
 	}
 ]

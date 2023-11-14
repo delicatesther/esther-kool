@@ -1,5 +1,6 @@
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 import React, { useEffect, useState } from "react";
+import classNames from "classnames/bind";
 import { Draggable } from "../Draggable";
 import { Droppable } from "../Droppable";
 import { starWarsShips } from "@enk/lib";
@@ -8,8 +9,11 @@ import style from "./shipGame.module.scss";
 import { Ship } from "../Ship/Ship";
 import { shuffle } from "@enk/utils";
 
+const cx = classNames.bind(style);
+
 export const ShipGame = () => {
 	const [activeId, setActiveId] = useState(undefined);
+	const [hideCompleted, setHideCompleted] = useState(false);
 	const [correctlyDragged, setCorrectlyDragged] = useState([]);
 	const [randomShips, setRandomShips] = useState(starWarsShips);
 	const [notDraggedYet, setNotDraggedYet] = useState(starWarsShips);
@@ -50,7 +54,13 @@ export const ShipGame = () => {
 	}
 
 	return (
-		<div className={style.wrapper}>
+		<div className={cx(["wrapper"], { ["hideCompleted"]: hideCompleted })}>
+			<button
+				className={style.hideBtn}
+				onClick={() => setHideCompleted(!hideCompleted)}
+			>
+				{hideCompleted ? "Show" : "Hide"} Completed
+			</button>
 			<h1 className={style.title}>Fix me please!</h1>
 			<div className={style.galaxy}></div>
 			<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
@@ -71,7 +81,9 @@ export const ShipGame = () => {
 							})}
 							correct={correct}
 							key={obj.ship}
-							className={style.droppable}
+							className={cx(["droppable"], {
+								["hide"]: hideCompleted && correct,
+							})}
 							{...obj}
 						/>
 					);

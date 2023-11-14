@@ -20,13 +20,16 @@
 }
 
 .title {
-	--heading-size: 3.2rem;
+	--heading-size: 2.8rem;
+	--transform: skew(24deg, -3deg) scaleY(1.2) rotate(4deg) translateY(-24px);
 	font-family: tradegothic;
 	font-size: var(--heading-size);
 	line-height: 0.8;
 	color: var(--sweetCorn);
-	transform: skew(35deg, -2deg) scaleY(1.4) rotate(4deg) translateY(-24px);
+	transform: var(--transform);
+	width: fit-content;
 	@include breakpoint(m) {
+		--transform: skew(30deg, -2deg) scaleY(1.4) rotate(3deg) translateY(-24px);
 		--heading-size: 3.6rem;
 	}
 }

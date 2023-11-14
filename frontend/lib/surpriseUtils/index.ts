@@ -8,6 +8,10 @@ import GR75 from "../../public/suprise/GR75.png";
 import Firespray31 from "../../public/suprise/Firespray31.png";
 import CR90 from "../../public/suprise/CR90.png";
 import Firefly from "../../public/suprise/Firefly.png";
+import TieBomberSA from "../../public/suprise/TieBomberSA.png";
+import TIEshshuttle from "../../public/suprise/TIEshshuttle.png";
+import TIEadvanced from "../../public/suprise/TIEadvanced.png";
+import TIEINinterceptor from "../../public/suprise/TIEINinterceptor.png";
 
 export { default as starWarsShips } from "./ships.json";
 const starWarsImages = [
@@ -21,5 +25,9 @@ const starWarsImages = [
 	Firespray31,
 	CR90,
 	Firefly,
+	TieBomberSA,
+	TIEshshuttle,
+	TIEadvanced,
+	TIEINinterceptor,
 ];
 export { starWarsImages };
