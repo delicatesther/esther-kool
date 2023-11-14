@@ -3,6 +3,7 @@
 .draggable {
 	cursor: grab;
 	padding: 8px;
+	touch-action: none;
 	border: none;
 	border-radius: 6px;
 	margin: 8px;
