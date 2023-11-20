@@ -93,3 +93,4 @@ export function sortByKey(array, key) {
 }
 
 export * from "./ThemeChanger";
+export * from "./arrays";

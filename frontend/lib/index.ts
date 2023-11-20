@@ -1,4 +1,5 @@
 export * from "./apolloClient";
-export * from './consts';
+export * from "./consts";
 export * from "./resolvers";
 export * from "./useForm";
+export * from "./surpriseUtils";

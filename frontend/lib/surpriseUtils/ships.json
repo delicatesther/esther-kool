@@ -1,0 +1,116 @@
+[
+	{
+		"id": "mc80a-star-cruiser",
+		"ship": "MC80A star cruiser",
+		"desc": "Home One (Mon Calamari cruiser) made its theatrical appearance in Return of the Jedi as Admiral Ackbar's flagship during the Battle of Endor. ",
+		"img": "MC80A"
+	},
+	{
+		"id": "sentinal-class-landing-craft",
+		"ship": "Sentinal-class landing craft",
+		"desc": "Imperial landing craft (or Sentinel-class landing craft) were designed for the Special Edition release of Star Wars Episode IV: A New Hope and created entirely with CGI.",
+		"img": "SentinalClassLandingCraft"
+	},
+	{
+		"id": "lambda-class-t4a",
+		"ship": "Lambda-class T4a",
+		"desc": "Imperial Shuttle. Lambda-class T4a shuttles first appeared in Star Wars: Episode VI - Return of the Jedi, and were later added to the Special Edition release of The Empire Strikes Back.",
+		"img": "LambdaClassT4a"
+	},
+	{
+		"id": "executor-class-star-dreadnought",
+		"ship": "Executor-class Star Dreadnought",
+		"desc": "The Star Destroyers are the Galactic Empire's assault ships. The Ravager, an Executor-class Star Dreadnought, was destroyed during the Battle of Jakku.",
+		"img": "Executor2BF2"
+	},
+	{
+		"id": "yt-1300-light-freighter",
+		"ship": "YT-1300 light freighter",
+		"desc": "The Millennium Falcon is a highly modified YT-1300F light freighter captained by smuggler Han Solo and his Wookiee first mate, Chewbacca.",
+		"img": "MF"
+	},
+	{
+		"id": "ef76-nebulon-b",
+		"ship": "EF76 Nebulon-B",
+		"desc": "Luke Skywalker receives a prosthetic hand aboard the Redemption, a modified Nebulon-B escort frigate, at the conclusion of Star Wars: Episode V – The Empire Strikes Back.",
+		"img": "EF76NebulonB"
+	},
+	{
+		"id": "gr-75-medium-transport",
+		"ship": "GR-75 medium transport",
+		"desc": "GR-75 medium transports are a class of ship which first appears in The Empire Strikes Back during the evacuation of Echo Base on Hoth, and have made appearances in other media.",
+		"img": "GR75"
+	},
+	{
+		"id": "firespray-31",
+		"ship": "Firespray-31",
+		"desc": "Slave I is the starship used by bounty hunter Boba Fett in The Empire Strikes Back and The Mandalorian, and by his father Jango Fett in Attack of the Clones. According to in-universe reference material, Slave I is a modified Firespray-31-class patrol craft produced by Kuat Systems Engineering.",
+		"img": "Firespray31"
+	},
+	{
+		"id": "cr90-corellian-corvette",
+		"ship": "CR90 Corellian corvette",
+		"desc": "The Tantive IV, identified in source material as a CR90 Corellian corvette, first appears in the opening scene of the original Star Wars: Episode IV - A New Hope, commanded by Princess Leia as she tries to escape from Darth Vader aboard his Imperial Star Destroyer.",
+		"img": "CR90"
+	},
+	{
+		"id": "classcode-03-k64",
+		"ship": "Classcode 03-K64",
+		"desc": "Serenity is described as a Firefly-class transport ship, and Shepherd Book identifies her as an \"aught three\" model. River identifies the ship as a \"Midbulk transport, standard radion-accelerator core, classcode 03-K64, Firefly\". She has made a cameo appearance in the Star Wars: Evasive Action webcomic.",
+		"img": "Firefly"
+	},
+	{
+		"id": "tiesa-bomber",
+		"ship": "TIE/sa bomber",
+		"desc": " Introduced in The Empire Strikes Back, TIE/sa bombers are seen bombing asteroids in the hunt for the Millennium Falcon. The design stems from an unused \"TIE boarding craft\" concept originally developed for A New Hope.",
+		"img": "TieBomberSA"
+	},
+	{
+		"id": "tiesh-shuttle",
+		"ship": "TIE/sh shuttle",
+		"desc": "Featured in The Empire Strikes Back, a TIE/sh shuttle is seen ferrying Captain Needa (Michael Culver) to Darth Vader's Super Star Destroyer. Like the TIE/sa bomber, this shuttle design stems from an unused \"TIE boarding craft\" concept developed for A New Hope.",
+		"img": "TIEshshuttle"
+	},
+	{
+		"id": "tie-advanced-x1",
+		"ship": "TIE Advanced x1",
+		"desc": "Darth Vader flies a TIE Advanced x1 (or just \"TIE/x1\") in many media, most notably in the original Star Wars during the climatic Death Star battle. According to background material, the limited-run TIE Advanced x1 was designed to Vader's personal specifications and was only flown by himself and select Imperial pilots.",
+		"img": "TIEadvanced"
+	},
+	{
+		"id": "tiein-interceptor",
+		"ship": "TIE/IN interceptor",
+		"desc": "TIE/IN interceptor – faster TIE fighters with dagger-shaped wings in the forward profile of those of the TIE Advanced and four laser cannons – appear at various points in Return of the Jedi.",
+		"img": "TIEINinterceptor"
+	},
+	{
+		"id": "tieln-starfighter",
+		"ship": "TIE/LN Starfighter",
+		"desc": "The TIE fighter or Twin Ion Engine fighter is a series of fictional starfighters featured in the Star Wars universe. TIE fighters are depicted as fast, agile, yet fragile starfighters.",
+		"img": "TIELNStarfighter"
+	},
+	{
+		"id": "t-65b-x-wing",
+		"ship": "T-65B X-wing",
+		"desc": "Named for the distinctive shape made when its s-foils (wings) are in attack position, the X-wing was a class of starfighter used by the Rebel Alliance in their conflict with the Galactic Empire.",
+		"img": "T65BXwing"
+	},
+	{
+		"id": "kuat-rz-1-a-wing-interceptor",
+		"ship": "Kuat RZ-1 A-wing Interceptor",
+		"desc": "Fast but fragile interceptors of the Rebel Alliance, conceived for high-speed surgical strikes, deep reconnaissance and escort fighter duty. A-wings first appear in Return of the Jedi (1983).",
+		"img": "AwingInterceptor"
+	},
+	{
+		"id": "btl-a4-y-wing-assault-starfighterbomber",
+		"ship": "BTL-A4 Y-wing assault starfighter/bomber",
+		"desc": "The star fighters of the Galactic Republic, Rebel Alliance, New Republic, and the Resistance; being ideally suited for anti-shipping, close air support, air interdiction, force protection and ground attack missions. Y-wing made their theatrical appearance in Star Wars Episode IV: A New Hope.",
+		"img": "Ywing"
+	},
+	{
+		"id": "asf-01-b-wing-starfighter",
+		"ship": "A/SF-01 B-wing starfighter",
+		"desc": "The A/SF-01 B-wing starfighter, also designated as the A/SF-01 B-wing assault starfighter, more commonly referred to as the B-wing, was a heavily armed Rebel Alliance single-pilot starfighter and bomber. They first appear in Return of the Jedi (1983).",
+		"img": "Bwing"
+	}
+]

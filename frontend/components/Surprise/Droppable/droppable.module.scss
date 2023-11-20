@@ -1,0 +1,56 @@
+@use "../../../styles/config" as *;
+
+.droppable {
+	text-align: center;
+	padding: 8px;
+	border-radius: 6px;
+	margin: 8px;
+	position: relative;
+	z-index: 1;
+	&.correct {
+		border: 1px dotted var(--forestGreen);
+	}
+	p {
+		--font-size: 1.4rem;
+		font-size: var(--font-size);
+		color: var(--sweetCorn);
+		@include breakpoint(m) {
+			--font-size: 1.6rem;
+		}
+	}
+}
+
+.title {
+	--heading-size: 2.8rem;
+	--transform: skew(24deg, -3deg) scaleY(1.2) rotate(4deg) translateY(-24px);
+	font-family: tradegothic;
+	font-size: var(--heading-size);
+	line-height: 0.8;
+	color: var(--sweetCorn);
+	transform: var(--transform);
+	width: fit-content;
+	margin-left: 40px;
+	@include breakpoint(m) {
+		--transform: skew(30deg, -2deg) scaleY(1.4) rotate(3deg) translateY(-24px);
+		--heading-size: 3.6rem;
+	}
+}
+
+.check {
+	color: white;
+	background: var(--forestGreen);
+	position: absolute;
+	display: block;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	left: -16px;
+	top: -4px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	svg {
+		width: 24px;
+		height: 24px;
+	}
+}

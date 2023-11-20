@@ -1,0 +1,122 @@
+@use "../../../styles/config" as *;
+
+.title {
+	grid-column: 1 / -1;
+	grid-row: 1 / 2;
+	font-family: tradegothic;
+	line-height: 0.8;
+	color: var(--sweetCorn);
+	margin: 100px 40px 40px;
+	--title-size: 3.2rem;
+	font-size: var(--title-size);
+	transform: skew(15deg, -2deg) scaleY(1.4) rotate(3deg);
+	@include breakpoint(m) {
+		--title-size: 3.6rem;
+	}
+}
+
+.wrapper {
+	--width: clamp(100px, 120px, 160px);
+	--gap: 32px 8px;
+	display: grid;
+	margin: 120px auto 40px;
+	gap: var(--gap);
+	grid-template-columns: 1fr 2fr;
+	grid-auto-flow: dense;
+	max-width: 1150px;
+	@include breakpoint(m) {
+		--width: clamp(100px, 160px, 240px);
+		--gap: 40px 8px;
+	}
+	&.completed {
+		grid-template-columns: 1fr;
+	}
+}
+
+.dashboard {
+	position: fixed;
+	z-index: z(z2);
+	top: 0px;
+	right: 0px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto;
+	direction: rtl;
+	gap: 8px;
+	justify-content: end;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.6);
+	padding: 8px 12px;
+	border-bottom-left-radius: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	button {
+		grid-column: span 1;
+		grid-row: 1 / 2;
+		--btnColor: white;
+		cursor: pointer;
+		padding: 4px 8px;
+		width: fit-content;
+		border: 2px solid var(--btnColor);
+		color: var(--btnColor);
+		background: black;
+		border-radius: 6px;
+		font-family: tradegothic;
+		font-size: 2rem;
+		&:hover {
+			--btnColor: var(--sweetCorn);
+		}
+		@include breakpoint(m) {
+			font-size: 2.4rem;
+		}
+	}
+	span {
+		grid-column: span 1;
+		grid-row: 2 / 3;
+	}
+}
+
+.draggable {
+	width: var(--width);
+	align-self: center;
+	grid-column: 1 / 2;
+	&:last-of-type {
+		margin-bottom: 80px;
+	}
+}
+
+.droppable {
+	align-self: center;
+	grid-column: 2 / 3;
+	.completed & {
+		grid-column: 1 / 2;
+	}
+	&.correct {
+		grid-column: 1 / -1;
+		max-width: 70vw;
+		width: clamp(240px, 480px, 70vw);
+		margin: 0 auto 24px;
+	}
+	&.hide {
+		display: none;
+	}
+}
+
+.correctScore {
+	color: var(--forestGreen);
+	transition: 0.1s ease-in-out;
+	transform-origin: center right;
+	&.flash {
+		transform: scale(1.2);
+		color: white;
+	}
+}
+
+.incorrectScore {
+	transform-origin: center right;
+	color: var(--watermelon);
+	transition: 0.1s ease-in-out;
+	&.flash {
+		transform: scale(1.2);
+		color: white;
+	}
+}

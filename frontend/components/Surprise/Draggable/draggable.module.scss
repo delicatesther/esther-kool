@@ -1,0 +1,18 @@
+@use "../../../styles/config" as *;
+
+.draggable {
+	cursor: grab;
+	padding: 8px;
+	touch-action: none;
+	border: none;
+	border-radius: 6px;
+	margin: 8px;
+	width: var(--width);
+	background: transparent;
+	z-index: z(z1);
+	&:global(.dreadnought) {
+		img {
+			width: 500px;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+@use "../../../styles/config" as *;
+
+.image {
+	width: var(--width);
+	height: auto;
+	object-fit: contain;
+}
+
+.dreadnought {
+	width: 500px;
+	height: 184px;
+}

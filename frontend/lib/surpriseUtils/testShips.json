@@ -1,0 +1,32 @@
+[
+	{
+		"id": "mc80a-star-cruiser",
+		"ship": "MC80A star cruiser",
+		"desc": "Home One (Mon Calamari cruiser) made its theatrical appearance in Return of the Jedi as Admiral Ackbar's flagship during the Battle of Endor. ",
+		"img": "MC80A"
+	},
+	{
+		"id": "sentinal-class-landing-craft",
+		"ship": "Sentinal-class landing craft",
+		"desc": "Imperial landing craft (or Sentinel-class landing craft) were designed for the Special Edition release of Star Wars Episode IV: A New Hope and created entirely with CGI.",
+		"img": "SentinalClassLandingCraft"
+	},
+	{
+		"id": "lambda-class-t4a",
+		"ship": "Lambda-class T4a",
+		"desc": "Imperial Shuttle. Lambda-class T4a shuttles first appeared in Star Wars: Episode VI - Return of the Jedi, and were later added to the Special Edition release of The Empire Strikes Back.",
+		"img": "LambdaClassT4a"
+	},
+	{
+		"id": "executor-class-star-dreadnought",
+		"ship": "Executor-class Star Dreadnought",
+		"desc": "The Star Destroyers are the Galactic Empire's assault ships. The Ravager, an Executor-class Star Dreadnought, was destroyed during the Battle of Jakku.",
+		"img": "Executor2BF2"
+	},
+	{
+		"id": "yt-1300-light-freighter",
+		"ship": "YT-1300 light freighter",
+		"desc": "The Millennium Falcon is a highly modified YT-1300F light freighter captained by smuggler Han Solo and his Wookiee first mate, Chewbacca.",
+		"img": "MF"
+	}
+]

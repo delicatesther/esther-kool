@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// JSON-STRINGIFY
+// A function to turn an SCSS map into a JSON string.
+// This can't co into our regular _functions file because it's
+// needed earlier in the import queue.
+// -----------------------------------------------------------------------------
+@function json-stringify($map) {
+	$result: "{";
+
+	@each $key, $value in $map {
+		$result: $result + '"#{$key}":';
+
+		@if type-of($value) == "map" {
+			$result: $result + json-stringify($value);
+		} @else {
+			$result: $result + '"#{$value}"';
+		}
+
+		@if index($map, ($key $value)) != length($map) {
+			$result: $result + ",";
+		}
+	}
+
+	$result: $result + "}";
+
+	@return $result;
+}
