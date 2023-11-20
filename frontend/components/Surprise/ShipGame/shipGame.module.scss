@@ -24,6 +24,9 @@
 	grid-template-columns: 1fr 2fr;
 	grid-auto-flow: dense;
 	max-width: 1150px;
+	@include breakpoint(s, max) {
+		overflow: hidden;
+	}
 	@include breakpoint(m) {
 		--width: clamp(100px, 160px, 240px);
 		--gap: 40px 8px;
