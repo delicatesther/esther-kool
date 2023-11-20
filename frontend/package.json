@@ -27,6 +27,7 @@
 		"react": "^18.2.0",
 		"react-confetti": "^6.1.0",
 		"react-dom": "^18.2.0",
+		"react-timer-hook": "^3.0.7",
 		"react-use": "^17.4.0",
 		"react-use-system-theme": "^1.1.1",
 		"storybook-addon-apollo-client": "^5.0.0",

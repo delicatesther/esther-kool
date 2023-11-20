@@ -1,31 +1,36 @@
-import { DndContext, DragOverlay } from "@dnd-kit/core";
-import React, { useEffect, useState } from "react";
-import classNames from "classnames/bind";
-import { Draggable } from "../Draggable";
-import { Droppable } from "../Droppable";
-import { starWarsShips } from "@enk/lib";
 // import { testStarWarsShips } from "@enk/lib";
 import slugify from "slugify";
-import style from "./shipGame.module.scss";
-import { Ship } from "../Ship/Ship";
+import classNames from "classnames/bind";
+import React, { useEffect, useState } from "react";
+import { DndContext, DragOverlay } from "@dnd-kit/core";
+import { useStopwatch } from "react-timer-hook";
+import { starWarsShips } from "@enk/lib";
 import { shuffle } from "@enk/utils";
-import Check from "@enk/icons/check.svg";
-import Cross from "@enk/icons/cross.svg";
+import { Draggable } from "../Draggable";
+import { Droppable } from "../Droppable";
+import { Ship } from "../Ship";
+import { GalaxyBg } from "../GalaxyBg";
+import { Confetti } from "../Confetti";
+import { ActionFeedbackUI } from "../ActionFeedbackUI";
+import style from "./shipGame.module.scss";
 
+// const starWarsShips = testStarWarsShips;
 const cx = classNames.bind(style);
 
 export const ShipGame = () => {
-	// const starWarsShips = testStarWarsShips;
+	const { seconds, minutes, isRunning, start, reset, pause } = useStopwatch({
+		autoStart: false,
+	});
 	const [activeId, setActiveId] = useState(undefined);
+	const [gameStarted, setGameStarted] = useState(false);
+	const [correctGuess, setCorrectGuess] = useState(false);
+	const [incorrectGuess, setIncorrectGuess] = useState(false);
+	const [correctItems, setCorrectItems] = useState([]);
+	const [numberIncorrect, setNumberIncorrect] = useState(0);
 	const [hideCompleted, setHideCompleted] = useState(false);
-	const [correctlyDragged, setCorrectlyDragged] = useState([]);
-	const [incorrect, setIncorrect] = useState(0);
-	const [incorrectDrag, setInCorrectDrag] = useState(false);
-	const [correctDrag, setCorrectDrag] = useState(false);
 	const [randomShips, setRandomShips] = useState(starWarsShips);
 	const [notDraggedYet, setNotDraggedYet] = useState(starWarsShips);
 	const [completed, setCompleted] = useState(false);
-
 	const activeShipProps = starWarsShips.find((ship) => ship.id === activeId);
 
 	useEffect(() => {
@@ -34,16 +39,21 @@ export const ShipGame = () => {
 		setNotDraggedYet(arr);
 		setRandomShips(arr2);
 		return () => {};
-	}, [setNotDraggedYet, setRandomShips, starWarsShips]);
+	}, [setNotDraggedYet, setRandomShips]);
 
 	useEffect(() => {
 		if (!notDraggedYet.length) {
+			pause();
 			setCompleted(true);
 		}
-	}, [notDraggedYet]);
+	}, [notDraggedYet, pause]);
 
 	function handleDragStart(event) {
 		setActiveId(event.active.id);
+		if (!gameStarted) {
+			start();
+			setGameStarted(true);
+		}
 	}
 
 	function handleDragEnd(event) {
@@ -56,57 +66,50 @@ export const ShipGame = () => {
 				active.data.current.type,
 			);
 			if (correctItemDragged) {
-				setCorrectDrag(true);
+				setCorrectGuess(true);
 				setTimeout(() => {
-					setCorrectDrag(false);
+					setCorrectGuess(false);
 				}, 500);
 				const { id } = event.over;
-				const itemNotInArr = correctlyDragged.indexOf(id) === -1;
-				const arr = itemNotInArr ? [...correctlyDragged, id] : correctlyDragged;
-				setCorrectlyDragged(arr);
+				const itemNotInArr = correctItems.indexOf(id) === -1;
+				const arr = itemNotInArr ? [...correctItems, id] : correctItems;
+				setCorrectItems(arr);
 
 				let newerArr = newArr.filter((x) => x.id !== id);
 				setNotDraggedYet(newerArr);
 			} else {
-				const count = incorrect;
-				setInCorrectDrag(true);
+				const count = numberIncorrect;
+				setIncorrectGuess(true);
 				setTimeout(() => {
-					setInCorrectDrag(false);
+					setIncorrectGuess(false);
 				}, 500);
-				setIncorrect(count + 1);
+				setNumberIncorrect(count + 1);
 			}
 		}
 	}
 
 	function resetGame() {
+		setGameStarted(false);
+		reset(null, false);
 		setCompleted(false);
-		setCorrectlyDragged([]);
+		setCorrectItems([]);
 		setNotDraggedYet(shuffle([...starWarsShips]));
-		setIncorrect(0);
+		setNumberIncorrect(0);
 	}
 
 	return (
 		<>
-			<div className={style.galaxy}></div>
-			<span
-				className={cx(["feedback"], ["correctFeedback"], {
-					["show"]: correctDrag,
-				})}
-			>
-				<Check />
-			</span>
-			<span
-				className={cx(["feedback"], ["incorrectFeedback"], {
-					["show"]: incorrectDrag,
-				})}
-			>
-				<Cross />
-			</span>
+			{completed && <Confetti />}
+			<GalaxyBg />
+			<ActionFeedbackUI
+				correctGuess={correctGuess}
+				incorrectGuess={incorrectGuess}
+			/>
 			<div className={style.dashboard}>
 				<button className={style.hideBtn} onClick={resetGame}>
 					{completed ? "Play again" : "Reset"}
 				</button>
-				{!!correctlyDragged.length && (
+				{!!correctItems.length && (
 					<button
 						className={style.hideBtn}
 						onClick={() => setHideCompleted(!hideCompleted)}
@@ -114,12 +117,15 @@ export const ShipGame = () => {
 						{hideCompleted ? "Show" : "Hide"} Completed
 					</button>
 				)}
-				<span className={cx(["correctScore"], { ["flash"]: correctDrag })}>
-					Correct: {correctlyDragged.length}
+				<span className={cx(["correctScore"], { ["flash"]: correctGuess })}>
+					Correct: {correctItems.length}
 				</span>
-				<span className={cx(["incorrectScore"], { ["flash"]: incorrectDrag })}>
-					Incorrect: {incorrect}
+				<span className={cx(["incorrectScore"], { ["flash"]: incorrectGuess })}>
+					Incorrect: {numberIncorrect}
 				</span>
+				<div>
+					<span>{minutes}</span>:<span>{seconds}</span>
+				</div>
 			</div>
 			<div
 				className={cx(
@@ -148,7 +154,7 @@ export const ShipGame = () => {
 						);
 					})}
 					{randomShips.map((obj) => {
-						const correct = correctlyDragged.indexOf(obj.id) >= 0;
+						const correct = correctItems.indexOf(obj.id) >= 0;
 						return (
 							<Droppable
 								id={slugify(obj.ship, {

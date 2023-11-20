@@ -1,5 +1,6 @@
 import { ShipGame } from "@enk/components/Surprise";
 import { useTheme } from "next-themes";
+import Head from "next/head";
 import { useEffect } from "react";
 
 export default function SurpriseKasperPage() {
@@ -11,5 +12,12 @@ export default function SurpriseKasperPage() {
 		}
 	}, [theme, setTheme]);
 
-	return <ShipGame />;
+	return (
+		<>
+			<Head>
+				<title>SinterStarWarskerst</title>
+			</Head>
+			<ShipGame />
+		</>
+	);
 }
