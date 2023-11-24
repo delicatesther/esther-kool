@@ -21,7 +21,6 @@ export default function AlexPage() {
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
-
 	const { post } = data;
 	return (
 		<Layout>
