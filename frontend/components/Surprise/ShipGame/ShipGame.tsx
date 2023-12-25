@@ -136,7 +136,7 @@ export const ShipGame = () => {
 			>
 				<h1 className={style.title}>
 					{completed
-						? "Yay! You fixed it!"
+						? "Yay! You fixed it! Je cadeaus liggen links onderin de blauwe kast!"
 						: "Fly the ships to their correct type please!"}
 				</h1>
 				<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
