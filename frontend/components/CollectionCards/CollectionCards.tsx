@@ -239,9 +239,6 @@ export const CollectionCards = ({
 					<select
 						value={showCards}
 						onChange={(e) => filterCards(e.target.value)}
-						placeholder={`${
-							dictionary.select
-						} ${dictionary.category.toLowerCase()}...`}
 					>
 						<option disabled value={all}>
 							--{dictionary.select}--
@@ -268,9 +265,6 @@ export const CollectionCards = ({
 						<select
 							value={activeFilter}
 							onChange={(e) => filterCategory(e.target.value)}
-							placeholder={`${
-								dictionary.select
-							} ${dictionary.category.toLowerCase()}...`}
 						>
 							<option disabled value="">
 								--{dictionary.select}--

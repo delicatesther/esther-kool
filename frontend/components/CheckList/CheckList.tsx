@@ -240,9 +240,6 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 					<select
 						value={activeFilter}
 						onChange={(e) => filterCategory(e.target.value)}
-						placeholder={`${
-							dictionary.select
-						} ${dictionary.category.toLowerCase()}...`}
 					>
 						<option disabled value="">
 							--{dictionary.select}--
