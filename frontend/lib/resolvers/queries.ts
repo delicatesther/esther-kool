@@ -173,6 +173,21 @@ export const ALL_COLLECTIONCARDS_QUERY = gql`
 export const POST_QUERY = gql`
 	query POST_QUERY($where: PostWhereUniqueInput!) {
 		post(where: $where) {
+			id
+			slug
+			title
+			content {
+				document
+			}
+		}
+	}
+`;
+
+export const POSTS_QUERY = gql`
+	query POSTS_QUERY($where: PostWhereInput!) {
+		posts(where: $where) {
+			id
+			slug
 			title
 			content {
 				document

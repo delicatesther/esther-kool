@@ -47,5 +47,8 @@
 		"showOnlyDoubles": "Show only doubles",
 		"showOnlyMissing": "Hide collected",
 		"showOnlyCollected": "Show only collected"
+	},
+	"plants": {
+		"title": "Plants"
 	}
 }

@@ -1,0 +1,30 @@
+@use "../../../styles/config" as *;
+
+.list {
+    grid-column: 1/ -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));;
+    gap: 16px;
+    li {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        &:hover {
+            box-shadow: var(--shadow-elevation-medium);
+
+        }
+    }
+    img {
+        transition: .2s ease-in-out;
+    }
+    a {
+        display: block;
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

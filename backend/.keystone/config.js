@@ -260,12 +260,28 @@ var Organisation = (0, import_core4.list)({
 // schemas/Post.ts
 var import_core5 = require("@keystone-6/core");
 var import_access5 = require("@keystone-6/core/access");
+var import_slugify = __toESM(require("slugify"));
 var import_fields5 = require("@keystone-6/core/fields");
 var import_fields_document2 = require("@keystone-6/fields-document");
 var Post = (0, import_core5.list)({
   access: import_access5.allowAll,
   fields: {
-    title: (0, import_fields5.text)(),
+    title: (0, import_fields5.text)({ validation: { isRequired: true } }),
+    slug: (0, import_fields5.text)({
+      isIndexed: "unique",
+      isFilterable: true,
+      hooks: {
+        resolveInput: ({ operation, resolvedData, inputData }) => {
+          if (operation === "create" && !inputData.slug) {
+            return (0, import_slugify.default)(inputData.title, {
+              remove: /[*+~.()'"!:@/\//]/g,
+              lower: true
+            });
+          }
+          return resolvedData.slug;
+        }
+      }
+    }),
     // Having the status here will make it easy for us to choose whether to display
     // posts on a live site.
     status: (0, import_fields5.select)({

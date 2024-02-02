@@ -48,5 +48,8 @@
 	},
 	"packing": {
 		"title": "Paklijst"
+	},
+	"plants": {
+		"title": "Planten"
 	}
 }

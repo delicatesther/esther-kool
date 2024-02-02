@@ -1805,7 +1805,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keystone-6/auth@npm:^7.0.1":
+"@keystone-6/auth@npm:7.0.2":
   version: 7.0.2
   resolution: "@keystone-6/auth@npm:7.0.2"
   dependencies:
@@ -1825,7 +1825,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keystone-6/cloudinary@npm:^7.0.1":
+"@keystone-6/cloudinary@npm:7.0.2":
   version: 7.0.2
   resolution: "@keystone-6/cloudinary@npm:7.0.2"
   dependencies:
@@ -1843,9 +1843,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keystone-6/core@npm:^5.3.2":
-  version: 5.7.0
-  resolution: "@keystone-6/core@npm:5.7.0"
+"@keystone-6/core@npm:5.7.1":
+  version: 5.7.1
+  resolution: "@keystone-6/core@npm:5.7.1"
   dependencies:
     "@apollo/cache-control-types": ^1.0.2
     "@apollo/client": ^3.7.0
@@ -1882,10 +1882,10 @@ __metadata:
     body-parser: ^1.20.1
     bytes: ^3.1.1
     chalk: ^4.1.2
-    ci-info: ^3.2.0
+    ci-info: ^4.0.0
     clipboard-copy: ^4.0.1
     conf: ^10.2.0
-    cookie: ^0.5.0
+    cookie: ^0.6.0
     cors: ^2.8.5
     dataloader: ^2.1.0
     date-fns: ^2.26.0
@@ -1914,7 +1914,7 @@ __metadata:
     uuid: ^9.0.0
   bin:
     keystone: bin/cli.js
-  checksum: 012e01b6904eeb87a6faa9a47e7c4470a813b2df6f1c79df76f1b719984aa4d0e084e309b87cb52df38174506cf1f2f661139702fb7cb6db9746efd272e25741
+  checksum: dfab1b0f97364e4b443c8328d4c9493770b5e0c38a199c4b8dafe1740d1baf882275562857505b4c9843ddd774c7a657119bf116c0f7a6054a46940f2c790d25
   languageName: node
   linkType: hard
 
@@ -1927,7 +1927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keystone-6/fields-document@npm:^8.0.0":
+"@keystone-6/fields-document@npm:8.0.2":
   version: 8.0.2
   resolution: "@keystone-6/fields-document@npm:8.0.2"
   dependencies:
@@ -4035,10 +4035,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^3.2.0":
-  version: 3.9.0
-  resolution: "ci-info@npm:3.9.0"
-  checksum: 6b19dc9b2966d1f8c2041a838217299718f15d6c4b63ae36e4674edd2bee48f780e94761286a56aa59eb305a85fbea4ddffb7630ec063e7ec7e7e5ad42549a87
+"ci-info@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "ci-info@npm:4.0.0"
+  checksum: 122fe41c5eb8d0b5fa0ab6fd674c5ddcf2dc59766528b062a0144ff0d913cfb210ef925ec52110e7c2a7f4e603d5f0e8b91cfe68867e196e9212fa0b94d0a08a
   languageName: node
   linkType: hard
 
@@ -4253,10 +4253,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:0.5.0, cookie@npm:^0.5.0":
+"cookie@npm:0.5.0":
   version: 0.5.0
   resolution: "cookie@npm:0.5.0"
   checksum: 1f4bd2ca5765f8c9689a7e8954183f5332139eb72b6ff783d8947032ec1fdf43109852c178e21a953a30c0dd42257828185be01b49d1eb1a67fd054ca588a180
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "cookie@npm:0.6.0"
+  checksum: f56a7d32a07db5458e79c726b77e3c2eff655c36792f2b6c58d351fb5f61531e5b1ab7f46987150136e366c65213cbe31729e02a3eaed630c3bf7334635fb410
   languageName: node
   linkType: hard
 
@@ -6094,11 +6101,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "keystone-app@workspace:."
   dependencies:
-    "@keystone-6/auth": ^7.0.1
-    "@keystone-6/cloudinary": ^7.0.1
-    "@keystone-6/core": ^5.3.2
-    "@keystone-6/fields-document": ^8.0.0
-    typescript: ^5.1.6
+    "@keystone-6/auth": 7.0.2
+    "@keystone-6/cloudinary": 7.0.2
+    "@keystone-6/core": 5.7.1
+    "@keystone-6/fields-document": 8.0.2
+    slugify: ^1.6.6
+    typescript: 5.3.3
   languageName: unknown
   linkType: soft
 
@@ -8217,6 +8225,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"slugify@npm:^1.6.6":
+  version: 1.6.6
+  resolution: "slugify@npm:1.6.6"
+  checksum: 04773c2d3b7aea8d2a61fa47cc7e5d29ce04e1a96cbaec409da57139df906acb3a449fac30b167d203212c806e73690abd4ff94fbad0a9a7b7ea109a2a638ae9
+  languageName: node
+  linkType: hard
+
 "smart-buffer@npm:^4.2.0":
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
@@ -8803,23 +8818,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.1.6":
-  version: 5.2.2
-  resolution: "typescript@npm:5.2.2"
+"typescript@npm:5.3.3":
+  version: 5.3.3
+  resolution: "typescript@npm:5.3.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 7912821dac4d962d315c36800fe387cdc0a6298dba7ec171b350b4a6e988b51d7b8f051317786db1094bd7431d526b648aba7da8236607febb26cf5b871d2d3c
+  checksum: 2007ccb6e51bbbf6fde0a78099efe04dc1c3dfbdff04ca3b6a8bc717991862b39fd6126c0c3ebf2d2d98ac5e960bcaa873826bb2bb241f14277034148f41f6a2
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>":
-  version: 5.2.2
-  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=14eedb"
+"typescript@patch:typescript@5.3.3#~builtin<compat/typescript>":
+  version: 5.3.3
+  resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=14eedb"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 07106822b4305de3f22835cbba949a2b35451cad50888759b6818421290ff95d522b38ef7919e70fb381c5fe9c1c643d7dea22c8b31652a717ddbd57b7f4d554
+  checksum: f61375590b3162599f0f0d5b8737877ac0a7bc52761dbb585d67e7b8753a3a4c42d9a554c4cc929f591ffcf3a2b0602f65ae3ce74714fd5652623a816862b610
   languageName: node
   linkType: hard
 

@@ -21,6 +21,7 @@ export const Header = () => {
 	const router = useRouter();
 	const { locale } = router;
 	const dictionary = translations[locale];
+	const otherLocale = locale === "nl" ? "en" : "nl";
 	useEffect(() => {
 		setMounted(true);
 	}, []);
@@ -28,6 +29,11 @@ export const Header = () => {
 	if (!mounted) {
 		return null;
 	}
+
+	const onChangeLanguage = (lang: string) => (e) => {
+		e.preventDefault();
+		router.push(router.asPath, undefined, { locale: lang });
+	};
 
 	return (
 		<header className={cx(["header"], "header")}>
@@ -44,14 +50,15 @@ export const Header = () => {
 										Alex
 									</Link>
 								</li>
-								<li>
-									<Link href="/spaarplaatjes" className="anchor">
-										{dictionary.collectionCards.title}
-									</Link>
-								</li>
+
 								<li>
 									<Link href="/paklijst" className="anchor">
 										{dictionary.packing.title}
+									</Link>
+								</li>
+								<li>
+									<Link href="/plant" className="anchor">
+										{dictionary.plants.title}
 									</Link>
 								</li>
 								<li>
@@ -74,6 +81,11 @@ export const Header = () => {
 						}
 						size="small"
 						icon={!theme || theme === "light" ? <Moon /> : <Sun />}
+					/>
+					<Button
+						onClick={onChangeLanguage(otherLocale)}
+						size="small"
+						text={locale === "nl" ? "🇬🇧" : "🇳🇱"}
 					/>
 				</nav>
 			</div>

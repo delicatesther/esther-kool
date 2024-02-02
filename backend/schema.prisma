@@ -74,6 +74,7 @@ model Organisation {
 model Post {
   id          String    @id @default(uuid()) @postgresql.Uuid
   title       String    @default("")
+  slug        String    @unique @default("")
   status      String?   @default("draft")
   content     Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
   publishDate DateTime?

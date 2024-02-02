@@ -561,6 +561,7 @@ input ExperienceRelateToManyForCreateInput {
 type Post {
   id: ID!
   title: String
+  slug: String
   status: String
   content: Post_content_Document
   publishDate: DateTime
@@ -575,6 +576,7 @@ type Post_content_Document {
 
 input PostWhereUniqueInput {
   id: ID
+  slug: String
 }
 
 input PostWhereInput {
@@ -583,6 +585,7 @@ input PostWhereInput {
   NOT: [PostWhereInput!]
   id: IDFilter
   title: StringFilter
+  slug: StringFilter
   status: StringNullableFilter
   publishDate: DateTimeNullableFilter
   author: UserWhereInput
@@ -592,12 +595,14 @@ input PostWhereInput {
 input PostOrderByInput {
   id: OrderDirection
   title: OrderDirection
+  slug: OrderDirection
   status: OrderDirection
   publishDate: OrderDirection
 }
 
 input PostUpdateInput {
   title: String
+  slug: String
   status: String
   content: JSON
   publishDate: DateTime
@@ -612,6 +617,7 @@ input PostUpdateArgs {
 
 input PostCreateInput {
   title: String
+  slug: String
   status: String
   content: JSON
   publishDate: DateTime
