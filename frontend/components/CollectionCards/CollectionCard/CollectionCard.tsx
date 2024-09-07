@@ -3,6 +3,7 @@ import Image from "next/image";
 import classNames from "classnames/bind";
 import style from "./collectionCard.module.scss";
 import { useRouter } from "next/router";
+import slugify from "slugify";
 
 const cx = classNames.bind(style);
 
@@ -28,12 +29,23 @@ export const CollectionCard = ({
 	};
 	const cardNumber = name.match(/\d+/)[0];
 
+	const filteredTags = tags?.filter((item) => item.name !== "Collection Cards");
+	const category = filteredTags[0]?.name;
+
+	const categorySlug =
+		category &&
+		slugify(category, {
+			remove: /[*+~.()'"!:@]/g,
+			lower: true,
+		});
+	console.log(categorySlug);
 	return (
 		<div
 			className={cx(
 				["item"],
 				{ ["checked"]: checked },
 				{ ["hidden"]: checkedHidden },
+				[categorySlug],
 			)}
 		>
 			{image !== null ? (
@@ -45,6 +57,7 @@ export const CollectionCard = ({
 						// height={84}
 						fill={true}
 					/>
+					<p className={style.nameBig}>{name.replace(/[0-9]/g, "")}</p>
 				</div>
 			) : (
 				<p className={style.name}>{name.replace(/[0-9]/g, "")}</p>

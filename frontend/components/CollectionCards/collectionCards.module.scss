@@ -55,8 +55,10 @@
 .table {
 	grid-area: list;
 	width: max-content;
+	min-width: 640px;
+	max-width: calc(100vw - 32px);
 	@include breakpoint(s, max) {
-		min-width: 240px;
+		min-width: 300px;
 		margin: 0 auto;
 	}
 	&.showOnlyCollected {

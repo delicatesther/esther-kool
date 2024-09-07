@@ -8,6 +8,9 @@
 
 .item {
 	transform: rotate(var(--rotate));
+	border-radius: 6px;
+	--cardColor: color(black);
+	outline: 4px solid var(--cardColor);
 	.image {
 		display: block;
 		width: 84px;
@@ -81,4 +84,68 @@
 		font-size: 1rem;
 		margin-right: 4px;
 	}
+}
+
+.nameBig {
+	--shadowColor: 255, 255, 255;
+	font-family: #{selectFont("headingFont")};
+	font-weight: bold;
+	text-shadow: 0px 1px 1px rgba(var(--shadowColor), 0.5),
+		-0px -1px 2px rgba(var(--shadowColor), 0.5),
+		10px 10px 40px rgba(255, 255, 255, 0.5) -1px 0 white, 0 1px white,
+		1px 0 white, 0 -1px white;
+	z-index: z(z1);
+	position: absolute;
+	text-align: center;
+	font-size: clamp(20px, 85vw, 36px);
+	line-height: 0.8;
+	max-width: calc(100vw - 32px);
+	hyphens: auto;
+	left: 50%;
+	top: auto;
+	transform: translateX(-50%);
+	bottom: 0;
+	margin: 0;
+	width: max-content;
+	color: colour(scooter);
+	@include theme(dark) {
+		--shadowColor: 0, 0, 0;
+		text-shadow: 1px 1px 2px rgba(var(--shadowColor), 0.8),
+			-1px -1px 2px rgba(var(--shadowColor), 0.8),
+			1px 1px 4px rgba(var(--shadowColor), 1);
+		color: var(--siteFontColor);
+	}
+	@include breakpoint(s) {
+		font-size: 28px;
+		max-width: 240px;
+	}
+}
+
+.steppe-strijders {
+	--cardColor: rgb(230 176 62);
+}
+.koukleumen {
+	--cardColor: rgb(160 219 234);
+}
+.waterratten {
+	--cardColor: rgb(92 90 122);
+}
+.bosbazen {
+	--cardColor: rgb(101 38 17);
+}
+
+.zandlopers {
+	--cardColor: rgb(243 130 157);
+}
+
+.zeerotten {
+	--cardColor: rgb(28 189 199);
+}
+
+.rimboe-rakkers {
+	--cardColor: rgb(4 92 45);
+}
+
+.hollandse-helden {
+	--cardColor: rgb(245 139 50);
 }
