@@ -71,7 +71,7 @@ export const CollectionCards = ({
 					tags: {
 						some: {
 							name: {
-								equals: "Dierenkaartjes",
+								equals: "Collection Cards",
 							},
 						},
 					},
