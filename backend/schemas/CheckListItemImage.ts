@@ -7,9 +7,9 @@ import dotenv from "dotenv";
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 export const cloudinary = {
-  cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-  apiKey: process.env.CLOUDINARY_KEY,
-  apiSecret: process.env.CLOUDINARY_SECRET,
+  cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? "dmsimagecloud",
+  apiKey: process.env.CLOUDINARY_KEY ?? "",
+  apiSecret: process.env.CLOUDINARY_SECRET ?? "",
   folder: "estherkool.com",
 };
 

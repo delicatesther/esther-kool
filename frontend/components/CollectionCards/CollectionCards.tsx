@@ -64,14 +64,14 @@ export const CollectionCards = ({
 
 	const translatedTitle = locale === "nl" ? "titleNL" : "title";
 
-	const filterByDisneyCollectionCards = {
+	const filterByAnimalCollectionCards = {
 		checkListItems: {
 			some: {
 				checkListItem: {
 					tags: {
 						some: {
 							name: {
-								equals: "Disney",
+								equals: "Dierenkaartjes",
 							},
 						},
 					},
@@ -107,7 +107,7 @@ export const CollectionCards = ({
 					[translatedTitle]: "asc",
 				},
 			],
-			where2: filterByDisneyCollectionCards,
+			where2: filterByAnimalCollectionCards,
 			orderBy2: [
 				{
 					name: "asc",
@@ -126,7 +126,7 @@ export const CollectionCards = ({
 						},
 					},
 				},
-				where2: filterByDisneyCollectionCards,
+				where2: filterByAnimalCollectionCards,
 				orderBy: [
 					{
 						[translatedTitle]: "asc",
@@ -157,7 +157,7 @@ export const CollectionCards = ({
 									},
 								},
 							},
-							where2: filterByDisneyCollectionCards,
+							where2: filterByAnimalCollectionCards,
 							orderBy: [
 								{
 									[translatedTitle]: "asc",
@@ -183,11 +183,11 @@ export const CollectionCards = ({
 			});
 		}
 
-		if (!!lazyData) {
-			return sortByNumber([...lazyData?.checkListItems]);
+		if (lazyData) {
+			return sortByNumber([...lazyData.checkListItems]);
 		}
-		if (!!data) {
-			return sortByNumber([...data?.checkListItems]);
+		if (data) {
+			return sortByNumber([...data.checkListItems]);
 		}
 		return null;
 	}

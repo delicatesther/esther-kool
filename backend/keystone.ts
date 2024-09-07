@@ -16,8 +16,8 @@ import { lists } from "./schema";
 // Keystone auth is configured separately - check out the basic auth setup we are importing from our auth file.
 import { withAuth, session } from "./auth";
 
-const databaseURL: string = process.env.DATABASE_URL || "";
-const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const databaseURL: string = process.env.DATABASE_URL ?? "";
+const frontendUrl = process.env.FRONTEND_URL ?? "http://localhost:3000";
 
 export default withAuth(
   // Using the config function helps typescript guide you to the available options.

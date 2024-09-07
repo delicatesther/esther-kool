@@ -95,9 +95,9 @@ var import_cloudinary = require("@keystone-6/cloudinary");
 var import_dotenv = __toESM(require("dotenv"));
 import_dotenv.default.config({ path: `.env.${process.env.NODE_ENV}` });
 var cloudinary = {
-  cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-  apiKey: process.env.CLOUDINARY_KEY,
-  apiSecret: process.env.CLOUDINARY_SECRET,
+  cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? "dmsimagecloud",
+  apiKey: process.env.CLOUDINARY_KEY ?? "",
+  apiSecret: process.env.CLOUDINARY_SECRET ?? "",
   folder: "estherkool.com"
 };
 var CheckListItemImage = (0, import_core2.list)({
@@ -492,8 +492,8 @@ var session = (0, import_session.statelessSessions)({
 
 // keystone.ts
 import_dotenv2.default.config({ path: `.env.${process.env.NODE_ENV}` });
-var databaseURL = process.env.DATABASE_URL || "";
-var frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+var databaseURL = process.env.DATABASE_URL ?? "";
+var frontendUrl = process.env.FRONTEND_URL ?? "http://localhost:3000";
 var keystone_default = withAuth(
   // Using the config function helps typescript guide you to the available options.
   (0, import_core8.config)({

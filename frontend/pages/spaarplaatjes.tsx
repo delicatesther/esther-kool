@@ -29,30 +29,14 @@ export default function SpaarplaatjesPage() {
 						categories={["Spaarplaatjes"]}
 						title={dictionary.collectionCards.title}
 						filters={[
-							"Vaiana",
-							"Disney Princess",
-							"Op zoek naar Dory",
-							"De Prinses en de Kikker",
-							"Sneeuwwitje en de Zeven Dwergen",
-							"De Leeuwenkoning",
-							"Binnenstebuiten",
-							"Aladdin",
-							"Coco",
-							"Cars",
-							"Ratatouille",
-							"Mickey and Friends",
-							"Toy Story",
-							"Mulan",
-							"Winnie de Poeh",
-							"Luca",
-							"Aristocats",
-							"Soul",
-							"Frozen",
-							"Monsters University",
-							"Encanto",
-							"Lilo & Stitch",
-							"Elemental",
-							"Disneyland Paris",
+							"Hollandse Helden",
+							"Rimboe-rakkers",
+							"Zeerotten",
+							"Zandlopers",
+							"Bosbazen",
+							"Koukleumen",
+							"Waterratten",
+							"Steppe Strijders",
 						].sort()}
 					/>
 				</div>
