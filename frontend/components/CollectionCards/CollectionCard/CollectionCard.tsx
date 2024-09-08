@@ -38,7 +38,6 @@ export const CollectionCard = ({
 			remove: /[*+~.()'"!:@]/g,
 			lower: true,
 		});
-	console.log(categorySlug);
 	return (
 		<div
 			className={cx(
