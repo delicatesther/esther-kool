@@ -15,6 +15,7 @@
 		display: block;
 		width: 84px;
 		height: 126px;
+		position: relative;
 		img {
 			@extend %backgroundStyle;
 			box-shadow: var(--shadow-elevation-low);

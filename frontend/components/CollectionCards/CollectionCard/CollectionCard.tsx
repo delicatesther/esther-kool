@@ -52,9 +52,8 @@ export const CollectionCard = ({
 					<Image
 						src={image.image.publicUrlTransformed}
 						alt={name}
-						// width={56}
-						// height={84}
 						fill={true}
+						sizes="(max-width: 768px) 20vw, 88px"
 					/>
 					<p className={style.nameBig}>{name.replace(/[0-9]/g, "")}</p>
 				</div>

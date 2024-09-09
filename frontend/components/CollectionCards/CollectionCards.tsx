@@ -116,8 +116,9 @@ export const CollectionCards = ({
 		},
 	});
 
-	const [loadCategory, { called, loading: lazyLoading, data: lazyData }] =
-		useLazyQuery(ALL_COLLECTIONCARDS_QUERY, {
+	const [loadCategory, { loading: lazyLoading, data: lazyData }] = useLazyQuery(
+		ALL_COLLECTIONCARDS_QUERY,
+		{
 			variables: {
 				where: {
 					tags: {
@@ -138,7 +139,8 @@ export const CollectionCards = ({
 					},
 				],
 			},
-		});
+		},
+	);
 
 	const [updateCards, { data: mutationData, loading: mutationLoading }] =
 		useMutation(UPDATE_COLLECTIONCARD_MUTATION, {
