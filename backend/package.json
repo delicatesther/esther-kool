@@ -13,12 +13,12 @@
     "@keystone-6/cloudinary": "7.0.2",
     "@keystone-6/core": "5.7.1",
     "@keystone-6/fields-document": "8.0.2",
+    "@yarnpkg/plugin-interactive-tools": "^4.0.0",
     "slugify": "^1.6.6",
     "typescript": "5.3.3"
   },
   "engines": {
-    "node": "^18.16.0",
-    "yarn": "3.6.1"
+    "node": "^18.16.0"
   },
   "cacheDirectories": [
     ".yarn/cache"
