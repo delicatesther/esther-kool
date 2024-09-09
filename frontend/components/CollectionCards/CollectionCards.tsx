@@ -151,21 +151,24 @@ export const CollectionCards = ({
 				{
 					query: ALL_COLLECTIONCARDS_QUERY,
 					variables: {
-						variables: {
-							where: {
-								tags: {
-									some: {
-										OR: [...getCategories(activeFilter)],
-									},
+						where: {
+							tags: {
+								some: {
+									OR: [...getCategories(activeFilter)],
 								},
 							},
-							where2: filterByAnimalCollectionCards,
-							orderBy: [
-								{
-									[translatedTitle]: "asc",
-								},
-							],
 						},
+						where2: { ...filterByAnimalCollectionCards },
+						orderBy: [
+							{
+								[translatedTitle]: "asc",
+							},
+						],
+						orderBy2: [
+							{
+								name: "asc",
+							},
+						],
 					},
 				},
 			],
