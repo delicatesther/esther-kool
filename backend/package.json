@@ -22,6 +22,5 @@
   },
   "cacheDirectories": [
     ".yarn/cache"
-  ],
-  "packageManager": "yarn@3.6.1"
+  ]
 }
