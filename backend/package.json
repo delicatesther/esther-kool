@@ -23,7 +23,7 @@
   "cacheDirectories": [
     ".yarn/cache"
   ],
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@4.4.1",
   "devDependencies": {
     "prisma": "4.16.2"
   }
