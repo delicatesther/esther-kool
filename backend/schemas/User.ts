@@ -31,8 +31,7 @@ export const UserChecklistItem = list({
   access: allowAll,
   ui: {
     listView: {
-      initialColumns: ["checkListItem", "user", "tags"],
-      initialSort: { field: "checkListItem", direction: "ASC" },
+      initialColumns: ["checkListItem", "user", "count"],
       pageSize: 100,
     },
   },

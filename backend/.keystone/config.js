@@ -379,8 +379,7 @@ var UserChecklistItem = (0, import_core7.list)({
   access: import_access7.allowAll,
   ui: {
     listView: {
-      initialColumns: ["checkListItem", "user", "tags"],
-      initialSort: { field: "checkListItem", direction: "ASC" },
+      initialColumns: ["checkListItem", "user", "count"],
       pageSize: 100
     }
   },
