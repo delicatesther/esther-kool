@@ -29,6 +29,13 @@ export const Weight = list({
 
 export const UserChecklistItem = list({
   access: allowAll,
+  ui: {
+    listView: {
+      initialColumns: ["checkListItem", "user", "tags"],
+      initialSort: { field: "checkListItem", direction: "ASC" },
+      pageSize: 100,
+    },
+  },
   fields: {
     checkListItem: relationship({
       ref: "CheckListItem",
@@ -62,9 +69,9 @@ export const User = list({
       many: true,
       ui: {
         displayMode: "cards",
-        cardFields: ["checkListItem", "checked", "count"],
-        inlineCreate: { fields: ["checkListItem", "checked", "count"] },
-        inlineEdit: { fields: ["checkListItem", "checked", "count"] },
+        cardFields: ["checkListItem"],
+        inlineCreate: { fields: ["checkListItem"] },
+        inlineEdit: { fields: ["checkListItem"] },
         inlineConnect: true,
       },
     }),

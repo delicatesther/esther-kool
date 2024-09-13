@@ -44,7 +44,9 @@ var CheckListItem = (0, import_core.list)({
   access: import_access.allowAll,
   ui: {
     listView: {
-      initialColumns: ["titleNL", "tags", "checked"]
+      initialColumns: ["titleNL", "tags", "checked"],
+      initialSort: { field: "titleNL", direction: "ASC" },
+      pageSize: 100
     }
   },
   fields: {
@@ -375,6 +377,13 @@ var Weight = (0, import_core7.list)({
 });
 var UserChecklistItem = (0, import_core7.list)({
   access: import_access7.allowAll,
+  ui: {
+    listView: {
+      initialColumns: ["checkListItem", "user", "tags"],
+      initialSort: { field: "checkListItem", direction: "ASC" },
+      pageSize: 100
+    }
+  },
   fields: {
     checkListItem: (0, import_fields7.relationship)({
       ref: "CheckListItem",
@@ -407,9 +416,9 @@ var User = (0, import_core7.list)({
       many: true,
       ui: {
         displayMode: "cards",
-        cardFields: ["checkListItem", "checked", "count"],
-        inlineCreate: { fields: ["checkListItem", "checked", "count"] },
-        inlineEdit: { fields: ["checkListItem", "checked", "count"] },
+        cardFields: ["checkListItem"],
+        inlineCreate: { fields: ["checkListItem"] },
+        inlineEdit: { fields: ["checkListItem"] },
         inlineConnect: true
       }
     }),

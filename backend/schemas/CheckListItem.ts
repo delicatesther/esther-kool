@@ -13,6 +13,8 @@ export const CheckListItem = list({
   ui: {
     listView: {
       initialColumns: ["titleNL", "tags", "checked"],
+      initialSort: { field: "titleNL", direction: "ASC" },
+      pageSize: 100,
     },
   },
   fields: {

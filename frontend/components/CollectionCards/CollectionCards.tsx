@@ -229,7 +229,7 @@ export const CollectionCards = ({
 		// sure we don't need to import all checkListItems on currentUser query.
 		const userWeNeed = users.find((user) => user.id === userId);
 		const itemWeNeed = userWeNeed?.checkListItems?.find((subItem) => {
-			return subItem.checkListItem.id === cardId;
+			return subItem?.checkListItem?.id === cardId;
 		});
 		const hasAtLeastOne = itemWeNeed?.count && itemWeNeed.count > 0;
 		return hasAtLeastOne ? itemWeNeed.count : 0;
@@ -329,9 +329,9 @@ export const CollectionCards = ({
 										</div>
 									</th>
 									{users.map((user) => {
-										const currentUserItem = user.checkListItems.find(
+										const currentUserItem = user?.checkListItems?.find(
 											(subItem) => {
-												return subItem.checkListItem.id === item.id;
+												return subItem?.checkListItem?.id === item.id;
 											},
 										);
 										const count = currentUserItem?.count || 0;
@@ -345,13 +345,13 @@ export const CollectionCards = ({
 													onChange={(e) => {
 														setIsDirty(true);
 														const filteredState = state.filter(
-															(item) => item.where.id !== currentUserItem.id,
+															(item) => item.where.id !== currentUserItem?.id,
 														);
 														setState([
 															...filteredState,
 															{
 																where: {
-																	id: currentUserItem.id,
+																	id: currentUserItem?.id,
 																},
 																data: {
 																	count: parseFloat(e.target.value),
