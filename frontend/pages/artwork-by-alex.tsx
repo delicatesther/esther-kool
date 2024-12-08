@@ -1,15 +1,10 @@
-import Image from "next/image";
-import getConfig from "next/config";
 import { useQuery } from "@apollo/client";
-import { DocumentRenderer } from "@keystone-6/document-renderer";
-import { Layout } from "@enk/components/Layout";
-import pigPic from "../public/images/varken.png";
-import babyPic from "../public/images/baby.png";
-import { POST_QUERY } from "@enk/lib";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { Frame } from "@enk/components/Frame/Frame";
-
-const { publicRuntimeConfig } = getConfig();
+import { Layout } from "@enk/components/Layout";
+import { POST_QUERY } from "@enk/lib";
+import translations from "@enk/translations";
+import { useRouter } from "next/router";
 
 const images = [
 	{ src: "/images/kunst-alex/alex-1.webp", alt: "", orientation: "vertical" },
@@ -38,6 +33,8 @@ const images = [
 ];
 
 export default function AlexPage() {
+	const router = useRouter();
+	const { locale } = router;
 	const { data, loading, error } = useQuery(POST_QUERY, {
 		variables: {
 			where: {
@@ -49,10 +46,15 @@ export default function AlexPage() {
 	if (loading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
 	const { post } = data;
+	const dictionary = translations[locale].artByAlex;
+
 	return (
 		<Layout>
 			<div className="row-spacing-bottom">
-				<h1 style={{ gridColumn: "span 6" }}>Artwork by Alex</h1>
+				<h1 style={{ gridColumn: "span 6", lineHeight: "1" }}>
+					{dictionary.title}
+				</h1>
+				<p style={{ gridColumn: "1/-1" }}>{dictionary.description}</p>
 			</div>
 			<div
 				className="row-spacing-bottom"
