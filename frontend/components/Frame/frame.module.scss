@@ -1,0 +1,68 @@
+@use "../../styles/config/" as *;
+
+.horizontal {
+	--imageWidth: 297px;
+	--imageHeight: 210px;
+	grid-column: 1 / -1;
+
+	@include breakpoint(m) {
+		grid-column: span 5;
+	}
+	@include breakpoint(l) {
+		grid-column: span 4;
+	}
+}
+
+.vertical {
+	--imageWidth: 210px;
+	--imageHeight: 297px;
+	grid-column: 1 / -1;
+
+	@include breakpoint(m) {
+		grid-column: span 4;
+	}
+	@include breakpoint(l) {
+		grid-column: span 3;
+	}
+}
+
+.frame {
+	--frameWidth: calc(var(--imageWidth) + 96px);
+	--frameHeight: calc(var(--imageHeight) + 96px);
+	height: var(--frameHeight);
+	width: var(--frameWidth);
+	border: 24px solid var(--mineshaft);
+	box-shadow: var(--shadow-elevation-medium);
+	position: relative;
+	margin: 4px;
+	&:after {
+		content: "";
+		background: var(--white);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		box-shadow: inset 3px 4px 2px 4px rgba(var(--blackRgb), 0.4);
+		@include theme(dark) {
+			background: var(--corduroy);
+		}
+	}
+}
+
+.image {
+	margin-bottom: 40px;
+	z-index: z(z1);
+	width: var(--imageWidth);
+	height: var(--imageHeight);
+	top: 24px;
+	left: 24px;
+	position: relative;
+	box-shadow: inset 2px 7px 2px 5px rgba(var(--blackRgb), 0.1);
+	border: 2px inset var(--silver);
+	overflow: hidden;
+	img {
+		object-fit: cover;
+		display: block;
+	}
+}
