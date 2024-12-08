@@ -37,7 +37,7 @@ export default function SpaarplaatjesPage() {
 							"Koukleumen",
 							"Waterratten",
 							"Steppe Strijders",
-						].sort((a, b) => b - a)}
+						].sort((a: any, b: any) => b - a)}
 					/>
 				</div>
 			</Layout>
