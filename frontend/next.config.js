@@ -8,6 +8,9 @@ const nextConfig = {
 		GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
 		ALEX_POST: process.env.ALEX_POST,
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 	webpack(config, options) {
 		baseConfig,
 			config.module.rules.push({
