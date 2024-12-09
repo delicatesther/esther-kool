@@ -5,7 +5,7 @@
 	position: relative;
 	figcaption {
 		font-size: 12px;
-		margin: 12px 0;
+		margin: 12px auto;
 		text-align: center;
 		display: block;
 		color: var(--siteFontColor);
@@ -23,6 +23,9 @@
 	@include breakpoint(l) {
 		grid-column: span 4;
 	}
+	figcaption {
+		max-width: 393px;
+	}
 }
 
 .vertical {
@@ -35,6 +38,10 @@
 	}
 	@include breakpoint(l) {
 		grid-column: span 3;
+	}
+
+	figcaption {
+		max-width: 286px;
 	}
 }
 
