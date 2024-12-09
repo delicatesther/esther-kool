@@ -6,17 +6,20 @@ import style from "./frame.module.scss";
 const cx = classNames.bind(style);
 
 export const Frame = ({ className = null, image }) => {
-	const { alt, src, orientation } = image;
+	const { alt, src, orientation, description } = image;
 	return (
-		<div className={cx(["frame", [orientation]])}>
-			<div className={cx(["image"])}>
-				<Image
-					src={src}
-					alt={alt}
-					width={orientation === "horizontal" ? 297 : 210}
-					height={orientation === "horizontal" ? 210 : 297}
-				/>
+		<figure className={cx(["figure", [orientation], [className]])}>
+			<div className={cx(["frame"])}>
+				<div className={cx(["image"])}>
+					<Image
+						src={src}
+						alt={alt}
+						width={orientation === "horizontal" ? 297 : 210}
+						height={orientation === "horizontal" ? 210 : 297}
+					/>
+				</div>
 			</div>
-		</div>
+			{description && <figcaption>{description}</figcaption>}
+		</figure>
 	);
 };

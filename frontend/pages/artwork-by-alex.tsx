@@ -7,28 +7,96 @@ import translations from "@enk/translations";
 import { useRouter } from "next/router";
 
 const images = [
-	{ src: "/images/kunst-alex/alex-1.webp", alt: "", orientation: "vertical" },
-	{ src: "/images/kunst-alex/alex-2.webp", alt: "", orientation: "horizontal" },
-	{ src: "/images/kunst-alex/alex-3.webp", alt: "", orientation: "vertical" },
-	{ src: "/images/kunst-alex/alex-4.webp", alt: "", orientation: "vertical" },
-	{ src: "/images/kunst-alex/alex-5.webp", alt: "", orientation: "horizontal" },
-	{ src: "/images/kunst-alex/alex-6.webp", alt: "", orientation: "horizontal" },
-	{ src: "/images/kunst-alex/alex-7.webp", alt: "", orientation: "horizontal" },
-	{ src: "/images/kunst-alex/alex-8.webp", alt: "", orientation: "horizontal" },
-	{ src: "/images/kunst-alex/alex-9.webp", alt: "", orientation: "horizontal" },
+	{
+		src: "/images/kunst-alex/alex-1.webp",
+		alt: "",
+		orientation: "vertical",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-2.webp",
+		alt: "",
+		orientation: "horizontal",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-3.webp",
+		alt: "",
+		orientation: "vertical",
+		description:
+			"Zonder titel, 2024 - Waterverf en vingerverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-4.webp",
+		alt: "",
+		orientation: "vertical",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-5.webp",
+		alt: "",
+		orientation: "horizontal",
+		description: "Hartje, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-6.webp",
+		alt: "",
+		orientation: "horizontal",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-7.webp",
+		alt: "",
+		orientation: "horizontal",
+		description: "Mond, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-8.webp",
+		alt: "",
+		orientation: "horizontal",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-9.webp",
+		alt: "",
+		orientation: "horizontal",
+		description: "Nogge hartje, 2024 - Waterverf op papier, 210x297mm",
+	},
 	{
 		src: "/images/kunst-alex/alex-10.webp",
 		alt: "",
 		orientation: "horizontal",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
 	},
-	{ src: "/images/kunst-alex/alex-11.webp", alt: "", orientation: "vertical" },
-	{ src: "/images/kunst-alex/alex-12.webp", alt: "", orientation: "vertical" },
-	{ src: "/images/kunst-alex/alex-13.webp", alt: "", orientation: "vertical" },
-	{ src: "/images/kunst-alex/alex-14.webp", alt: "", orientation: "vertical" },
+	{
+		src: "/images/kunst-alex/alex-11.webp",
+		alt: "",
+		orientation: "vertical",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-12.webp",
+		alt: "",
+		orientation: "vertical",
+		description: "Zonder titel, 2024 - Vingerverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-13.webp",
+		alt: "",
+		orientation: "vertical",
+		description: "Zonder titel, 2024 - Acrylverf op papier, 210x297mm",
+	},
+	{
+		src: "/images/kunst-alex/alex-14.webp",
+		alt: "",
+		orientation: "vertical",
+		description: "Opa, 2024 - Waterverf op papier, 210x297mm",
+	},
 	{
 		src: "/images/kunst-alex/alex-15.webp",
 		alt: "",
 		orientation: "horizontal",
+		description: "Zonder titel, 2024 - Waterverf op papier, 210x297mm",
 	},
 ];
 
@@ -51,10 +119,14 @@ export default function AlexPage() {
 	return (
 		<Layout>
 			<div className="row-spacing-bottom">
-				<h1 style={{ gridColumn: "span 6", lineHeight: "1" }}>
+				<h1 style={{ gridColumn: "span 6", lineHeight: "0.8" }}>
 					{dictionary.title}
 				</h1>
-				<p style={{ gridColumn: "1/-1" }}>{dictionary.description}</p>
+				<p
+					style={{ gridColumn: "1/-1", marginBottom: "40px", maxWidth: "35em" }}
+				>
+					{dictionary.description}
+				</p>
 			</div>
 			<div
 				className="row-spacing-bottom"
@@ -69,8 +141,10 @@ export default function AlexPage() {
 				}}
 			>
 				{images.map((image) => {
-					const { src, alt, orientation } = image;
-					return <Frame key={src} image={{ src, alt, orientation }} />;
+					const { src, alt, orientation, description } = image;
+					return (
+						<Frame key={src} image={{ src, alt, orientation, description }} />
+					);
 				})}
 			</div>
 		</Layout>
