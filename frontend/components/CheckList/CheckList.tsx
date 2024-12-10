@@ -1,104 +1,92 @@
-import { useEffect, useState } from "react";
-import classnames from "classnames/bind";
-import { useRouter } from "next/router";
-import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
 import Check from "@enk/icons/check.svg";
-import { ALL_CHECKLISTITEMS_QUERY, UPDATE_CHECKLIST_MUTATION } from "@enk/lib";
 import translations from "@enk/translations";
 import { CheckListItemCheckedData, CheckListProps } from "@enk/types";
+import classnames from "classnames/bind";
+import { useChecklistApolloData } from "lib/checklist/useChecklistApolloData";
+import { useRouter } from "next/router";
+import { useMemo, useState } from "react";
 import { CheckListItem } from "./CheckListItem";
 import style from "./checkList.module.scss";
 
 const cx = classnames.bind(style);
 
+export type ChecklistItem = {
+	checked: boolean;
+	id: string;
+	title: string;
+};
+
+function getLocalStorageItems(): ChecklistItem[] {
+	if (typeof window !== "undefined") {
+		const arr = Object.keys(localStorage).filter((item) =>
+			item.startsWith("itemData"),
+		);
+
+		const allItems: ChecklistItem[] = arr.map((item) =>
+			JSON.parse(localStorage.getItem(item)),
+		);
+		return allItems;
+	}
+	return [];
+}
+
 export const CheckList = ({ title, categories, filters }: CheckListProps) => {
-	const [state, setState] = useState([]);
+	const [state, setState] = useState<ChecklistItem[]>(getLocalStorageItems());
 	const [activeFilter, setActiveFilter] = useState("");
-	const [updatedData, setUpdatedData] = useState([]);
 	const [isDirty, setIsDirty] = useState(false);
 	const [checkedHidden, setCheckedHidden] = useState(false);
+
+	const {
+		checkListItems,
+		updatedData,
+		setUpdatedData,
+		loadCategory,
+		loading,
+		error,
+		updateCheckListItems,
+	} = useChecklistApolloData(categories, activeFilter);
+
 	const router = useRouter();
 	const { locale } = router;
-	const dictionary = {
-		...translations[locale].checklist,
-		...translations[locale].global,
-	};
-	let checkListItems;
-	const [
-		updateCheckListItems,
-		{ data: mutationData, loading: mutationLoading },
-	] = useMutation(UPDATE_CHECKLIST_MUTATION, {
-		variables: {
-			data: updatedData,
-		},
-		refetchQueries: [
+
+	const dictionary = useMemo(() => {
+		const dictionary = {
+			...translations[locale].checklist,
+			...translations[locale].global,
+		};
+		return dictionary;
+	}, [locale]);
+
+	function handleSave(item: CheckListItemCheckedData, checked: boolean) {
+		const { id, title } = item;
+		setIsDirty(true);
+
+		// Filter it out of our state if it's already there, no double entries
+		const arr = state.filter((stateItem) => stateItem.id !== item.id);
+
+		// Add it to state
+		setState([...arr, { ...item, checked: checked }]);
+		setUpdatedData([
+			...updatedData,
 			{
-				query: ALL_CHECKLISTITEMS_QUERY,
-				variables: {
-					where: {
-						tags: {
-							some: {
-								OR: [...getCategories()],
-							},
-						},
-					},
+				data: { checked },
+				where: {
+					id: item.id,
 				},
 			},
-		],
-	});
-
-	function getCategories(activeFilter = undefined) {
-		const key = locale === "nl" ? "nameNL" : "name";
-		if (activeFilter) {
-			return [
-				{
-					[key]: {
-						equals: activeFilter,
-					},
-				},
-			];
-		} else {
-			const arr = categories.map((category) => {
-				return {
-					[key]: {
-						equals: category,
-					},
-				};
-			});
-			return arr;
-		}
-	}
-
-	function handleSave(item: CheckListItemCheckedData) {
-		const { id, title, checked } = item;
+		]);
 		if (typeof window !== "undefined" && window.localStorage) {
-			setIsDirty(true);
 			// Set item in local storage
 			localStorage.setItem(
 				`itemData ${id}`,
 				JSON.stringify({
 					id,
 					title,
-					checked: !checked,
+					checked: checked,
 				}),
 			);
-			// Parse what's in local storage
-			const localItemData = JSON.parse(localStorage.getItem(`itemData ${id}`));
-			// Filter it out of our state if it's already there, no double entries
-			const arr = state.filter((item) => item.id !== localItemData.id);
-			// Add it to state
-			setState([...arr, localItemData]);
-			setUpdatedData([
-				...updatedData,
-				{
-					data: { checked: localItemData.checked },
-					where: {
-						id: localItemData.id,
-					},
-				},
-			]);
 		}
 	}
 
@@ -139,87 +127,32 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 		setIsDirty(false);
 	}
 
-	useEffect(() => {
-		if (typeof window !== "undefined" && window.localStorage) {
-			const arr = Object.keys(localStorage).filter((item) =>
-				item.startsWith("itemData"),
-			);
-			arr.forEach((item) => {
-				const localItemData = JSON.parse(localStorage.getItem(item));
-				const itemExistsInState: boolean = !!state.find(
-					(obj) => obj.id === localItemData.id,
-				);
-				if (!itemExistsInState) {
-					setState([...state, localItemData]);
-					setUpdatedData([
-						...updatedData,
-						{
-							data: { checked: localItemData.checked },
-							where: { id: localItemData.id },
-						},
-					]);
-				}
-			});
-		}
-	}, [state, updatedData]);
-
-	const translatedTitle = locale === "nl" ? "titleNL" : "title";
-	const { data, loading, error } = useQuery(ALL_CHECKLISTITEMS_QUERY, {
-		variables: {
-			where: {
-				tags: {
-					some: {
-						OR: [...getCategories()],
-					},
-				},
-			},
-			orderBy: [
-				{
-					[translatedTitle]: "asc",
-				},
-			],
-		},
-	});
-
-	const [loadCategory, { called, loading: lazyLoading, data: lazyData }] =
-		useLazyQuery(ALL_CHECKLISTITEMS_QUERY, {
-			variables: {
-				where: {
-					tags: {
-						some: {
-							OR: [...getCategories(activeFilter)],
-						},
-					},
-				},
-				orderBy: [
-					{
-						[translatedTitle]: "asc",
-					},
-				],
-			},
-		});
-
-	if (loading || mutationLoading || lazyLoading) return <p>Loading...</p>;
+	if (loading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
 
-	checkListItems = getLatestArr();
-
-	function getLatestArr() {
-		if (lazyData) {
-			return lazyData.checkListItems;
-		}
-		if (data) {
-			return data.checkListItems;
-		}
-		return null;
-	}
-
 	function checkAllOnList() {
-		const arr = getLatestArr();
-		arr.map((item) => {
-			item.checked = false;
-			handleSave(item);
+		setIsDirty(true);
+		const arr = checkListItems.map((item) => {
+			return {
+				id: item.id,
+				title: item.title,
+				checked: true,
+			};
 		});
+		setState([...arr]);
+		if (typeof window !== "undefined" && window.localStorage) {
+			// Set item in local storage
+			arr.map((item) =>
+				localStorage.setItem(
+					`itemData ${item.id}`,
+					JSON.stringify({
+						id: item.id,
+						title: item.title,
+						checked: true,
+					}),
+				),
+			);
+		}
 	}
 
 	function filterCategory(filter = undefined) {
@@ -269,7 +202,7 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 				{checkListItems.map((item) => {
 					const localItem = state
 						? state.find((obj) => obj.id === item.id)
-						: {};
+						: item;
 					return (
 						<li
 							key={item.id}
@@ -279,7 +212,7 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 						>
 							<CheckListItem
 								{...item}
-								handleSave={(item) => handleSave(item)}
+								handleClick={(item) => handleSave(item, !localItem?.checked)}
 								checked={!!localItem?.checked}
 								checkedHidden={!!localItem?.checked && checkedHidden}
 							/>

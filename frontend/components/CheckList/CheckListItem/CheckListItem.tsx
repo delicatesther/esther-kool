@@ -15,7 +15,7 @@ export const CheckListItem = ({
 	descriptionNL,
 	checked,
 	checkedHidden,
-	handleSave,
+	handleClick,
 	tags,
 }) => {
 	const router = useRouter();
@@ -60,7 +60,7 @@ export const CheckListItem = ({
 			</div>
 			<Button
 				className={style.checkbox}
-				onClick={() => handleSave(item)}
+				onClick={() => handleClick(item)}
 				type="button"
 				checkbox={true}
 				icon={!!checked ? <Check /> : null}

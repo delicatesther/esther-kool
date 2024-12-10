@@ -24,7 +24,6 @@ export default function PlantPage() {
 	if (loading) return <p>Loading...</p>;
 	if (error) return <ErrorMessage error={error} />;
 	const { posts } = data;
-	console.log(posts);
 	return (
 		<>
 			<Head>
