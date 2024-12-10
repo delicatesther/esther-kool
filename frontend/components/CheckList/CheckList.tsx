@@ -135,7 +135,7 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 				checked: item.checked,
 			};
 		});
-		setState(arr);
+		setState([...arr]);
 		setIsDirty(false);
 	}
 
@@ -144,7 +144,7 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 			const arr = Object.keys(localStorage).filter((item) =>
 				item.startsWith("itemData"),
 			);
-			arr.map((item) => {
+			arr.forEach((item) => {
 				const localItemData = JSON.parse(localStorage.getItem(item));
 				const itemExistsInState: boolean = !!state.find(
 					(obj) => obj.id === localItemData.id,
@@ -205,11 +205,11 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 	checkListItems = getLatestArr();
 
 	function getLatestArr() {
-		if (!!lazyData) {
-			return lazyData?.checkListItems;
+		if (lazyData) {
+			return lazyData.checkListItems;
 		}
-		if (!!data) {
-			return data?.checkListItems;
+		if (data) {
+			return data.checkListItems;
 		}
 		return null;
 	}
@@ -259,7 +259,7 @@ export const CheckList = ({ title, categories, filters }: CheckListProps) => {
 						<h3>{dictionary.hideChecked}</h3>
 						<Button
 							checkbox={true}
-							icon={!!checkedHidden ? <Check /> : null}
+							icon={checkedHidden ? <Check /> : null}
 							onClick={toggleHideChecked}
 						/>
 					</div>
