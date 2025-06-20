@@ -19,6 +19,7 @@ scalar DateTime @specifiedBy(url: "https://datatracker.ietf.org/doc/html/rfc3339
 
 input CheckListItemWhereUniqueInput {
   id: ID
+  image: CheckListItemImageWhereUniqueInput
 }
 
 input CheckListItemWhereInput {
@@ -240,6 +241,7 @@ input CloudinaryImageFormat {
 
 input CheckListItemImageWhereUniqueInput {
   id: ID
+  checkListItem: CheckListItemWhereUniqueInput
 }
 
 input CheckListItemImageWhereInput {
@@ -1025,35 +1027,35 @@ input CreateInitialUserInput {
 }
 
 type Query {
-  checkListItems(where: CheckListItemWhereInput! = {}, orderBy: [CheckListItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CheckListItemWhereUniqueInput): [CheckListItem!]
   checkListItem(where: CheckListItemWhereUniqueInput!): CheckListItem
+  checkListItems(where: CheckListItemWhereInput! = {}, orderBy: [CheckListItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CheckListItemWhereUniqueInput): [CheckListItem!]
   checkListItemsCount(where: CheckListItemWhereInput! = {}): Int
-  checkListItemImages(where: CheckListItemImageWhereInput! = {}, orderBy: [CheckListItemImageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CheckListItemImageWhereUniqueInput): [CheckListItemImage!]
   checkListItemImage(where: CheckListItemImageWhereUniqueInput!): CheckListItemImage
+  checkListItemImages(where: CheckListItemImageWhereInput! = {}, orderBy: [CheckListItemImageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CheckListItemImageWhereUniqueInput): [CheckListItemImage!]
   checkListItemImagesCount(where: CheckListItemImageWhereInput! = {}): Int
-  experiences(where: ExperienceWhereInput! = {}, orderBy: [ExperienceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ExperienceWhereUniqueInput): [Experience!]
   experience(where: ExperienceWhereUniqueInput!): Experience
+  experiences(where: ExperienceWhereInput! = {}, orderBy: [ExperienceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ExperienceWhereUniqueInput): [Experience!]
   experiencesCount(where: ExperienceWhereInput! = {}): Int
-  heights(where: HeightWhereInput! = {}, orderBy: [HeightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeightWhereUniqueInput): [Height!]
   height(where: HeightWhereUniqueInput!): Height
+  heights(where: HeightWhereInput! = {}, orderBy: [HeightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeightWhereUniqueInput): [Height!]
   heightsCount(where: HeightWhereInput! = {}): Int
-  organisations(where: OrganisationWhereInput! = {}, orderBy: [OrganisationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: OrganisationWhereUniqueInput): [Organisation!]
   organisation(where: OrganisationWhereUniqueInput!): Organisation
+  organisations(where: OrganisationWhereInput! = {}, orderBy: [OrganisationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: OrganisationWhereUniqueInput): [Organisation!]
   organisationsCount(where: OrganisationWhereInput! = {}): Int
-  posts(where: PostWhereInput! = {}, orderBy: [PostOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PostWhereUniqueInput): [Post!]
   post(where: PostWhereUniqueInput!): Post
+  posts(where: PostWhereInput! = {}, orderBy: [PostOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PostWhereUniqueInput): [Post!]
   postsCount(where: PostWhereInput! = {}): Int
-  tags(where: TagWhereInput! = {}, orderBy: [TagOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TagWhereUniqueInput): [Tag!]
   tag(where: TagWhereUniqueInput!): Tag
+  tags(where: TagWhereInput! = {}, orderBy: [TagOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TagWhereUniqueInput): [Tag!]
   tagsCount(where: TagWhereInput! = {}): Int
-  users(where: UserWhereInput! = {}, orderBy: [UserOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserWhereUniqueInput): [User!]
   user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput! = {}, orderBy: [UserOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserWhereUniqueInput): [User!]
   usersCount(where: UserWhereInput! = {}): Int
-  userChecklistItems(where: UserChecklistItemWhereInput! = {}, orderBy: [UserChecklistItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserChecklistItemWhereUniqueInput): [UserChecklistItem!]
   userChecklistItem(where: UserChecklistItemWhereUniqueInput!): UserChecklistItem
+  userChecklistItems(where: UserChecklistItemWhereInput! = {}, orderBy: [UserChecklistItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserChecklistItemWhereUniqueInput): [UserChecklistItem!]
   userChecklistItemsCount(where: UserChecklistItemWhereInput! = {}): Int
-  weights(where: WeightWhereInput! = {}, orderBy: [WeightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: WeightWhereUniqueInput): [Weight!]
   weight(where: WeightWhereUniqueInput!): Weight
+  weights(where: WeightWhereInput! = {}, orderBy: [WeightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: WeightWhereUniqueInput): [Weight!]
   weightsCount(where: WeightWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
@@ -1072,23 +1074,25 @@ type KeystoneAdminMeta {
 
 type KeystoneAdminUIListMeta {
   key: String!
-  itemQueryName: String!
-  listQueryName: String!
-  hideCreate: Boolean!
-  hideDelete: Boolean!
   path: String!
   label: String!
   singular: String!
   plural: String!
   description: String
-  initialColumns: [String!]!
   pageSize: Int!
   labelField: String!
   fields: [KeystoneAdminUIFieldMeta!]!
   groups: [KeystoneAdminUIFieldGroupMeta!]!
+  graphql: KeystoneAdminUIGraphQL!
+  initialColumns: [String!]!
+  initialSearchFields: [String!]!
   initialSort: KeystoneAdminUISort
-  isHidden: Boolean!
   isSingleton: Boolean!
+  hideCreate: Boolean!
+  hideDelete: Boolean!
+  isHidden: Boolean!
+  itemQueryName: String!
+  listQueryName: String!
 }
 
 type KeystoneAdminUIFieldMeta {
@@ -1151,6 +1155,33 @@ type KeystoneAdminUIFieldGroupMeta {
   label: String!
   description: String
   fields: [KeystoneAdminUIFieldMeta!]!
+}
+
+type KeystoneAdminUIGraphQL {
+  names: KeystoneAdminUIGraphQLNames!
+}
+
+type KeystoneAdminUIGraphQLNames {
+  outputTypeName: String!
+  whereInputName: String!
+  whereUniqueInputName: String!
+  createInputName: String!
+  createMutationName: String!
+  createManyMutationName: String!
+  relateToOneForCreateInputName: String!
+  relateToManyForCreateInputName: String!
+  itemQueryName: String!
+  listOrderName: String!
+  listQueryCountName: String!
+  listQueryName: String!
+  updateInputName: String!
+  updateMutationName: String!
+  updateManyInputName: String!
+  updateManyMutationName: String!
+  relateToOneForUpdateInputName: String!
+  relateToManyForUpdateInputName: String!
+  deleteMutationName: String!
+  deleteManyMutationName: String!
 }
 
 type KeystoneAdminUISort {

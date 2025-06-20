@@ -72,6 +72,11 @@ export const useChecklistApolloData = (categories, activeFilter) => {
 								},
 							},
 						},
+						orderBy: [
+							{
+								[translatedTitle]: "asc",
+							},
+						],
 					},
 				},
 			],
