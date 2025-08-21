@@ -4,9 +4,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "pnpm run json-to-scss && next build",
+		"build": "json-to-scss && next build",
 		"start": "next start",
-		"generate": "pnpm run json-to-scss 'styles/config/variables/json/*.*' 'styles/config/variables'",
+		"generate": "json-to-scss 'styles/config/variables/json/*.*' 'styles/config/variables'",
 		"lint": "next lint",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
