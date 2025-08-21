@@ -4,9 +4,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "yarn json-to-scss && next build",
+		"build": "pnpm run json-to-scss && next build",
 		"start": "next start",
-		"generate": "json-to-scss 'styles/config/variables/json/*.*' 'styles/config/variables'",
+		"generate": "pnpm run json-to-scss 'styles/config/variables/json/*.*' 'styles/config/variables'",
 		"lint": "next lint",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
@@ -46,6 +46,7 @@
 		"@types/node": "^18.0.0",
 		"@types/react": "^18.0.14",
 		"classnames": "^2.3.1",
+		"deepmerge": "^4.3.1",
 		"eslint": "8.18.0",
 		"eslint-config-next": "^13.4.2",
 		"eslint-plugin-storybook": "^0.6.13",
