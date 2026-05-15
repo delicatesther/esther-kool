@@ -1,41 +1,29 @@
-<img src="frontend/public/icons/estherkool.svg" width="300" alt="Esther Kool Signature" />
+# Esther Kool
 
-# Estherkool.com
+This is the personal website of Esther Kool, conceived of by Esther Kool. Developed and maintained by Esther Kool.
 
-This is the repo to the personal website of Esther Kool.
-
-It is an application built with:
+The application is built with:
 
 - [React](https://reactjs.org/),
-- [Next.js](https://nextjs.org/) (SSR),
+- [Next.js](https://nextjs.org/) (Next.js 13),
 - [Apollo Client](https://www.apollographql.com/apollo-client) (Data management with GraphQL for BE Microservices),
-- [KeystoneJS](https://keystonejs.com/) (Headless JS-based CMS)
-- [Storybook](https://storybook.js.org/) (visual development and testing)
 - [TypeScript](https://www.typescriptlang.org/) (type checking)
 - [(Dart) SCSS](https://sass-lang.com/) and [CSS Modules](https://github.com/css-modules/css-modules) (modular styling)
 
----
-
 ## Installation
 
-Prerequisites to running the site service locally:
+Prerequisites to running the Data Dashboard Service locally:
 
 - [node.js](https://nodejs.org/en/) (Latest LTS version or higher)
 - [yarn](https://yarnpkg.com/) is used as build tool.
 
-When using Node.js version >= 16.10, Yarn is included and available by running:
+Since Node.js version >= 16.10 yarn is available by running once:
 
 ```bash
 corepack enable
 ```
 
-When these core-dependencies are installed, you can install the rest of the dependencies for this project by going to folder `/frontend` and running:
-
-```bash
-yarn
-```
-
-Repeat the same command in folder `/backend`:
+When these dependencies are installed, you can install the dependencies for this project by going to your project root and running:
 
 ```bash
 yarn
@@ -43,14 +31,14 @@ yarn
 
 ### process.ENV
 
-This project depends on environment variables, saved in `.env` files in the root of the project. `.env.development` contains development variables, `.env.production` contains the production ones. NextJS picks up the correct file automatically, based on the publicRuntimeConfig (server + client) and serverRuntimeConfig (server side only) keys in the NextJS config file in the frontend root of the project. In the backend Keystone files, please refer the dotenv package to the correct ENV setting.
+Our project depends on environment variables, saved in `.env` files in the root of the project. `.env.development` contains development variables, `.env.production` contains the production ones. NextJS picks up the correct file automatically, based on the publicRuntimeConfig (server + client) and serverRuntimeConfig (server side only) keys in the NextJS config file in the root of the project.
 
 ```bash
-# NextJS or Keystone picks variables in .env.development:
+# NextJS picks variables in .env.development:
 
 yarn dev
 
-# NextJS or Keystone picks up variables from .env.production:
+# NextJS picks up variables from .env.production:
 
 yarn start
 ```
@@ -69,67 +57,34 @@ Committing adjusted lock files is advised to keep the project as similar as poss
 
 ## Developing locally
 
-First, run the backend from the root:
+First, run the development server:
 
 ```bash
-cd /backend
 yarn dev
 ```
 
-Open [http://localhost:3010](http://localhost:3000) with your browser to see the result.
-
-Then, run the frontend from the root:
-
-```bash
-cd /frontend
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-### Storybook
-
-To run a local Storybook instance, from the root run:
-
-```bash
-cd /frontend
-yarn storybook
-```
-
-Storybook will open up it's own local server on [http://localhost:6006](http://localhost:6006).
-
----
+To view the result, open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
 ## Building
 
-To build a production version of the site service, run:
+To build a production version of the Esther Kool website, run:
 
 ```bash
 yarn build
 ```
 
-### ! This needs to be done in both the front- and backend folders. !
-
-To build an export of Storybook, from the root run:
-
-```bash
-cd /frontend
-yarn build-storybook
-```
+---
 
 ---
 
-## Frontend Project Structure
+## Project Structure
 
-| Folder           | Contents                     | TypeScript Path            | Notes                                                                                                                                                             |
-| ---------------- | ---------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/frontend/.next`         | NextJS output                |                            | Generated folder by NextJS. Contains site output. Can be deleted in case of caching issues.                                                                       |
-| `/frontend/.storybook`    | Storybook config             |                            | Contains Storybook config. Not generated, **do not delete!**                                                                                                      |
-| `/frontend/components`    | Project Components           | `@enk/components`          | Contains all React components including SCSS modules.                                                                                                             |
-| `/frontend/lib`           | Project utils and config     | `@enk/lib`, `@enk/icons/*` , `@enk/utils`, `@enk/translations`| Contains all JS util files, component data mocks, and service connection (e.g. Apollo and) configs. (SVG's are located in `public/icons`)              |
-| `/frontend/node_modules`  | Project dependencies         |                            | Generated by node. Can be deleted in case of dependency issues, but should always be re-installed.                                                                |
-| `/frontend/pages`         | Pages                        |                            | Unique folder name utilized by NextJS. Contains the platform's pages.                                                                                             |
-| `/frontend/public`        | Publically accessible files. |                            | Unique folder name utilized by NextJS. Contains assets that can be referenced from the root of the site (e.g. `public/image.jpg` would become `estherkool.com/image.jpg`) |
-| `/frontend/stories`       | Storybook stories            |                            | Contains all stories shown in Storybook.                                                                                                                          |
-| `/frontend/styles`        | SCSS, global styles          | `@enk/style/*`, `@enk/global-style`        | Contains all SCSS config (variables/mixins etc) and global styling not defined in components.                                                                     |
-| `/frontend`           | Various config files         |                            | Contains config for GitLab, Prettier, NextJS, i18n, TypeScript etc. Basically: only touch when you know what you're doing.                          |
+| Folder          | Contents                 | Notes                                                                                                                                           |
+| --------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/.next`        | NextJS output            | Generated folder by NextJS. Contains site output. Can be deleted in case of caching issues.                                                     |
+| `/app`          | App router               | Unique folder name utilized by NextJS. Contains the platform's shared layouts, pages, nested routing, loading states, error handling, and more. |
+| `/components`   | Project Components       | Contains all React components including SCSS modules.                                                                                           |
+| `/lib`          | Project utils and config | Contains all JS util files, component data mocks, service connection (e.g. Apollo) configs, graphQL queries, hooks etc.                         |
+| `/node_modules` | Project dependencies     | Generated by node. Can be deleted in case of dependency issues, but should always be re-installed.                                              |
+| `/styles`       | SCSS, global styles      | Contains all SCSS config (variables/mixins etc) and global styling not defined in components.                                                   |
+| `root`          | Various config files     | Contains config for Git, Prettier, Docker, NextJS, i18n, TypeScript etc.                                                                        |
