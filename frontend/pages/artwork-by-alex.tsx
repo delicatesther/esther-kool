@@ -1,8 +1,5 @@
-import { useQuery } from "@apollo/client";
-import { ErrorMessage } from "@enk/components/ErrorMessage";
 import { Frame } from "@enk/components/Frame/Frame";
 import { Layout } from "@enk/components/Layout";
-import { POST_QUERY } from "@enk/lib";
 import translations from "@enk/translations";
 import { useRouter } from "next/router";
 
@@ -103,17 +100,6 @@ const images = [
 export default function AlexPage() {
 	const router = useRouter();
 	const { locale } = router;
-	const { data, loading, error } = useQuery(POST_QUERY, {
-		variables: {
-			where: {
-				id: "97ecf266-4626-459d-b78b-cedf5fb99d0e",
-			},
-		},
-	});
-
-	if (loading) return <p>Loading...</p>;
-	if (error) return <ErrorMessage error={error} />;
-	const { post } = data;
 	const dictionary = translations[locale].artByAlex;
 
 	return (

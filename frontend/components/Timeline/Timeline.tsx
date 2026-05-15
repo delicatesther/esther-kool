@@ -1,9 +1,6 @@
 import classNames from "classnames/bind";
 import { useRouter } from "next/router";
-import { useQuery } from "@apollo/client";
-import { useUser } from "@enk/utils";
 import { Experience } from "@enk/components/Experiences";
-import { ALL_EXPERIENCES_QUERY } from "@enk/lib/resolvers";
 import translations from "@enk/translations";
 import style from "./timeline.module.scss";
 
@@ -23,10 +20,7 @@ export type TimelineExperience = {
 	organisation?: {
 		name?: string;
 		nameNL?: string;
-		logo?: {
-			publicUrlTransformed?: string;
-			url?: string;
-		} | null;
+		logo?: string | null;
 	} | null;
 	tags?: Array<{
 		id?: string;
@@ -51,7 +45,6 @@ function generateYearsBetween(startYear = 2000, endYear) {
 }
 
 export const Timeline = ({ experiences }: TimelineProps) => {
-	const me = useUser();
 	const router = useRouter();
 	const locale = (router.locale ?? "nl") as "nl" | "en";
 
@@ -85,29 +78,18 @@ export const Timeline = ({ experiences }: TimelineProps) => {
 			<div className={style.container}>
 				<div aria-hidden className={style.timelineBar}></div>
 				<ol className={style.list}>
-					{items.map((experience, index) => {
-						if (!me && experience.status === "draft") {
-							return null;
-						} else {
-							return (
-								<li
-									key={
-										experience.id ??
-										experience.slug ??
-										`${experience.from}-${index}`
-									}
-									className={cx(
-										["listItem"],
-										{ even: index % 2 == 1 },
-										{ odd: index % 2 == 0 },
-										{ ["draft"]: experience.status === "draft" },
-									)}
-								>
-									<Experience {...experience} />
-								</li>
-							);
-						}
-					})}
+					{items.map((experience, index) => (
+						<li
+							key={experience.id ?? experience.slug ?? `${experience.from}-${index}`}
+							className={cx(
+								["listItem"],
+								{ even: index % 2 == 1 },
+								{ odd: index % 2 == 0 },
+							)}
+						>
+							<Experience {...experience} />
+						</li>
+					))}
 				</ol>
 			</div>
 		</div>

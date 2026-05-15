@@ -2,12 +2,13 @@ import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Layout } from "@enk/components/Layout";
 import { markdownToHtml } from "@enk/lib/content/markdown";
+import { ExperienceDetail } from "../../components/Experiences/ExperienceDetail/ExperienceDetail";
 import {
 	getAllExperienceSlugs,
 	getExperienceBySlug,
 } from "@enk/lib/content/experiences";
 
-export default function ExperiencePage({ experience, html }) {
+export default function ExperiencePage({ experience }) {
 	return (
 		<>
 			<Head>
@@ -16,10 +17,7 @@ export default function ExperiencePage({ experience, html }) {
 			</Head>
 
 			<Layout>
-				<article>
-					<h1>{experience.title}</h1>
-					<div dangerouslySetInnerHTML={{ __html: html }} />
-				</article>
+				<ExperienceDetail experience={experience} />
 			</Layout>
 		</>
 	);
@@ -49,12 +47,11 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 		return { notFound: true };
 	}
 
-	const html = await markdownToHtml(experience.content);
+	const contentHtml = await markdownToHtml(experience.content);
 
 	return {
 		props: {
-			experience,
-			html,
+			experience: { ...experience, content: contentHtml },
 		},
 	};
 };

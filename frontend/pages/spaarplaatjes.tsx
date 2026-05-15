@@ -3,21 +3,12 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import translations from "@enk/translations";
 import { CollectionCards } from "@enk/components/CollectionCards";
-import { useUser } from "@enk/utils";
-import { SignIn } from "@enk/components/User";
 
 export default function SpaarplaatjesPage() {
-	const me = useUser();
 	const router = useRouter();
 	const { locale } = router;
 	const dictionary = translations[locale];
 
-	if (!me)
-		return (
-			<Layout>
-				<SignIn />
-			</Layout>
-		);
 	return (
 		<div>
 			<Head>
@@ -37,7 +28,7 @@ export default function SpaarplaatjesPage() {
 							"Koukleumen",
 							"Waterratten",
 							"Steppe Strijders",
-						].sort((a: any, b: any) => b - a)}
+						]}
 					/>
 				</div>
 			</Layout>

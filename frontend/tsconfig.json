@@ -26,6 +26,9 @@
       "@enk/data/*": [
         "data/*"
       ],
+      "@enk/lib": [
+        "lib/index.ts"
+      ],
       "@enk/lib/*": [
         "lib/*"
       ],

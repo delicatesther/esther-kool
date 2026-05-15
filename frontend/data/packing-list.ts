@@ -756,8 +756,8 @@ export const packingList: PackingListCategory[] = [
 					en: "Stuffies ",
 				},
 				description: {
-					nl: "(Vosje, Iyaah, Beer...)",
-					en: "(Vosje, Iyaah, Beer...)",
+					nl: "(Vosje, Iyaah, Boer...)",
+					en: "(Vosje, Iyaah, Boer...)",
 				},
 				amount: null,
 				tags: ["entertainment", "alex", "inpakken"],

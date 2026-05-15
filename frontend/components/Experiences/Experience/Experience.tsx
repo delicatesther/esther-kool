@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import classNames from "classnames/bind";
 import translations from "@enk/translations";
-import { useUser } from "@enk/utils";
 import style from "./experience.module.scss";
 import { TimelineExperience } from "@enk/components/Timeline";
 
@@ -16,6 +15,7 @@ export type ExperienceProps = TimelineExperience & {
 
 export const Experience = ({
 	id,
+	slug,
 	title,
 	titleNL,
 	status,
@@ -30,7 +30,6 @@ export const Experience = ({
 	content,
 	contentNL,
 }: ExperienceProps) => {
-	const me = useUser();
 	const router = useRouter();
 	const { locale } = router;
 	const experienceTags = tags.map((tag) => {
@@ -41,8 +40,8 @@ export const Experience = ({
 	const dictionary = {
 		nl: {
 			...translations.nl,
-			title: titleNL,
-			summary: summaryNL,
+			title: titleNL ?? title,
+			summary: summaryNL ?? summary,
 			content: contentNL,
 		},
 		en: {
@@ -54,7 +53,7 @@ export const Experience = ({
 	};
 
 	const translated = dictionary[locale];
-	if (!me && status === "draft") {
+	if (status === "draft") {
 		return null;
 	}
 	const fromYear = new Date(from).getFullYear();
@@ -67,14 +66,17 @@ export const Experience = ({
 				{ongoing && ` - ${translated.experiences.present}`}
 			</time>
 			<div className={style.container}>
-				{organisation && (
+				{organisation?.logo && (
 					<img src={`/logos/${organisation.logo}.svg`} className={style.logo} />
 				)}
 
-				<h3 className={cx(["titleSingle"], ["title"])}>
-					{translated.title}
-					{status === "draft" && " - Draft"}
-				</h3>
+				{slug && content?.trim() ? (
+					<Link href={`/experience/${slug}`} className={cx(["titleLink"])}>
+						<h3 className={cx(["title"])}>{translated.title}</h3>
+					</Link>
+				) : (
+					<h3 className={cx(["titleSingle"], ["title"])}>{translated.title}</h3>
+				)}
 
 				<div className={style.tags}>
 					{experienceTags.map((tag) => (
@@ -83,7 +85,9 @@ export const Experience = ({
 						</span>
 					))}
 				</div>
-				{summary && <p className={style.summary}>{translated.summary}</p>}
+				{translated.summary && (
+					<p className={style.summary}>{translated.summary}</p>
+				)}
 			</div>
 		</article>
 	);

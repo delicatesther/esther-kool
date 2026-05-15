@@ -30,6 +30,7 @@
 
 .content {
 	grid-column: 1 / -1;
+	max-width: 75ch;
 	p {
 		max-width: 35em;
 	}

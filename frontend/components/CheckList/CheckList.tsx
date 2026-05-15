@@ -9,8 +9,31 @@ import { PackingListTag } from "@enk/lib/packing-list/types";
 import translations from "@enk/translations";
 import classnames from "classnames/bind";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import style from "./checkList.module.scss";
+
+async function fetchServerState(): Promise<string[]> {
+	try {
+		const res = await fetch("/api/checklist-state");
+		if (!res.ok) return null;
+		const data = await res.json();
+		return Array.isArray(data.checkedIds) ? data.checkedIds : null;
+	} catch {
+		return null;
+	}
+}
+
+async function pushServerState(checkedIds: string[]) {
+	try {
+		await fetch("/api/checklist-state", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ checkedIds }),
+		});
+	} catch {
+		// silently ignore — localStorage already saved locally
+	}
+}
 const cx = classnames.bind(style);
 
 export const useCategories = (categories, activeFilter = undefined) => {
@@ -51,14 +74,33 @@ export const CheckList = ({
 	const [checkedIds, setCheckedIds] = useState<string[]>([]);
 	const [activeFilter, setActiveFilter] = useState<PackingListTag | "">("");
 	const [hideChecked, setHideChecked] = useState(false);
+	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+	// On mount: load localStorage immediately, then prefer server state
 	useEffect(() => {
-		const progress = loadPackingListProgress();
-		setCheckedIds(progress.checkedIds);
+		const local = loadPackingListProgress();
+		setCheckedIds(local.checkedIds);
+
+		fetchServerState().then((serverIds) => {
+			if (serverIds !== null) {
+				setCheckedIds(serverIds);
+				savePackingListProgress({ checkedIds: serverIds });
+			}
+		});
 	}, []);
 
+	// On change: save to localStorage immediately, debounce server sync
 	useEffect(() => {
 		savePackingListProgress({ checkedIds });
+
+		if (debounceRef.current) clearTimeout(debounceRef.current);
+		debounceRef.current = setTimeout(() => {
+			pushServerState(checkedIds);
+		}, 1000);
+
+		return () => {
+			if (debounceRef.current) clearTimeout(debounceRef.current);
+		};
 	}, [checkedIds]);
 
 	const dictionary = useMemo(
@@ -93,6 +135,7 @@ export const CheckList = ({
 	function resetList() {
 		setCheckedIds([]);
 		clearPackingListProgress();
+		pushServerState([]);
 	}
 
 	return (

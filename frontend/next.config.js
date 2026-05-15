@@ -4,10 +4,6 @@ const baseConfig = require("./webpack.common.js");
 const nextConfig = {
 	reactStrictMode: true,
 	poweredByHeader: false,
-	publicRuntimeConfig: {
-		GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
-		ALEX_POST: process.env.ALEX_POST,
-	},
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
@@ -35,15 +31,6 @@ const nextConfig = {
 	images: {
 		domains: ["res.cloudinary.com"],
 	},
-	rewrites: () => [
-		{
-			source: "/api/graphql",
-			destination:
-				process.env.NODE_ENV === "development"
-					? `http://localhost:3010/api/graphql`
-					: process.env.GRAPHQL_ENDPOINT,
-		},
-	],
 };
 
 module.exports = nextConfig;

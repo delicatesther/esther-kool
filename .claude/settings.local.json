@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.tsx?$\")",
+      "Bash(npx prisma *)",
+      "Bash(node scripts/export-experiences.mjs)",
+      "Bash(node scripts/export-posts.mjs)",
+      "Bash(node -e ' *)",
+      "Bash(npx tsc *)",
+      "Bash(pnpm build *)"
+    ]
+  }
+}

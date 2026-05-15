@@ -15,7 +15,7 @@ export async function getAllExperienceSlugs() {
 			.map((file) => file.replace(/\.((nl)|(en))\.md$/, "")),
 	);
 
-	return [...slugs];
+	return Array.from(slugs);
 }
 
 export async function getExperienceBySlug(slug: string, locale: Locale) {
@@ -24,8 +24,13 @@ export async function getExperienceBySlug(slug: string, locale: Locale) {
 
 	if (data.published === false) return null;
 
+	const dateToStr = (v: unknown) =>
+		v instanceof Date ? v.toISOString().split("T")[0] : v;
+
 	return {
 		...data,
+		from: dateToStr(data.from),
+		to: dateToStr(data.to) ?? null,
 		content,
 	};
 }

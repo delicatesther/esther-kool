@@ -1,7 +1,7 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 const config: StorybookConfig = {
   stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions", 'storybook-dark-mode', "@storybook/addon-mdx-gfm", "storybook-addon-apollo-client"],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions", 'storybook-dark-mode', "@storybook/addon-mdx-gfm"],
   staticDirs: ["../public"],
   framework: {
     name: "@storybook/nextjs",
@@ -24,12 +24,7 @@ const config: StorybookConfig = {
       test: /\.svg$/,
       use: ["@svgr/webpack"]
     },
-    //TO DO: make it a common config in webpack.common.js since Next is also needing it (see next.config.js)
-    {
-      test: /\.(graphql|gql)$/,
-      exclude: /node_modules/,
-      loader: "graphql-tag/loader"
-    });
+    );
     return config;
   }
 };

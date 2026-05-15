@@ -17,10 +17,7 @@ export type ExperienceFile = {
 	organisation?: {
 		name?: string;
 		nameNL?: string;
-		logo?: {
-			publicUrlTransformed?: string;
-			url?: string;
-		} | null;
+		logo?: string | null;
 	} | null;
 	tags?: Array<{
 		id?: string;
@@ -61,7 +58,7 @@ export async function readAllExperienceFiles(
 		fileName.endsWith(`.${locale}.md`),
 	);
 
-	const experiences = await Promise.all(
+	const experiences: Array<ExperienceFile | null> = await Promise.all(
 		matchingFiles.map(async (fileName) => {
 			const parsedName = parseExperienceFilename(fileName);
 
@@ -77,9 +74,13 @@ export async function readAllExperienceFiles(
 				slug: parsedName.slug,
 				locale: parsedName.locale,
 				title: typeof data.title === "string" ? data.title : parsedName.slug,
-				summary: typeof data.summary === "string" ? data.summary : undefined,
-				from: typeof data.from === "string" ? data.from : "",
-				to: typeof data.to === "string" ? data.to : null,
+				summary: typeof data.summary === "string" ? data.summary : null,
+				from: data.from instanceof Date
+					? data.from.toISOString().split("T")[0]
+					: typeof data.from === "string" ? data.from : "",
+				to: data.to instanceof Date
+					? data.to.toISOString().split("T")[0]
+					: typeof data.to === "string" ? data.to : null,
 				ongoing: typeof data.ongoing === "boolean" ? data.ongoing : false,
 				published: typeof data.published === "boolean" ? data.published : true,
 				status: typeof data.status === "string" ? data.status : "published",
@@ -99,31 +100,10 @@ export async function readAllExperienceFiles(
 												.nameNL as string)
 										: undefined,
 								logo:
-									(data.organisation as Record<string, unknown>).logo &&
 									typeof (data.organisation as Record<string, unknown>).logo ===
-										"object"
-										? {
-												publicUrlTransformed:
-													typeof (
-														(data.organisation as Record<string, unknown>)
-															.logo as Record<string, unknown>
-													).publicUrlTransformed === "string"
-														? ((
-																(data.organisation as Record<string, unknown>)
-																	.logo as Record<string, unknown>
-														  ).publicUrlTransformed as string)
-														: undefined,
-												url:
-													typeof (
-														(data.organisation as Record<string, unknown>)
-															.logo as Record<string, unknown>
-													).url === "string"
-														? ((
-																(data.organisation as Record<string, unknown>)
-																	.logo as Record<string, unknown>
-														  ).url as string)
-														: undefined,
-										  }
+									"string"
+										? ((data.organisation as Record<string, unknown>)
+												.logo as string)
 										: null,
 						  }
 						: null,
@@ -134,9 +114,9 @@ export async function readAllExperienceFiles(
 									!!tag && typeof tag === "object",
 							)
 							.map((tag) => ({
-								id: typeof tag.id === "string" ? tag.id : undefined,
-								name: typeof tag.name === "string" ? tag.name : undefined,
-								nameNL: typeof tag.nameNL === "string" ? tag.nameNL : undefined,
+								id: typeof tag.id === "string" ? tag.id : null,
+								name: typeof tag.name === "string" ? tag.name : null,
+								nameNL: typeof tag.nameNL === "string" ? tag.nameNL : null,
 							}))
 					: [],
 				content,
@@ -144,9 +124,9 @@ export async function readAllExperienceFiles(
 		}),
 	);
 
-	return experiences.filter((experience): experience is ExperienceFile => {
-		return !!experience && !!experience.from;
-	});
+	return experiences.filter((experience): experience is ExperienceFile =>
+		experience !== null && !!experience.from,
+	);
 }
 
 export async function getAllExperiences(locale: Locale) {
