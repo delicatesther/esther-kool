@@ -14,7 +14,7 @@ export const Avatar = ({ className = null }) => {
 			<div className={cx(["frame"])}>
 				<div className={cx(["image"])}>
 					<Image
-						src={isLight ? "/me-light.jpg" : "/me-dark.jpg"}
+						src={isLight ? "/me-light-1000.webp" : "/me-dark.webp"}
 						alt="Esther"
 						width={200}
 						height={200}
