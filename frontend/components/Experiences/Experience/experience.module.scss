@@ -83,8 +83,8 @@
 	transition: 0.2s ease-in-out;
 	&:hover {
 		--highlight-color: var(--governorBay);
-		transform: scale(1.02);
 		color: var(--highlight-color);
+
 		@include theme(dark) {
 			--highlight-color: var(--white);
 			color: var(--white);
@@ -179,8 +179,8 @@
 }
 
 .logo {
-	width: 160px;
-	height: clamp(80px, 100px, calc(100% - 16px));
+	width: 80px;
+	height: clamp(60px, 80px, calc(100% - 16px));
 	z-index: z(z0);
 	opacity: 0.05;
 	object-fit: contain;
