@@ -1,5 +1,10 @@
-import { kv } from "@vercel/kv";
+import { Redis } from "@upstash/redis";
 import type { NextApiRequest, NextApiResponse } from "next";
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 
 function key() {
   return `household:${process.env.HOUSEHOLD_ID}:checklist`;
@@ -14,7 +19,7 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
-    const state = (await kv.get<{ checkedIds: string[] }>(key())) ?? {
+    const state = (await redis.get<{ checkedIds: string[] }>(key())) ?? {
       checkedIds: [],
     };
     return res.status(200).json(state);
@@ -25,7 +30,7 @@ export default async function handler(
     if (!Array.isArray(checkedIds)) {
       return res.status(400).json({ error: "Invalid body" });
     }
-    await kv.set(key(), { checkedIds });
+    await redis.set(key(), JSON.stringify({ checkedIds }));
     return res.status(200).json({ ok: true });
   }
 

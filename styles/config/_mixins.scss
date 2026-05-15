@@ -4,13 +4,14 @@
 // -----------------------------------------------------------------------------
 @use "functions" as *;
 @use "variables" as *;
+@use "sass:map";
 
 // -----------------------------------------------------------------------------
 // Media queries and breakpoints
 // -----------------------------------------------------------------------------
 @mixin breakpoint($bp, $type: min) {
-	@if map_has_key($breakpoints, $bp) {
-		$bp: map_get($breakpoints, $bp);
+	@if map.has-key($breakpoints, $bp) {
+		$bp: map.get($breakpoints, $bp);
 		@if $type == max {
 			$bp: $bp - 1;
 		}
@@ -20,7 +21,7 @@
 	}
 	// Informative error handling when invalid $width value is provided
 	@else {
-		@warn 'There is no item "#{$bp}" in this list; choose one of: #{map-keys($breakpoints)}';
+		@warn 'There is no item "#{$bp}" in this list; choose one of: #{map.keys($breakpoints)}';
 	}
 }
 

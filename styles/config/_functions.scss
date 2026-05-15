@@ -4,13 +4,14 @@
 // -----------------------------------------------------------------------------
 @use "variables" as *;
 @use "sass:color";
+@use "sass:map";
 
 // -----------------------------------------------------------------------------
 // Get Z-index
 // -----------------------------------------------------------------------------
 @function z($name) {
-	@if map-has-key($z-index, $name) {
-		@return map-get($z-index, $name);
+	@if map.has-key($z-index, $name) {
+		@return map.get($z-index, $name);
 	}
 
 	@warn "The key #{$name} is not in the map ’$z-index";
@@ -23,12 +24,12 @@
 // Basically: use CSS vars whenever possible.
 // -----------------------------------------------------------------------------
 @function colour($name, $rgb: false) {
-	@if map-has-key($colours, $name) {
+	@if map.has-key($colours, $name) {
 		@if $rgb {
-			$hex: map-get($colours, $name);
-			@return red($hex), green($hex), blue($hex);
+			$hex: map.get($colours, $name);
+			@return color.red($hex), color.green($hex), color.blue($hex);
 		} @else {
-			@return map-get($colours, $name);
+			@return map.get($colours, $name);
 		}
 	}
 
@@ -40,8 +41,8 @@
 // Get Font
 // -----------------------------------------------------------------------------
 @function selectFont($name) {
-	@if map-has-key($fontFamilies, $name) {
-		@return map-get($fontFamilies, $name);
+	@if map.has-key($fontFamilies, $name) {
+		@return map.get($fontFamilies, $name);
 	}
 	@warn "The key #{$name} is not in the map $fonts";
 	@return null;

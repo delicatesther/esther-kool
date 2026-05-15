@@ -13,6 +13,7 @@ export const BusinessCard = ({}) => {
 	return (
 		<article className={style.card}>
 			<Avatar />
+
 			<h2>
 				{dictionary.title}
 				<span className="visuallyhidden">

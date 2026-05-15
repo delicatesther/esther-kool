@@ -1,5 +1,10 @@
-import { kv } from "@vercel/kv";
+import { Redis } from "@upstash/redis";
 import type { NextApiRequest, NextApiResponse } from "next";
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 
 export type CollectionState = Record<string, number>;
 
@@ -16,7 +21,7 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
-    const state = (await kv.get<CollectionState>(key())) ?? {};
+    const state = (await redis.get<CollectionState>(key())) ?? {};
     return res.status(200).json(state);
   }
 
@@ -25,7 +30,7 @@ export default async function handler(
     if (typeof state !== "object" || Array.isArray(state)) {
       return res.status(400).json({ error: "Invalid body" });
     }
-    await kv.set(key(), state);
+    await redis.set(key(), JSON.stringify(state));
     return res.status(200).json({ ok: true });
   }
 
