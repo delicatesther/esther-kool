@@ -43,12 +43,14 @@ export const Experience = ({
 			title: titleNL ?? title,
 			summary: summaryNL ?? summary,
 			content: contentNL,
+			organisation: organisation?.nameNL,
 		},
 		en: {
 			...translations.en,
 			title,
 			summary,
 			content,
+			organisation: organisation?.name,
 		},
 	};
 
@@ -60,22 +62,29 @@ export const Experience = ({
 	const toYear = to ? new Date(to).getFullYear() : "";
 	return (
 		<article className={cx(["experience"], [status], [className])}>
-			<time dateTime={`${fromYear}`} className={style.years}>
-				{fromYear}
-				{toYear && toYear !== fromYear && ` - ${toYear}`}
-				{ongoing && ` - ${translated.experiences.present}`}
-			</time>
 			<div className={style.container}>
-				{organisation?.logo && (
-					<img src={`/logos/${organisation.logo}.svg`} className={style.logo} />
-				)}
-
 				{slug && content?.trim() ? (
 					<Link href={`/experience/${slug}`} className={cx(["titleLink"])}>
 						<h3 className={cx(["title"])}>{translated.title}</h3>
 					</Link>
 				) : (
 					<h3 className={cx(["titleSingle"], ["title"])}>{translated.title}</h3>
+				)}
+
+				<time dateTime={`${fromYear}`} className={style.years}>
+					{fromYear}
+					{ongoing && !toYear
+						? ` - ${translated.experiences.present}`
+						: toYear && toYear !== fromYear && ` - ${toYear}`}
+				</time>
+
+				{organisation?.logo && (
+					<img
+						src={`/logos/${organisation.logo}.svg`}
+						className={style.logo}
+						alt={`Logo ${translated.organisation}`}
+						width="80"
+					/>
 				)}
 
 				<div className={style.tags}>

@@ -5,7 +5,6 @@ export const ThemeChanger = ({ theme }: { theme: "light" | "dark" }) => {
 	const { setTheme } = useTheme();
 
 	useEffect(() => {
-		console.log(theme, "theme");
 		setTheme(theme);
 	}, [setTheme, theme]);
 

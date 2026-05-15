@@ -14,13 +14,16 @@
 	color: var(--siteBackground);
 	background-color: var(--supportDarkColor);
 	width: fit-content;
+	position: absolute;
+	top: -4.2rem;
+	z-index: z(z3);
 	@include theme("dark") {
 		color: var(--siteFontColor);
 	}
 }
 
 .experience {
-	padding: 8px;
+	padding: 4rem 0.8rem 0.8rem 0.8rem;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -35,6 +38,9 @@
 	li:nth-child(odd) & {
 		align-items: flex-end;
 		text-align: right;
+		.years {
+			right: 0;
+		}
 	}
 }
 
@@ -42,18 +48,20 @@
 	background: rgba(var(--mercuryRgb), 0.8);
 	box-shadow: var(--shadow-elevation-medium);
 	border-radius: 6px;
-	overflow: hidden;
 	@include theme(dark) {
 		background: rgba(var(--supportDarkColorRgb), 0.8);
 	}
 	border: 1px solid var(--fontColor);
 	position: relative;
 	height: 100%;
-	max-width: 25em;
+	width: 100%;
+	max-width: 40ch;
 	display: grid;
 	align-items: start;
+	align-content: start;
 	justify-content: start;
 	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr auto;
 	grid-template-areas:
 		"title"
 		"summary"

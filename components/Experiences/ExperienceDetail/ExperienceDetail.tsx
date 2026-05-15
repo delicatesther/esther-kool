@@ -8,7 +8,6 @@ import style from "./experienceDetail.module.scss";
 const cx = classNames.bind(style);
 
 export const ExperienceDetail = ({ experience }) => {
-	console.log(experience);
 	const router = useRouter();
 	const { locale } = router;
 	const isNl = locale === "nl";

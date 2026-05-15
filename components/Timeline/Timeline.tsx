@@ -34,7 +34,7 @@ type TimelineProps = {
 };
 
 function generateYearsBetween(startYear = 2000, endYear) {
-	const endDate = endYear || new Date().getFullYear();
+	const endDate = endYear ?? new Date().getFullYear();
 	let years = [];
 
 	for (var i = startYear; i <= endDate; i++) {
@@ -59,9 +59,19 @@ export const Timeline = ({ experiences }: TimelineProps) => {
 
 	const items = sortedExperiences.map((experience) => {
 		const fromYear = new Date(experience.from).getFullYear();
-		const toYear = experience.to
-			? new Date(experience.to).getFullYear()
-			: fromYear;
+
+		let toYear;
+
+		if (experience.to) {
+			toYear = new Date(experience.to).getFullYear();
+		} else {
+			if (experience.ongoing) {
+				toYear = new Date().getFullYear();
+			} else {
+				toYear = fromYear;
+			}
+		}
+
 		const years = generateYearsBetween(fromYear, toYear);
 
 		return {
@@ -71,7 +81,6 @@ export const Timeline = ({ experiences }: TimelineProps) => {
 			years,
 		};
 	});
-
 	return (
 		<div className={style.wrapper}>
 			<h2>{dictionary.title}</h2>
@@ -80,12 +89,21 @@ export const Timeline = ({ experiences }: TimelineProps) => {
 				<ol className={style.list}>
 					{items.map((experience, index) => (
 						<li
-							key={experience.id ?? experience.slug ?? `${experience.from}-${index}`}
+							key={
+								experience.id ??
+								experience.slug ??
+								`${experience.from}-${index}`
+							}
 							className={cx(
 								["listItem"],
 								{ even: index % 2 == 1 },
 								{ odd: index % 2 == 0 },
 							)}
+							style={
+								{
+									"--list-item-years": experience.years.length,
+								} as React.CSSProperties
+							}
 						>
 							<Experience {...experience} />
 						</li>
