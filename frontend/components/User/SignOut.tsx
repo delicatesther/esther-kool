@@ -1,6 +1,6 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
-import { CURRENT_USER_QUERY, SIGNOUT_MUTATION } from "@enk/lib";
+import { CURRENT_USER_QUERY, SIGNOUT_MUTATION } from "@enk/lib/resolvers";
 import { Button } from "@enk/components/Button";
 import { useRouter } from "next/router";
 import translations from "@enk/translations";

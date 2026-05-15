@@ -3,51 +3,80 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { useUser } from "@enk/utils";
 import { Experience } from "@enk/components/Experiences";
-import { ALL_EXPERIENCES_QUERY } from "@enk/lib";
+import { ALL_EXPERIENCES_QUERY } from "@enk/lib/resolvers";
 import translations from "@enk/translations";
 import style from "./timeline.module.scss";
 
 const cx = classNames.bind(style);
 
-export const Timeline = () => {
+export type TimelineExperience = {
+	id?: string;
+	slug?: string;
+	title?: string;
+	titleNL?: string;
+	summary?: string;
+	summaryNL?: string;
+	from: string;
+	to?: string | null;
+	ongoing?: boolean;
+	status?: "draft" | "published" | string;
+	organisation?: {
+		name?: string;
+		nameNL?: string;
+		logo?: {
+			publicUrlTransformed?: string;
+			url?: string;
+		} | null;
+	} | null;
+	tags?: Array<{
+		id?: string;
+		name?: string;
+		nameNL?: string;
+	}>;
+};
+
+type TimelineProps = {
+	experiences: TimelineExperience[];
+};
+
+function generateYearsBetween(startYear = 2000, endYear) {
+	const endDate = endYear || new Date().getFullYear();
+	let years = [];
+
+	for (var i = startYear; i <= endDate; i++) {
+		years.push(startYear);
+		startYear++;
+	}
+	return years;
+}
+
+export const Timeline = ({ experiences }: TimelineProps) => {
 	const me = useUser();
 	const router = useRouter();
-	const { locale } = router;
+	const locale = (router.locale ?? "nl") as "nl" | "en";
+
 	const dictionary = {
 		...translations[locale].experiences,
 		...translations[locale].global,
 	};
-	const { data, loading, error } = useQuery(ALL_EXPERIENCES_QUERY, {
-		variables: {
-			orderBy: [
-				{
-					from: "desc",
-				},
-			],
-		},
-	});
 
-	if (error) return null;
-	if (loading) return <p>Loading...</p>;
-	const { experiences } = data || [];
+	const sortedExperiences = [...(experiences ?? [])].sort((a, b) =>
+		b.from.localeCompare(a.from),
+	);
 
-	function generateYearsBetween(startYear = 2000, endYear) {
-		const endDate = endYear || new Date().getFullYear();
-		let years = [];
-
-		for (var i = startYear; i <= endDate; i++) {
-			years.push(startYear);
-			startYear++;
-		}
-		return years;
-	}
-
-	let arr = experiences.map((experience) => {
-		const { from, to } = experience || "";
-		const fromYear = new Date(from).getFullYear();
-		const toYear = !!to ? new Date(to).getFullYear() : fromYear;
+	const items = sortedExperiences.map((experience) => {
+		const fromYear = new Date(experience.from).getFullYear();
+		const toYear = experience.to
+			? new Date(experience.to).getFullYear()
+			: fromYear;
 		const years = generateYearsBetween(fromYear, toYear);
-		return { ...experience, fromYear, toYear, years };
+
+		return {
+			...experience,
+			fromYear,
+			toYear,
+			years,
+		};
 	});
 
 	return (
@@ -56,13 +85,17 @@ export const Timeline = () => {
 			<div className={style.container}>
 				<div aria-hidden className={style.timelineBar}></div>
 				<ol className={style.list}>
-					{arr.map((experience, index) => {
+					{items.map((experience, index) => {
 						if (!me && experience.status === "draft") {
 							return null;
 						} else {
 							return (
 								<li
-									key={experience.id}
+									key={
+										experience.id ??
+										experience.slug ??
+										`${experience.from}-${index}`
+									}
 									className={cx(
 										["listItem"],
 										{ even: index % 2 == 1 },

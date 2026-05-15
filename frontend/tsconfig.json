@@ -23,8 +23,11 @@
       "@enk/components/*": [
         "components/*"
       ],
-      "@enk/lib": [
-        "lib/index.ts"
+      "@enk/data/*": [
+        "data/*"
+      ],
+      "@enk/lib/*": [
+        "lib/*"
       ],
       "@enk/types": [
         "lib/types/custom.d.ts"

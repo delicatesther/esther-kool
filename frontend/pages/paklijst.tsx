@@ -17,20 +17,19 @@ export default function PaklijstPage() {
 			<Layout>
 				<div className="row">
 					<CheckList
-						categories={["Inpakken"]}
 						title={`${title}`}
 						filters={[
-							"Alex",
-							"Buitenland",
-							"Cruciaal",
-							"Electronica",
-							"Eten & Drinken",
-							"Festival",
-							"Kamperen",
-							"Kleding",
-							"Reizen",
-							"Todo",
-							"Verzorging",
+							"alex",
+							"buitenland",
+							"cruciaal",
+							"electronica",
+							"eten-drinken",
+							"festival",
+							"kamperen",
+							"kleding",
+							"reizen",
+							"todo",
+							"verzorging",
 						]}
 					/>
 				</div>

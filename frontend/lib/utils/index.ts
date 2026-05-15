@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { WindowSizeAttributes } from "@enk/types";
 import useTheme from "react-use-system-theme";
 import { useQuery } from "@apollo/client";
-import { CURRENT_USER_QUERY } from "@enk/lib";
+import { CURRENT_USER_QUERY } from "@enk/lib/resolvers";
 
 export const useWindowSize = (): WindowSizeAttributes => {
 	const [windowSize, setWindowSize] = useState<WindowSizeAttributes>({

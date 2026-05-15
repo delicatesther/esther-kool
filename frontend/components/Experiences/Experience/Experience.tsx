@@ -4,8 +4,15 @@ import classNames from "classnames/bind";
 import translations from "@enk/translations";
 import { useUser } from "@enk/utils";
 import style from "./experience.module.scss";
+import { TimelineExperience } from "@enk/components/Timeline";
 
 const cx = classNames.bind(style);
+
+export type ExperienceProps = TimelineExperience & {
+	className?: string;
+	content?: string;
+	contentNL?: string;
+};
 
 export const Experience = ({
 	id,
@@ -22,7 +29,7 @@ export const Experience = ({
 	organisation,
 	content,
 	contentNL,
-}) => {
+}: ExperienceProps) => {
 	const me = useUser();
 	const router = useRouter();
 	const { locale } = router;
@@ -63,19 +70,12 @@ export const Experience = ({
 				{organisation && (
 					<img src={`/logos/${organisation.logo}.svg`} className={style.logo} />
 				)}
-				{!!content?.document[0]?.children[0]?.text?.length ? (
-					<Link href={`/experience/${id}`} className={style.titleLink}>
-						<h3 className={style.title}>
-							{translated.title}
-							{status === "draft" && " - Draft"}
-						</h3>
-					</Link>
-				) : (
-					<h3 className={cx(["titleSingle"], ["title"])}>
-						{translated.title}
-						{status === "draft" && " - Draft"}
-					</h3>
-				)}
+
+				<h3 className={cx(["titleSingle"], ["title"])}>
+					{translated.title}
+					{status === "draft" && " - Draft"}
+				</h3>
+
 				<div className={style.tags}>
 					{experienceTags.map((tag) => (
 						<span key={tag.id} className={style.tag}>

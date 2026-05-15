@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
-import { SIGNUP_MUTATION, useForm } from "@enk/lib";
+import { SIGNUP_MUTATION, useForm } from "@enk/lib/resolvers";
 import style from "./user.module.scss";
 
 export const SignUp = () => {

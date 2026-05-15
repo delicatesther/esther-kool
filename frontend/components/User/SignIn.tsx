@@ -3,7 +3,11 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { Button } from "@enk/components/Button";
 import { ErrorMessage } from "@enk/components/ErrorMessage";
-import { CURRENT_USER_QUERY, SIGNIN_MUTATION, useForm } from "@enk/lib";
+import {
+	CURRENT_USER_QUERY,
+	SIGNIN_MUTATION,
+	useForm,
+} from "@enk/lib/resolvers";
 import translations from "@enk/translations";
 import style from "./user.module.scss";
 
