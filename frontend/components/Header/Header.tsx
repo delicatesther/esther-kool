@@ -38,32 +38,19 @@ export const Header = () => {
 				<EstherKool title={`${dictionary.global.goHome} Esther Kool`} />
 			</Link>
 			<div className={style.content}>
-				<nav>
-					<ul className={style.list}>
-						<li>
-							<Link href="/artwork-by-alex" className="anchor">
-								Alex
-							</Link>
-						</li>
-						<li>
-							<Link href="/paklijst" className="anchor">
-								{dictionary.packing.title}
-							</Link>
-						</li>
-					</ul>
-					<Button
-						onClick={() =>
-							theme === "light" ? setTheme("dark") : setTheme("light")
-						}
-						size="small"
-						icon={!theme || theme === "light" ? <Moon /> : <Sun />}
-					/>
-					<Button
-						onClick={onChangeLanguage(otherLocale)}
-						size="small"
-						text={locale === "nl" ? "🇬🇧" : "🇳🇱"}
-					/>
-				</nav>
+				<Button
+					onClick={() =>
+						theme === "light" ? setTheme("dark") : setTheme("light")
+					}
+					size="small"
+					icon={!theme || theme === "light" ? <Moon /> : <Sun />}
+				/>
+				<Button
+					role="button"
+					onClick={onChangeLanguage(otherLocale)}
+					size="small"
+					text={locale === "nl" ? "🇬🇧" : "🇳🇱"}
+				/>
 			</div>
 		</header>
 	);

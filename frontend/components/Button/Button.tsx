@@ -30,11 +30,7 @@ export const Button = ({
 			onClick={onClick}
 		>
 			{iconLeft && iconLeft}
-			{text && (
-				<span className={cx(["text"])} data-text={text}>
-					{text}
-				</span>
-			)}
+			{text && <span className={cx(["text"])}>{text}</span>}
 			{icon && icon}
 			{checkbox && <span className={style.fakeButton}></span>}
 		</button>

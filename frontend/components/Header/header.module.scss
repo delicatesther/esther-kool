@@ -65,15 +65,19 @@
 }
 
 .content {
-	nav {
-		display: flex;
-		align-items: center;
-		gap: 8px 16px;
-		flex-wrap: wrap;
-	}
-}
-
-.list {
 	display: flex;
-	gap: 8px;
+	align-items: center;
+	gap: 8px 16px;
+	flex-wrap: wrap;
+	button {
+		display: inline-flex;
+		align-items: center;
+		padding-top: 0;
+		padding-bottom: 0;
+		> span {
+			vertical-align: middle;
+			display: inline;
+			line-height: 30px;
+		}
+	}
 }
