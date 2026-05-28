@@ -347,6 +347,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["verzorging", "inpakken"],
 			},
 			{
+				id: "dinokussen",
+				title: {
+					nl: "Dinokussen",
+					en: "Dinosaur pillow",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["alex", "inpakken"],
+			},
+			{
 				id: "drinkbekers",
 				title: {
 					nl: "Drinkbekers",
