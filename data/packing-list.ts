@@ -175,7 +175,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["reizen", "verzorging", "inpakken"],
+				tags: ["reizen", "verzorging", "inpakken", "esther"],
 			},
 			{
 				id: "broeken",
@@ -305,7 +305,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "inpakken", "cruciaal", "elektronica"],
+				tags: ["verzorging", "inpakken", "cruciaal", "elektronica", "kasper"],
 			},
 			{
 				id: "dagcreme",
@@ -318,7 +318,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Day creme, night creme and/or other skincare",
 				},
 				amount: null,
-				tags: ["inpakken", "verzorging"],
+				tags: ["inpakken", "verzorging", "esther"],
 			},
 			{
 				id: "dekentje",
@@ -436,7 +436,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "elektronica", "inpakken"],
+				tags: ["verzorging", "elektronica", "inpakken", "esther"],
 			},
 			{
 				id: "gedestilleerd-water",
@@ -449,7 +449,7 @@ export const packingList: PackingListCategory[] = [
 					en: "To clean CPAP",
 				},
 				amount: null,
-				tags: ["inpakken", "cruciaal", "verzorging"],
+				tags: ["inpakken", "cruciaal", "verzorging", "kasper"],
 			},
 			{
 				id: "geld",
@@ -475,7 +475,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["entertainment", "elektronica", "inpakken"],
+				tags: ["entertainment", "elektronica", "inpakken", "esther"],
 			},
 			{
 				id: "hdmi-kabel",
@@ -540,7 +540,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "inpakken"],
+				tags: ["verzorging", "inpakken", "esther"],
 			},
 			{
 				id: "haarzooi",
@@ -647,6 +647,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["elektronica", "inpakken"],
 			},
 			{
+				id: "ibuprofen",
+				title: {
+					nl: "Ibuprofen",
+					en: "Ibuprofen",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["inpakken", "verzorging"],
+			},
+			{
 				id: "identiteitsbewijspaspoort",
 				title: {
 					nl: "Identiteitsbewijs/Paspoort",
@@ -658,6 +671,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["inpakken", "cruciaal"],
+			},
+			{
+				id: "inears",
+				title: {
+					nl: "In-ears JBL Tour 3",
+					en: "In-ears JBL Tour 3",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["inpakken", "elektronica", "esther", "cruciaal"],
 			},
 			{
 				id: "jerrycan",
@@ -696,7 +722,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["kleding", "inpakken"],
+				tags: ["kleding", "inpakken", "esther"],
 			},
 			{
 				id: "kaart",
@@ -777,6 +803,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["alex", "verzorging", "inpakken"],
 			},
 			{
+				id: "koolhydraatarmbrood",
+				title: {
+					nl: "Koolhydraatarmbrood",
+					en: "Low carb bread",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["eten-drinken", "inpakken", "esther"],
+			},
+			{
 				id: "knuffels",
 				title: {
 					nl: "Knuffels ",
@@ -835,8 +874,8 @@ export const packingList: PackingListCategory[] = [
 					en: "Headphones",
 				},
 				description: {
-					nl: "Incl lader en jackplug.",
-					en: "Including charger and jack plug.",
+					nl: "Incl lader en eventueel jackplug.",
+					en: "Including charger and perhaps jack plug.",
 				},
 				amount: null,
 				tags: ["entertainment", "elektronica", "inpakken"],
@@ -892,6 +931,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["elektronica", "inpakken"],
+			},
+			{
+				id: "leesbril",
+				title: {
+					nl: "Leesbril",
+					en: "Reading glasses",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["cruciaal", "inpakken", "esther"],
 			},
 			{
 				id: "losse-bed-railing-alex",
@@ -969,7 +1021,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "inpakken"],
+				tags: ["verzorging", "inpakken", "esther"],
 			},
 			{
 				id: "makeup-remover-doekjes",
@@ -982,20 +1034,33 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "inpakken"],
+				tags: ["verzorging", "inpakken", "esther"],
 			},
 			{
-				id: "medicijnen",
+				id: "medicijnen-esther",
 				title: {
-					nl: "Medicijnen",
-					en: "Meds",
+					nl: "Medicijnen Esther",
+					en: "Meds Esther",
 				},
 				description: {
-					nl: "Dex, elvanse, thyrax, vitamine B12, vitamine D, foliumzuur, magnesiumzuur, teunisbloemolie.",
+					nl: "Elvanse, thyrax, vitamine B12, vitamine D, foliumzuur, magnesiumzuur, teunisbloemolie.",
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "inpakken", "cruciaal"],
+				tags: ["verzorging", "inpakken", "cruciaal", "esther"],
+			},
+			{
+				id: "medicijnen-kasper",
+				title: {
+					nl: "Medicijnen Kasper",
+					en: "Meds Kasper",
+				},
+				description: {
+					nl: "Dex, bloeddruk-medicatie, enz.",
+					en: "",
+				},
+				amount: null,
+				tags: ["verzorging", "inpakken", "cruciaal", "kasper"],
 			},
 			{
 				id: "medicijnenpaspoort",
@@ -1009,6 +1074,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["buitenland", "verzorging", "inpakken", "cruciaal"],
+			},
+			{
+				id: "menstruatieondergoed",
+				title: {
+					nl: "Menstruatieondergoed",
+					en: "Menstrual underwear",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["verzorging", "inpakken", "esther"],
 			},
 			{
 				id: "nagelschaartje-enof-vijl",
@@ -1113,6 +1191,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["inpakken", "eten-drinken", "festival", "kamperen"],
+			},
+			{
+				id: "pap",
+				title: {
+					nl: "Pap/Brinto",
+					en: "Porridge/Brinta",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["eten-drinken", "inpakken", "alex"],
 			},
 			{
 				id: "paracetamol",
@@ -1307,7 +1398,13 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["inpakken", "elektronica", "entertainment", "evenement"],
+				tags: [
+					"inpakken",
+					"elektronica",
+					"entertainment",
+					"evenement",
+					"esther",
+				],
 			},
 			{
 				id: "sandaaltjesslippers",
@@ -1667,8 +1764,8 @@ export const packingList: PackingListCategory[] = [
 					en: "Console",
 				},
 				description: {
-					nl: "Switch 1/2, PS5",
-					en: "Switch 1/2, PS5",
+					nl: "Switch 1/2, PS5, incl. spelletjes",
+					en: "Switch 1/2, PS5, incl. games",
 				},
 				amount: null,
 				tags: ["entertainment", "elektronica", "inpakken"],
@@ -1736,7 +1833,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "inpakken"],
+				tags: ["verzorging", "inpakken", "esther"],
 			},
 			{
 				id: "tandenborstel",
@@ -2295,7 +2392,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["comfort", "verzorging", "inpakken"],
+				tags: ["comfort", "verzorging", "inpakken", "esther"],
 			},
 			{
 				id: "zonnebrandcreme",
@@ -2309,6 +2406,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["verzorging", "inpakken", "cruciaal"],
+			},
+			{
+				id: "zonnebrandcreme-alex",
+				title: {
+					nl: "Zonnebrandcrème voor kinderen",
+					en: "Sunscreen for kids",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["verzorging", "inpakken", "cruciaal", "alex"],
 			},
 			{
 				id: "zonnebril",
