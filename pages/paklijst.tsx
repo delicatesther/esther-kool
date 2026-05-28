@@ -22,7 +22,7 @@ export default function PaklijstPage() {
 							"alex",
 							"buitenland",
 							"cruciaal",
-							"electronica",
+							"elektronica",
 							"eten-drinken",
 							"festival",
 							"kamperen",

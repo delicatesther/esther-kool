@@ -10,7 +10,7 @@ export type PackingListTag =
 	| "comfort"
 	| "entertainment"
 	| "evenement"
-	| "electronica"
+	| "elektronica"
 	| "eten-drinken"
 	| "festival"
 	| "kamperen"

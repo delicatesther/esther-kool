@@ -35,6 +35,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["inpakken", "festival"],
 			},
 			{
+				id: "agenda",
+				title: {
+					nl: "Agenda",
+					en: "Agenda",
+				},
+				description: {
+					nl: "Fysieke agenda Esther",
+					en: "Physical calendar Esther",
+				},
+				amount: null,
+				tags: ["inpakken"],
+			},
+			{
 				id: "alex",
 				title: {
 					nl: "Alex",
@@ -71,7 +84,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "electronica", "inpakken"],
+				tags: ["verzorging", "elektronica", "inpakken"],
 			},
 			{
 				id: "autorijbril",
@@ -97,20 +110,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["alex", "electronica", "inpakken"],
-			},
-			{
-				id: "babyolie",
-				title: {
-					nl: "Babyolie",
-					en: "Baby Oil",
-				},
-				description: {
-					nl: "",
-					en: "",
-				},
-				amount: null,
-				tags: ["alex", "verzorging", "inpakken"],
+				tags: ["alex", "elektronica", "inpakken"],
 			},
 			{
 				id: "badcape",
@@ -149,7 +149,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Including charger.",
 				},
 				amount: null,
-				tags: ["entertainment", "electronica", "inpakken"],
+				tags: ["entertainment", "elektronica", "inpakken"],
 			},
 			{
 				id: "bordjesschaaltjes",
@@ -240,7 +240,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Incl. battery and charger.",
 				},
 				amount: null,
-				tags: ["inpakken", "electronica", "entertainment", "evenement"],
+				tags: ["inpakken", "elektronica", "entertainment", "evenement"],
 			},
 			{
 				id: "camping-gaz",
@@ -279,7 +279,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["entertainment", "electronica", "inpakken"],
+				tags: ["entertainment", "elektronica", "inpakken"],
 			},
 			{
 				id: "conditioner",
@@ -293,6 +293,32 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["verzorging", "inpakken"],
+			},
+			{
+				id: "cpap",
+				title: {
+					nl: "CPAP",
+					en: "CPAP",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["verzorging", "inpakken", "cruciaal", "elektronica"],
+			},
+			{
+				id: "dagcreme",
+				title: {
+					nl: "Dagcrème",
+					en: "Day creme",
+				},
+				description: {
+					nl: "Dagcrème, nachtcreme en/of andere skincare",
+					en: "Day creme, night creme and/or other skincare",
+				},
+				amount: null,
+				tags: ["inpakken", "verzorging"],
 			},
 			{
 				id: "dekentje",
@@ -398,19 +424,7 @@ export const packingList: PackingListCategory[] = [
 				amount: null,
 				tags: ["reizen", "inpakken", "cruciaal", "eten-drinken"],
 			},
-			{
-				id: "extra-pleisters",
-				title: {
-					nl: "Extra Pleisters",
-					en: "Extra Band-aids",
-				},
-				description: {
-					nl: "Om stopcontacten af te plakken.",
-					en: "To cover electrical outlets.",
-				},
-				amount: null,
-				tags: ["alex", "inpakken"],
-			},
+
 			{
 				id: "fohn",
 				title: {
@@ -422,7 +436,20 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "electronica", "inpakken"],
+				tags: ["verzorging", "elektronica", "inpakken"],
+			},
+			{
+				id: "gedestilleerd-water",
+				title: {
+					nl: "Gedestilleerd water",
+					en: "Distilled Water",
+				},
+				description: {
+					nl: "Om CPAP mee schoon te maken",
+					en: "To clean CPAP",
+				},
+				amount: null,
+				tags: ["inpakken", "cruciaal", "verzorging"],
 			},
 			{
 				id: "geld",
@@ -448,7 +475,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["entertainment", "electronica", "inpakken"],
+				tags: ["entertainment", "elektronica", "inpakken"],
 			},
 			{
 				id: "hdmi-kabel",
@@ -461,7 +488,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["entertainment", "electronica", "inpakken"],
+				tags: ["entertainment", "elektronica", "inpakken"],
 			},
 			{
 				id: "haarborstel",
@@ -617,7 +644,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Including charger",
 				},
 				amount: null,
-				tags: ["electronica", "inpakken"],
+				tags: ["elektronica", "inpakken"],
 			},
 			{
 				id: "identiteitsbewijspaspoort",
@@ -700,7 +727,7 @@ export const packingList: PackingListCategory[] = [
 			{
 				id: "kinderparacetamol",
 				title: {
-					nl: "Kinderparacetamol",
+					nl: "Kinderparacetamol/Sinaspril",
 					en: "Baby Paracetamol",
 				},
 				description: {
@@ -812,7 +839,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Including charger and jack plug.",
 				},
 				amount: null,
-				tags: ["entertainment", "electronica", "inpakken"],
+				tags: ["entertainment", "elektronica", "inpakken"],
 			},
 			{
 				id: "kussen",
@@ -838,7 +865,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Charge them before you pack them.",
 				},
 				amount: null,
-				tags: ["electronica", "inpakken"],
+				tags: ["elektronica", "inpakken"],
 			},
 			{
 				id: "lampionnen",
@@ -864,7 +891,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Including charger",
 				},
 				amount: null,
-				tags: ["electronica", "inpakken"],
+				tags: ["elektronica", "inpakken"],
 			},
 			{
 				id: "losse-bed-railing-alex",
@@ -964,7 +991,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Meds",
 				},
 				description: {
-					nl: "Dex, thyrax, vitamine B12, vitamine D, foliumzuur, magnesiumzuur, teunisbloemolie.",
+					nl: "Dex, elvanse, thyrax, vitamine B12, vitamine D, foliumzuur, magnesiumzuur, teunisbloemolie.",
 					en: "",
 				},
 				amount: null,
@@ -1038,12 +1065,12 @@ export const packingList: PackingListCategory[] = [
 			{
 				id: "oordopjes",
 				title: {
-					nl: "Oordopjes",
-					en: "Ear Plugs",
+					nl: "Oordopjes/Loops",
+					en: "Ear Plugs/Loops",
 				},
 				description: {
-					nl: "Oordoppen voor muziek en/of slapen",
-					en: "Music- & sleep ear plugs",
+					nl: "Oordoppen voor muziek/prikkeldemping",
+					en: "Music- & overstimulation ear plugs",
 				},
 				amount: null,
 				tags: ["festival", "verzorging", "inpakken"],
@@ -1060,6 +1087,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["inpakken", "festival", "kamperen"],
+			},
+			{
+				id: "ozlos",
+				title: {
+					nl: "Ozlo's",
+					en: "Ozlo's",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["inpakken", "verzorging", "elektronica"],
 			},
 			{
 				id: "pannetje",
@@ -1267,7 +1307,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["inpakken", "electronica", "entertainment", "evenement"],
+				tags: ["inpakken", "elektronica", "entertainment", "evenement"],
 			},
 			{
 				id: "sandaaltjesslippers",
@@ -1293,7 +1333,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["alex", "verzorging", "inpakken", "electronica"],
+				tags: ["alex", "verzorging", "inpakken", "elektronica"],
 			},
 			{
 				id: "schaar",
@@ -1566,7 +1606,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Including charger.",
 				},
 				amount: null,
-				tags: ["entertainment", "electronica", "inpakken"],
+				tags: ["entertainment", "elektronica", "inpakken"],
 			},
 			{
 				id: "speelgoed",
@@ -1621,6 +1661,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["inpakken", "alex"],
 			},
 			{
+				id: "spelcomputer",
+				title: {
+					nl: "Spelcomputer",
+					en: "Console",
+				},
+				description: {
+					nl: "Switch 1/2, PS5",
+					en: "Switch 1/2, PS5",
+				},
+				amount: null,
+				tags: ["entertainment", "elektronica", "inpakken"],
+			},
+			{
 				id: "spiegel",
 				title: {
 					nl: "Spiegel",
@@ -1644,7 +1697,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["buitenland", "electronica", "inpakken"],
+				tags: ["buitenland", "elektronica", "inpakken"],
 			},
 			{
 				id: "sudo-creme",
@@ -1696,7 +1749,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["verzorging", "electronica", "inpakken"],
+				tags: ["verzorging", "elektronica", "inpakken"],
 			},
 			{
 				id: "tandpasta",
@@ -1722,7 +1775,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["electronica", "inpakken", "cruciaal"],
+				tags: ["elektronica", "inpakken", "cruciaal"],
 			},
 			{
 				id: "telefoonoplader",
@@ -1735,7 +1788,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["electronica", "inpakken", "cruciaal"],
+				tags: ["elektronica", "inpakken", "cruciaal"],
 			},
 			{
 				id: "tent",
@@ -1933,6 +1986,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["inpakken", "todo"],
 			},
 			{
+				id: "todo-stofzuiger-schoonmaken",
+				title: {
+					nl: "Todo: Stofzuiger schoonmaken",
+					en: "Todo: Clean vacuum",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["inpakken", "todo"],
+			},
+			{
 				id: "todo-tanken",
 				title: {
 					nl: "Todo: Tanken",
@@ -2060,7 +2126,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["inpakken", "electronica", "festival", "kamperen"],
+				tags: ["inpakken", "elektronica", "festival", "kamperen"],
 			},
 			{
 				id: "vervoersbewijs",
@@ -2190,7 +2256,7 @@ export const packingList: PackingListCategory[] = [
 					en: "",
 				},
 				amount: null,
-				tags: ["inpakken", "electronica", "festival", "kamperen"],
+				tags: ["inpakken", "elektronica", "festival", "kamperen"],
 			},
 			{
 				id: "zakmes",
@@ -2299,7 +2365,7 @@ export const packingList: PackingListCategory[] = [
 			{
 				id: "zwembandjes",
 				title: {
-					nl: "Zwembandjes",
+					nl: "Zwembandjes/Zwemvest",
 					en: "Swimming aids",
 				},
 				description: {

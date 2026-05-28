@@ -181,8 +181,6 @@ export const CheckList = ({
 							return (
 								<li className={style.item} key={item.id}>
 									<label>
-										{/* <ChecklistItem /> */}
-
 										<input
 											type="checkbox"
 											checked={checked}
@@ -190,6 +188,11 @@ export const CheckList = ({
 										/>
 										{item.title[locale]}
 										{item.amount ? ` (${item.amount}x)` : ""}
+										{item.description && (
+											<span className={cx(["desc"], "text-small")}>
+												{item.description[locale]}
+											</span>
+										)}
 									</label>
 								</li>
 							);
