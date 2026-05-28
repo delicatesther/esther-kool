@@ -822,8 +822,8 @@ export const packingList: PackingListCategory[] = [
 					en: "Stuffies ",
 				},
 				description: {
-					nl: "(Vosje, Iyaah, Boer...)",
-					en: "(Vosje, Iyaah, Boer...)",
+					nl: "(Vosje, Iyaah, Boer, Pikachu...)",
+					en: "(Vosje, Iyaah, Boer, Pikachu...)",
 				},
 				amount: null,
 				tags: ["entertainment", "alex", "inpakken"],
@@ -1195,7 +1195,7 @@ export const packingList: PackingListCategory[] = [
 			{
 				id: "pap",
 				title: {
-					nl: "Pap/Brinto",
+					nl: "Pap/Brinta",
 					en: "Porridge/Brinta",
 				},
 				description: {

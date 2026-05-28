@@ -186,13 +186,20 @@ export const CheckList = ({
 											checked={checked}
 											onChange={() => toggleItem(item.id)}
 										/>
-										{item.title[locale]}
+										<span className={style.itemTitle}>
+											{item.title[locale]}
+										</span>
 										{item.amount ? ` (${item.amount}x)` : ""}
 										{item.description && (
 											<span className={cx(["desc"], "text-small")}>
 												{item.description[locale]}
 											</span>
 										)}
+										<span className={cx(["tags"], "text-small")}>
+											{item.tags.map((tag) => (
+												<span className={style.tag}>{tag}</span>
+											))}
+										</span>
 									</label>
 								</li>
 							);
