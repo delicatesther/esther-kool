@@ -74,6 +74,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["alex", "eten-drinken", "inpakken"],
 			},
 			{
+				id: "anti-klit",
+				title: {
+					nl: "Anti-klit spray Alex",
+					en: "Anti knotting spray Alex",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["verzorging", "alex", "inpakken"],
+			},
+			{
 				id: "anti-muggen-spraystekker",
 				title: {
 					nl: "Anti-muggen spray/stekker",
@@ -158,7 +171,7 @@ export const packingList: PackingListCategory[] = [
 					en: "Plates/Bowls",
 				},
 				description: {
-					nl: "",
+					nl: "Denk aan zowel bordjes als schaaltjes (min 2) voor ontbijtspul, boterhammen & avondeten",
 					en: "",
 				},
 				amount: null,
@@ -1284,6 +1297,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["inpakken", "eten-drinken", "festival", "kamperen"],
 			},
 			{
+				id: "plastic-bags",
+				title: {
+					nl: "Plastic zakken",
+					en: "Plastic bags",
+				},
+				description: {
+					nl: "Voor natte zwemkleding of vuile was. (Vuilniszakken kan ook).",
+					en: "For wet swimming gear or dirty laundry. (Garbage bags will work, too).",
+				},
+				amount: null,
+				tags: ["inpakken", "reizen"],
+			},
+			{
 				id: "pleisters",
 				title: {
 					nl: "Pleisters",
@@ -1725,8 +1751,8 @@ export const packingList: PackingListCategory[] = [
 					en: "Toys",
 				},
 				description: {
-					nl: "",
-					en: "Binnen/buiten/zwembad/strand/auto",
+					nl: "Binnen/buiten/zwembad/strand/auto",
+					en: "Inside/outside/pool/beach/car",
 				},
 				amount: null,
 				tags: ["entertainment", "alex", "inpakken"],
@@ -2122,10 +2148,10 @@ export const packingList: PackingListCategory[] = [
 				tags: ["inpakken", "todo"],
 			},
 			{
-				id: "todo-tuinkussens-droog-wegbergen",
+				id: "todo-tuinkussens-fietsen-droog-wegbergen",
 				title: {
-					nl: "Todo: Tuinkussens droog wegbergen",
-					en: "Todo: Bring in yard pillows",
+					nl: "Todo: Tuinkussens/fietsen droog wegbergen",
+					en: "Todo: Bring in yard pillows and bikes",
 				},
 				description: {
 					nl: "",
@@ -2198,6 +2224,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["inpakken", "alex"],
+			},
+			{
+				id: "tupperware",
+				title: {
+					nl: "Tupperware/Vershoudbakjes",
+					en: "Tupperware",
+				},
+				description: {
+					nl: "Voor etensrestjes, snacks onderweg, puzzels, zeep, noem het maar op.",
+					en: "For left-overs, snacks on the road, puzzels, soap, whatever.",
+				},
+				amount: null,
+				tags: ["inpakken", "eten-drinken"],
 			},
 			{
 				id: "vaseline",
@@ -2302,6 +2341,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["inpakken", "festival", "kamperen"],
+			},
+			{
+				id: "waterfles(sen)",
+				title: {
+					nl: "Waterfles(sen)",
+					en: "Water bottle(s)",
+				},
+				description: {
+					nl: "Zowel handig onderweg als voor medicijnen 's ochtends",
+					en: "",
+				},
+				amount: null,
+				tags: ["inpakken", "cruciaal", "eten-drinken"],
 			},
 			{
 				id: "wc-papier",
@@ -2486,10 +2538,10 @@ export const packingList: PackingListCategory[] = [
 				tags: ["inpakken", "festival", "kamperen"],
 			},
 			{
-				id: "zwembandjes",
+				id: "zwemvest",
 				title: {
-					nl: "Zwembandjes/Zwemvest",
-					en: "Swimming aids",
+					nl: "Zwemvest",
+					en: "Swimming aid",
 				},
 				description: {
 					nl: "",
