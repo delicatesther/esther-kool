@@ -614,8 +614,8 @@ export const packingList: PackingListCategory[] = [
 					en: "Towels",
 				},
 				description: {
-					nl: "",
-					en: "",
+					nl: "Denk ook aan zwembad vs douchen",
+					en: "Remember pool vs showering",
 				},
 				amount: null,
 				tags: ["kamperen", "verzorging", "inpakken"],
@@ -1990,6 +1990,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["inpakken", "festival", "kamperen"],
+			},
+			{
+				id: "theedoeken",
+				title: {
+					nl: "Theedoeken/Hand handdoeken",
+					en: "Tea towels",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["facilitair", "inpakken"],
 			},
 			{
 				id: "thermometer",
