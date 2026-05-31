@@ -13,6 +13,7 @@ export type PackingListTag =
 	| "elektronica"
 	| "eten-drinken"
 	| "esther"
+	| "facilitair"
 	| "festival"
 	| "kasper"
 	| "kamperen"

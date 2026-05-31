@@ -35,6 +35,19 @@ export const packingList: PackingListCategory[] = [
 				tags: ["inpakken", "festival"],
 			},
 			{
+				id: "afwasmiddel",
+				title: {
+					nl: "Afwasmiddel",
+					en: "Afwasmiddel",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["inpakken", "facilitair"],
+			},
+			{
 				id: "agenda",
 				title: {
 					nl: "Agenda",
@@ -489,6 +502,19 @@ export const packingList: PackingListCategory[] = [
 				},
 				amount: null,
 				tags: ["inpakken", "cruciaal"],
+			},
+			{
+				id: "handzeep",
+				title: {
+					nl: "Handzeep",
+					en: "Hand soap",
+				},
+				description: {
+					nl: "",
+					en: "",
+				},
+				amount: null,
+				tags: ["verzorging", "inpakken"],
 			},
 			{
 				id: "hdmi-adapter-laptop",

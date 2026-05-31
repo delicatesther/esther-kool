@@ -25,6 +25,7 @@ export default function PaklijstPage() {
 							"elektronica",
 							"eten-drinken",
 							"esther",
+							"facilitair",
 							"festival",
 							"kasper",
 							"kamperen",
